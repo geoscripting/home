@@ -1,0 +1,11 @@
+Version Control using git
+=========================
+
+This chapter teaches you the basics of git.
+
+.. toctree::
+   :maxdepth: 2
+
+   intro
+   basics
+   collaboration
