@@ -20,7 +20,7 @@ Welcome to Advanced GeoScripting: Introduction to Scientific Programming
 
    preparation/software_setup
    git/index
-   preparation/preparation_assignment
+   preparation/preparatory_assignment
 
 .. toctree::
    :maxdepth: 1

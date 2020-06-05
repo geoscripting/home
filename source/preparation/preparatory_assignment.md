@@ -64,7 +64,7 @@ Before you work on the following exercise, work through the [introduction to git
 3. Push all your commits to GitHub. 
 
 
-### Last but not least
+### Well done, your ready for the course! :) 
 
 
 
