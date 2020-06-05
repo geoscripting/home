@@ -1,4 +1,4 @@
-Advanced Raster data processing
+Advanced raster data processing
 ===========
 
 This is what we will do in this course

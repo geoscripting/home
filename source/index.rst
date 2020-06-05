@@ -11,27 +11,25 @@ Welcome to Advanced GeoScripting: Introduction to Scientific Programming
    :caption: General Information
 
    general/administration
-   general/communication 
+   general/communication
+   general/resources
 
 .. toctree::
-   :maxdepth: 3
-   :numbered:
+   :maxdepth: 1
    :caption: Course Preparation
 
    preparation/software_setup
    git/index
-   jupyter/index
+   preparation/preparation_assignment
 
 .. toctree::
    :maxdepth: 1
-   :numbered:
    :caption: Course Content
 
    raster/index
 
 .. toctree::
    :maxdepth: 1
-   :numbered:
    :caption: Final Assignment
 
    final_assignment/index

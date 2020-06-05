@@ -59,13 +59,25 @@ During this course we will use PyCharm. I recommend applying for a `free student
   :align: center
   :alt: pycharm home screen
 
+**Configure Python Environment in PyCharm**
+
+INSERT VIDEO
+
+1. Open PyCharm and create a new, empty project.
+
+2. Choose the "geoscripting2" environment.
+
+3. Open the python console and import all python packages listed above.
+
 
 Jupyter Notebook
 ------------------
 
 During the course we will be working with Jupyter Notebooks. In a nutshell, a Jupyter notebook is basically a combination of an HTML page and a python script. In this way, it can display Python code alongside formatted text, figures and charts. Notebooks are used frequently within scientific computing, because it is great way of explaining what the script is doing.
 
-We've already installed jupyter notebook using conda above. To check wether it works, start a new jupyter notebook server by executing the following command within the Anaconda prompt.
+**Verify installation**
+
+1. We've already installed jupyter notebook using conda above. To check wether it works, start a new jupyter notebook server by executing the following command within the Anaconda prompt.
 
 ::
 
@@ -78,6 +90,10 @@ If you get a ``command not found`` message, make sure that the correct Python en
   :width: 750
   :align: center
   :alt: Jupyter notebook home screen
+
+2. On the top right, open the drop down menu *New* and create a new Jupyter Notebook by clicking on *Python 3*.
+
+3. Verify that all python packages are available by importing all Python packages listed above.
 
 
 git
