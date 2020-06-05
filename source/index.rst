@@ -11,9 +11,10 @@ Welcome to Advanced GeoScripting: Introduction to Scientific Programming
    :caption: General Information
 
    general/administration
+   general/communication 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :numbered:
    :caption: Course Preparation
 
@@ -39,6 +40,3 @@ Welcome to Advanced GeoScripting: Introduction to Scientific Programming
 .. toctree::
    :maxdepth: 1
    :caption: Contribute
-
-   Discussions <https://github.com/orgs/geoscripting/teams/advanced-geoscripting-2020/discussions>
-   Wiki <https://github.com/redfrexx/cs4geos20/wiki>
