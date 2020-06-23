@@ -3,35 +3,33 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to GeoScripting 2: Introduction to Scientific Programming
-=================================================================
+Welcome to Advanced GeoScripting: Introduction to Scientific Programming
+=========================================================================
 
 .. toctree::
    :maxdepth: 1
-   :numbered:
    :caption: General Information
 
    general/administration
-   general/env_setup
+   general/communication
+   general/resources
 
 .. toctree::
    :maxdepth: 1
-   :numbered:
-   :caption: Pre-Course Preparation
+   :caption: Course Preparation
 
+   preparation/software_setup
    git/index
-   jupyter/index
+   preparation/preparation_assignment
 
 .. toctree::
    :maxdepth: 1
-   :numbered:
    :caption: Course Content
 
    raster/index
 
 .. toctree::
    :maxdepth: 1
-   :numbered:
    :caption: Final Assignment
 
    final_assignment/index
@@ -40,6 +38,3 @@ Welcome to GeoScripting 2: Introduction to Scientific Programming
 .. toctree::
    :maxdepth: 1
    :caption: Contribute
-
-   Discussions <https://github.com/redfrexx/cs4geos20/issues>
-   Wiki <https://github.com/redfrexx/cs4geos20/wiki>

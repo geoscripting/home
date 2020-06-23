@@ -1,0 +1,3 @@
+[submodule "source/preparation/preparatory_assignment"]
+	path = source/preparation/preparatory_assignment
+	url = https://github.com/geoscripting/preparatory_assignment.git

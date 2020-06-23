@@ -1,0 +1,52 @@
+Advanced Geoscripting  - SS 2020  -  Instructor: Christina Ludwig 
+
+# Preparatory Assignment
+
+Within this assignment you will ...
+
+*  install and configure all required software for the course,
+*  read about reproducibility and replicability in science and 
+*  learn the basics of version control with git. 
+
+**Attention: Completing this preparatory assignmnet is a prerequisite for attending the course!**
+
+## 1. Install and configure required software
+
+Follow the instructions given in the section [Software Setup](./software_setup) to install all required software for the course. 
+
+### Jupyter Notebook 
+
+#### 1. Create a new Jupyter notebook
+
+Create a new Jupyter Notebook called _test_book.ipynb_.
+
+#### 2. Import Python packages
+
+Import all Python packages.
+
+### 
+
+
+## 2. Basics of Version Control with git
+
+
+
+#### 2. Create a new Jupyter notebook
+
+Create a new Jupyter Notebook called _test_book.ipynb_.
+
+#### 3. Import Python packages
+
+Import all Python packages listed in _requirements.txt_. 
+
+#### 4. Push your changes to GitHub
+
+Create a new commit containing the new notebook _check\_env.py_ and push it to GitHub. Go to the GitHub to check whether the test was passed.   
+
+
+
+### leave a message in etherpad
+
+
+
+

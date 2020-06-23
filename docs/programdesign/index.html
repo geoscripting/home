@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1.1. Introduction to git &mdash; Advanced Geoscripting 2020 documentation</title>
+  <title>Writing readable programs &mdash; Advanced Geoscripting 2020 documentation</title>
   
 
   
@@ -84,26 +84,22 @@
             
               <p class="caption"><span class="caption-text">General Information</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/administration.html">1. Administrative</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/env_setup.html">2. Software setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/administration.html">Administrative</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/communication.html">Communication</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Pre-Course Preparation</span></p>
+<p class="caption"><span class="caption-text">Course Preparation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">1. Version control with git</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../jupyter/index.html">2. Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/software_setup.html">Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/index.html">Version control with git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/preparation_assignment.html">Course Preparation Assignment</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Course Content</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">1. Advanced Raster data processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">Advanced raster data processing</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Final Assignment</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../final_assignment/index.html">1. Final Assignment</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Contribute</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/orgs/geoscripting/teams/advanced-geoscripting-2020/discussions">Discussions</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/redfrexx/cs4geos20/wiki">Wiki</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_assignment/index.html">Final Assignment</a></li>
 </ul>
 
             
@@ -149,13 +145,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>1.1. Introduction to git</li>
+      <li>Writing readable programs</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/git/intro.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/programdesign/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -192,8 +188,36 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="introduction-to-git">
-<h1>Introduction to git<a class="headerlink" href="#introduction-to-git" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="writing-readable-programs">
+<h1>Writing readable programs<a class="headerlink" href="#writing-readable-programs" title="Permalink to this headline">¶</a></h1>
+<p>In this section, we will …</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="031_cs4geos_program_design_exercise.html">Writing good scientific Code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="031_cs4geos_program_design_exercise.html#for-Readability,-Maintainability-and-Reusability">for Readability, Maintainability and Reusability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="031_cs4geos_program_design_exercise.html#Remember:-Write-code-for-people,-not-computers!">Remember: Write code for people, not computers!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="031_cs4geos_program_design_exercise.html#Write-code-that-reveals-its-meaning!">Write code that reveals its meaning!</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="031_cs4geos_program_design_exercise.html#How-to-write-readable,-maintainable-and-reusable-code?">How to write readable, maintainable and reusable code?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="031_cs4geos_program_design_exercise.html#Naming-variables">Naming variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="031_cs4geos_program_design_exercise.html#Split-your-code-into-Functions">Split your code into Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="031_cs4geos_program_design_exercise.html#Don’t-repeat-yourself!">Don’t repeat yourself!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="031_cs4geos_program_design_exercise.html#“Do-One-thing”">“Do One thing”</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="031_cs4geos_program_design_exercise.html#Split-your-code-into-Packages-and-Modules">Split your code into Packages and Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="031_cs4geos_program_design_exercise.html#Your-project-folder-may-look-something-like-this:">Your project folder may look something like this:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="031_cs4geos_program_design_exercise.html#Do’s">Do’s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="031_cs4geos_program_design_exercise.html#Don’t">Don’t</a></li>
+<li class="toctree-l2"><a class="reference internal" href="031_cs4geos_program_design_exercise.html#Example:">Example:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="031_cs4geos_program_design_exercise.html#Let’s-look-at-an-Example">Let’s look at an Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="031_cs4geos_program_design_exercise.html#Hands-On:-Write-a-readable,-maintainable-and-reusable-program!">Hands-On: Write a readable, maintainable and reusable program!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="031_cs4geos_program_design_exercise.html#References:">References:</a></li>
+</ul>
+</div>
 </div>
 
 

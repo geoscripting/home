@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1.1. Dealing with Large Raster Files &mdash; Geoscripting 2: Introduction to Scientific Programming 2020 documentation</title>
+  <title>Dealing with Large Raster Files &mdash; Advanced Geoscripting 2020 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
   <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Final Assignment" href="../final_assignment/index.html" />
-    <link rel="prev" title="1. Raster data" href="index.html" /> 
+    <link rel="next" title="Final Assignment" href="../final_assignment/index.html" />
+    <link rel="prev" title="Advanced raster data processing" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -54,12 +54,9 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Geoscripting 2: Introduction to Scientific Programming
+            <a href="../index.html" class="icon icon-home"> Advanced Geoscripting
           
 
-          
-            
-            <img src="../_static/hd_logo_small_sw_16cm_rgb.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -89,25 +86,26 @@
             
               <p class="caption"><span class="caption-text">General Information</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/administration.html">1. Administrative Information</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general/env_setup.html">2. Software setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/administration.html">Administrative</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/communication.html">Communication</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Pre-Course Preparation</span></p>
+<p class="caption"><span class="caption-text">Course Preparation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../git/index.html">1. Version Control using git</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../jupyter/index.html">2. Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/software_setup.html">Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/index.html">Version control with git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/preparation_assignment.html">Course Preparation Assignment</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Course Content</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">1. Raster data</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">1.1. Dealing with Large Raster Files</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Learning-objectives">1.1.1. Learning objectives</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#1.-Recap:-What-do-you-know-about-raster-files?">1.1.2. 1. <strong>Recap:</strong> What do you know about raster files?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#2.-Raster-Data-Management">1.1.3. 2. Raster Data Management</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#2.1-Spatial-resolution">1.1.3.1. 2.1 Spatial resolution</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#2.2-Data-Types">1.1.3.2. 2.2 Data Types</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#2.3-File-Compression">1.1.3.3. 2.3 File Compression</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#References:">1.1.3.4. References:</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Advanced raster data processing</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dealing with Large Raster Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Learning-objectives">Learning objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#1.-Recap:-What-do-you-know-about-raster-files?">1. <strong>Recap:</strong> What do you know about raster files?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#2.-Raster-Data-Management">2. Raster Data Management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#2.1-Spatial-resolution">2.1 Spatial resolution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#2.2-Data-Types">2.2 Data Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#2.3-File-Compression">2.3 File Compression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#References:">References:</a></li>
 </ul>
 </li>
 </ul>
@@ -117,12 +115,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Final Assignment</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../final_assignment/index.html">1. Final Assignment</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Contribute</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/redfrexx/cs4geos20/issues">Discussions</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/redfrexx/cs4geos20/wiki">Wiki</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_assignment/index.html">Final Assignment</a></li>
 </ul>
 
             
@@ -137,7 +130,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Geoscripting 2: Introduction to Scientific Programming</a>
+          <a href="../index.html">Advanced Geoscripting</a>
         
       </nav>
 
@@ -168,9 +161,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">1. Raster data</a> &raquo;</li>
+          <li><a href="index.html">Advanced raster data processing</a> &raquo;</li>
         
-      <li>1.1. Dealing with Large Raster Files</li>
+      <li>Dealing with Large Raster Files</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -445,9 +438,9 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <div class="section" id="Dealing-with-Large-Raster-Files">
-<h1>1.1. Dealing with Large Raster Files<a class="headerlink" href="#Dealing-with-Large-Raster-Files" title="Permalink to this headline">¶</a></h1>
+<h1>Dealing with Large Raster Files<a class="headerlink" href="#Dealing-with-Large-Raster-Files" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="Learning-objectives">
-<h2>1.1.1. Learning objectives<a class="headerlink" href="#Learning-objectives" title="Permalink to this headline">¶</a></h2>
+<h2>Learning objectives<a class="headerlink" href="#Learning-objectives" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Name properties of a raster file which influence its file size.</p></li>
 <li><p>Explain the term “compression”.</p></li>
@@ -457,7 +450,7 @@ div.rendered_html tbody tr:hover {
 </ul>
 </div>
 <div class="section" id="1.-Recap:-What-do-you-know-about-raster-files?">
-<h2>1.1.2. 1. <strong>Recap:</strong> What do you know about raster files?<a class="headerlink" href="#1.-Recap:-What-do-you-know-about-raster-files?" title="Permalink to this headline">¶</a></h2>
+<h2>1. <strong>Recap:</strong> What do you know about raster files?<a class="headerlink" href="#1.-Recap:-What-do-you-know-about-raster-files?" title="Permalink to this headline">¶</a></h2>
 <p>Which properties of a raster file influence on its file size?</p>
 <ul class="simple">
 <li><p>Spatial extent</p></li>
@@ -468,7 +461,7 @@ div.rendered_html tbody tr:hover {
 </ul>
 </div>
 <div class="section" id="2.-Raster-Data-Management">
-<h2>1.1.3. 2. Raster Data Management<a class="headerlink" href="#2.-Raster-Data-Management" title="Permalink to this headline">¶</a></h2>
+<h2>2. Raster Data Management<a class="headerlink" href="#2.-Raster-Data-Management" title="Permalink to this headline">¶</a></h2>
 <p>For working with spatial raster data in Python we will use <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy</span></code>. Numpy will perform all calculations which rasterio takes care of the georeferencing.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
@@ -483,9 +476,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="2.1-Spatial-resolution">
-<h3>1.1.3.1. 2.1 Spatial resolution<a class="headerlink" href="#2.1-Spatial-resolution" title="Permalink to this headline">¶</a></h3>
+<h3>2.1 Spatial resolution<a class="headerlink" href="#2.1-Spatial-resolution" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="Exercise-1:">
-<h4>1.1.3.1.1. Exercise 1:<a class="headerlink" href="#Exercise-1:" title="Permalink to this headline">¶</a></h4>
+<h4>Exercise 1:<a class="headerlink" href="#Exercise-1:" title="Permalink to this headline">¶</a></h4>
 <ol class="arabic simple">
 <li><p>Calculate the number of cells of an array with 100 rows, 200 columns and 5 bands.</p></li>
 <li><p>Assume each pixel has a resolution of 20 by 20 meters. Increase the resolution to 10 by 10 meters. How many cells does the array contain now?</p></li>
@@ -512,12 +505,12 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="2.2-Data-Types">
-<h3>1.1.3.2. 2.2 Data Types<a class="headerlink" href="#2.2-Data-Types" title="Permalink to this headline">¶</a></h3>
+<h3>2.2 Data Types<a class="headerlink" href="#2.2-Data-Types" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="Recap:-Which-data-types-do-you-know?">
-<h4>1.1.3.2.1. <strong>Recap:</strong> Which data types do you know?<a class="headerlink" href="#Recap:-Which-data-types-do-you-know?" title="Permalink to this headline">¶</a></h4>
+<h4><strong>Recap:</strong> Which data types do you know?<a class="headerlink" href="#Recap:-Which-data-types-do-you-know?" title="Permalink to this headline">¶</a></h4>
 </div>
 <div class="section" id="Exercise-2:-Converting-data-types-and-calculating-the-memory-size.">
-<h4>1.1.3.2.2. Exercise 2: Converting data types and calculating the memory size.<a class="headerlink" href="#Exercise-2:-Converting-data-types-and-calculating-the-memory-size." title="Permalink to this headline">¶</a></h4>
+<h4>Exercise 2: Converting data types and calculating the memory size.<a class="headerlink" href="#Exercise-2:-Converting-data-types-and-calculating-the-memory-size." title="Permalink to this headline">¶</a></h4>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -529,7 +522,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="Exercise-3:-Saving-memory-space-by-converting-float-to-integer.">
-<h4>1.1.3.2.3. Exercise 3: Saving memory space by converting float to integer.<a class="headerlink" href="#Exercise-3:-Saving-memory-space-by-converting-float-to-integer." title="Permalink to this headline">¶</a></h4>
+<h4>Exercise 3: Saving memory space by converting float to integer.<a class="headerlink" href="#Exercise-3:-Saving-memory-space-by-converting-float-to-integer." title="Permalink to this headline">¶</a></h4>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -543,9 +536,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="2.3-File-Compression">
-<h3>1.1.3.3. 2.3 File Compression<a class="headerlink" href="#2.3-File-Compression" title="Permalink to this headline">¶</a></h3>
+<h3>2.3 File Compression<a class="headerlink" href="#2.3-File-Compression" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="Recap:-Which-raster-file-types-do-you-know?">
-<h4>1.1.3.3.1. <strong>Recap:</strong> Which raster file types do you know?<a class="headerlink" href="#Recap:-Which-raster-file-types-do-you-know?" title="Permalink to this headline">¶</a></h4>
+<h4><strong>Recap:</strong> Which raster file types do you know?<a class="headerlink" href="#Recap:-Which-raster-file-types-do-you-know?" title="Permalink to this headline">¶</a></h4>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -558,7 +551,7 @@ div.rendered_html tbody tr:hover {
 <p><strong>Conclusion:</strong> * JPEG does not only refer to the file extention. (A .tif file can also be jpeg compressed!)</p>
 </div>
 <div class="section" id="JPEG-Compression">
-<h4>1.1.3.3.2. JPEG Compression<a class="headerlink" href="#JPEG-Compression" title="Permalink to this headline">¶</a></h4>
+<h4>JPEG Compression<a class="headerlink" href="#JPEG-Compression" title="Permalink to this headline">¶</a></h4>
 <p>We will use subprocess to call gdal tools</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
@@ -580,7 +573,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="Exercise-4:-Compress-the-file-xxx.tif-using-the-JPEG-compression-using-gdal_translate.">
-<h4>1.1.3.3.3. Exercise 4: Compress the file xxx.tif using the JPEG compression using gdal_translate.<a class="headerlink" href="#Exercise-4:-Compress-the-file-xxx.tif-using-the-JPEG-compression-using-gdal_translate." title="Permalink to this headline">¶</a></h4>
+<h4>Exercise 4: Compress the file xxx.tif using the JPEG compression using gdal_translate.<a class="headerlink" href="#Exercise-4:-Compress-the-file-xxx.tif-using-the-JPEG-compression-using-gdal_translate." title="Permalink to this headline">¶</a></h4>
 <ol class="arabic simple">
 <li><p>Compare the file size of the original and compresse’d file. What is the compression rate?</p></li>
 <li><p>Load both files into python and compute the pixel-wise difference. What do you observe?</p></li>
@@ -678,7 +671,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="JPEG2000-Compression">
-<h4>1.1.3.3.4. JPEG2000 Compression<a class="headerlink" href="#JPEG2000-Compression" title="Permalink to this headline">¶</a></h4>
+<h4>JPEG2000 Compression<a class="headerlink" href="#JPEG2000-Compression" title="Permalink to this headline">¶</a></h4>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -690,7 +683,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="Exercise-5:-Perform-a-lossless-compression-on-xxx.tif.">
-<h4>1.1.3.3.5. Exercise 5: Perform a lossless compression on xxx.tif.<a class="headerlink" href="#Exercise-5:-Perform-a-lossless-compression-on-xxx.tif." title="Permalink to this headline">¶</a></h4>
+<h4>Exercise 5: Perform a lossless compression on xxx.tif.<a class="headerlink" href="#Exercise-5:-Perform-a-lossless-compression-on-xxx.tif." title="Permalink to this headline">¶</a></h4>
 <ol class="arabic simple">
 <li><p>Convert the file xxx.tif to jpeg2000 (file extention .jp2) using gdal_translate. <strong>The compression should be lossless!</strong> Refer to the <a class="reference external" href="https://gdal.org/drivers/raster/jp2openjpeg.html">documentation</a> to find all necessary parameters to guarantee a lossless compression. What is the compression rate?</p></li>
 </ol>
@@ -776,7 +769,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="References:">
-<h3>1.1.3.4. References:<a class="headerlink" href="#References:" title="Permalink to this headline">¶</a></h3>
+<h3>References:<a class="headerlink" href="#References:" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://gis.stackexchange.com/questions/169395/converting-large-jp2-files-using-gdal">https://gis.stackexchange.com/questions/169395/converting-large-jp2-files-using-gdal</a></p>
 <p><a class="reference external" href="https://gis.stackexchange.com/questions/230553/merging-all-tiles-from-one-directory-using-gdal">https://gis.stackexchange.com/questions/230553/merging-all-tiles-from-one-directory-using-gdal</a></p>
 <p><a class="reference external" href="http://erouault.blogspot.com/2014/04/advanced-jpeg-in-tiff-uses-in-gdal.html">http://erouault.blogspot.com/2014/04/advanced-jpeg-in-tiff-uses-in-gdal.html</a></p>
@@ -801,10 +794,10 @@ div.rendered_html tbody tr:hover {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../final_assignment/index.html" class="btn btn-neutral float-right" title="1. Final Assignment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../final_assignment/index.html" class="btn btn-neutral float-right" title="Final Assignment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="1. Raster data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Advanced raster data processing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

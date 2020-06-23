@@ -1,0 +1,45 @@
+Resources
+###########
+
+Books
+******
+
+Here are some book recommendations:
+
+### The Python Programming Language
+
+Mark Lutz. Learning Python. O'Reilly, 2013. ([Safari Books](https://proquest.tech.safaribooksonline.de/book/programming/python/9781449355722)) \
+Luciano Ramalho. Fluent Python. O'Reilly, 2015. ([Safari Books](https://proquest.tech.safaribooksonline.de/book/programming/python/9781491946237)) \
+Paul Gries, Jennifer Campbell, Jason Montojo. Practical Programming: An Introduction to Computer Science Using Python 3. Pragmatic Bookshelf, 2013. ([Safari Books](http://proquest.tech.safaribooksonline.de/book/programming/9781941222485)) \
+Think Python: How to Think Like a Computer Scientist ([Free Textbook](http://greenteapress.com/thinkpython/thinkpython.html))
+
+### Scientific Computing with Python
+
+Robert Johansson. Lectures on Scientific Computing with Python. ([GitHub](https://github.com/jrjohansson/scientific-python-lectures)) \
+Anthony Scopatz and Kathryn D. Huff. Effective Computation in Physics. O'Reilly, 2015. ([Safari Books](http://proquest.tech.safaribooksonline.de/book/physics/9781491901564)) \
+Hans Petter Langtangen. A Primer on Scientific Programming with Python. Springer, 2014. ([eBook](http://link.springer.com/book/10.1007%2F978-3-642-54959-5))\
+Fernando Pérez, Brian E. Granger, John D. Hunter - Python: An Ecosystem for Scientific Computing, In:[Computer in Science and Engineering](http://doi.ieeecomputersociety.org/10.1109/MCSE.2010.119), Vol. 13, No. 2, pp. 13-21, 2011, [doi:10.1109/MCSE.2010.119](http://dx.doi.org/10.1109/MCSE.2010.119))
+
+### High Performance Computing with Python
+
+Kurt W. Smith. Cython. O'Reilly, 2015. ([Safari Books](http://proquest.tech.safaribooksonline.de/book/programming/9781491901731))\
+Micha Gorelick, Ian Ozsvald. High Performance Python. O'Reilly, 2014. ([Safari Books](http://proquest.tech.safaribooksonline.de/book/programming/python/9781449361747))\
+Fernando Doglio, Mastering Python High Performance. Packt Publishing, 2015. ([Safari Books](http://proquest.tech.safaribooksonline.de/book/programming/python/9781783989300))
+
+###
+Schmidt, B., Gonzalez-Dominguez, J., Hundt, C., & Schlarb, M. (2017). Parallel programming: concepts and practice. Morgan Kaufmann. [Google Books](https://books.google.de/books?hl=en&lr=&id=-y9HDgAAQBAJ&oi=fnd&pg=PP1&dq=Parallel+Programming:+Concepts+and+Practice&ots=vPL3kPvTkJ&sig=gN5EA0okkbtUHufPvTB37MAGFis)
+
+***
+
+### Source:
+[http://michael-kraus.org/high-performance-computing-with-python.html](http://michael-kraus.org/high-performance-computing-with-python.html)
+
+
+
+Scientific papers
+******************
+
+
+
+Online Tutorials
+*****************
