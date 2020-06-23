@@ -8,10 +8,6 @@ Welcome to Advanced GeoScripting: Introduction to Scientific Programming SS2020
 
 This website contains all material for the course "Advanced Geoscripting" given at the Heidelberg University during the summer term 2020.
 
-The course material will be gradually added to the section "content" during the block course.
-
-Prior to the block course, please work though the section "Course Preparation" and complete the *mandatory preparatory assignment* to make sure to be well prepared for the course.
-
 
 .. toctree::
    :maxdepth: 1
@@ -33,7 +29,7 @@ Prior to the block course, please work though the section "Course Preparation" a
    :maxdepth: 1
    :caption: Course Content
 
-   content/learninggoals
+.. raster/index
 
 .. toctree::
    :maxdepth: 1

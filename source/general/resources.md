@@ -31,9 +31,8 @@ Here are some book recommendations taken from [1]
 
 ## Scientific papers
 
-Wilson, G., Aruliah, D. A., Brown, C. T., Hong, N. P. C., Davis, M., Guy, R. T., ... & Waugh, B. (2014). [Best practices for scientific computing](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3886731/). PLoS biology, 12(1).
-
-Wilson, G., Bryan, J., Cranston, K., Kitzes, J., Nederbragt, L., & Teal, T. K. (2017). [Good enough practices in scientific computing.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5480810/) PLoS computational biology, 13(6).
+* Wilson, G., Aruliah, D. A., Brown, C. T., Hong, N. P. C., Davis, M., Guy, R. T., ... & Waugh, B. (2014). [Best practices for scientific computing](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3886731/). PLoS biology, 12(1).
+* Wilson, G., Bryan, J., Cranston, K., Kitzes, J., Nederbragt, L., & Teal, T. K. (2017). [Good enough practices in scientific computing.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5480810/) PLoS computational biology, 13(6).
 
 ## Online Tutorials
 
