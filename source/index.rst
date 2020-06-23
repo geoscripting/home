@@ -3,10 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Advanced GeoScripting: Introduction to Scientific Programming SS2020
-================================================================================
+Welcome to Advanced GeoScripting
+================================
 
-This website contains all material for the course "Advanced Geoscripting" given at the Heidelberg University during the summer term 2020.
+This website contains all material for the course "Advanced Geoscripting: Introduction to scientific programming" given at the Heidelberg University during the summer term 2020.
 
 The course material will be gradually added to the section "content" during the block course.
 
