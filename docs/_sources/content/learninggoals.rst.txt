@@ -1,0 +1,29 @@
+Introduction
+################################
+
+
+Why is this course important
+******************************
+
+.. image:: ../_static/images/scientists_nightmare.png
+  :width: 500
+  :alt: A scientist's nightmare
+
+Read the full story |here|.
+
+  .. |here| raw:: html
+
+     <a href="https://science.sciencemag.org/content/314/5807/1856.long" target="_blank">here</a>
+
+Learning Goals
+******************************
+
+By the end of the course you will be able to …
+
+* use advanced data structures for raster and vector data analysis,
+* make (interactive) graphs and maps in Python for exploratory data analysis,
+* describe the components of a computer and explain how they affect your program,
+* explain the concept of reproducibility,
+* write a well structured, readable and documented program,
+* keep track of all your changes during the development process,
+* test your program to ensure correct and reproducible results.

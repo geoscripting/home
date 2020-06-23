@@ -61,13 +61,11 @@ During this course we will use PyCharm. I recommend applying for a `free student
 
 **Configure Python Environment in PyCharm**
 
-INSERT VIDEO
-
 1. Open PyCharm and create a new, empty project.
 
-2. Choose the "geoscripting2" environment.
+2. Choose the *advgeoscripting* environment.
 
-3. Open the python console and import all python packages listed above.
+3. Open the python console and import all python packages listed above to check if they are all available.
 
 
 Jupyter Notebook
