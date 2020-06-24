@@ -11,48 +11,31 @@ Download and install `Anaconda <https://www.anaconda.com/products/individual>`_.
 Python Environment
 ===================
 
-If you are using Anaconda, open the Anaconda prompt and execute the commands below to set up a new environment called *geoscripting2*
+If you are using Anaconda, open the Anaconda prompt and execute the commands below to set up a new environment called *advgeo*
 
 **1. Create a new virtual Python environment.**
 
 ::
 
-  $ conda create -n geoscripting2 python=3.7
+  $ conda create -n advgeo python=3
 
-**2. Install all required Python packages** listed in :download:`requirements.txt <../_static/requirements.txt>`. Remember to activate your environment before.
+**2. Install all required Python packages** listed in :download:`requirements.txt <../_static/requirements.txt>`. Remember to activate your environment before installing the packages.
 
 ::
 
-  $ conda activate geoscripting2
+  $ conda activate advgeo
   $ conda install --file requirements.txt
-
-
-**3. Check if all Python packages have been installed correctly.** Start a Python interactive session and import the following Python packages
-
-.. code-block:: python
-
-  import geopandas
-  import sklearn
-  import rasterio
-  import requests
-  import scipy
-  import seaborn
-  import pytest
-  import pylint
-
-
-If you get an ``ImportError``, install the missing package using the ``conda install`` command.
 
 
 Python IDEs
 ===================
 
-An IDE (Integrated Development Environments) is basically a text editor with a lot of additional functions such as syntax highlighting or profiling, which make writing code easier and faster.
+An IDE (Integrated Development Environments) is basically a text editor with a lot of additional functionalities (e.g. syntax highlighting, automated code completion) which make writing code easier and faster. During this course we will use PyCharm and Jupyter Notebooks.
 
 PyCharm
 ----------
 
-During this course we will use PyCharm. I recommend applying for a `free student license <https://www.jetbrains.com/community/education/#students>`_, which let's you use the PyCharm Professional Edition for free. Compared to the PyCharm Community Edition (which is free for everyone), the Professional Edition provides a few more useful tools for scientific programming.
+I recommend applying for a `free student license <https://www.jetbrains.com/community/education/#students>`_, which let's you use the PyCharm Professional Edition for free. Compared to the PyCharm Community Edition (which is free for everyone), the Professional Edition provides a few more useful tools for scientific programming. (e.g. viewing plots)
 
 .. image:: ../_static/images/pycharm.png
   :width: 750
@@ -61,11 +44,28 @@ During this course we will use PyCharm. I recommend applying for a `free student
 
 **Configure Python Environment in PyCharm**
 
-1. Open PyCharm and create a new, empty project.
+1. Open PyCharm and create a new, empty project or open an existing one.
+2. Open the project preferences.
+3. Choose the *advgeo* environment as the Project Interpreter.
 
-2. Choose the *advgeoscripting* environment.
+.. image:: ../_static/images/project_interpreter.png
+  :width: 700
+  :align: center
+  :alt: pycharm project_interpreter
 
-3. Open the python console and import all python packages listed above to check if they are all available.
+The new environment is probably not shown in the list of available environments within Pycharm. In this case, click on the button marked in the image above and choose "Add". The following window should appear. Select the new anaconda environment and click "OK".
+
+.. image:: ../_static/images/add_conda_env.png
+  :width: 600
+  :align: center
+  :alt: add conda environment to PyCharm
+
+Make sure that you set the new environment also for the Python console within PyCharm.
+
+.. image:: ../_static/images/python_interpreter_console.png
+  :width: 700
+  :align: center
+  :alt: pycharm python interpreter for console
 
 
 Jupyter Notebook
@@ -82,16 +82,16 @@ During the course we will be working with Jupyter Notebooks. In a nutshell, a Ju
   $ jupyter notebook
 
 
-If you get a ``command not found`` message, make sure that the correct Python environment is activated. A new browser window should open looking something like this. The folder structure will be differently.
+A new browser window will open. If you started the jupyter server from within the folder of the preparatory assignment, then it will look like this.
 
-.. image:: ../_static/images/jupyter_screen.png
+.. image:: ../_static/images/jupyter_start.png
   :width: 750
   :align: center
   :alt: Jupyter notebook home screen
 
-2. On the top right, open the drop down menu *New* and create a new Jupyter Notebook by clicking on *Python 3*.
+If you get a ``command not found`` message, make sure that the correct Python environment is activated.
+To create a new jupyter notebook, click on the drop down menu *New* (top right) and create a new Jupyter Notebook by clicking on *Python 3*.
 
-3. Verify that all python packages are available by importing all Python packages listed above.
 
 
 git
@@ -103,9 +103,3 @@ git for Windows
 ================
 
 If you are on Windows, install `git for Windows  <https://git-scm.com/download/win>`_. Please follow this `video tutorial <https://www.youtube.com/watch?v=339AEqk9c-8>`_ in order to choose the right settings during installation.
-
-
-Command line editor
-===================
-
-git sometimes opens up an editor within the command line e.g. to write a commit message. In the course, I will use the `nano editor <https://www.nano-editor.org/>`_  .

@@ -105,7 +105,6 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#git">git</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#git-for-windows">git for Windows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#command-line-editor">Command line editor</a></li>
 </ul>
 </li>
 </ul>
@@ -215,42 +214,35 @@
 <p>Download and install <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda</a>. You may also use virtualenv or the like if you prefer, but I recommend Anaconda.</p>
 <div class="section" id="python-environment">
 <h3>Python Environment<a class="headerlink" href="#python-environment" title="Permalink to this headline">¶</a></h3>
-<p>If you are using Anaconda, open the Anaconda prompt and execute the commands below to set up a new environment called <em>geoscripting2</em></p>
+<p>If you are using Anaconda, open the Anaconda prompt and execute the commands below to set up a new environment called <em>advgeo</em></p>
 <p><strong>1. Create a new virtual Python environment.</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda create -n geoscripting2 python=3.7
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda create -n advgeo python=3
 </pre></div>
 </div>
-<p><strong>2. Install all required Python packages</strong> listed in <a class="reference download internal" download="" href="../_downloads/6a19c4383957a170a3ab1e95f1488cc2/requirements.txt"><code class="xref download docutils literal notranslate"><span class="pre">requirements.txt</span></code></a>. Remember to activate your environment before.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda activate geoscripting2
+<p><strong>2. Install all required Python packages</strong> listed in <a class="reference download internal" download="" href="../_downloads/6a19c4383957a170a3ab1e95f1488cc2/requirements.txt"><code class="xref download docutils literal notranslate"><span class="pre">requirements.txt</span></code></a>. Remember to activate your environment before installing the packages.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda activate advgeo
 $ conda install --file requirements.txt
 </pre></div>
 </div>
-<p><strong>3. Check if all Python packages have been installed correctly.</strong> Start a Python interactive session and import the following Python packages</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span>
-<span class="kn">import</span> <span class="nn">sklearn</span>
-<span class="kn">import</span> <span class="nn">rasterio</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">scipy</span>
-<span class="kn">import</span> <span class="nn">seaborn</span>
-<span class="kn">import</span> <span class="nn">pytest</span>
-<span class="kn">import</span> <span class="nn">pylint</span>
-</pre></div>
-</div>
-<p>If you get an <code class="docutils literal notranslate"><span class="pre">ImportError</span></code>, install the missing package using the <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span></code> command.</p>
 </div>
 <div class="section" id="python-ides">
 <h3>Python IDEs<a class="headerlink" href="#python-ides" title="Permalink to this headline">¶</a></h3>
-<p>An IDE (Integrated Development Environments) is basically a text editor with a lot of additional functions such as syntax highlighting or profiling, which make writing code easier and faster.</p>
+<p>An IDE (Integrated Development Environments) is basically a text editor with a lot of additional functionalities (e.g. syntax highlighting, automated code completion) which make writing code easier and faster. During this course we will use PyCharm and Jupyter Notebooks.</p>
 <div class="section" id="pycharm">
 <h4>PyCharm<a class="headerlink" href="#pycharm" title="Permalink to this headline">¶</a></h4>
-<p>During this course we will use PyCharm. I recommend applying for a <a class="reference external" href="https://www.jetbrains.com/community/education/#students">free student license</a>, which let’s you use the PyCharm Professional Edition for free. Compared to the PyCharm Community Edition (which is free for everyone), the Professional Edition provides a few more useful tools for scientific programming.</p>
+<p>I recommend applying for a <a class="reference external" href="https://www.jetbrains.com/community/education/#students">free student license</a>, which let’s you use the PyCharm Professional Edition for free. Compared to the PyCharm Community Edition (which is free for everyone), the Professional Edition provides a few more useful tools for scientific programming. (e.g. viewing plots)</p>
 <a class="reference internal image-reference" href="../_images/pycharm.png"><img alt="pycharm home screen" class="align-center" src="../_images/pycharm.png" style="width: 750px;" /></a>
 <p><strong>Configure Python Environment in PyCharm</strong></p>
 <ol class="arabic simple">
-<li><p>Open PyCharm and create a new, empty project.</p></li>
-<li><p>Choose the <em>advgeoscripting</em> environment.</p></li>
-<li><p>Open the python console and import all python packages listed above to check if they are all available.</p></li>
+<li><p>Open PyCharm and create a new, empty project or open an existing one.</p></li>
+<li><p>Open the project preferences.</p></li>
+<li><p>Choose the <em>advgeo</em> environment as the Project Interpreter.</p></li>
 </ol>
+<a class="reference internal image-reference" href="../_images/project_interpreter.png"><img alt="pycharm project_interpreter" class="align-center" src="../_images/project_interpreter.png" style="width: 700px;" /></a>
+<p>The new environment is probably not shown in the list of available environments within Pycharm. In this case, click on the button marked in the image above and choose “Add”. The following window should appear. Select the new anaconda environment and click “OK”.</p>
+<a class="reference internal image-reference" href="../_images/add_conda_env.png"><img alt="add conda environment to PyCharm" class="align-center" src="../_images/add_conda_env.png" style="width: 600px;" /></a>
+<p>Make sure that you set the new environment also for the Python console within PyCharm.</p>
+<a class="reference internal image-reference" href="../_images/python_interpreter_console.png"><img alt="pycharm python interpreter for console" class="align-center" src="../_images/python_interpreter_console.png" style="width: 700px;" /></a>
 </div>
 <div class="section" id="jupyter-notebook">
 <h4>Jupyter Notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">¶</a></h4>
@@ -262,12 +254,10 @@ $ conda install --file requirements.txt
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter notebook
 </pre></div>
 </div>
-<p>If you get a <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code> message, make sure that the correct Python environment is activated. A new browser window should open looking something like this. The folder structure will be differently.</p>
-<a class="reference internal image-reference" href="../_images/jupyter_screen.png"><img alt="Jupyter notebook home screen" class="align-center" src="../_images/jupyter_screen.png" style="width: 750px;" /></a>
-<ol class="arabic simple" start="2">
-<li><p>On the top right, open the drop down menu <em>New</em> and create a new Jupyter Notebook by clicking on <em>Python 3</em>.</p></li>
-<li><p>Verify that all python packages are available by importing all Python packages listed above.</p></li>
-</ol>
+<p>A new browser window will open. If you started the jupyter server from within the folder of the preparatory assignment, then it will look like this.</p>
+<a class="reference internal image-reference" href="../_images/jupyter_start.png"><img alt="Jupyter notebook home screen" class="align-center" src="../_images/jupyter_start.png" style="width: 750px;" /></a>
+<p>If you get a <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code> message, make sure that the correct Python environment is activated.
+To create a new jupyter notebook, click on the drop down menu <em>New</em> (top right) and create a new Jupyter Notebook by clicking on <em>Python 3</em>.</p>
 </div>
 </div>
 </div>
@@ -277,10 +267,6 @@ $ conda install --file requirements.txt
 <div class="section" id="git-for-windows">
 <h3>git for Windows<a class="headerlink" href="#git-for-windows" title="Permalink to this headline">¶</a></h3>
 <p>If you are on Windows, install <a class="reference external" href="https://git-scm.com/download/win">git for Windows</a>. Please follow this <a class="reference external" href="https://www.youtube.com/watch?v=339AEqk9c-8">video tutorial</a> in order to choose the right settings during installation.</p>
-</div>
-<div class="section" id="command-line-editor">
-<h3>Command line editor<a class="headerlink" href="#command-line-editor" title="Permalink to this headline">¶</a></h3>
-<p>git sometimes opens up an editor within the command line e.g. to write a commit message. In the course, I will use the <a class="reference external" href="https://www.nano-editor.org/">nano editor</a>  .</p>
 </div>
 </div>
 </div>

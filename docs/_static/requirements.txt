@@ -4,12 +4,11 @@ geopandas
 rasterio
 requests
 rise
-sphinx
 pylint
 pytest
 cython
 boto3
-nose
 scikit-learn
 scipy
 seaborn
+plotly
