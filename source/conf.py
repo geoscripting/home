@@ -31,7 +31,7 @@ release = '2020'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 import sphinx_rtd_theme
-extensions = ["sphinx_rtd_theme", "nbsphinx",
+extensions = ["sphinx_rtd_theme", "nbsphinx",'sphinx.ext.intersphinx',
 "jupyter_sphinx.execute", 'recommonmark']
 
 # Add any paths that contain templates here, relative to this directory.

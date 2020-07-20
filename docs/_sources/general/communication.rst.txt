@@ -1,8 +1,6 @@
 Communication
 ##############
 
-Usually the course will be based on frequent gro
-
 Communication during the course will happen the following platforms.
 
 HeiCONF

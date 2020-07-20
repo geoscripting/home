@@ -17,7 +17,7 @@ Attendance at **one of the pre-meetings** is mandatory.
 Block course:
 ===============
 
-Monday Aug 10th - Friday Aug 14th, 9:00 – 16:00
+Monday Aug 10th - Friday Aug 14th, 9:00 – 15:00
 
 **Attendance during the whole block course is mandatory.**
 
@@ -45,7 +45,7 @@ Prerequisites
 Grading
 *******
 
-* Grade depends mainly on final project, which has to be handed in until October 15th. More information during block course.
+* Grade depends on the assignments during the course and a final project, which has to be handed in until October 15th. More information during block course.
 * Deregistration is possible until Friday, August 9th
 
 Course instructor

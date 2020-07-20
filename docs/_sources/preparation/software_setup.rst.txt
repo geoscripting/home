@@ -93,6 +93,7 @@ If you get a ``command not found`` message, make sure that the correct Python en
 To create a new jupyter notebook, click on the drop down menu *New* (top right) and create a new Jupyter Notebook by clicking on *Python 3*.
 
 
+.. _installgit:
 
 git
 *****
