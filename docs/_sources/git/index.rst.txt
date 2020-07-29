@@ -15,7 +15,7 @@ To access the material for the preparatory assignment and to submit your solutio
 
 .. raw:: html
 
-   <p align="center"><iframe width="800" height="450" display="block" src="https://heicast.uni-heidelberg.de/paella/ui/watch.html?id=cefb8c90-337a-4bb9-ad41-9729a58ae1e6" frameborder="0" allowfullscreen></iframe></p>
+   <p align="center"><iframe width="800" height="450" src="https://www.youtube.com/embed/st7j4x-UxEw" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 
 
 2. Cloning the repository to your computer
@@ -30,7 +30,7 @@ In order to work on the files in the repository and to add new ones, you need to
 
 .. raw:: html
 
-   <p align="center"><iframe width="800" height="450" display="block" src="https://heicast.uni-heidelberg.de/paella/ui/watch.html?id=68623291-77e6-40bf-bbeb-923b4de5e65d" frameborder="0" allowfullscreen></iframe></p>
+   <p align="center"><iframe width="800" height="450" src="https://www.youtube.com/embed/yfFbOUnbE1Y" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 
 
 
@@ -47,7 +47,7 @@ When you create or edit files, you can track these changes and synchronise them 
 
 .. raw:: html
 
-   <p align="center"><iframe width="800" height="450" display="block" src="https://heicast.uni-heidelberg.de/paella/ui/watch.html?id=dc930a80-c929-4796-9805-27b989c2b907" frameborder="0" allowfullscreen></iframe></p>
+   <p align="center"><iframe width="800" height="450" src="https://www.youtube.com/embed/kVCLIPHfPDo" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 
 4. Submission through GitHub Classroom
 #######################################
