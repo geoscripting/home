@@ -251,7 +251,7 @@ Connecting a local repository to a central repository
   .. code::
 
     $ git init
-    $ git remote add origin https://github.com/geoscripting/my_empty_repo.git
+    $ git remote add origin https://github.com/hettner/my_empty_repo.git
 
 
 ----
