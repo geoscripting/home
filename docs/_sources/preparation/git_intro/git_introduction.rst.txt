@@ -7,10 +7,10 @@ Introduction to git
 git is a Version Control System
 ====================================================
 
-* A Version Control System is a software which **tracks file changes** within a project.
+* A Version Control System is a software that **tracks the file changes** of all contributors within a project.
+* Originally developed to **assist collaborative open source software development** by Linus Torvalds (Initiator of Linux development)
+* The **user chooses which files are tracked** and which file changes are recorded.
 * All tracked files of a project are stored in a **git repository** ("repo").
-
-*BTW:* originally git was developed to assist **collaborative software development** by Linus Torvalds (Initiator of Linux development)
 
 
 git tracks file changes through *commits*
@@ -21,7 +21,7 @@ git tracks file changes through *commits*
 | .. image:: img/git_tracking.svg |.. image:: img/git_commits_small.svg |
 +---------------------------------+-------------------------------------+
 
-*git status* shows all file changes in the repository
+*git status* shows the current state of the repository
 ======================================================
 
 .. code::
@@ -34,8 +34,8 @@ git tracks file changes through *commits*
   :alt: git_status_1
 
 
-*commits* record file changes within the *repository*
-======================================================
+A *commit* records file changes within the *repository*
+==========================================================
 
 
 Adding files to the staging area, which will be included in the next commit.
@@ -101,15 +101,15 @@ Connecting a local repository to a central repository
 
   .. code::
 
-    $ git clone https://github.com/geoscripting/say_hello.git
+    $ git clone https://github.com/geoscripting/preparatory-assignment-hettner
 
   **Option 2:** Create a local repository and connect it to a central repository:
 
   .. code::
 
     $ git init
-    $ git remote add origin https://github.com/geoscripting/say_hello.git
-    $ git push -u origin master
+    $ git remote add origin https://github.com/geoscripting/my_empty_repo.git
+
 
 Resources
 ===========

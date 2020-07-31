@@ -9,8 +9,8 @@ Pre-meetings:
 
 There will be two short pre-meetings via HeiCONF to answer questions about the preparatory assignment and the course preparation in general.
 
-* Friday, July 31st, 13:00 - 15:00
-* Wednesday, August 5th, 13:00 - 15:00
+* Friday, July 31st, 13:30 - 15:00
+* Wednesday, August 5th, 13:30 - 15:00
 
 Attendance at **one of the pre-meetings** is mandatory.
 

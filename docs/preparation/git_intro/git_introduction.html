@@ -99,8 +99,8 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction to git</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#git-is-a-version-control-system">git is a Version Control System</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#git-tracks-file-changes-through-commits">git tracks file changes through <em>commits</em></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#git-status-shows-all-file-changes-in-the-repository"><em>git status</em> shows all file changes in the repository</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#commits-record-file-changes-within-the-repository"><em>commits</em> record file changes within the <em>repository</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#git-status-shows-the-current-state-of-the-repository"><em>git status</em> shows the current state of the repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-commit-records-file-changes-within-the-repository">A <em>commit</em> records file changes within the <em>repository</em></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#git-needs-to-know-who-is-creating-the-commit">git needs to know who is creating the commit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#git-log-shows-all-commits-of-this-repository"><em>git log</em> shows all commits of this repository</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#synchronizing-your-local-commits-with-a-central-git-repository">Synchronizing your local commits with a central git repository</a></li>
@@ -214,10 +214,11 @@
 <div class="section" id="git-is-a-version-control-system">
 <h2>git is a Version Control System<a class="headerlink" href="#git-is-a-version-control-system" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>A Version Control System is a software which <strong>tracks file changes</strong> within a project.</p></li>
+<li><p>A Version Control System is a software that <strong>tracks the file changes</strong> of all contributors within a project.</p></li>
+<li><p>Originally developed to <strong>assist collaborative open source software development</strong> by Linus Torvalds (Initiator of Linux development)</p></li>
+<li><p>The <strong>user chooses which files are tracked</strong> and which file changes are recorded.</p></li>
 <li><p>All tracked files of a project are stored in a <strong>git repository</strong> (“repo”).</p></li>
 </ul>
-<p><em>BTW:</em> originally git was developed to assist <strong>collaborative software development</strong> by Linus Torvalds (Initiator of Linux development)</p>
 </div>
 <div class="section" id="git-tracks-file-changes-through-commits">
 <h2>git tracks file changes through <em>commits</em><a class="headerlink" href="#git-tracks-file-changes-through-commits" title="Permalink to this headline">¶</a></h2>
@@ -233,8 +234,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="git-status-shows-all-file-changes-in-the-repository">
-<h2><em>git status</em> shows all file changes in the repository<a class="headerlink" href="#git-status-shows-all-file-changes-in-the-repository" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="git-status-shows-the-current-state-of-the-repository">
+<h2><em>git status</em> shows the current state of the repository<a class="headerlink" href="#git-status-shows-the-current-state-of-the-repository" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status
 </pre></div>
 </div>
@@ -242,8 +243,8 @@
 <a class="reference internal image-reference" href="../../_images/git_status_1.png"><img alt="git_status_1" src="../../_images/git_status_1.png" style="width: 800px;" /></a>
 </div>
 </div>
-<div class="section" id="commits-record-file-changes-within-the-repository">
-<h2><em>commits</em> record file changes within the <em>repository</em><a class="headerlink" href="#commits-record-file-changes-within-the-repository" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-commit-records-file-changes-within-the-repository">
+<h2>A <em>commit</em> records file changes within the <em>repository</em><a class="headerlink" href="#a-commit-records-file-changes-within-the-repository" title="Permalink to this headline">¶</a></h2>
 <p>Adding files to the staging area, which will be included in the next commit.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git add ham.py
 $ git add spam.txt
@@ -280,13 +281,12 @@ $ git config --global user.email &quot;hettner.alfred@gmail.com&quot;
 <h2>Connecting a local repository to a central repository<a class="headerlink" href="#connecting-a-local-repository-to-a-central-repository" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><strong>Option 1:</strong> Clone the repository to your computer:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/geoscripting/say_hello.git
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/geoscripting/preparatory-assignment-hettner
 </pre></div>
 </div>
 <p><strong>Option 2:</strong> Create a local repository and connect it to a central repository:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git init
-$ git remote add origin https://github.com/geoscripting/say_hello.git
-$ git push -u origin master
+$ git remote add origin https://github.com/geoscripting/my_empty_repo.git
 </pre></div>
 </div>
 </div></blockquote>

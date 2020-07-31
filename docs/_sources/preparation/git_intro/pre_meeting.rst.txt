@@ -6,6 +6,9 @@ Advanced Geoscripting: Pre-Meeting
 
 Heidelberg University | Institute of Geography | July 31st 2020
 
+Starting at 1:30 pm
+
+
 ----
 
 :data-y: r1000
@@ -15,7 +18,7 @@ Agenda
 
 1. Organizational information
 2. git introduction
-3. Use git for preparatory assignment
+3. Practical: use git for the preparatory assignment
 
 ----
 
@@ -61,26 +64,17 @@ Status of your course preparation
 
 .. class:: substep
 
-  **Is your Anaconda environment for the course set up correctly?**
+  **Some GitHub Accounts are still missing. Please send me your GitHub name once you have an account.**
 
-  **Is the environment available within Jupyter Notebook?**
+  Is your Anaconda environment for the course working correctly?
 
-  **Is the environment available within PyCharm?**
+  Is the environment available within Jupyter Notebook?
+
+  Is the environment available within PyCharm?
+
 
 ----
 
-
-
-GitHub Accounts
-========================================================
-
-
-.. csv-table::
-   :file: ../../general/students.csv
-   :widths: 20, 20, 20
-   :header-rows: 1
-
-----
 
 
 Any other questions?
@@ -91,7 +85,7 @@ Any other questions?
   .. code:: python
 
     if I_know_git_already == True:
-      print("Thank you for coming! See you on Monday August 10th, 9:15 am. Bye!)"
+      print("Thank you for attending! See you on Monday August 10th, 9:15 am!)"
 
   .. code:: python
 
@@ -133,10 +127,10 @@ git is a Version Control System
 
 .. class:: substep
 
-  * A Version Control System is a software which **tracks file changes** within a project.
+  * A Version Control System is a software that **tracks the file changes** of all contributors within a project.
+  * Originally developed to **assist collaborative open source software development** by Linus Torvalds (Initiator of Linux development)
+  * The **user chooses which files are tracked** and which file changes are recorded.
   * All tracked files of a project are stored in a **git repository** ("repo").
-
-  *BTW:* originally git was developed to assist **collaborative software development** by Linus Torvalds (Initiator of Linux development)
 
 
 ----
@@ -159,8 +153,8 @@ git tracks file changes through *commits*
 
 ----
 
-*git status* shows all file changes in the repository
-======================================================
+*git status* shows the current state of the repository
+========================================================
 
 .. code::
 
@@ -173,8 +167,8 @@ git tracks file changes through *commits*
 
 ----
 
-*commits* record file changes within the *repository*
-======================================================
+A *commit* records file changes within the *repository*
+==================================================================
 
 .. class:: substep
 
@@ -250,15 +244,14 @@ Connecting a local repository to a central repository
 
   .. code::
 
-    $ git clone https://github.com/geoscripting/say_hello.git
+    $ git clone https://github.com/geoscripting/preparatory-assignment-hettner
 
   **Option 2:** Create a local repository and connect it to a central repository:
 
   .. code::
 
     $ git init
-    $ git remote add origin https://github.com/geoscripting/say_hello.git
-    $ git push -u origin master
+    $ git remote add origin https://github.com/geoscripting/my_empty_repo.git
 
 
 ----
@@ -268,9 +261,9 @@ Any questions?
 
 .. class:: substep
 
-  **Use git to work on the preparatory assignment.** I will be here until 3 pm for questions.
+  **You may start using git to work on the preparatory assignment.** I will be here until 3 pm for questions.
 
-  2nd pre-meeting: Wed, Aug 5th, 1pm
+  If you have more questions later: 2nd Pre-Meeting: Wed, Aug 5th, 1pm (optional)
 
   Start of the block course: August 10th, 9:15 am.
 
