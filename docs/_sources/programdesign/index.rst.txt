@@ -1,9 +1,0 @@
-Writing readable programs
-##########################
-
-In this section, we will ...
-
-.. toctree::
-   :maxdepth: 2
-
-   031_cs4geos_program_design_exercise

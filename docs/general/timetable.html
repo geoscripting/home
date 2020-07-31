@@ -1,0 +1,676 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Time schedule &mdash; Advanced Geoscripting SS2020 2020 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Preparatory Assignment" href="../preparation/preparatory_assignment/README.html" />
+    <link rel="prev" title="Resources" href="resources.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Advanced Geoscripting SS2020
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Information</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="administration.html">Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Time schedule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#day-0">Day 0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction-to-git">Introduction to git</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#day-1-advanced-vector-data-processing">Day 1: Advanced vector data processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#learning-objectives">Learning objectives:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#schedule">Schedule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#activate-knowledge">Activate knowledge:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercises">Exercises:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#discussion-summary">Discussion / Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#day-2-advanced-raster-data-processing-computer-hardware">Day 2: Advanced Raster Data Processing + Computer Hardware</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Learning objectives:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#activation">Activation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Exercises</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#compare-vectorized-with-non-vectorized-implementations">Compare vectorized with non vectorized implementations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-hand-large-files-with-limited-ram">How to hand large files with limited RAM?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-git-collaboratively">Using git collaboratively</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Discussion / Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#day-3-best-practices-for-scientific-programming">Day 3: Best Practices for Scientific Programming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#learning-goals">Learning goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Activation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Exercises</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#testing-and-debugging-code-reliability">Testing and debugging code (Reliability)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reusability-readability-modularization">Reusability / Readability / Modularization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bonus-improving-code-only-after-there-are-tests">Bonus: Improving code only after there are tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#group-project">Group project</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bonus-forst-fire">Bonus: Forst Fire</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#day-4-geodata-visualizations">Day 4: Geodata Visualizations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Learning goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Exercises</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bonus-make-a-dashboard">Bonus: Make a dashboard</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#discussion-and-summary">Discussion and summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#day-5-peer-review">Day 5: Peer review</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#peer-review-of-random-walker-and-forest-fire-code">Peer Review of random walker and forest fire code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Course Preparation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/preparatory_assignment/README.html">Preparatory Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/software_setup.html">Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/git_intro/pre_meeting.html">Advanced Geoscripting: Pre-Meeting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/git_intro/pre_meeting.html#agenda">Agenda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/git_intro/pre_meeting.html#time-schedule">Time schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/git_intro/pre_meeting.html#grading">Grading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/git_intro/pre_meeting.html#communication-tools-during-the-course">Communication tools during the course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/git_intro/pre_meeting.html#status-of-your-course-preparation">Status of your course preparation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/git_intro/pre_meeting.html#github-accounts">GitHub Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/git_intro/pre_meeting.html#any-other-questions">Any other questions?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/git_intro/pre_meeting.html#introduction-to-git">Introduction to git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/git_intro/pre_meeting.html#git-is-a-version-control-system">git is a Version Control System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/git_intro/pre_meeting.html#git-tracks-file-changes-through-commits">git tracks file changes through <em>commits</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/git_intro/pre_meeting.html#git-status-shows-all-file-changes-in-the-repository"><em>git status</em> shows all file changes in the repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/git_intro/pre_meeting.html#commits-record-file-changes-within-the-repository"><em>commits</em> record file changes within the <em>repository</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/git_intro/pre_meeting.html#git-needs-to-know-who-is-creating-the-commit">git needs to know who is creating the commit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/git_intro/pre_meeting.html#git-log-shows-all-commits-of-this-repository"><em>git log</em> shows all commits of this repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/git_intro/pre_meeting.html#synchronizing-your-local-commits-with-a-central-git-repository">Synchronizing your local commits with a central git repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/git_intro/pre_meeting.html#connecting-a-local-repository-to-a-central-repository">Connecting a local repository to a central repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/git_intro/pre_meeting.html#any-questions">Any questions?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/index.html">Introduction to git</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../content/learninggoals.html">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Final Assignment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../final_assignment/index.html">Final Assignment</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Advanced Geoscripting SS2020</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Time schedule</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/general/timetable.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="time-schedule">
+<h1>Time schedule<a class="headerlink" href="#time-schedule" title="Permalink to this headline">¶</a></h1>
+<p>|TIME         |DAY 1       | DAY 2                |DAY 3                         | DAY 4    | DAY 5   |
+|—	        |—	                        |—	               |—	                 |—	    |—      |
+|9:00 - 9:30  |Introduction|Recap Day 1|Recap Day 2|Recap Day 3|Recap Day 4|
+|9:30 - 10:15 |Introduction|Computer Hardware|Reproducability|Errors|Code Review|
+|10:15 - 10:30|Objectoriented Programming|Advanced raster processing|Intro Exercise|Intro Exercise|Code Review|
+|10:30 - 12:00|Objectoriented Programming|Advanced raster processing|Visualizations|Modularization|Final Assignment|
+|12:00 - 13:00|LUNCH when ever you want|Final Questions|
+|13:00 - 14:00|Objectoriented Programming|Advanced vector processing|Visualizations|Testing||
+|14:00 - 15:00|Questions &amp; Feedback|Questions &amp; Feedback|Questions &amp; Feedback|||</p>
+<div class="section" id="day-0">
+<h2>Day 0<a class="headerlink" href="#day-0" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="introduction-to-git">
+<h3>Introduction to git<a class="headerlink" href="#introduction-to-git" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Num</th>
+<th align="center">Type</th>
+<th align="left">Topic</th>
+<th align="left">Time [min]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10.</td>
+<td align="center">T</td>
+<td align="left">Introduction to git</td>
+<td align="left">70</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="left">Difference between concept of git and implementations (whiteboard)</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="left">Why do you or a scientist need git?</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="left">Concept of git</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="left">Open Github in the Browser and show them around (QGIS repo)</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>11.</td>
+<td align="center">A</td>
+<td align="left"><strong>Hands On:</strong> Clone a git repo + git pull</td>
+<td align="left">90</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="section" id="day-1-advanced-vector-data-processing">
+<h2>Day 1: Advanced vector data processing<a class="headerlink" href="#day-1-advanced-vector-data-processing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="learning-objectives">
+<h3>Learning objectives:<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Name different Python packages for geographic vector data processing and explain their dependencies.</p></li>
+<li><p>Use object oriented programming to create data structures of geographic entities in Python.</p></li>
+<li><p>Compare different implementations of geographic data structures for their runtime and explain the differences.</p></li>
+<li><p>Explain when to choose which data structures.</p></li>
+</ol>
+</div>
+<div class="section" id="schedule">
+<h3>Schedule<a class="headerlink" href="#schedule" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th align="center">Type</th>
+<th align="left">Topic</th>
+<th align="left">Time [min]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">T</td>
+<td align="left">Welcome</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">T</td>
+<td align="left">Agenda for Introduction</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">T</td>
+<td align="left">Administrative Information</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">T</td>
+<td align="left">Time Table + Learning objectives</td>
+<td align="left">15</td>
+</tr>
+<tr>
+<td align="center">A</td>
+<td align="left">Zusammenarbeit im Kurs besprechen - <em>Answer garden</em></td>
+<td align="left">25</td>
+</tr>
+<tr>
+<td align="center">A</td>
+<td align="left">Activate prior knowledge about vector data processing</td>
+<td align="left">70</td>
+</tr>
+<tr>
+<td align="center">T</td>
+<td align="left">Object oriented Programming / Abstraktion / Advanced Python</td>
+<td align="left">70</td>
+</tr>
+<tr>
+<td align="center">A</td>
+<td align="left">Quiz</td>
+<td align="left">75</td>
+</tr>
+<tr>
+<td align="center">T</td>
+<td align="left">Start assignment</td>
+<td align="left">75</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="activate-knowledge">
+<h3>Activate knowledge:<a class="headerlink" href="#activate-knowledge" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Packages for vector data processing</p></li>
+<li><p>interpeted vs compiled programming langues (C vs. python)</p></li>
+</ul>
+</div>
+<div class="section" id="exercises">
+<h3>Exercises:<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h3>
+<p>OO Programming</p>
+<ol class="simple">
+<li><p>Write two classes for a point and polygon object. they should contain the methods centroid(), boundinbox(), coordinates(),</p></li>
+<li><p>Implement a within() distanceTo() relation and compare a polygon and a point.</p></li>
+<li><p>Write a feature class which uses the geometry classes.
+Bonus: Implement an abstract parent class from which the two classes inherit.
+Implement more spatial relation checks. Write a generator class which iterates over all features in a file and returns your instances.</p></li>
+</ol>
+<p>Compare different implementations of vector data representations (own, ogr, shapely, pygeos)
+0. use fiona to open a file (context manager)</p>
+<ol class="simple">
+<li><p>Read the features from a geojson file using your classes and ogr.</p></li>
+<li><p>Compare the runtime using your classes and the ogr class when calculating the centroid.</p></li>
+<li><p>Use shapely to do the same and compare.</p></li>
+<li><p>Explain why ogr and shapely are faster than your code? (DISCUSSION)</p></li>
+<li><p>How to use a spatial index. what is it for?</p></li>
+</ol>
+<p>Optimisation exercise:</p>
+<ul class="simple">
+<li><p>https://gis.stackexchange.com/questions/10033/using-ogr-and-shapely-more-efficiently/10042</p></li>
+<li><p>https://gis.stackexchange.com/questions/119919/maximizing-code-performance-for-shapely</p></li>
+</ul>
+<p>Pandas and geopandas</p>
+<ol class="simple">
+<li><p>Do some basic pandas tutorial.</p></li>
+<li><p>Investigate the geometry column of the geopandas data frame. What data type is it? -&gt; shapely</p></li>
+<li><p>Which packages does geopandas use to read data from file? -&gt; fiona</p></li>
+<li><p>Using lambda functions for: map, reduce, filter</p></li>
+<li><p>Do exercise D (temperature) from the Advanced geoscripting course with pandas.</p></li>
+<li><p>Compare runtimes of geopandas.</p></li>
+<li></li>
+</ol>
+<p>Bonus: making geopandas faster using <a class="reference external" href="https://geopandas.readthedocs.io/en/latest/install.html#using-the-optional-pygeos-dependency">Pygeos</a> <a class="reference external" href="https://jorisvandenbossche.github.io/blog/2017/09/19/geopandas-cython">Cythonize Geopandas</a>
+/</p>
+</div>
+<div class="section" id="discussion-summary">
+<h3>Discussion / Summary<a class="headerlink" href="#discussion-summary" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>There are many vector packages. Order them according to their dependencies.</p></li>
+<li><p>Why are some implementations faster? Do you have any ideas? -&gt; Compiled vs. Interpreted + Vectorization tomorrow</p></li>
+<li><p>When to use what?</p>
+<ul class="simple">
+<li><p>When is it better to implement your own classes? (If you have very specific requirements or want to optimize something)</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p>What is the advantage of not specifying data types</p></li>
+<li><p>map, reduce, filter through lambda</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="day-2-advanced-raster-data-processing-computer-hardware">
+<h2>Day 2: Advanced Raster Data Processing + Computer Hardware<a class="headerlink" href="#day-2-advanced-raster-data-processing-computer-hardware" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Learning objectives:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Explain the logical setup of a computer.</p></li>
+<li><p>Name the factor affecting the performance of a computer.</p></li>
+<li><p>Explain the “von Neumann Bottleneck” and explain strategies of how to overcome it.</p></li>
+<li><p>Explain the term vectorization.</p></li>
+<li><p>Explain how geographic data structures in Python are using vectorization.</p></li>
+</ol>
+</div>
+<div class="section" id="activation">
+<h3>Activation<a class="headerlink" href="#activation" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id2">
+<h3>Exercises<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="compare-vectorized-with-non-vectorized-implementations">
+<h4>Compare vectorized with non vectorized implementations<a class="headerlink" href="#compare-vectorized-with-non-vectorized-implementations" title="Permalink to this headline">¶</a></h4>
+<p>see exercises of last year, some more geopandas exercises
+vectoriziing a function in pandas</p>
+</div>
+<div class="section" id="how-to-hand-large-files-with-limited-ram">
+<h4>How to hand large files with limited RAM?<a class="headerlink" href="#how-to-hand-large-files-with-limited-ram" title="Permalink to this headline">¶</a></h4>
+<p>Vector data</p>
+<ol class="simple">
+<li><p>Loading very large files using geopandas?</p></li>
+</ol>
+<ul class="simple">
+<li><p>OGRLayer.setAttributeFilter(“type = University”)
+Raster data</p></li>
+</ul>
+<ol class="simple">
+<li><p>How to tile a raster file efficiently?</p></li>
+<li><p>Learn some rasterio. –&gt; see large rater exercise</p></li>
+<li><p>Write a script that creates tiles (generator)</p></li>
+</ol>
+</div>
+<div class="section" id="using-git-collaboratively">
+<h4>Using git collaboratively<a class="headerlink" href="#using-git-collaboratively" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="bonus">
+<h5>Bonus<a class="headerlink" href="#bonus" title="Permalink to this headline">¶</a></h5>
+<p>Cython, Numba, Parallel etc</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h4>Discussion / Summary<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>When is it better to use a database?</p></li>
+<li><p>Why is pygeos faster than ogr?</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="day-3-best-practices-for-scientific-programming">
+<h2>Day 3: Best Practices for Scientific Programming<a class="headerlink" href="#day-3-best-practices-for-scientific-programming" title="Permalink to this headline">¶</a></h2>
+<p>|A|CS vs Geographers - <em>Group Discussion</em>| 45
+|T|Explain Geoinformation Science | 55</p>
+<ol class="simple">
+<li><p>Describe the differences between a computer scientist, a geographer and a geoinformation scientist.</p></li>
+</ol>
+<div class="section" id="learning-goals">
+<h3>Learning goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Name important criteria of a scientist’s code.</p></li>
+<li><p>Name strategies for writing good scientific code.</p></li>
+<li><p>Use unit testing to make your code reliable.</p></li>
+<li><p>Use the debugger in PyCharm to find bugs. (optional)</p></li>
+<li><p>Know how and when to improve your code.</p></li>
+<li><p>Learn how to collaborate using git.</p></li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h3>Activation<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>What can you do to organize your code?</p></li>
+<li><p>functions make it more organized, increase reuse</p></li>
+<li><p>modules: why is this bas? from xxx import *</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>Exercises<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="testing-and-debugging-code-reliability">
+<h4>Testing and debugging code (Reliability)<a class="headerlink" href="#testing-and-debugging-code-reliability" title="Permalink to this headline">¶</a></h4>
+<p>Give them code with bugs. (Write tests for basic mathematical functions.)</p>
+<ol class="simple">
+<li><p>Search all bugs and create GitHub issues for them where you describe a reproducible example.</p></li>
+<li><p>Solve the bug using the PyCharm debugger.</p></li>
+<li><p>Create a test which makes sure that the bug won’t return.</p></li>
+<li><p>Maybe restructure your code so you can test it more easily.</p></li>
+</ol>
+</div>
+<div class="section" id="reusability-readability-modularization">
+<h4>Reusability / Readability / Modularization<a class="headerlink" href="#reusability-readability-modularization" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>Give them many examples of bad code which they have to improve.</p></li>
+</ol>
+<ul class="simple">
+<li><p>code with repetitions without functions</p></li>
+<li><p>Code which is better as a class</p></li>
+<li></li>
+</ul>
+<ol class="simple">
+<li><p>Give them easy example of code which many repetitions</p></li>
+</ol>
+</div>
+<div class="section" id="bonus-improving-code-only-after-there-are-tests">
+<h4>Bonus: Improving code only after there are tests<a class="headerlink" href="#bonus-improving-code-only-after-there-are-tests" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="group-project">
+<h4>Group project<a class="headerlink" href="#group-project" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>Add a second random walker.</p></li>
+<li><p>Improve the random walker code.</p></li>
+<li><p>Add additional functions (e.g. change color, multiple random walkers)</p></li>
+<li><p>Let the user define the start parameters.</p></li>
+<li><p>Test your code!!!</p></li>
+</ol>
+</div>
+<div class="section" id="bonus-forst-fire">
+<h4>Bonus: Forst Fire<a class="headerlink" href="#bonus-forst-fire" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="section" id="day-4-geodata-visualizations">
+<h2>Day 4: Geodata Visualizations<a class="headerlink" href="#day-4-geodata-visualizations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>Learning goals<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Name principles of good data visualization.</p></li>
+<li><p>Use Python to generate maps</p></li>
+<li><p>Use Python to generate (interactive) graphs.</p></li>
+</ol>
+</div>
+<div class="section" id="id7">
+<h3>Exercises<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>Give them the mobile mapping data.</p>
+<ol class="simple">
+<li><p>Perform data cleaning.</p></li>
+<li><p>Generate basic plots using geopandas, seaborn.</p></li>
+<li><p>Generate interactive plots using plotly.</p></li>
+<li><p>Come up with more data visualizations.</p></li>
+</ol>
+<p>Intersect the data with another data set (OSM) and make more</p>
+<div class="section" id="bonus-make-a-dashboard">
+<h4>Bonus: Make a dashboard<a class="headerlink" href="#bonus-make-a-dashboard" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="discussion-and-summary">
+<h3>Discussion and summary<a class="headerlink" href="#discussion-and-summary" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Discuss the graphs and maps.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="day-5-peer-review">
+<h2>Day 5: Peer review<a class="headerlink" href="#day-5-peer-review" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="peer-review-of-random-walker-and-forest-fire-code">
+<h3>Peer Review of random walker and forest fire code<a class="headerlink" href="#peer-review-of-random-walker-and-forest-fire-code" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Test your own and each others Geo classes from day 1 and create issues when you find a bug.</p></li>
+<li><p>Solve the bugs and create a tests for them to improve your code.</p></li>
+<li><p>Use pylint to find things to improve.</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../preparation/preparatory_assignment/README.html" class="btn btn-neutral float-right" title="Preparatory Assignment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="resources.html" class="btn btn-neutral float-left" title="Resources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Christina Ludwig
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

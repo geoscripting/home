@@ -1,0 +1,27 @@
+<svg width="700" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+ <!-- Created with macSVG - https://macsvg.org/ - https://github.com/dsward2/macsvg/ -->
+ <title>Untitled.svg</title>
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="602" width="700" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <text text-anchor="start" y="219px" font-size="24px" fill="#000000" font-family="PT Sans" x="75px" stroke-width="1px" id="text5">“edited ham.py, create spam.txt”</text>
+  <text text-anchor="middle" font-size="24px" fill="#000000" font-family="PT Sans" y="348px" x="531px" stroke-width="1px" id="text7">12:06 by Hettner</text>
+  <text text-anchor="start" y="348px" font-size="24px" fill="#000000" font-family="PT Sans" x="75px" stroke-width="1px" id="text4">"created ham.py”</text>
+  <circle r="10px" fill="#000000" cy="81px" stroke-width="3px" id="circle3" cx="51px" stroke="#000000"/>
+  <circle cx="51px" r="10px" fill="#000000" cy="341px" stroke-width="3px" id="circle1" stroke="#000000"/>
+  <circle r="10px" fill="#000000" cy="211px" stroke-width="3px" id="circle2" cx="51px" stroke="#000000"/>
+  <line x2="51px" y2="196px" x1="51px" stroke-width="3px" id="line1" y1="98px" stroke="#000000"/>
+  <line x2="51px" y2="326px" x1="51px" stroke-width="3px" id="line2" y1="231px" stroke="#000000"/>
+  <text text-anchor="middle" font-size="24px" fill="#000000" font-family="PT Sans" y="87px" x="270px" stroke-width="1px" id="text3"/>
+  <line x2="51px" y2="62px" x1="51px" stroke-width="3px" id="line3" y1="29px" stroke-dasharray="3px" stroke="#000000"/>
+  <tspan rotate="0" dx="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,0,20,0,0,0,0,0,20,0,20" dy="0" id="tspan4">“delete ham.py” | 12:17 | Hettner</tspan>
+  <text text-anchor="middle" y="218px" font-size="24px" fill="#000000" font-family="PT Sans" x="531px" stroke-width="1px" id="text6">12:15 by Hettner</text>
+  <text text-anchor="start" y="88px" font-size="24px" fill="#000000" font-family="PT Sans" x="75px" stroke-width="1px" id="text2">“deleted ham.py, edited spam.txt”</text>
+  <text text-anchor="middle" y="88px" font-size="24px" fill="#000000" font-family="PT Sans" x="531px" stroke-width="1px" id="text8">12:20
+ by Hettner</text>
+ </g>
+</svg>

@@ -48,6 +48,13 @@ Grading
 * Grade depends on the assignments during the course and a final project, which has to be handed in until October 15th. More information during block course.
 * Deregistration is possible until Friday, August 9th
 
+**50%:** 4 assignments + group assignment during the course
+
+**50%:** Individual programming project (with peer-review)
+
+Assignments and project must be **submitted individually** via GitHub Classroom, but you are encouraged to **work together and help each other**!
+
+
 Course instructor
 ******************
 

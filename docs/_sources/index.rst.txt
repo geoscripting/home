@@ -20,6 +20,7 @@ Prior to the block course, please work though the section "Course Preparation" a
    general/administration
    general/communication
    general/resources
+   general/time_schedule
 
 .. toctree::
    :maxdepth: 1
@@ -27,7 +28,7 @@ Prior to the block course, please work though the section "Course Preparation" a
 
    preparation/preparatory_assignment/README.md
    preparation/software_setup
-   git/index
+   preparation/git_intro/index
 
 .. toctree::
    :maxdepth: 1

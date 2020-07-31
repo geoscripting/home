@@ -1,0 +1,17 @@
+<svg width="300" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+ <!-- Created with macSVG - https://macsvg.org/ - https://github.com/dsward2/macsvg/ -->
+
+ <title>Untitled.svg</title>
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="302" height="402" id="canvas_background" fill="none"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <tspan id="tspan4" dy="0" dx="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,0,20,0,0,0,0,0,20,0,20" rotate="0">“delete ham.py” | 12:17 | Hettner</tspan>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_1" y="218" x="124" stroke-width="0" stroke="#000000" fill="#7f0000">Commits</text>
+  <line transform="rotate(90, 80.5, 286.45)" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_4" y2="331.950012" x2="127.000004" y1="240.950011" x1="34.000001" stroke-width="1.5" stroke="#7f0000" fill="none"/>
+  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_6" y2="174.950012" x2="127.000004" y1="83.950011" x1="34.000001" stroke-width="1.5" stroke="#7f0000" fill="none"/>
+  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_10" y2="211.950015" x2="109.000009" y1="210.950015" x1="34" stroke-width="1.5" stroke="#7f0000" fill="none"/>
+ </g>
+</svg>

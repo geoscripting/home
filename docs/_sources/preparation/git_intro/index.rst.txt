@@ -1,0 +1,16 @@
+git
+=========================
+
+This page contains introductory material to learn using git and GitHub Classroom.
+
+.. figure:: https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg
+  :width: 200
+  :alt: gitlogo
+  :align: right
+
+
+.. toctree::
+   :maxdepth: 1
+
+   git_introduction
+   git_videos

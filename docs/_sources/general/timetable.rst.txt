@@ -1,0 +1,14 @@
+
+Time schedule
+##########################
+
+
+|TIME         |DAY 1       | DAY 2                |DAY 3                         | DAY 4    | DAY 5   |
+|---	        |---	                        |---	               |---	                 |---	    |---      |
+|9:00 - 9:30  |Introduction|Recap Day 1|Recap Day 2|Recap Day 3|Recap Day 4|
+|9:30 - 10:15 |Introduction|Computer Hardware|Reproducability|Errors|Code Review|
+|10:15 - 10:30|Intro Exercise|Intro Exercise|Intro Exercise|Intro Exercise|Code Review|
+|11:00 - 12:00|Objectoriented Programming|Advanced raster processing|Visualizations|Modularization|Final Assignment|
+|12:00 - 13:00|LUNCH when ever you want|Final Questions|
+|13:00 - 14:00|Objectoriented Programming|Advanced vector processing|Visualizations|Testing||
+|14:00 - 15:00|Questions & Feedback|Questions & Feedback|Questions & Feedback|||

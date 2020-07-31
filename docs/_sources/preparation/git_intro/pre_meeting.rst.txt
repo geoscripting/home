@@ -1,0 +1,277 @@
+.. title: Advanced Geoscripting 2020 - Pre Meeting
+
+
+Advanced Geoscripting: Pre-Meeting
+===================================
+
+Heidelberg University | Institute of Geography | July 31st 2020
+
+----
+
+:data-y: r1000
+
+Agenda
+========================
+
+1. Organizational information
+2. git introduction
+3. Use git for preparatory assignment
+
+----
+
+Time schedule
+========================
+
+.. csv-table::
+   :file: ../../general/schedule.csv
+   :widths: 20, 10, 10, 10, 10, 10
+   :header-rows: 1
+
+----
+
+Grading
+========================
+
+.. class:: substep
+
+  **50%:** 4 assignments + group assignment during the course
+
+  **50%:** Individual programming project (with peer-review)
+
+  Assignments and project must be **submitted individually** via GitHub Classroom, but you are encouraged to **work together and help each other**! (e.g. pair programming)
+
+
+----
+
+Communication tools during the course
+========================================================
+
+To facilitate collaboration during the course a chat/forum is needed. What is your preference?
+
+A) MS Teams (A)
+B) Slack (B)
+C) Moodle (C)
+D) GitHub Forum "Geoscripting" (D)
+E) Other suggestions? (E)
+
+----
+
+Status of your course preparation
+========================================================
+
+.. class:: substep
+
+  **Is your Anaconda environment for the course set up correctly?**
+
+  **Is the environment available within Jupyter Notebook?**
+
+  **Is the environment available within PyCharm?**
+
+----
+
+
+
+GitHub Accounts
+========================================================
+
+
+.. csv-table::
+   :file: ../../general/students.csv
+   :widths: 20, 20, 20
+   :header-rows: 1
+
+----
+
+
+Any other questions?
+========================================================
+
+.. class:: substep
+
+  .. code:: python
+
+    if I_know_git_already == True:
+      print("Thank you for coming! See you on Monday August 10th, 9:15 am. Bye!)"
+
+  .. code:: python
+
+    else:
+      print("Please stay here for the git introduction.")
+
+----
+
+Introduction to git
+====================================================
+
+.. image:: img/git-logo.png
+  :width: 400
+  :align: right
+  :alt: gitlogo
+
+.. class:: substep
+
+  **Did you watch the three videos on git on the course website?**
+
+  **Did you do the things shown in the videos?**
+
+  1. Accept the assignment?
+
+  2. Clone the repository to your computer?
+
+  3. Create a commit and push it to GitHub?
+
+
+----
+
+git is a Version Control System
+====================================================
+
+.. image:: img/phdcomic_final.png
+  :width: 300
+  :align: right
+  :alt: linus
+
+.. class:: substep
+
+  * A Version Control System is a software which **tracks file changes** within a project.
+  * All tracked files of a project are stored in a **git repository** ("repo").
+
+  *BTW:* originally git was developed to assist **collaborative software development** by Linus Torvalds (Initiator of Linux development)
+
+
+----
+
+
+git tracks file changes through *commits*
+====================================================
+
+.. class:: substep
+
+  .. image:: img/git_tracking.svg
+    :height: 450
+    :align: left
+    :alt: git_log
+
+  .. image:: img/git_commits_small.svg
+    :height: 450
+    :align: right
+    :alt: git_log2
+
+----
+
+*git status* shows all file changes in the repository
+======================================================
+
+.. code::
+
+  $ git status
+
+.. image:: img/git_status_1.png
+  :width: 800
+  :align: center
+  :alt: git_status_1
+
+----
+
+*commits* record file changes within the *repository*
+======================================================
+
+.. class:: substep
+
+  Adding files to the staging area, which will be included in the next commit.
+
+  .. code::
+
+    $ git add ham.py
+    $ git add spam.txt
+
+  .. image:: img/git_status_2.png
+    :width: 800
+    :align: center
+    :alt: git_status_2
+
+  Creating the commit containing the files in the staging area:
+
+  .. code::
+
+    $ git commit -m "edited ham.py, created spam.txt"
+
+
+----
+
+
+git needs to know who is creating the commit
+======================================================
+
+Registering your user name and email:
+
+::
+
+  $ git config --global user.name "Alfred Hettner"
+  $ git config --global user.email "hettner.alfred@gmail.com"
+
+*Note:* This has to be done only once. It does not have to be your GitHub user name or email.
+
+----
+
+*git log* shows all commits of this repository
+==================================================
+
+.. code::
+
+  $ git log
+
+
+.. image:: img/git_log.png
+  :width: 800
+  :align: center
+  :alt: git_log
+
+*Note:* You can exit the log by typing "q", if you use the default command line editor *vim*.
+
+----
+
+Synchronizing your local commits with a central git repository
+====================================================================
+
+.. image:: img/git_push_pull_s.svg
+  :height: 500
+  :align: left
+  :alt: git_push_pull
+
+----
+
+Connecting a local repository to a central repository
+=======================================================
+
+.. class:: substep
+
+  **Option 1:** Clone the repository to your computer:
+
+  .. code::
+
+    $ git clone https://github.com/geoscripting/say_hello.git
+
+  **Option 2:** Create a local repository and connect it to a central repository:
+
+  .. code::
+
+    $ git init
+    $ git remote add origin https://github.com/geoscripting/say_hello.git
+    $ git push -u origin master
+
+
+----
+
+Any questions?
+=======================================================
+
+.. class:: substep
+
+  **Use git to work on the preparatory assignment.** I will be here until 3 pm for questions.
+
+  2nd pre-meeting: Wed, Aug 5th, 1pm
+
+  Start of the block course: August 10th, 9:15 am.
+
+  **Thank you for attending!**

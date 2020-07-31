@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction to git &mdash; Advanced Geoscripting SS2020 2020 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Practical: git and GitHub Classroom" href="git_videos.html" />
+    <link rel="prev" title="git" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Advanced Geoscripting SS2020
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/administration.html">Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/communication.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/resources.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/time_schedule.html">Time schedule</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Preparation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preparatory_assignment/README.html">Preparatory Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software_setup.html">Software Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">git</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction to git</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#git-is-a-version-control-system">git is a Version Control System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#git-tracks-file-changes-through-commits">git tracks file changes through <em>commits</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#git-status-shows-all-file-changes-in-the-repository"><em>git status</em> shows all file changes in the repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#commits-record-file-changes-within-the-repository"><em>commits</em> record file changes within the <em>repository</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#git-needs-to-know-who-is-creating-the-commit">git needs to know who is creating the commit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#git-log-shows-all-commits-of-this-repository"><em>git log</em> shows all commits of this repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#synchronizing-your-local-commits-with-a-central-git-repository">Synchronizing your local commits with a central git repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connecting-a-local-repository-to-a-central-repository">Connecting a local repository to a central repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resources">Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="git_videos.html">Practical: git and GitHub Classroom</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Course Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../content/learninggoals.html">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Final Assignment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/index.html">Final Assignment</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Advanced Geoscripting SS2020</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">git</a> &raquo;</li>
+        
+      <li>Introduction to git</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/preparation/git_intro/git_introduction.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="introduction-to-git">
+<h1>Introduction to git<a class="headerlink" href="#introduction-to-git" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="git-is-a-version-control-system">
+<h2>git is a Version Control System<a class="headerlink" href="#git-is-a-version-control-system" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>A Version Control System is a software which <strong>tracks file changes</strong> within a project.</p></li>
+<li><p>All tracked files of a project are stored in a <strong>git repository</strong> (“repo”).</p></li>
+</ul>
+<p><em>BTW:</em> originally git was developed to assist <strong>collaborative software development</strong> by Linus Torvalds (Initiator of Linux development)</p>
+</div>
+<div class="section" id="git-tracks-file-changes-through-commits">
+<h2>git tracks file changes through <em>commits</em><a class="headerlink" href="#git-tracks-file-changes-through-commits" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><img alt="../../_images/git_tracking.svg" src="../../_images/git_tracking.svg" /></td>
+<td><img alt="../../_images/git_commits_small.svg" src="../../_images/git_commits_small.svg" /></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="git-status-shows-all-file-changes-in-the-repository">
+<h2><em>git status</em> shows all file changes in the repository<a class="headerlink" href="#git-status-shows-all-file-changes-in-the-repository" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../_images/git_status_1.png"><img alt="git_status_1" src="../../_images/git_status_1.png" style="width: 800px;" /></a>
+</div>
+</div>
+<div class="section" id="commits-record-file-changes-within-the-repository">
+<h2><em>commits</em> record file changes within the <em>repository</em><a class="headerlink" href="#commits-record-file-changes-within-the-repository" title="Permalink to this headline">¶</a></h2>
+<p>Adding files to the staging area, which will be included in the next commit.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git add ham.py
+$ git add spam.txt
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/git_status_2.png"><img alt="git_status_2" class="align-center" src="../../_images/git_status_2.png" style="width: 800px;" /></a>
+<p>Creating the commit containing the files in the staging area:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git commit -m &quot;edited ham.py, created spam.txt&quot;
+</pre></div>
+</div>
+</div>
+<div class="section" id="git-needs-to-know-who-is-creating-the-commit">
+<h2>git needs to know who is creating the commit<a class="headerlink" href="#git-needs-to-know-who-is-creating-the-commit" title="Permalink to this headline">¶</a></h2>
+<p>Registering your user name and email:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git config --global user.name &quot;Alfred Hettner&quot;
+$ git config --global user.email &quot;hettner.alfred@gmail.com&quot;
+</pre></div>
+</div>
+<p><em>Note:</em> This has to be done only once. It does not have to be your GitHub user name or email.</p>
+</div>
+<div class="section" id="git-log-shows-all-commits-of-this-repository">
+<h2><em>git log</em> shows all commits of this repository<a class="headerlink" href="#git-log-shows-all-commits-of-this-repository" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/git_log.png"><img alt="git_log" class="align-center" src="../../_images/git_log.png" style="width: 800px;" /></a>
+<p><em>Note:</em> You can exit the log by typing “q”, if you use the default command line editor <em>vim</em>.</p>
+</div>
+<div class="section" id="synchronizing-your-local-commits-with-a-central-git-repository">
+<h2>Synchronizing your local commits with a central git repository<a class="headerlink" href="#synchronizing-your-local-commits-with-a-central-git-repository" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../_images/git_push_pull_s.svg"><img alt="git_push_pull" height="500" src="../../_images/git_push_pull_s.svg" /></a>
+</div>
+<div class="section" id="connecting-a-local-repository-to-a-central-repository">
+<h2>Connecting a local repository to a central repository<a class="headerlink" href="#connecting-a-local-repository-to-a-central-repository" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Option 1:</strong> Clone the repository to your computer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/geoscripting/say_hello.git
+</pre></div>
+</div>
+<p><strong>Option 2:</strong> Create a local repository and connect it to a central repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git init
+$ git remote add origin https://github.com/geoscripting/say_hello.git
+$ git push -u origin master
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<p>The Software Carpentry provides a good <a class="reference external" href="http://swcarpentry.github.io/git-novice/">git tutorial</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="git_videos.html" class="btn btn-neutral float-right" title="Practical: git and GitHub Classroom" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="git" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Christina Ludwig
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

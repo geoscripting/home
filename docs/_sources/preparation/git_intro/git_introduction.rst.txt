@@ -1,0 +1,117 @@
+.. title: Advanced Geoscripting 2020 - Pre Meeting
+
+
+Introduction to git
+######################
+
+git is a Version Control System
+====================================================
+
+* A Version Control System is a software which **tracks file changes** within a project.
+* All tracked files of a project are stored in a **git repository** ("repo").
+
+*BTW:* originally git was developed to assist **collaborative software development** by Linus Torvalds (Initiator of Linux development)
+
+
+git tracks file changes through *commits*
+====================================================
+
+
++---------------------------------+-------------------------------------+
+| .. image:: img/git_tracking.svg |.. image:: img/git_commits_small.svg |
++---------------------------------+-------------------------------------+
+
+*git status* shows all file changes in the repository
+======================================================
+
+.. code::
+
+  $ git status
+
+.. figure:: img/git_status_1.png
+  :width: 800
+  :align: center
+  :alt: git_status_1
+
+
+*commits* record file changes within the *repository*
+======================================================
+
+
+Adding files to the staging area, which will be included in the next commit.
+
+.. code::
+
+  $ git add ham.py
+  $ git add spam.txt
+
+.. image:: img/git_status_2.png
+  :width: 800
+  :align: center
+  :alt: git_status_2
+
+Creating the commit containing the files in the staging area:
+
+.. code::
+
+  $ git commit -m "edited ham.py, created spam.txt"
+
+
+git needs to know who is creating the commit
+======================================================
+
+Registering your user name and email:
+
+::
+
+  $ git config --global user.name "Alfred Hettner"
+  $ git config --global user.email "hettner.alfred@gmail.com"
+
+*Note:* This has to be done only once. It does not have to be your GitHub user name or email.
+
+
+*git log* shows all commits of this repository
+==================================================
+
+.. code::
+
+  $ git log
+
+
+.. image:: img/git_log.png
+  :width: 800
+  :align: center
+  :alt: git_log
+
+*Note:* You can exit the log by typing "q", if you use the default command line editor *vim*.
+
+
+Synchronizing your local commits with a central git repository
+====================================================================
+
+.. image:: img/git_push_pull_s.svg
+  :height: 500
+  :alt: git_push_pull
+
+
+Connecting a local repository to a central repository
+=======================================================
+
+  **Option 1:** Clone the repository to your computer:
+
+  .. code::
+
+    $ git clone https://github.com/geoscripting/say_hello.git
+
+  **Option 2:** Create a local repository and connect it to a central repository:
+
+  .. code::
+
+    $ git init
+    $ git remote add origin https://github.com/geoscripting/say_hello.git
+    $ git push -u origin master
+
+Resources
+===========
+
+The Software Carpentry provides a good `git tutorial <http://swcarpentry.github.io/git-novice/>`_.

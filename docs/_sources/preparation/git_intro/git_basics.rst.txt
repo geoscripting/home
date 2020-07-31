@@ -1,0 +1,69 @@
+.. title: Introduction to git
+
+
+Introduction to git
+#####################
+
+git is a Version Control System
+====================================================
+
+.. class:: substep
+
+  * A Version Control System is a software which **tracks file changes** within a project.
+  * All tracked files of a project are stored in a **git repository**.
+  * Originally developed to assist collaborative software development.
+
+  So why do scientist need git?
+
+  * Within git, projects are organised as repositories.
+  * A repository contains all tracked files of a project.
+
+----
+
+Why do scientists need git...
+===============================
+
+.. image:: img/phdcomic_final.png
+  :width: 300
+  :align: center
+  :alt: phdcomic
+
+----
+
+git tracks your file modifications
+====================================================
+
+.. image:: img/git_tracking.svg
+  :width: 800
+  :align: center
+  :alt: git_log
+
+----
+
+
+git commits record changes to the repository
+====================================================
+
+Creating a commit using the command line:
+
+::
+
+  $ git add ham.py
+  $ git add spam.txt
+  $ git commit -m "edited ham.py, created spam.txt"
+
+
+----
+
+Synchronizing your local commits with a central git repository
+====================================================================
+
+.. image:: img/git_push_pull.svg
+  :width: 800
+  :align: center
+  :alt: git_push_pull
+
+----
+
+You can work on different version at the same time
+====================================================
