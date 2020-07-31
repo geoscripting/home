@@ -32,7 +32,7 @@ release = '2020'
 # ones.
 import sphinx_rtd_theme
 extensions = ["sphinx_rtd_theme", "nbsphinx",'sphinx.ext.intersphinx',
-"jupyter_sphinx.execute", 'recommonmark']
+"jupyter_sphinx.execute", 'recommonmark', 'sphinx_markdown_tables']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -43,10 +43,13 @@ templates_path = ['_templates']
 exclude_patterns = ['_build', '**.ipynb_checkpoints']
 
 # Support for markdown
-source_suffix = ['.rst', '.md']
-#source_parsers = {
-#   '.md': 'recommonmark.parser.CommonMarkParser',
-#}
+#source_suffix = ['.md', '.rst']
+#source_parsers = {'.md': recommonmark.parser.CommonMarkParser}
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.txt': 'restructuredtext',
+    '.md': 'markdown',
+}
 
 # -- Options for HTML output -------------------------------------------------
 
