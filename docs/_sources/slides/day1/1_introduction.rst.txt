@@ -1,0 +1,151 @@
+
+.. role::  raw-html(raw)
+    :format: html
+
+
+Advanced Geoscripting 2020
+======================================
+
+Heidelberg University | Institute of Geography | August 10th 2020
+
+Christina Ludwig
+
+----
+
+:data-y: r1000
+
+Agenda
+=======
+
+1. Welcome: Introduction round
+2. Course Organization
+    * Learning goals
+    * Collaborative Learning
+    * Time Schedule
+3. Advanced Vector Data Processing in Python
+
+----
+
+Welcome
+=========
+
+Short introduction round:
+
+1. Your name
+2. Your study program
+
+----
+
+.. include:: ../../general/learninggoals_1.rst
+
+----
+
+Disclaimer
+================
+
+After this course, **you won't know everything you need** about Geodata Processing using Python.
+
+.. class:: substep
+
+  It's a **never ending process** and the only way to improve is: **practice, practice, practice, ...**
+
+  :raw-html:`&rarr;` **During** the course we will learn to **understand** new concepts.
+
+  :raw-html:`&rarr;` **During but mostly after** the course you will **practice** applying them.
+
+
+----
+
+You are responsible for your own learning progress
+=====================================================
+
+.. class:: substep
+
+  I will help you learn, but what you make out of it is your responsibility.
+
+  Be proactive, don't just wait for me to keep you busy.
+
+  Be curious and find tasks on you are interested in!
+
+  :raw-html:`&rarr;` Ask questions!
+
+  :raw-html:`&rarr;` Answer questions! (Explaining things to others is a great way of learning.)
+
+  :raw-html:`&rarr;` Help each other!
+
+  :raw-html:`&rarr;` Give me feedback!
+
+
+----
+
+
+What do need for a good (collaborative) learning environment?
+===============================================================
+
+:raw-html:`&rarr;` Please answer at https://answergarden.ch/970708
+
+.. image:: ./img/learning_env.png
+  :width: 800
+  :alt: learning_env
+
+
+----
+
+Pair Programming
+===============================
+
+
+.. image:: https://martinfowler.com/articles/on-pair-programming/driver_navigator.png
+  :width: 600
+  :alt: pairprogramming
+
+**Driver:** Is typing and explaining what they're doing. (shares screen)
+
+**Navigator:** Is watching and looking out for typos, bugs, etc.
+
+:raw-html:`&rarr;` Switch every once in a while.
+
+Professional software development method and very good for learning programming
+
+----
+
+How to deal with problems during programming?
+==============================================
+
+1. Refer to online resources: documentation, forums, etc.
+2. Ask other students, e.g. post question in MS Teams channel.
+3. Ask instructor. (If it is not urgent, we can answer them together at the end of the day)
+
+----
+
+Time Schedule
+================
+
+.. csv-table::
+   :file: ../../general/schedule.csv
+   :widths: 20, 10, 10, 10, 10, 10
+   :header-rows: 1
+
+----
+
+Grading
+========================
+
+**50%:** 2 assignments (+ group assignment) during the course
+
+**50%:** Individual programming project (with peer-review)
+
+Assignments and project must be **submitted individually** via GitHub Classroom, but you are encouraged to **work together and help each other**!
+
+
+----
+
+Questions
+===========
+
+----
+
+Resources
+===========
+
+Image: https://martinfowler.com/articles/on-pair-programming/driver_navigator.png

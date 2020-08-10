@@ -1,0 +1,8 @@
+Learning goals
+=================
+
+1. Name Python packages for vector data processing and explain their dependencies.
+2. Use fiona, shapely and geopandas for vector data processing.
+3. Measure and explain the difference in execution time between different vector data structures.
+4. Explain the advantages and disadvantages of compiled and interpreted languages.
+5. Use context managers to read data in Python.

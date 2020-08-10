@@ -14,27 +14,30 @@ Prior to the block course, please work though the section "Course Preparation" a
 
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 0
+   :titlesonly:
    :caption: General Information
 
    general/administration
    general/communication
    general/resources
    general/time_schedule
+   general/learninggoals
 
 .. toctree::
    :maxdepth: 1
    :caption: Course Preparation
 
-   preparation/preparatory_assignment/README.md
    preparation/software_setup
    preparation/git_intro/index
+   preparation/preparatory_assignment/README.md
 
 .. toctree::
    :maxdepth: 1
    :caption: Course Content
 
-   content/learninggoals
+   course/01_advanced_vector_processing/README
+
 
 .. toctree::
    :maxdepth: 1

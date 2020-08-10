@@ -1,0 +1,15 @@
+Learning Goals
+=================
+
+By the end of the course you will be able to …
+
+.. class:: substep
+
+  * ... know and use state-of-the-art python packages for geodata processing,
+  * ... make (interactive) graphs and maps in Python,
+  * ... describe the components of a computer and explain how they affect your program,
+  * ... optimise your program for efficiency,
+  * ... write a well structured, readable and documented program,
+  * ... use git to keep track of all your changes during the development process,
+  * ... test your program to ensure correct and reproducible results.
+  * ... keep teaching yourself programming.

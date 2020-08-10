@@ -1,0 +1,1410 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Part 3: Vector Data Analysis using GeoPandas"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "With shapely we can perform geospatial operations on single features, but in a normal geospatial analysis we have to perform such operations on whole layers. Within GIS software (e.g. QGIS) vector layers are usually represented as attribute tables with associated geometries. \n",
+    "\n",
+    "In Python, analyses based on tables are performed using the package `Pandas`. The extention of it for geospatial analyses is called `GeoPandas`. In this notebook you will learn how to perform spatial analyses on vector data using these two packages. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The exercises are posed in such a way that you have to refer to the documentation of the packages to find out how the methods are used:\n",
+    "\n",
+    "&rarr; [Pandas API Reference](https://pandas.pydata.org/docs/reference/index.html)  \n",
+    "&rarr; [GeoPandas API Reference](https://geopandas.org/reference.html)  \n",
+    "&rarr; [GeoPandas User Guide](https://geopandas.org/)  "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Additional Python packages\n",
+    "For this assignment you will need to install the additional python package mplleaflet. \n",
+    "\n",
+    "`conda install mplleaflet`"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Data set: Crowed-Sourced information on bike safety in Heidelberg\n",
+    "Within this notebook we will analyse the data which was collected during the last mobile mapping event of the [disaster mappers HD](https://disastermappers.wordpress.com/). The task of the participants was to map and assess bike safety in Heidelberg. The results were published on [Mobile Mapping: “Nachhaltige Mobilität in Heidelberg”](https://redfrexx.github.io/mobilemapping_hd/). If you like, you can also add data by submitting it through this [Kobo survey](https://ee.kobotoolbox.org/x/ZZ1fUFa1).\n",
+    "\n",
+    "After two brief introuctions to Pandas and GeoPandas, we will analyze the following questions in regard to the data set:\n",
+    "* Who participated in the mapping event?\n",
+    "* How was bike safety perceived in Heidelberg?\n",
+    "* Are there differences in the perceived bike safety between the districts of Heidelberg? \n",
+    "* Are large streets perceived to be more dangerous than small ones? \n",
+    "\n",
+    "In the end you will perform your own analysis. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 1 Introduction to  `Pandas`"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The collected data on bike safety is contained in a `csv` file without explicit spatial information. Therefore, we will use pandas to read the data. \n",
+    "\n",
+    "&rarr; __Please go through the user guide [10 minutes to Pandas](https://pandas.pydata.org/pandas-docs/stable/user_guide/10min.html) for a more detailed introduction.__"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "bike_safety_file = \"./data/heidelberger_radwege_umfrage_2.csv\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data = pd.read_csv(bike_safety_file)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "To see if the import worked correctly, you can display the first 5 rows of the data set using the `head()` method. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data.head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In pandas, data is stored in `DataFrame` or `Series` objects. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "type(data)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A series is basically a dataframe with just one column. So when we select the column \"lat\" of our dataframe we get a `Series`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "type(data[\"lat\"])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "You can also create a new DataFrame from multiple Series or lists"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "new_df = pd.DataFrame({\"lat\": data.lat, \"lon\": data.lon})"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Pandas is based on NumPy.\n",
+    "\n",
+    "A Pandas DataFrame object can be thought of as a __NumPy array with labels for rows and columns__. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data.to_numpy()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "data.columns"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The `index` method return the row names. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data.index"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Since it is based on numpy, it shares some methods with it, e.g. the `shape`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data.shape"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "However, in contrast to a regular NumPy array, a DataFrame can hold different data types. \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "data.dtypes"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "You can change them using the `astype()` method. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data = data.astype({'lat': 'float32', 'lon': 'float32', 'precision': 'float32'})"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Using the `index` and `columns` of a DataFrame object you can select subsets of the data."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Slicing dataframes\n",
+    "Slicing (i.e. selecting data) is done using the `.loc` method."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Slicing based on rows\n",
+    "You can select rows by their name (i.e. the index). In our case the index is just a range of numbers. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data.loc[0:3] # You can also leave out the 0 to get the same result, as in numpy"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Slicing based on columns\n",
+    "\n",
+    "When you select columns, you also need to indicate the rows which you would like to select. `:` means that all rows or columns are selected."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data.loc[:, [\"lat\", \"lon\"]] # You can also leave out the 0 to get the same result"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Selecting a single column\n",
+    "You can select columns based on their labels. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "data.lat # or data[\"lat\"]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Selecting based on attribute value"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Selecting all points created by the contributor with the device id 1. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data.loc[data[\"deviceid\"] == 1]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "There are many many more functions, methods worth exploring.\n",
+    "\n",
+    "&rarr; __Refer to the Pandas documentation on [Indexing and Slicing data](https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html) for more details.__\n",
+    "\n",
+    "&rarr; It is also worth exploring the [Advanced Slicing and Indexing](https://pandas.pydata.org/pandas-docs/stable/user_guide/advanced.html)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Calculating statistics using NumPy's ufuncs "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Since Pandas dataFrames are based on NumPy arrays, they also support method for [descriptive statistics](https://pandas.pydata.org/pandas-docs/stable/user_guide/basics.html#descriptive-statistics)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data.mean()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 1.1:__ The above expression calculates the mean along the columns. How can you calculate the mean along the rows? (The result wouldn't make sense in this case, just for demonstration purposes)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 1.2:__ How can you calculate the mean along a certain column, e.g. 'precision'? "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 1.3:__ Get all unique entries of the colum `submission_date`. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 2  Introduction to `GeoPandas`"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If we want to perform spatial operations and display the data on a map, we need to convert the pandas DataFrame into a GeoDataFrame. \n",
+    "\n",
+    "GeoPandas is basically an extention of the Pandas package by adding a geometry column to the data frame and enabling spatial operations on the whole layer. For this GeoPandas relies on shapely. By the way, for reading data it relies on fiona.  \n",
+    "\n",
+    "&rarr; Refer to the [GeoPandas User Guide](https://geopandas.org/) for more details. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Adding a geometry column \n",
+    "Geopandas expects the spatial information of a row in the column called 'geometry'. Therefore, we will create a new column called `geometry` and fill each cell with a new `shapely.Point()` object which is created from the longitude (lat) and latitute (lat) values of the respective row."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from shapely.geometry import Point"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data[\"geometry\"] = data.apply(lambda x: Point(x[\"lon\"], x[\"lat\"]), axis=1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Converting it to a `GeoDataFrame`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import geopandas as gpd"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The GeoDataFrame needs a crs attributes which specifies the crs the geometery is given in. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data = gpd.GeoDataFrame(data)\n",
+    "data.crs = {\"init\": \"epsg:4326\"}\n",
+    "type(data)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Creating a map\n",
+    "We can also plot the data with geopandas, but we need to enable matplotlib within jupyter using the magic command `%matplotlib inline`."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For plotting maps we need matplotlib. Using the `figsize()` function you  can adjust the figure size within the notebook. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import matplotlib as mpl\n",
+    "from IPython.core.pylabtools import figsize # adjusts the figure size in notebook \n",
+    "%matplotlib inline"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data.plot()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A little context would be helpful. Let's add a basemap using `mplleaflet`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "import mplleaflet"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "figsize(10, 10)\n",
+    "data.plot()\n",
+    "mplleaflet.display()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 3 Who participated in the mapping event?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now that the data is in the right format, we can start with the data analysis. First, we want to know who has participated in the mapping event. \n",
+    "\n",
+    "&rarr; So solve the following exercises, __refer to the [pandas reference](https://pandas.pydata.org/pandas-docs/stable/reference/)__ to find the right methods."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 3.1:__ Calculate the number of contributed points. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 3.2:__ Calculate the number of contributors (i.e. how many people participated)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 3.3:__ Calculate the number of points per contributor. Hint: Take a look at the method `value_counts` of the pandas dataframe."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 3.4:__ Calculate the mean and median number of points per contributor."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 3.5:__ How many nodata values are contained in the columns? Cells without information by the contributor (i.e. nodata) are marked with a dash ('-'). Replace the '-' with `np.nan` and then count the sum of no data cells in each column.\n",
+    "\n",
+    "__Hint:__ Useful methods are `replace()`, `isna()` and `sum()`"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "You will need numpy now, since we are using np.nan. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Precision\n",
+    "Next to the lat and lon column there is column called `precision`. This indicates the precision of the GPS measurement of the mobile device. Let's see how precise the points are. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 3.6:__ Calculate the mean, median and 90th percentile of the precision. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 3.7:__ Plot a histogram of the `precision` column. __Hint:__ Use the `GeoDataFrame.hist()` method. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "\n",
+    "__E 3.7:__ There seem to be some points with high uncertainty in the GPS measurements. Let's take a look at them. Select all points whose precision is larger than 40 meters. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 3.8:__ Plot the uncertain points on a map. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 3.9:__ Was there one specific device from which the uncertain GPS measurements originated or were they distributed among several devices?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 3.10.:__ For the remaining analysis we want to explude these uncertain points. Remove all points from the dataframe `data` whose precision is larger than 40 meters. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 4 How is bike safety perceived in Heidelberg?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now let's look at the collected data itself. We are only going to classify the main criteria for now: \n",
+    "* 'Wie gut findest du den Radweg?'\n",
+    "* 'Wie gut findest du die technische Ausstattung der Radinfrastruktur?'\n",
+    "* 'Wie ist dein generelles Sicherheitsgefühl hier?'\n",
+    "* 'Wie ist dein generelles Fahrgefühl hier?'"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exploring the main criteria"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 4.1:__ The ratings are given as strings and are therefore not well suitable for statistical analysis. Reclassify them to numeric values of the range 1 (sehr gut) to 6 (sehr schlecht). Save the result to a new dataframe called `data_num`.\n",
+    "\n",
+    "__Hint:__ Use the method `.replace()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "reclass_dict = {\"sehr gut\": 1, \"gut\": 2, \"tendenziell eher gut\": 3, \"tendenziell eher schlecht\":4, \n",
+    "               \"schlecht\": 5, \"sehr schlecht\":6, 'tendenziell eher  schlecht':4, \"-\": np.nan, \"neutral\": 3}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 4.2:__ The column names are quite long, which makes it a bit cumbersome to slice the dataframe by column names. Rename the columns of the `data_num` dataframe according to this dictionary. \n",
+    "\n",
+    "__Hint:__ Use the method `.rename()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "column_dict = {'Wie gut findest du den Radweg?': \"Allgemein\", \n",
+    "              'Wie gut findest du die technische Ausstattung der Radinfrastruktur?': \"Technische Ausstattung\",\n",
+    "              'Wie ist dein generelles Sicherheitsgefühl hier?': \"Sicherheitsgefühl\",\n",
+    "              'Wie ist dein generelles Fahrgefühl hier?': \"Fahrgefühl\"}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 4.3:__ Create a dataframe object called `main_criteria` which contains only the 4 main criteria, i.e. the 4 columns we just renamed.\n",
+    "\n",
+    "__Hint:__ You can convert the GeoDataFrame to a normal DataFrame now, since we got rid of the geometry column anyways. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 4.4:__ Calculate the mean and standard deviation of the rating of each criteria"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 4.5:__ Calculate a correclation matrix between all columns. \n",
+    "    \n",
+    "__Hint:__ Use the method `.corr()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Do you see any patterns? "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# your answer here"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 4.6:__ What is the mean rating of each criteria per contributor? Join the column \"deviceid\" to the `main_criteria` data frame using the `DataFrame.join()` method.\n",
+    "\n",
+    "&rarr; For joining tables, take a look at the section [Merge, join, concatenate and compare](https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html)\n",
+    "\n",
+    "Then group the rows by `deviceid` using the `groupby()` method. \n",
+    "\n",
+    "&rarr; For grouping take a look at the section [Group by: split-apply-combine](https://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 4.7:__ Create a boxplot showing the distribution of ratings of each main criteria. \n",
+    "\n",
+    "&rarr; Take a look at [Pandas Visualizations](https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__Question:__ What is the oveall perception of bike safety in Heidelberg? Are there any relationships between the 4 main criteria that were surveyed?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__Answer:__"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 5 Are there differences in the perceived bike safety between the districts of Heidelberg? "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "From the map we can see that the points are not evenly distributed across Heidelberg. So let's aggregate the data based on the districts of Heidelberg."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 5.1:__ Read the following file containing the districts of Heidelberg into a variable called `districts`. What's the coordinate reference system of dataframe? "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "districts_hd_file = \"./data/districts_hd.geojson\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 5.2:__ We only need the columns 'geometry' and 'Stadtteil'. Remove all other columns dataframe. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 5.3:__ Perform a spatial join between the dataframe `data_num` and the districts. Save it to a new variables called `data_with_district`.\n",
+    "\n",
+    "&rarr; Take a look at the [GeoPandas User Manual on Spatial Joins](https://geopandas.org/mergingdata.html#spatial-joins)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 5.4:__ Calculate the number of point per district. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 5.5:__ Create a pie chart showing the number of points per district. \n",
+    "\n",
+    "&rarr; Take a look at &rarr; [Pandas Visualizations](https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 5.6:__ Calculate the number of contributors per district. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 5.7:__ Create a horizontal bar chart showing the number of contributors per district. Sort the dataframe by the column \"deviceid\" ( `.sort_values()`) before plotting so that they are shown in descending order. \n",
+    "\n",
+    "&rarr; Take a look at [Pandas Visualizations](https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html) to find the method to create a horizontal barplot. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 5.8:__ Create a boxplot showing the rating \"Allgemein\" across all districts. Join the dataframes `main_criteria` and `data_with_district[\"Stadtteil\"]`. Afterwards create a boxplot using the method `DataFrame.boxplot()`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__Question:__ \n",
+    "1. Which differences do you see in the number of contributors, the number of points and the perceived bike safety? \n",
+    "2. How reliable are these findings based on the collected data?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__Answer:__ "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 6 Are large streets perceived to be more dangerous than small ones? "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On the map it seems like points located close to the main streets show worse ratings than others. We will analyze this by calculating the distance to main streets extracted from OpenStreetMap. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Read OpenStreetMap streets"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 6.1:__ Read the data set \"streets.geojson\" into a dataframe called `streets`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "streets_file = \"./data/streets.geojson\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 6.2:__ Select all streets which contain the tag highway = primary. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Calculate distance to streets\n",
+    "__E 6.3:__ We want to get the distance to the streets in meters. What is the coordinate references system of the geodataframes `data_num` and `streets`? Convert them to the crs with the EPSG:32632. \n",
+    "\n",
+    "__Hint:__ Some methods of Pandas (and GeoPandas) provide the parameter `inplace`. If you set `inplace=true`, the dataframe object itself will be changed and the method does not return any value. It is basically overriding the dataframe. So `dataframe.to_crs(..., inplace=True)` yields the same as `dataframe = dataframe.to_crs(...)`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 6.4:__ Calculate the distance from each point to the next primary street using the `distance()` method. \n",
+    "    \n",
+    "__Hint:__ It might be necessary to unionize the streets first using `cascaded_union`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 6.5:__ Plot a choropleth map showing the points and their distance visualized using a color map. \n",
+    "\n",
+    "__Hint:__ If you want to use the mplleaflet.display() to plot a basemap your dataframe needs to have EPSG:4326.\n",
+    "\n",
+    "&rarr; Take a look at the [GeoPandas User Guide on Choropleth Maps](https://geopandas.org/mapping.html#choropleth-maps)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 6.6:__ Create boxplots showing the distances for each rating category. Answer the question: "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 6.7:__ Compute the same for the distance to streets with the tag highway=secondary and highway=tertiary."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__Question:__ Do you an influence on the safety rating based on the different street types? Are larger streets perceived as more dangerous? "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__Answer:__ "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 7 Your Analyses\n",
+    "\n",
+    "__E 7.1:__ Come up with one more geographic question and answer it using pandas and geopandas methods. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 7.2:__ Go through the [GeoPandas](https://geopandas.org/) User guide and [Pandas](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html) User guides to find three more methods which we haven't applied in this analysis so far, e.g. MultiIndex, overlay, dissolve, attribute join, etc. Apply them to the data sets."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python (advgeo)",
+   "language": "python",
+   "name": "advgeo"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

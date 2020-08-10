@@ -1,0 +1,2380 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Advanced Raster Data Processing &mdash; Advanced Geoscripting 2020 2020 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Advanced Geoscripting 2020
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/administration.html">Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/communication.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/resources.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/time_schedule.html">Time schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/learninggoals.html">Learning goals</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Preparation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/software_setup.html">Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/git_intro/index.html">git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/preparatory_assignment/README.html">Preparatory Assignment</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../01_advanced_vector_processing/README.html">1. Advanced Geo Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">2. Vectorized Computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_scientific_programming/README.html">3. Best Practices in Scientific Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_geodata_visualization/README.html">4. Geo Data Visualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Final Assignment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/index.html">Final Assignment</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Advanced Geoscripting 2020</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Advanced Raster Data Processing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/course/02_vectorized_geodata_processing/051_cs4geos_Downloading_Satellite_Imagery.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Advanced-Raster-Data-Processing">
+<h1>Advanced Raster Data Processing<a class="headerlink" href="#Advanced-Raster-Data-Processing" title="Permalink to this headline">¶</a></h1>
+<p>The study area of the assignment is the <a class="reference external" href="https://rsis.ramsar.org/ris/288">Delta de Saloum</a>, a Ramsar protect wetland at the coast of Senegal. We will use multi-temporal satellite imagery to monitor the changing water levels of the wetland over time.</p>
+<p>In this assignment we will practice working with raster data in Python using <em>rasterio</em> and <em>numpy</em>. We will use the <em>sat-search</em> package to search for suitable satellite imagery from the <a class="reference external" href="https://registry.opendata.aws/">Amazon AWS Open Data Registry</a> . The os package is usually needed and pyproj for reprojecting coordinates.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">rasterio</span> <span class="k">as</span> <span class="nn">rio</span>
+<span class="kn">import</span> <span class="nn">pyproj</span>
+<span class="kn">from</span> <span class="nn">satsearch</span> <span class="k">import</span> <span class="n">Search</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<p>Please refer to the following sources for information on the usage of the packages (or google it): * <a class="reference external" href="https://rasterio.readthedocs.io/en/latest/quickstart.html">Rasterio Python Quickstart</a> * <a class="reference external" href="https://github.com/sat-utils/sat-search">sat-search Quickstart</a> * <a class="reference external" href="https://github.com/sat-utils/sat-search/blob/master/tutorial-1.ipynb">sat-search Python Tutorial</a></p>
+<p>This analysis will include the following steps: 1. Search suitable satillite imagery 2. Download satellite imagery 3. Preprocess satellite imagery 4. Calculate Water Index 5. Calculate water frequency</p>
+<div class="section" id="Step-1:-Searching-for-satellite-imagery">
+<h2>Step 1: Searching for satellite imagery<a class="headerlink" href="#Step-1:-Searching-for-satellite-imagery" title="Permalink to this headline">¶</a></h2>
+<p>In the first step, we will use the package <a class="reference external" href="https://github.com/sat-utils/sat-search">sat-search</a> to search for suitable satellite scenes within our study area and <a class="reference external" href="https://rasterio.readthedocs.io/en/latest/quickstart.html">rasterio</a> to load the data into Python. The search is based on the Spatio-Temporal Asset Catalogs (STAC) format which should make it easier to search and query satellite imagery.</p>
+<p><strong>FYI:</strong> <a class="reference external" href="https://github.com/sat-utils/sat-search">sat-search</a> is developed by <a class="reference external" href="https://developmentseed.org/">Development Seed</a>. Check out their <a class="reference external" href="https://github.com/sat-utils">sat-utils on GitHub</a>.</p>
+<div class="section" id="Installation-of-sat-search:">
+<h3>Installation of sat-search:<a class="headerlink" href="#Installation-of-sat-search:" title="Permalink to this headline">¶</a></h3>
+<p>Before you start you need to install the <code class="docutils literal notranslate"><span class="pre">sat-search</span></code> Python package using <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">sat-search</span></code>.</p>
+<p>Let’s perform a search for satellite scenes for the area of Heidelberg. You can get metadata about all scenes using the <code class="docutils literal notranslate"><span class="pre">items()</span></code> method.</p>
+</div>
+<div class="section" id="Define-search-parameters">
+<h3>Define search parameters<a class="headerlink" href="#Define-search-parameters" title="Permalink to this headline">¶</a></h3>
+<p>Let’s define some input parameters for our search. The bounding box is already setup correctily using geographic coordinates.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">bbox</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">16.811</span><span class="p">,</span> <span class="mf">13.627</span><span class="p">,</span> <span class="o">-</span><span class="mf">16.356</span><span class="p">,</span> <span class="mf">14.14</span><span class="p">]</span> <span class="c1"># [minx, miny, maxx, maxy]</span>
+</pre></div>
+</div>
+</div>
+<p>Now we need to specify which scenes are suitable: * We are interested in all scenes within the year <strong>2019</strong>. * <strong>Only Landsat 8 scenes</strong>, since these are easily downloadable via Amazon AWS. * <strong>Maximum cloud coverage of 2%</strong> so we get mostly cloud free scenes.</p>
+<p>All parameters of the query are stored in a dictionary.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">time_period</span> <span class="o">=</span> <span class="s1">&#39;2014-01-01/2019-01-01&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;eo:cloud_cover&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;lt&quot;</span><span class="p">:</span> <span class="mi">5</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;collection&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;eq&quot;</span><span class="p">:</span> <span class="s2">&quot;landsat-8-l1&quot;</span>
+    <span class="p">},</span>
+    <span class="c1">#&quot;time&quot;: time_period</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">qq</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;bbox&quot;</span><span class="p">:</span> <span class="n">bbox</span><span class="p">,</span>
+  <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-02-12T00:00:00Z/2018-03-18T12:31:12Z&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;eo:cloud_cover&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;lt&quot;</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;sort&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;eo:cloud_cover&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;desc&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Execute-the-search!">
+<h3>Execute the search!<a class="headerlink" href="#Execute-the-search!" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">search_result</span> <span class="o">=</span> <span class="n">Search</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">collection</span><span class="o">=</span><span class="s1">&#39;landsat-8-l1&#39;</span><span class="p">,</span> <span class="nb">property</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;eo:cloud_cover&lt;5&quot;</span><span class="p">],</span> <span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="n">time_period</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">search_result</span><span class="o">.</span><span class="n">found</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">items</span> <span class="o">=</span> <span class="n">search_result</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">search_result</span> <span class="o">=</span> <span class="n">Search</span><span class="p">(</span><span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="n">time_period</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">search</span> <span class="o">=</span> <span class="n">Search</span><span class="p">(</span><span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> items&#39;</span> <span class="o">%</span> <span class="n">search</span><span class="o">.</span><span class="n">found</span><span class="p">())</span>
+
+<span class="n">items</span> <span class="o">=</span> <span class="n">search</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> items&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> collections&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">_collections</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">_collections</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+362 items
+362 items
+6 collections
+[landsat-8-l1, cbers4-pan5m, sentinel-2-l1c, cbers4-pan10m, cbers4-mux, cbers4-awfi]
+S2B_28PBA_20200805_0
+S2B_28PCA_20200805_0
+S2A_28PBA_20200731_0
+S2A_28PCA_20200731_0
+S2B_28PBA_20200726_0
+S2B_28PCA_20200726_0
+S2A_28PBA_20200721_0
+S2A_28PCA_20200721_0
+S2B_28PBA_20200716_0
+S2B_28PCA_20200716_0
+LC82050512020198
+LC82050502020198
+S2A_28PBA_20200711_0
+S2A_28PCA_20200711_0
+S2B_28PBA_20200706_0
+S2B_28PCA_20200706_0
+S2A_28PBA_20200701_0
+S2A_28PCA_20200701_0
+LC82050512020182
+LC82050502020182
+S2B_28PBA_20200626_0
+S2B_28PCA_20200626_0
+S2A_28PBA_20200621_0
+S2A_28PCA_20200621_0
+S2B_28PBA_20200616_0
+S2B_28PCA_20200616_0
+LC82050512020166
+LC82050502020166
+S2A_28PBA_20200611_0
+S2A_28PCA_20200611_0
+S2B_28PBA_20200606_0
+S2B_28PCA_20200606_0
+S2A_28PBA_20200601_0
+S2A_28PCA_20200601_0
+LC82050512020150
+LC82050502020150
+S2B_28PBA_20200527_0
+S2B_28PCA_20200527_0
+S2A_28PBA_20200522_0
+S2A_28PCA_20200522_0
+S2B_28PBA_20200517_0
+S2B_28PCA_20200517_0
+LC82050512020134
+LC82050502020134
+S2A_28PBA_20200512_0
+S2A_28PCA_20200512_0
+S2B_28PBA_20200507_0
+S2B_28PCA_20200507_0
+S2A_28PBA_20200502_0
+S2A_28PCA_20200502_0
+S2B_28PBA_20200427_0
+S2B_28PCA_20200427_0
+LC82050512020118
+LC82050502020118
+S2A_28PBA_20200422_0
+S2A_28PCA_20200422_0
+S2B_28PBA_20200417_0
+S2B_28PCA_20200417_0
+S2A_28PBA_20200412_0
+S2A_28PCA_20200412_0
+LC82050512020102
+LC82050502020102
+S2B_28PBA_20200407_0
+S2B_28PCA_20200407_0
+S2A_28PBA_20200402_0
+S2A_28PCA_20200402_0
+S2B_28PBA_20200328_0
+S2B_28PCA_20200328_0
+LC82050512020086
+LC82050502020086
+S2A_28PBA_20200323_0
+S2A_28PCA_20200323_0
+S2B_28PBA_20200318_0
+S2B_28PCA_20200318_0
+S2A_28PBA_20200313_0
+S2A_28PCA_20200313_0
+LC82050512020070
+LC82050502020070
+S2B_28PBA_20200308_0
+S2B_28PCA_20200308_0
+S2A_28PBA_20200303_0
+S2A_28PCA_20200303_0
+S2B_28PBA_20200227_0
+S2B_28PCA_20200227_0
+LC82050512020054
+S2A_28PBA_20200222_0
+S2A_28PCA_20200222_0
+S2B_28PBA_20200217_0
+S2B_28PCA_20200217_0
+S2A_28PBA_20200212_0
+S2A_28PCA_20200212_0
+S2B_28PBA_20200207_0
+S2B_28PCA_20200207_0
+LC82050512020038
+LC82050502020038
+S2A_28PBA_20200202_0
+S2A_28PCA_20200202_0
+S2B_28PBA_20200128_0
+S2B_28PCA_20200128_0
+S2A_28PBA_20200123_0
+S2A_28PCA_20200123_0
+LC82050512020022
+LC82050502020022
+S2B_28PBA_20200118_0
+S2B_28PCA_20200118_0
+S2A_28PBA_20200113_0
+S2A_28PCA_20200113_0
+S2B_28PBA_20200108_0
+S2B_28PCA_20200108_0
+LC82050512020006
+LC82050502020006
+S2A_28PBA_20200103_0
+S2A_28PCA_20200103_0
+S2B_28PBA_20191229_0
+S2B_28PCA_20191229_0
+S2A_28PBA_20191224_0
+S2A_28PCA_20191224_0
+LC82050512019355
+LC82050502019355
+S2B_28PBA_20191219_0
+S2B_28PCA_20191219_0
+S2A_28PBA_20191214_0
+S2A_28PCA_20191214_0
+S2B_28PBA_20191209_0
+S2B_28PCA_20191209_0
+LC82050512019339
+LC82050502019339
+S2A_28PBA_20191204_0
+S2A_28PCA_20191204_0
+S2B_28PBA_20191129_0
+S2B_28PCA_20191129_0
+S2A_28PBA_20191124_0
+S2A_28PCA_20191124_0
+S2B_28PBA_20191119_0
+S2B_28PCA_20191119_0
+LC82050512019323
+LC82050502019323
+S2A_28PBA_20191114_0
+S2A_28PCA_20191114_0
+S2B_28PBA_20191109_0
+S2B_28PCA_20191109_0
+S2A_28PBA_20191104_0
+S2A_28PCA_20191104_0
+LC82050512019307
+LC82050502019307
+S2B_28PBA_20191030_0
+S2B_28PCA_20191030_0
+S2A_28PBA_20191025_0
+S2A_28PCA_20191025_0
+S2B_28PBA_20191020_0
+S2B_28PCA_20191020_0
+LC82050512019291
+LC82050502019291
+S2A_28PBA_20191015_0
+S2A_28PCA_20191015_0
+S2B_28PBA_20191010_0
+S2B_28PCA_20191010_0
+S2A_28PBA_20191005_0
+S2A_28PCA_20191005_0
+LC82050512019275
+LC82050502019275
+S2B_28PBA_20190930_0
+S2B_28PCA_20190930_0
+S2A_28PBA_20190925_0
+S2A_28PCA_20190925_0
+S2B_28PBA_20190920_0
+S2B_28PCA_20190920_0
+LC82050512019259
+LC82050502019259
+S2A_28PBA_20190915_0
+S2A_28PCA_20190915_0
+S2B_28PBA_20190910_0
+S2B_28PCA_20190910_0
+S2A_28PBA_20190905_0
+S2A_28PCA_20190905_0
+S2B_28PBA_20190831_1
+S2B_28PCA_20190831_1
+LC82050512019243
+LC82050502019243
+S2A_28PBA_20190826_0
+S2A_28PCA_20190826_0
+S2B_28PBA_20190821_0
+S2B_28PCA_20190821_0
+S2A_28PBA_20190816_0
+S2A_28PCA_20190816_0
+LC82050512019227
+LC82050502019227
+S2B_28PBA_20190811_0
+S2B_28PCA_20190811_0
+S2A_28PBA_20190806_0
+S2A_28PCA_20190806_0
+S2B_28PBA_20190801_0
+S2B_28PCA_20190801_0
+LC82050512019211
+LC82050502019211
+S2A_28PBA_20190727_0
+S2A_28PCA_20190727_0
+S2B_28PBA_20190722_0
+S2B_28PCA_20190722_0
+S2A_28PBA_20190717_0
+S2A_28PCA_20190717_0
+LC82050512019195
+LC82050502019195
+S2B_28PBA_20190712_0
+S2B_28PCA_20190712_0
+S2A_28PBA_20190707_0
+S2A_28PCA_20190707_0
+S2B_28PBA_20190702_0
+S2B_28PCA_20190702_0
+LC82050512019179
+LC82050502019179
+S2A_28PBA_20190627_0
+S2A_28PCA_20190627_0
+S2B_28PBA_20190622_0
+S2B_28PCA_20190622_0
+S2A_28PBA_20190617_0
+S2A_28PCA_20190617_0
+LC82050512019163
+LC82050502019163
+S2A_28PBA_20190607_0
+S2A_28PCA_20190607_0
+S2B_28PBA_20190602_0
+S2B_28PCA_20190602_0
+S2A_28PBA_20190528_0
+S2A_28PCA_20190528_0
+LC82050512019147
+LC82050502019147
+S2B_28PBA_20190523_1
+S2B_28PCA_20190523_1
+S2A_28PBA_20190518_0
+S2A_28PCA_20190518_0
+S2B_28PBA_20190513_0
+S2B_28PCA_20190513_0
+LC82050512019131
+LC82050502019131
+S2A_28PBA_20190508_0
+S2A_28PCA_20190508_0
+S2B_28PBA_20190503_0
+S2B_28PCA_20190503_0
+S2A_28PBA_20190428_0
+S2A_28PCA_20190428_0
+LC82050512019115
+LC82050502019115
+S2B_28PCA_20190423_0
+S2B_28PBA_20190423_0
+S2A_28PBA_20190418_0
+S2A_28PCA_20190418_0
+S2B_28PCA_20190413_0
+S2B_28PBA_20190413_0
+LC82050512019099
+LC82050502019099
+S2B_28PBA_20170920_0
+S2B_28PCA_20170920_0
+CBERS_4_AWFI_20170518_128_087_L4
+CBERS_4_AWFI_20170512_130_081_L4
+CBERS_4_AWFI_20170509_131_087_L4
+CBERS_4_AWFI_20170509_131_081_L4
+CBERS_4_AWFI_20170506_132_087_L4
+CBERS_4_PAN10M_20170506_132_085_L2
+CBERS_4_PAN5M_20170506_132_085_L2
+CBERS_4_PAN10M_20170506_132_084_L2
+CBERS_4_MUX_20170506_132_084_L4
+CBERS_4_PAN5M_20170506_132_084_L2
+CBERS_4_AWFI_20170506_132_081_L4
+CBERS_4_AWFI_20170503_133_087_L2
+CBERS_4_AWFI_20170503_133_081_L4
+CBERS_4_AWFI_20170422_128_087_L4
+CBERS_4_AWFI_20170419_129_087_L4
+CBERS_4_AWFI_20170419_129_081_L4
+CBERS_4_AWFI_20170416_130_087_L4
+CBERS_4_AWFI_20170416_130_081_L4
+CBERS_4_AWFI_20170413_131_087_L4
+CBERS_4_AWFI_20170413_131_081_L4
+CBERS_4_AWFI_20170410_132_087_L4
+CBERS_4_PAN10M_20170410_132_085_L2
+CBERS_4_MUX_20170410_132_085_L4
+CBERS_4_PAN5M_20170410_132_085_L2
+CBERS_4_PAN10M_20170410_132_084_L2
+CBERS_4_MUX_20170410_132_084_L4
+CBERS_4_PAN5M_20170410_132_084_L2
+CBERS_4_AWFI_20170324_129_087_L4
+CBERS_4_AWFI_20170318_131_087_L4
+CBERS_4_AWFI_20170318_131_081_L4
+CBERS_4_AWFI_20170315_132_087_L4
+CBERS_4_PAN10M_20170315_132_085_L2
+CBERS_4_PAN5M_20170315_132_085_L2
+CBERS_4_MUX_20170315_132_085_L4
+CBERS_4_PAN10M_20170315_132_084_L2
+CBERS_4_PAN5M_20170315_132_084_L2
+CBERS_4_AWFI_20170315_132_081_L4
+CBERS_4_AWFI_20170312_133_087_L2
+CBERS_4_MUX_20170312_133_084_L2
+CBERS_4_AWFI_20170312_133_081_L4
+CBERS_4_AWFI_20170301_128_087_L4
+CBERS_4_AWFI_20170223_130_087_L4
+CBERS_4_AWFI_20170220_131_087_L4
+CBERS_4_AWFI_20170220_131_081_L4
+CBERS_4_AWFI_20170217_132_087_L4
+CBERS_4_PAN10M_20170217_132_085_L2
+CBERS_4_MUX_20170217_132_085_L4
+CBERS_4_PAN5M_20170217_132_085_L2
+CBERS_4_PAN10M_20170217_132_084_L2
+CBERS_4_MUX_20170217_132_084_L4
+CBERS_4_PAN5M_20170217_132_084_L2
+CBERS_4_AWFI_20170217_132_081_L4
+CBERS_4_AWFI_20170214_133_087_L2
+CBERS_4_MUX_20170214_133_084_L2
+CBERS_4_AWFI_20170214_133_081_L4
+CBERS_4_AWFI_20170203_128_087_L4
+CBERS_4_AWFI_20170131_129_087_L4
+CBERS_4_AWFI_20170128_130_087_L4
+CBERS_4_AWFI_20170128_130_081_L4
+CBERS_4_AWFI_20170125_131_087_L4
+CBERS_4_PAN10M_20170122_132_085_L2
+CBERS_4_PAN5M_20170122_132_085_L2
+CBERS_4_MUX_20170122_132_085_L4
+CBERS_4_PAN10M_20170122_132_084_L2
+CBERS_4_MUX_20170122_132_084_L4
+CBERS_4_PAN5M_20170122_132_084_L2
+CBERS_4_AWFI_20170119_133_087_L2
+CBERS_4_MUX_20170119_133_084_L2
+CBERS_4_AWFI_20170119_133_081_L4
+CBERS_4_AWFI_20170105_129_087_L4
+CBERS_4_AWFI_20170105_129_081_L4
+CBERS_4_AWFI_20170102_130_087_L4
+CBERS_4_AWFI_20161230_131_087_L4
+CBERS_4_AWFI_20161230_131_081_L4
+CBERS_4_AWFI_20161227_132_087_L4
+CBERS_4_MUX_20161227_132_085_L4
+CBERS_4_PAN10M_20161227_132_085_L2
+CBERS_4_PAN5M_20161227_132_085_L2
+CBERS_4_MUX_20161227_132_084_L4
+CBERS_4_PAN10M_20161227_132_084_L2
+CBERS_4_PAN5M_20161227_132_084_L2
+CBERS_4_AWFI_20161227_132_081_L4
+CBERS_4_AWFI_20161224_133_087_L2
+CBERS_4_PAN10M_20161224_133_084_L2
+CBERS_4_MUX_20161224_133_084_L2
+CBERS_4_PAN5M_20161224_133_084_L2
+CBERS_4_AWFI_20161224_133_081_L4
+CBERS_4_AWFI_20161213_128_087_L4
+CBERS_4_AWFI_20161210_129_087_L4
+CBERS_4_AWFI_20161210_129_081_L4
+CBERS_4_AWFI_20161201_132_087_L4
+CBERS_4_PAN5M_20161201_132_085_L2
+CBERS_4_PAN5M_20161201_132_084_L2
+CBERS_4_AWFI_20161201_132_081_L4
+CBERS_4_AWFI_20161128_133_087_L2
+CBERS_4_MUX_20161128_133_084_L2
+CBERS_4_AWFI_20161128_133_081_L4
+CBERS_4_AWFI_20161117_128_087_L4
+CBERS_4_AWFI_20161111_130_087_L4
+CBERS_4_AWFI_20161111_130_081_L4
+CBERS_4_AWFI_20161108_131_087_L4
+CBERS_4_AWFI_20161108_131_081_L4
+CBERS_4_PAN10M_20161105_132_085_L2
+CBERS_4_MUX_20161105_132_085_L2
+CBERS_4_PAN10M_20161105_132_084_L2
+CBERS_4_MUX_20161105_132_084_L2
+CBERS_4_AWFI_20161102_133_087_L2
+CBERS_4_MUX_20161102_133_084_L2
+CBERS_4_AWFI_20161102_133_081_L4
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">items</span><span class="p">()</span><span class="o">.</span><span class="n">calendar</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+                              2016
+
+      October               November              December
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+                1  2      1 <span class="ansi-red-bg"> 2</span>  3  4 <span class="ansi-red-bg"> 5</span>  6           <span class="ansi-red-bg"> 1</span>  2  3  4
+ 3  4  5  6  7  8  9   7 <span class="ansi-red-bg"> 8</span>  9 10 <span class="ansi-red-bg">11</span> 12 13   5  6  7  8  9 <span class="ansi-red-bg">10</span> 11
+10 11 12 13 14 15 16  14 15 16 <span class="ansi-red-bg">17</span> 18 19 20  12 <span class="ansi-red-bg">13</span> 14 15 16 17 18
+17 18 19 20 21 22 23  21 22 23 24 25 26 27  19 20 21 22 23 <span class="ansi-red-bg">24</span> 25
+24 25 26 27 28 29 30  <span class="ansi-red-bg">28</span> 29 30              26 <span class="ansi-red-bg">27</span> 28 29 <span class="ansi-red-bg">30</span> 31
+31
+
+                              2017
+
+      January               February               March
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+                   1         1  2 <span class="ansi-red-bg"> 3</span>  4  5        <span class="ansi-red-bg"> 1</span>  2  3  4  5
+<span class="ansi-red-bg"> 2</span>  3  4 <span class="ansi-red-bg"> 5</span>  6  7  8   6  7  8  9 10 11 12   6  7  8  9 10 11 <span class="ansi-red-bg">12</span>
+ 9 10 11 12 13 14 15  13 <span class="ansi-red-bg">14</span> 15 16 <span class="ansi-red-bg">17</span> 18 19  13 14 <span class="ansi-red-bg">15</span> 16 17 <span class="ansi-red-bg">18</span> 19
+16 17 18 <span class="ansi-red-bg">19</span> 20 21 <span class="ansi-red-bg">22</span>  <span class="ansi-red-bg">20</span> 21 22 <span class="ansi-red-bg">23</span> 24 25 26  20 21 22 23 <span class="ansi-red-bg">24</span> 25 26
+23 24 <span class="ansi-red-bg">25</span> 26 27 <span class="ansi-red-bg">28</span> 29  27 28                 27 28 29 30 31
+30 <span class="ansi-red-bg">31</span>
+
+       April                  May                   June
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+                1  2   1  2 <span class="ansi-red-bg"> 3</span>  4  5 <span class="ansi-red-bg"> 6</span>  7            1  2  3  4
+ 3  4  5  6  7  8  9   8 <span class="ansi-red-bg"> 9</span> 10 11 <span class="ansi-red-bg">12</span> 13 14   5  6  7  8  9 10 11
+<span class="ansi-red-bg">10</span> 11 12 <span class="ansi-red-bg">13</span> 14 15 <span class="ansi-red-bg">16</span>  15 16 17 <span class="ansi-red-bg">18</span> 19 20 21  12 13 14 15 16 17 18
+17 18 <span class="ansi-red-bg">19</span> 20 21 <span class="ansi-red-bg">22</span> 23  22 23 24 25 26 27 28  19 20 21 22 23 24 25
+24 25 26 27 28 29 30  29 30 31              26 27 28 29 30
+
+        July                 August              September
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+                1  2      1  2  3  4  5  6               1  2  3
+ 3  4  5  6  7  8  9   7  8  9 10 11 12 13   4  5  6  7  8  9 10
+10 11 12 13 14 15 16  14 15 16 17 18 19 20  11 12 13 14 15 16 17
+17 18 19 20 21 22 23  21 22 23 24 25 26 27  18 19 <span class="ansi-red-bg">20</span> 21 22 23 24
+24 25 26 27 28 29 30  28 29 30 31           25 26 27 28 29 30
+31
+
+      October               November              December
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+                   1         1  2  3  4  5               1  2  3
+ 2  3  4  5  6  7  8   6  7  8  9 10 11 12   4  5  6  7  8  9 10
+ 9 10 11 12 13 14 15  13 14 15 16 17 18 19  11 12 13 14 15 16 17
+16 17 18 19 20 21 22  20 21 22 23 24 25 26  18 19 20 21 22 23 24
+23 24 25 26 27 28 29  27 28 29 30           25 26 27 28 29 30 31
+30 31
+
+                              2018
+
+      January               February               March
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+ 1  2  3  4  5  6  7            1  2  3  4            1  2  3  4
+ 8  9 10 11 12 13 14   5  6  7  8  9 10 11   5  6  7  8  9 10 11
+15 16 17 18 19 20 21  12 13 14 15 16 17 18  12 13 14 15 16 17 18
+22 23 24 25 26 27 28  19 20 21 22 23 24 25  19 20 21 22 23 24 25
+29 30 31              26 27 28              26 27 28 29 30 31
+
+       April                  May                   June
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+                   1      1  2  3  4  5  6               1  2  3
+ 2  3  4  5  6  7  8   7  8  9 10 11 12 13   4  5  6  7  8  9 10
+ 9 10 11 12 13 14 15  14 15 16 17 18 19 20  11 12 13 14 15 16 17
+16 17 18 19 20 21 22  21 22 23 24 25 26 27  18 19 20 21 22 23 24
+23 24 25 26 27 28 29  28 29 30 31           25 26 27 28 29 30
+30
+
+        July                 August              September
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+                   1         1  2  3  4  5                  1  2
+ 2  3  4  5  6  7  8   6  7  8  9 10 11 12   3  4  5  6  7  8  9
+ 9 10 11 12 13 14 15  13 14 15 16 17 18 19  10 11 12 13 14 15 16
+16 17 18 19 20 21 22  20 21 22 23 24 25 26  17 18 19 20 21 22 23
+23 24 25 26 27 28 29  27 28 29 30 31        24 25 26 27 28 29 30
+30 31
+
+      October               November              December
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+ 1  2  3  4  5  6  7            1  2  3  4                  1  2
+ 8  9 10 11 12 13 14   5  6  7  8  9 10 11   3  4  5  6  7  8  9
+15 16 17 18 19 20 21  12 13 14 15 16 17 18  10 11 12 13 14 15 16
+22 23 24 25 26 27 28  19 20 21 22 23 24 25  17 18 19 20 21 22 23
+29 30 31              26 27 28 29 30        24 25 26 27 28 29 30
+
+                              2019
+
+      January               February               March
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+    1  2  3  4  5  6               1  2  3               1  2  3
+ 7  8  9 10 11 12 13   4  5  6  7  8  9 10   4  5  6  7  8  9 10
+14 15 16 17 18 19 20  11 12 13 14 15 16 17  11 12 13 14 15 16 17
+21 22 23 24 25 26 27  18 19 20 21 22 23 24  18 19 20 21 22 23 24
+28 29 30 31           25 26 27 28           25 26 27 28 29 30 31
+
+       April                  May                   June
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+ 1  2  3  4  5  6  7         1  2 <span class="ansi-red-bg"> 3</span>  4  5                  1 <span class="ansi-red-bg"> 2</span>
+ 8 <span class="ansi-red-bg"> 9</span> 10 11 12 <span class="ansi-red-bg">13</span> 14   6  7 <span class="ansi-red-bg"> 8</span>  9 10 <span class="ansi-red-bg">11</span> 12   3  4  5  6 <span class="ansi-red-bg"> 7</span>  8  9
+15 16 17 <span class="ansi-red-bg">18</span> 19 20 21  <span class="ansi-red-bg">13</span> 14 15 16 17 <span class="ansi-red-bg">18</span> 19  10 11 <span class="ansi-red-bg">12</span> 13 14 15 16
+22 <span class="ansi-red-bg">23</span> 24 <span class="ansi-red-bg">25</span> 26 27 <span class="ansi-red-bg">28</span>  20 21 22 <span class="ansi-red-bg">23</span> 24 25 26  <span class="ansi-red-bg">17</span> 18 19 20 21 <span class="ansi-red-bg">22</span> 23
+29 30                 <span class="ansi-red-bg">27</span> <span class="ansi-red-bg">28</span> 29 30 31        24 25 26 <span class="ansi-red-bg">27</span> <span class="ansi-red-bg">28</span> 29 30
+
+        July                 August              September
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+ 1 <span class="ansi-red-bg"> 2</span>  3  4  5  6 <span class="ansi-red-bg"> 7</span>           <span class="ansi-red-bg"> 1</span>  2  3  4                     1
+ 8  9 10 11 <span class="ansi-red-bg">12</span> 13 <span class="ansi-red-bg">14</span>   5 <span class="ansi-red-bg"> 6</span>  7  8  9 10 <span class="ansi-red-bg">11</span>   2  3  4 <span class="ansi-red-bg"> 5</span>  6  7  8
+15 16 <span class="ansi-red-bg">17</span> 18 19 20 21  12 13 14 <span class="ansi-red-bg">15</span> <span class="ansi-red-bg">16</span> 17 18   9 <span class="ansi-red-bg">10</span> 11 12 13 14 <span class="ansi-red-bg">15</span>
+<span class="ansi-red-bg">22</span> 23 24 25 26 <span class="ansi-red-bg">27</span> 28  19 20 <span class="ansi-red-bg">21</span> 22 23 24 25  <span class="ansi-red-bg">16</span> 17 18 19 <span class="ansi-red-bg">20</span> 21 22
+29 <span class="ansi-red-bg">30</span> 31              <span class="ansi-red-bg">26</span> 27 28 29 30 <span class="ansi-red-bg">31</span>     23 24 <span class="ansi-red-bg">25</span> 26 27 28 29
+
+      October               November              December
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+    1 <span class="ansi-red-bg"> 2</span>  3  4 <span class="ansi-red-bg"> 5</span>  6               1  2 <span class="ansi-red-bg"> 3</span>                     1
+ 7  8  9 <span class="ansi-red-bg">10</span> 11 12 13  <span class="ansi-red-bg"> 4</span>  5  6  7  8 <span class="ansi-red-bg"> 9</span> 10   2  3 <span class="ansi-red-bg"> 4</span> <span class="ansi-red-bg"> 5</span>  6  7  8
+14 <span class="ansi-red-bg">15</span> 16 17 <span class="ansi-red-bg">18</span> 19 <span class="ansi-red-bg">20</span>  11 12 13 <span class="ansi-red-bg">14</span> 15 16 17  <span class="ansi-red-bg"> 9</span> 10 11 12 13 <span class="ansi-red-bg">14</span> 15
+21 22 23 24 <span class="ansi-red-bg">25</span> 26 27  18 <span class="ansi-red-bg">19</span> 20 21 22 23 <span class="ansi-red-bg">24</span>  16 17 18 <span class="ansi-red-bg">19</span> 20 <span class="ansi-red-bg">21</span> 22
+28 29 <span class="ansi-red-bg">30</span> 31           25 26 27 28 <span class="ansi-red-bg">29</span> 30     23 <span class="ansi-red-bg">24</span> 25 26 27 28 <span class="ansi-red-bg">29</span>
+
+                              2020
+
+      January               February               March
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+       1  2 <span class="ansi-red-bg"> 3</span>  4  5                  1 <span class="ansi-red-bg"> 2</span>                     1
+<span class="ansi-red-bg"> 6</span>  7 <span class="ansi-red-bg"> 8</span>  9 10 11 12   3  4  5  6 <span class="ansi-red-bg"> 7</span>  8  9   2 <span class="ansi-red-bg"> 3</span>  4  5  6  7 <span class="ansi-red-bg"> 8</span>
+<span class="ansi-red-bg">13</span> 14 15 16 17 <span class="ansi-red-bg">18</span> 19  10 11 <span class="ansi-red-bg">12</span> 13 14 15 16   9 <span class="ansi-red-bg">10</span> 11 12 <span class="ansi-red-bg">13</span> 14 15
+20 21 <span class="ansi-red-bg">22</span> <span class="ansi-red-bg">23</span> 24 25 26  <span class="ansi-red-bg">17</span> 18 19 20 21 <span class="ansi-red-bg">22</span> <span class="ansi-red-bg">23</span>  16 17 <span class="ansi-red-bg">18</span> 19 20 21 22
+27 <span class="ansi-red-bg">28</span> 29 30 31        24 25 26 <span class="ansi-red-bg">27</span> 28 29     <span class="ansi-red-bg">23</span> 24 25 <span class="ansi-red-bg">26</span> 27 <span class="ansi-red-bg">28</span> 29
+
+       April                  May                   June
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+       1 <span class="ansi-red-bg"> 2</span>  3  4  5               1 <span class="ansi-red-bg"> 2</span>  3  <span class="ansi-red-bg"> 1</span>  2  3  4  5 <span class="ansi-red-bg"> 6</span>  7
+ 6 <span class="ansi-red-bg"> 7</span>  8  9 10 <span class="ansi-red-bg">11</span> <span class="ansi-red-bg">12</span>   4  5  6 <span class="ansi-red-bg"> 7</span>  8  9 10   8  9 10 <span class="ansi-red-bg">11</span> 12 13 <span class="ansi-red-bg">14</span>
+13 14 15 16 <span class="ansi-red-bg">17</span> 18 19  11 <span class="ansi-red-bg">12</span> <span class="ansi-red-bg">13</span> 14 15 16 <span class="ansi-red-bg">17</span>  15 <span class="ansi-red-bg">16</span> 17 18 19 20 <span class="ansi-red-bg">21</span>
+20 21 <span class="ansi-red-bg">22</span> 23 24 25 26  18 19 20 21 <span class="ansi-red-bg">22</span> 23 24  22 23 24 25 <span class="ansi-red-bg">26</span> 27 28
+<span class="ansi-red-bg">27</span> 28 29 30           25 26 <span class="ansi-red-bg">27</span> 28 <span class="ansi-red-bg">29</span> 30 31  29 <span class="ansi-red-bg">30</span>
+
+        July                 August              September
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+      <span class="ansi-red-bg"> 1</span>  2  3  4  5                  1  2      1  2  3  4  5  6
+<span class="ansi-red-bg"> 6</span>  7  8  9 10 <span class="ansi-red-bg">11</span> 12   3  4 <span class="ansi-red-bg"> 5</span>  6  7  8  9   7  8  9 10 11 12 13
+13 14 15 <span class="ansi-red-bg">16</span> 17 18 19  10 11 12 13 14 15 16  14 15 16 17 18 19 20
+20 <span class="ansi-red-bg">21</span> 22 23 24 25 <span class="ansi-red-bg">26</span>  17 18 19 20 21 22 23  21 22 23 24 25 26 27
+27 28 29 30 <span class="ansi-red-bg">31</span>        24 25 26 27 28 29 30  28 29 30
+
+<span class="ansi-red-bg">None (1)</span>
+161 total dates
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">search</span> <span class="o">=</span> <span class="n">Search</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;eo:cloud_cover&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;lt&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}})</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cloud_cover search: </span><span class="si">%s</span><span class="s1"> items&#39;</span> <span class="o">%</span> <span class="n">search</span><span class="o">.</span><span class="n">found</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+cloud_cover search: 1657458 items
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="So-what-did-we-find?">
+<h3>So what did we find?<a class="headerlink" href="#So-what-did-we-find?" title="Permalink to this headline">¶</a></h3>
+<p>The object <code class="docutils literal notranslate"><span class="pre">search_result</span></code> is of type <code class="docutils literal notranslate"><span class="pre">satsearch.search.Search</span></code> and has a method <code class="docutils literal notranslate"><span class="pre">.items()</span></code>. Execute it to get the metadata to all scenes found during the search.</p>
+<p><strong>Tipp:</strong> When you are working with unfamiliar classes, use frequently use the <code class="docutils literal notranslate"><span class="pre">type()</span></code> and <code class="docutils literal notranslate"><span class="pre">dir()</span></code> functions to learn about how the class works and what it can do.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">items</span> <span class="o">=</span> <span class="n">search_result</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Explore the scenes object for a bit to find out which attributes and methods it contains. Place your curser next to the dot after the object name and press <code class="docutils literal notranslate"><span class="pre">TAB</span></code> to get a list of available methods and attributes (see below). If you want to see the doc string of a method, place your cursor on the method name and press <code class="docutils literal notranslate"><span class="pre">SHIFT</span></code> + <code class="docutils literal notranslate"><span class="pre">TAB</span></code>.</p>
+<p><a class="reference internal" href="../../_images/search_methods.png"><img alt="82d79f578d2044499edb5f2258297b17" src="../../_images/search_methods.png" style="width: 300px;" /></a> <a class="reference internal" href="../../_images/docstring.png"><img alt="7a9e855009b649818ceaa5bc9d0888a1" src="../../_images/docstring.png" style="width: 500px;" /></a></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Items (16):
+date                      id
+2020-05-29                LC82050502020150
+2020-05-13                LC82050502020134
+2020-04-27                LC82050512020118
+2020-04-27                LC82050502020118
+2020-04-11                LC82050502020102
+2020-03-26                LC82050512020086
+2020-03-26                LC82050502020086
+2020-03-10                LC82050502020070
+2020-02-07                LC82050512020038
+2020-02-07                LC82050502020038
+2020-01-06                LC82050512020006
+2020-01-06                LC82050502020006
+2019-04-25                LC82050512019115
+2019-04-25                LC82050502019115
+2019-04-09                LC82050512019099
+2019-04-09                LC82050502019099
+
+</pre></div></div>
+</div>
+<p><strong>E:</strong> Answer the following questions using methods from the <code class="docutils literal notranslate"><span class="pre">scenes</span></code> object: * How many scenes were found? * On which dates were the scenes captured? (hint: “print the calendar”)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">items</span><span class="o">.</span><span class="n">dates</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">calendar</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+                              2019
+
+       April                  May                   June
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+ 1  2  3  4  5  6  7         1  2  3  4  5                  1  2
+ 8 <span class="ansi-red-bg"> 9</span> 10 11 12 13 14   6  7  8  9 10 <span class="ansi-red-bg">11</span> 12   3  4  5  6  7  8  9
+15 16 17 18 19 20 21  13 14 15 16 17 18 19  10 11 12 13 14 15 16
+22 23 24 <span class="ansi-red-bg">25</span> 26 27 28  20 21 22 23 24 25 26  17 18 19 20 21 22 23
+29 30                 <span class="ansi-red-bg">27</span> 28 29 30 31        24 25 26 27 28 29 30
+
+        July                 August              September
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+ 1  2  3  4  5  6  7            1  2  3  4                     1
+ 8  9 10 11 12 13 14   5  6  7  8  9 10 11   2  3  4  5  6  7  8
+15 16 17 18 19 20 21  12 13 14 15 16 17 18   9 10 11 12 13 14 15
+22 23 24 25 26 27 28  19 20 21 22 23 24 25  16 17 18 19 20 21 22
+29 <span class="ansi-red-bg">30</span> 31              26 27 28 29 30 31     23 24 25 26 27 28 29
+
+      October               November              December
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+    1 <span class="ansi-red-bg"> 2</span>  3  4  5  6               1  2  3                     1
+ 7  8  9 10 11 12 13   4  5  6  7  8  9 10   2  3  4 <span class="ansi-red-bg"> 5</span>  6  7  8
+14 15 16 17 <span class="ansi-red-bg">18</span> 19 20  11 12 13 14 15 16 17   9 10 11 12 13 14 15
+21 22 23 24 25 26 27  18 19 20 21 22 23 24  16 17 18 19 20 <span class="ansi-red-bg">21</span> 22
+28 29 30 31           25 26 27 28 29 30     23 24 25 26 27 28 29
+
+<span class="ansi-red-bg">None (1)</span>
+9 total dates
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">n_items</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span><span class="c1"># your code here</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> scenes were found.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_items</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+13 scenes were found.
+</pre></div></div>
+</div>
+<p>Since is some kind of collection let’s iterate over it to find out more details about the individual <code class="docutils literal notranslate"><span class="pre">scenes</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">type</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+satstac.itemcollection.ItemCollection
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[186]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s2">&quot;eo:row&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+051
+050
+050
+050
+050
+051
+050
+051
+050
+051
+050
+051
+050
+</pre></div></div>
+</div>
+<p><strong>E:</strong> Explore one of the items in more detail.</p>
+<ul class="simple">
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">.properties</span></code> attribute, what is the cloud cover of the Landsat scene?</p></li>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">.properties</span></code> attribute, what is the coordinate reference system of the scene?</p></li>
+<li><p>How many bands does the item (scene) have?</p></li>
+<li><p>Which band numbers are the near-infrared (nir) and the short wave infrared band (swir22)?</p></li>
+<li><p>Print the assets of the item. What does asset mean in this case?</p></li>
+</ul>
+<p>We will implement the whole processing chain using one of the scenes as an example. When the processing chain is up and running we will apply it to all Landsat scenes.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[172]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">test_item</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">.properties</span></code> attribute shows the metadata of the scene.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[102]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">item1</span><span class="o">.</span><span class="n">properties</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[102]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;collection&#39;: &#39;landsat-8-l1&#39;,
+ &#39;eo:gsd&#39;: 15,
+ &#39;eo:platform&#39;: &#39;landsat-8&#39;,
+ &#39;eo:instrument&#39;: &#39;OLI_TIRS&#39;,
+ &#39;eo:off_nadir&#39;: 0,
+ &#39;eo:bands&#39;: [{&#39;name&#39;: &#39;B1&#39;,
+   &#39;common_name&#39;: &#39;coastal&#39;,
+   &#39;gsd&#39;: 30,
+   &#39;center_wavelength&#39;: 0.44,
+   &#39;full_width_half_max&#39;: 0.02},
+  {&#39;name&#39;: &#39;B2&#39;,
+   &#39;common_name&#39;: &#39;blue&#39;,
+   &#39;gsd&#39;: 30,
+   &#39;center_wavelength&#39;: 0.48,
+   &#39;full_width_half_max&#39;: 0.06},
+  {&#39;name&#39;: &#39;B3&#39;,
+   &#39;common_name&#39;: &#39;green&#39;,
+   &#39;gsd&#39;: 30,
+   &#39;center_wavelength&#39;: 0.56,
+   &#39;full_width_half_max&#39;: 0.06},
+  {&#39;name&#39;: &#39;B4&#39;,
+   &#39;common_name&#39;: &#39;red&#39;,
+   &#39;gsd&#39;: 30,
+   &#39;center_wavelength&#39;: 0.65,
+   &#39;full_width_half_max&#39;: 0.04},
+  {&#39;name&#39;: &#39;B5&#39;,
+   &#39;common_name&#39;: &#39;nir&#39;,
+   &#39;gsd&#39;: 30,
+   &#39;center_wavelength&#39;: 0.86,
+   &#39;full_width_half_max&#39;: 0.03},
+  {&#39;name&#39;: &#39;B6&#39;,
+   &#39;common_name&#39;: &#39;swir16&#39;,
+   &#39;gsd&#39;: 30,
+   &#39;center_wavelength&#39;: 1.6,
+   &#39;full_width_half_max&#39;: 0.08},
+  {&#39;name&#39;: &#39;B7&#39;,
+   &#39;common_name&#39;: &#39;swir22&#39;,
+   &#39;gsd&#39;: 30,
+   &#39;center_wavelength&#39;: 2.2,
+   &#39;full_width_half_max&#39;: 0.2},
+  {&#39;name&#39;: &#39;B8&#39;,
+   &#39;common_name&#39;: &#39;pan&#39;,
+   &#39;gsd&#39;: 15,
+   &#39;center_wavelength&#39;: 0.59,
+   &#39;full_width_half_max&#39;: 0.18},
+  {&#39;name&#39;: &#39;B9&#39;,
+   &#39;common_name&#39;: &#39;cirrus&#39;,
+   &#39;gsd&#39;: 30,
+   &#39;center_wavelength&#39;: 1.37,
+   &#39;full_width_half_max&#39;: 0.02},
+  {&#39;name&#39;: &#39;B10&#39;,
+   &#39;common_name&#39;: &#39;lwir11&#39;,
+   &#39;gsd&#39;: 100,
+   &#39;center_wavelength&#39;: 10.9,
+   &#39;full_width_half_max&#39;: 0.8},
+  {&#39;name&#39;: &#39;B11&#39;,
+   &#39;common_name&#39;: &#39;lwir12&#39;,
+   &#39;gsd&#39;: 100,
+   &#39;center_wavelength&#39;: 12,
+   &#39;full_width_half_max&#39;: 1}],
+ &#39;datetime&#39;: &#39;2019-12-21T11:28:08.472733+00:00&#39;,
+ &#39;eo:sun_azimuth&#39;: 146.64009615,
+ &#39;eo:sun_elevation&#39;: 46.43282219,
+ &#39;eo:cloud_cover&#39;: 6,
+ &#39;eo:row&#39;: &#39;051&#39;,
+ &#39;eo:column&#39;: &#39;205&#39;,
+ &#39;landsat:product_id&#39;: &#39;LC08_L1TP_205051_20191221_20191222_01_RT&#39;,
+ &#39;landsat:scene_id&#39;: &#39;LC82050512019355LGN00&#39;,
+ &#39;landsat:processing_level&#39;: &#39;L1TP&#39;,
+ &#39;landsat:tier&#39;: &#39;RT&#39;,
+ &#39;landsat:revision&#39;: &#39;00&#39;,
+ &#39;eo:epsg&#39;: 32628}
+</pre></div></div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">.assets</span></code> you can explore the availabel bands of the scene</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[534]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#item1.assets</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="2.-Downloading-the-satellite-data">
+<h2>2. Downloading the satellite data<a class="headerlink" href="#2.-Downloading-the-satellite-data" title="Permalink to this headline">¶</a></h2>
+<p>First, let’s create a folder to store the data.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">scene_dir</span> <span class="o">=</span> <span class="s2">&quot;./scenes&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">os</span></code> package can help us with interactiong wiht the file system. For example, it can check whether the folder exisits. If not it will create it.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">scene_dir</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">scene_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Using sat-search you can download the data. For example, let’s download all metadata files. The os package can take care of the correct file path.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[125]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">filenames</span> <span class="o">=</span> <span class="n">items</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;MTL&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">scene_dir</span><span class="p">,</span> <span class="s2">&quot;$</span><span class="si">{date}</span><span class="s2">&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p>Your <code class="docutils literal notranslate"><span class="pre">scene_dir</span></code> should contain several folders for each Landsat scene containing the MTL file.</p>
+<p><strong>E:</strong> Download the band “B1” of the first item.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[130]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">item1</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;B1&quot;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">scene_dir</span><span class="p">,</span> <span class="s2">&quot;$</span><span class="si">{date}</span><span class="s2">&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[130]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;./scenes/2019-12-21/LC82050512019355_B1.TIF&#39;
+</pre></div></div>
+</div>
+<p>In the last notebook we learned that rasterio can download images as well. The advantage using rasterio is that we can even specify which spatial extent of the image we want to download using a <code class="docutils literal notranslate"><span class="pre">window</span></code>. This can be very useful when you want to test your method in a small test region with many images, so you don’t have to download all the data.</p>
+<div class="section" id="1.-Image-URL">
+<h3>1. Image URL<a class="headerlink" href="#1.-Image-URL" title="Permalink to this headline">¶</a></h3>
+<p>Each spectral band has a unique URL through which we can download it. This information is stored in the <code class="docutils literal notranslate"><span class="pre">item.assets</span></code>. Since these are stored as a dictionary, so we can access this information using the right keys.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">band5_url</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;B3&quot;</span><span class="p">][</span><span class="s2">&quot;href&quot;</span><span class="p">]</span>
+<span class="n">band5_url</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;https://landsat-pds.s3.amazonaws.com/c1/L8/205/050/LC08_L1TP_205050_20190409_20190422_01_T1/LC08_L1TP_205050_20190409_20190422_01_T1_B3.TIF&#39;
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="2.-Convert-bounding-box-in-image-coordinates">
+<h3>2. Convert bounding box in image coordinates<a class="headerlink" href="#2.-Convert-bounding-box-in-image-coordinates" title="Permalink to this headline">¶</a></h3>
+<p>in the last notebook you’ve learned that the window has to be defined using image coordinates. However, our bounding box is in geogrpahic coordisntes. When we continue using rasterio we will probably need to do this kind of conversion regularly. So it would be worth writing a function for it. :)</p>
+<p><strong>E:</strong> Write a function which takes a bounding box with geographic coordinates as a list (same as <code class="docutils literal notranslate"><span class="pre">bbox</span></code>) and the path to the image which we would like to read. The function should return a list containing the the upper left image coordinates and the number of rows and columns.</p>
+<p><strong>hint:</strong> The bounding box is given in geographic coordinates. The Landsat scene has a UTM projection. And the window needs image coordinates. So you need to go from geographic coordinates to UTM to image coordinates. <code class="docutils literal notranslate"><span class="pre">pyproj.transform</span></code> can convert point coordinates from one crs to another. In order to convert from crs to image use the functions from the last notebook.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">geogr_2_image</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">~</span><span class="n">affine</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">image_2_geogr</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">affine</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">math</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[86]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">get_window_for_scene</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="n">bbox</span><span class="p">):</span>
+
+    <span class="k">with</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">band</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+        <span class="n">affine</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">transform</span>
+        <span class="n">crs</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">crs</span>
+
+    <span class="n">ul_x</span><span class="p">,</span> <span class="n">ul_y</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="s1">&#39;epsg:4326&#39;</span><span class="p">),</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">crs</span><span class="p">)),</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">lr_x</span><span class="p">,</span> <span class="n">lr_y</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="s1">&#39;epsg:4326&#39;</span><span class="p">),</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">crs</span><span class="p">)),</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">ul_row</span><span class="p">,</span> <span class="n">ul_col</span> <span class="o">=</span> <span class="n">geogr_2_image</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span> <span class="n">ul_x</span><span class="p">,</span> <span class="n">ul_y</span><span class="p">)</span>
+    <span class="n">lr_row</span><span class="p">,</span> <span class="n">lr_col</span> <span class="o">=</span> <span class="n">geogr_2_image</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span> <span class="n">lr_x</span><span class="p">,</span> <span class="n">lr_y</span><span class="p">)</span>
+
+    <span class="n">ul_row</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">ul_row</span><span class="p">)</span>
+    <span class="n">ul_col</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">ul_col</span><span class="p">)</span>
+    <span class="n">lr_row</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lr_row</span><span class="p">)</span>
+    <span class="n">lr_col</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lr_col</span><span class="p">)</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lr_row</span> <span class="o">-</span> <span class="n">ul_row</span><span class="p">)</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lr_col</span> <span class="o">-</span> <span class="n">ul_col</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">rio</span><span class="o">.</span><span class="n">windows</span><span class="o">.</span><span class="n">Window</span><span class="p">(</span><span class="n">ul_row</span><span class="p">,</span> <span class="n">ul_col</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Download-the-data-using-rasterio">
+<h3>Download the data using rasterio<a class="headerlink" href="#Download-the-data-using-rasterio" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[103]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">band5_url</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="n">band</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">win</span><span class="p">)</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">profile</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[105]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">item</span><span class="o">.</span><span class="n">properties</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[105]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;collection&#39;: &#39;landsat-8-l1&#39;,
+ &#39;eo:gsd&#39;: 15,
+ &#39;eo:platform&#39;: &#39;landsat-8&#39;,
+ &#39;eo:instrument&#39;: &#39;OLI_TIRS&#39;,
+ &#39;eo:off_nadir&#39;: 0,
+ &#39;eo:bands&#39;: [{&#39;name&#39;: &#39;B1&#39;,
+   &#39;common_name&#39;: &#39;coastal&#39;,
+   &#39;gsd&#39;: 30,
+   &#39;center_wavelength&#39;: 0.44,
+   &#39;full_width_half_max&#39;: 0.02},
+  {&#39;name&#39;: &#39;B2&#39;,
+   &#39;common_name&#39;: &#39;blue&#39;,
+   &#39;gsd&#39;: 30,
+   &#39;center_wavelength&#39;: 0.48,
+   &#39;full_width_half_max&#39;: 0.06},
+  {&#39;name&#39;: &#39;B3&#39;,
+   &#39;common_name&#39;: &#39;green&#39;,
+   &#39;gsd&#39;: 30,
+   &#39;center_wavelength&#39;: 0.56,
+   &#39;full_width_half_max&#39;: 0.06},
+  {&#39;name&#39;: &#39;B4&#39;,
+   &#39;common_name&#39;: &#39;red&#39;,
+   &#39;gsd&#39;: 30,
+   &#39;center_wavelength&#39;: 0.65,
+   &#39;full_width_half_max&#39;: 0.04},
+  {&#39;name&#39;: &#39;B5&#39;,
+   &#39;common_name&#39;: &#39;nir&#39;,
+   &#39;gsd&#39;: 30,
+   &#39;center_wavelength&#39;: 0.86,
+   &#39;full_width_half_max&#39;: 0.03},
+  {&#39;name&#39;: &#39;B6&#39;,
+   &#39;common_name&#39;: &#39;swir16&#39;,
+   &#39;gsd&#39;: 30,
+   &#39;center_wavelength&#39;: 1.6,
+   &#39;full_width_half_max&#39;: 0.08},
+  {&#39;name&#39;: &#39;B7&#39;,
+   &#39;common_name&#39;: &#39;swir22&#39;,
+   &#39;gsd&#39;: 30,
+   &#39;center_wavelength&#39;: 2.2,
+   &#39;full_width_half_max&#39;: 0.2},
+  {&#39;name&#39;: &#39;B8&#39;,
+   &#39;common_name&#39;: &#39;pan&#39;,
+   &#39;gsd&#39;: 15,
+   &#39;center_wavelength&#39;: 0.59,
+   &#39;full_width_half_max&#39;: 0.18},
+  {&#39;name&#39;: &#39;B9&#39;,
+   &#39;common_name&#39;: &#39;cirrus&#39;,
+   &#39;gsd&#39;: 30,
+   &#39;center_wavelength&#39;: 1.37,
+   &#39;full_width_half_max&#39;: 0.02},
+  {&#39;name&#39;: &#39;B10&#39;,
+   &#39;common_name&#39;: &#39;lwir11&#39;,
+   &#39;gsd&#39;: 100,
+   &#39;center_wavelength&#39;: 10.9,
+   &#39;full_width_half_max&#39;: 0.8},
+  {&#39;name&#39;: &#39;B11&#39;,
+   &#39;common_name&#39;: &#39;lwir12&#39;,
+   &#39;gsd&#39;: 100,
+   &#39;center_wavelength&#39;: 12,
+   &#39;full_width_half_max&#39;: 1}],
+ &#39;datetime&#39;: &#39;2019-04-09T11:26:58.188362+00:00&#39;,
+ &#39;eo:sun_azimuth&#39;: 102.77872139,
+ &#39;eo:sun_elevation&#39;: 64.21727393,
+ &#39;eo:cloud_cover&#39;: 0,
+ &#39;eo:row&#39;: &#39;050&#39;,
+ &#39;eo:column&#39;: &#39;205&#39;,
+ &#39;landsat:product_id&#39;: &#39;LC08_L1TP_205050_20190409_20190422_01_T1&#39;,
+ &#39;landsat:scene_id&#39;: &#39;LC82050502019099LGN00&#39;,
+ &#39;landsat:processing_level&#39;: &#39;L1TP&#39;,
+ &#39;landsat:tier&#39;: &#39;T1&#39;,
+ &#39;landsat:revision&#39;: &#39;00&#39;,
+ &#39;eo:epsg&#39;: 32628}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[104]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">band</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[104]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.image.AxesImage at 0x7ff944214860&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/course_02_vectorized_geodata_processing_051_cs4geos_Downloading_Satellite_Imagery_70_1.png" src="../../_images/course_02_vectorized_geodata_processing_051_cs4geos_Downloading_Satellite_Imagery_70_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Save-image-to-file">
+<h3>Save image to file<a class="headerlink" href="#Save-image-to-file" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[97]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">outfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">scene_dir</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">date</span><span class="p">),</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">band5_url</span><span class="p">))</span>
+<span class="k">with</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">profile</span><span class="p">)</span> <span class="k">as</span> <span class="n">dst</span><span class="p">:</span>
+    <span class="n">dst</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="4.-Download-the-green-and-swir2-band-for-each-scene-and-save-them-in-the-scene_dir.">
+<h3>4. Download the green and swir2 band for each scene and save them in the <code class="docutils literal notranslate"><span class="pre">scene_dir</span></code>.<a class="headerlink" href="#4.-Download-the-green-and-swir2-band-for-each-scene-and-save-them-in-the-scene_dir." title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[101]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="n">band3_url</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;B3&quot;</span><span class="p">][</span><span class="s2">&quot;href&quot;</span><span class="p">]</span>
+    <span class="n">band7_url</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;B7&quot;</span><span class="p">][</span><span class="s2">&quot;href&quot;</span><span class="p">]</span>
+
+    <span class="n">win</span> <span class="o">=</span> <span class="n">get_window_for_scene</span><span class="p">(</span><span class="n">band3_url</span><span class="p">,</span> <span class="n">bbox</span><span class="p">)</span>
+
+    <span class="c1"># band 5</span>
+    <span class="k">with</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">band3_url</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+        <span class="n">band5</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">win</span><span class="p">)</span>
+        <span class="n">profile</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">profile</span>
+
+    <span class="n">outfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">scene_dir</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">date</span><span class="p">),</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">band3_url</span><span class="p">))</span>
+    <span class="k">with</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">profile</span><span class="p">)</span> <span class="k">as</span> <span class="n">dst</span><span class="p">:</span>
+        <span class="n">dst</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># band 7</span>
+    <span class="k">with</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">band7_url</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+        <span class="n">band7</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">win</span><span class="p">)</span>
+        <span class="n">profile</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">profile</span>
+
+    <span class="n">outfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">scene_dir</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">date</span><span class="p">),</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">band7_url</span><span class="p">))</span>
+    <span class="k">with</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">profile</span><span class="p">)</span> <span class="k">as</span> <span class="n">dst</span><span class="p">:</span>
+        <span class="n">dst</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="3.-Conversion-of-raw-image-to-reflectance">
+<h2>3. Conversion of raw image to reflectance<a class="headerlink" href="#3.-Conversion-of-raw-image-to-reflectance" title="Permalink to this headline">¶</a></h2>
+<p>The spectral bands are still in raw format. Their unit is DN (digital number). But what we need to calculate the NDWI is reflectence values, i.e. the amount of radiation which has been reflected by the surface at the wavelength of the repective band. Therefore, we need to perform the conversion from DN to reflectance.</p>
+<p>The conversion is performed using a linear function: (see <a class="reference external" href="https://www.usgs.gov/land-resources/nli/landsat/using-usgs-landsat-level-1-data-product">USGS Documentation</a> )</p>
+<p><span class="math notranslate nohighlight">\(L_{\lambda} = M_L Q_{cal} + A_L\)</span></p>
+<p><span class="math notranslate nohighlight">\(L_\lambda\)</span> = TOA spectral radiance (Watts/( m2 * srad * μm))</p>
+<p><span class="math notranslate nohighlight">\(M_L\)</span> = Band-specific multiplicative rescaling factor from the metadata (RADIANCE_MULT_BAND_x, where x is the band number)</p>
+<p><span class="math notranslate nohighlight">\(A_L\)</span> = Band-specific additive rescaling factor from the metadata (RADIANCE_ADD_BAND_x, where x is the band number)</p>
+<p><span class="math notranslate nohighlight">\(Q_{cal}\)</span> = Quantized and calibrated standard product pixel values (DN)</p>
+<p>To perform this conversion we need to: 1. Download the metadata files 2. Parse the metadata files in Python and extract the reuqired parameters. 3. Perform the conversion of the spectral bands.</p>
+<p>We’ve actually already done this above using</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[110]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">meta_files</span> <span class="o">=</span> <span class="n">items</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;MTL&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">scene_dir</span><span class="p">,</span> <span class="s2">&quot;$</span><span class="si">{date}</span><span class="s2">&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s try reading one of the metadata files using the standard <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> method.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[146]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">meta_files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[147]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">metadata</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[147]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;GROUP = L1_METADATA_FILE\n&#39;,
+ &#39;  GROUP = METADATA_FILE_INFO\n&#39;,
+ &#39;    ORIGIN = &#34;Image courtesy of the U.S. Geological Survey&#34;\n&#39;,
+ &#39;    REQUEST_ID = &#34;0501912211717_00004&#34;\n&#39;,
+ &#39;    LANDSAT_SCENE_ID = &#34;LC82050512019355LGN00&#34;\n&#39;,
+ &#39;    LANDSAT_PRODUCT_ID = &#34;LC08_L1TP_205051_20191221_20191222_01_RT&#34;\n&#39;,
+ &#39;    COLLECTION_NUMBER = 01\n&#39;,
+ &#39;    FILE_DATE = 2019-12-22T04:55:32Z\n&#39;,
+ &#39;    STATION_ID = &#34;LGN&#34;\n&#39;,
+ &#39;    PROCESSING_SOFTWARE_VERSION = &#34;LPGS_13.1.0&#34;\n&#39;,
+ &#39;  END_GROUP = METADATA_FILE_INFO\n&#39;,
+ &#39;  GROUP = PRODUCT_METADATA\n&#39;,
+ &#39;    DATA_TYPE = &#34;L1TP&#34;\n&#39;,
+ &#39;    COLLECTION_CATEGORY = &#34;RT&#34;\n&#39;,
+ &#39;    ELEVATION_SOURCE = &#34;GLS2000&#34;\n&#39;,
+ &#39;    OUTPUT_FORMAT = &#34;GEOTIFF&#34;\n&#39;,
+ &#39;    SPACECRAFT_ID = &#34;LANDSAT_8&#34;\n&#39;,
+ &#39;    SENSOR_ID = &#34;OLI_TIRS&#34;\n&#39;,
+ &#39;    WRS_PATH = 205\n&#39;,
+ &#39;    WRS_ROW = 51\n&#39;,
+ &#39;    NADIR_OFFNADIR = &#34;NADIR&#34;\n&#39;,
+ &#39;    TARGET_WRS_PATH = 205\n&#39;,
+ &#39;    TARGET_WRS_ROW = 51\n&#39;,
+ &#39;    DATE_ACQUIRED = 2019-12-21\n&#39;,
+ &#39;    SCENE_CENTER_TIME = &#34;11:28:08.4727330Z&#34;\n&#39;,
+ &#39;    CORNER_UL_LAT_PRODUCT = 14.05403\n&#39;,
+ &#39;    CORNER_UL_LON_PRODUCT = -18.02657\n&#39;,
+ &#39;    CORNER_UR_LAT_PRODUCT = 14.07130\n&#39;,
+ &#39;    CORNER_UR_LON_PRODUCT = -15.90773\n&#39;,
+ &#39;    CORNER_LL_LAT_PRODUCT = 11.94369\n&#39;,
+ &#39;    CORNER_LL_LON_PRODUCT = -18.00108\n&#39;,
+ &#39;    CORNER_LR_LAT_PRODUCT = 11.95828\n&#39;,
+ &#39;    CORNER_LR_LON_PRODUCT = -15.90007\n&#39;,
+ &#39;    CORNER_UL_PROJECTION_X_PRODUCT = 173100.000\n&#39;,
+ &#39;    CORNER_UL_PROJECTION_Y_PRODUCT = 1555800.000\n&#39;,
+ &#39;    CORNER_UR_PROJECTION_X_PRODUCT = 402000.000\n&#39;,
+ &#39;    CORNER_UR_PROJECTION_Y_PRODUCT = 1555800.000\n&#39;,
+ &#39;    CORNER_LL_PROJECTION_X_PRODUCT = 173100.000\n&#39;,
+ &#39;    CORNER_LL_PROJECTION_Y_PRODUCT = 1322100.000\n&#39;,
+ &#39;    CORNER_LR_PROJECTION_X_PRODUCT = 402000.000\n&#39;,
+ &#39;    CORNER_LR_PROJECTION_Y_PRODUCT = 1322100.000\n&#39;,
+ &#39;    PANCHROMATIC_LINES = 15581\n&#39;,
+ &#39;    PANCHROMATIC_SAMPLES = 15261\n&#39;,
+ &#39;    REFLECTIVE_LINES = 7791\n&#39;,
+ &#39;    REFLECTIVE_SAMPLES = 7631\n&#39;,
+ &#39;    THERMAL_LINES = 7791\n&#39;,
+ &#39;    THERMAL_SAMPLES = 7631\n&#39;,
+ &#39;    FILE_NAME_BAND_1 = &#34;LC08_L1TP_205051_20191221_20191222_01_RT_B1.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_2 = &#34;LC08_L1TP_205051_20191221_20191222_01_RT_B2.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_3 = &#34;LC08_L1TP_205051_20191221_20191222_01_RT_B3.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_4 = &#34;LC08_L1TP_205051_20191221_20191222_01_RT_B4.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_5 = &#34;LC08_L1TP_205051_20191221_20191222_01_RT_B5.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_6 = &#34;LC08_L1TP_205051_20191221_20191222_01_RT_B6.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_7 = &#34;LC08_L1TP_205051_20191221_20191222_01_RT_B7.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_8 = &#34;LC08_L1TP_205051_20191221_20191222_01_RT_B8.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_9 = &#34;LC08_L1TP_205051_20191221_20191222_01_RT_B9.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_10 = &#34;LC08_L1TP_205051_20191221_20191222_01_RT_B10.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_11 = &#34;LC08_L1TP_205051_20191221_20191222_01_RT_B11.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_QUALITY = &#34;LC08_L1TP_205051_20191221_20191222_01_RT_BQA.TIF&#34;\n&#39;,
+ &#39;    ANGLE_COEFFICIENT_FILE_NAME = &#34;LC08_L1TP_205051_20191221_20191222_01_RT_ANG.txt&#34;\n&#39;,
+ &#39;    METADATA_FILE_NAME = &#34;LC08_L1TP_205051_20191221_20191222_01_RT_MTL.txt&#34;\n&#39;,
+ &#39;    CPF_NAME = &#34;LC08CPF_20191001_20191231_01.02&#34;\n&#39;,
+ &#39;    BPF_NAME_OLI = &#34;LO8BPF20191221111357_20191221115725.01&#34;\n&#39;,
+ &#39;    BPF_NAME_TIRS = &#34;LT8BPF20191221034439_20191221041639.01&#34;\n&#39;,
+ &#39;    RLUT_FILE_NAME = &#34;LC08RLUT_20150303_20431231_01_12.h5&#34;\n&#39;,
+ &#39;  END_GROUP = PRODUCT_METADATA\n&#39;,
+ &#39;  GROUP = IMAGE_ATTRIBUTES\n&#39;,
+ &#39;    CLOUD_COVER = 6.56\n&#39;,
+ &#39;    CLOUD_COVER_LAND = 7.26\n&#39;,
+ &#39;    IMAGE_QUALITY_OLI = 9\n&#39;,
+ &#39;    IMAGE_QUALITY_TIRS = 5\n&#39;,
+ &#39;    TIRS_SSM_MODEL = &#34;PRELIMINARY&#34;\n&#39;,
+ &#39;    TIRS_SSM_POSITION_STATUS = &#34;ESTIMATED&#34;\n&#39;,
+ &#39;    TIRS_STRAY_LIGHT_CORRECTION_SOURCE = &#34;TIRS&#34;\n&#39;,
+ &#39;    ROLL_ANGLE = -0.001\n&#39;,
+ &#39;    SUN_AZIMUTH = 146.64009615\n&#39;,
+ &#39;    SUN_ELEVATION = 46.43282219\n&#39;,
+ &#39;    EARTH_SUN_DISTANCE = 0.9837502\n&#39;,
+ &#39;    SATURATION_BAND_1 = &#34;N&#34;\n&#39;,
+ &#39;    SATURATION_BAND_2 = &#34;N&#34;\n&#39;,
+ &#39;    SATURATION_BAND_3 = &#34;N&#34;\n&#39;,
+ &#39;    SATURATION_BAND_4 = &#34;N&#34;\n&#39;,
+ &#39;    SATURATION_BAND_5 = &#34;N&#34;\n&#39;,
+ &#39;    SATURATION_BAND_6 = &#34;Y&#34;\n&#39;,
+ &#39;    SATURATION_BAND_7 = &#34;Y&#34;\n&#39;,
+ &#39;    SATURATION_BAND_8 = &#34;N&#34;\n&#39;,
+ &#39;    SATURATION_BAND_9 = &#34;N&#34;\n&#39;,
+ &#39;    GROUND_CONTROL_POINTS_VERSION = 4\n&#39;,
+ &#39;    GROUND_CONTROL_POINTS_MODEL = 255\n&#39;,
+ &#39;    GEOMETRIC_RMSE_MODEL = 7.232\n&#39;,
+ &#39;    GEOMETRIC_RMSE_MODEL_Y = 4.547\n&#39;,
+ &#39;    GEOMETRIC_RMSE_MODEL_X = 5.624\n&#39;,
+ &#39;    GROUND_CONTROL_POINTS_VERIFY = 96\n&#39;,
+ &#39;    GEOMETRIC_RMSE_VERIFY = 3.524\n&#39;,
+ &#39;    TRUNCATION_OLI = &#34;UPPER&#34;\n&#39;,
+ &#39;  END_GROUP = IMAGE_ATTRIBUTES\n&#39;,
+ &#39;  GROUP = MIN_MAX_RADIANCE\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_1 = 785.37970\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_1 = -64.85691\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_2 = 804.23840\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_2 = -66.41427\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_3 = 741.09882\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_3 = -61.20018\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_4 = 624.93628\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_4 = -51.60744\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_5 = 382.42984\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_5 = -31.58118\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_6 = 95.10682\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_6 = -7.85395\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_7 = 32.05609\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_7 = -2.64720\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_8 = 707.25586\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_8 = -58.40542\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_9 = 149.46225\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_9 = -12.34264\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_10 = 22.00180\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_10 = 0.10033\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_11 = 22.00180\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_11 = 0.10033\n&#39;,
+ &#39;  END_GROUP = MIN_MAX_RADIANCE\n&#39;,
+ &#39;  GROUP = MIN_MAX_REFLECTANCE\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_1 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_1 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_2 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_2 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_3 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_3 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_4 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_4 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_5 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_5 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_6 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_6 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_7 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_7 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_8 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_8 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_9 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_9 = -0.099980\n&#39;,
+ &#39;  END_GROUP = MIN_MAX_REFLECTANCE\n&#39;,
+ &#39;  GROUP = MIN_MAX_PIXEL_VALUE\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_1 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_1 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_2 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_2 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_3 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_3 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_4 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_4 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_5 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_5 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_6 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_6 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_7 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_7 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_8 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_8 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_9 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_9 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_10 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_10 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_11 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_11 = 1\n&#39;,
+ &#39;  END_GROUP = MIN_MAX_PIXEL_VALUE\n&#39;,
+ &#39;  GROUP = RADIOMETRIC_RESCALING\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_1 = 1.2974E-02\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_2 = 1.3286E-02\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_3 = 1.2242E-02\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_4 = 1.0324E-02\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_5 = 6.3175E-03\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_6 = 1.5711E-03\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_7 = 5.2955E-04\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_8 = 1.1683E-02\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_9 = 2.4690E-03\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_10 = 3.3420E-04\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_11 = 3.3420E-04\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_1 = -64.86989\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_2 = -66.42756\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_3 = -61.21242\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_4 = -51.61776\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_5 = -31.58750\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_6 = -7.85552\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_7 = -2.64773\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_8 = -58.41710\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_9 = -12.34511\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_10 = 0.10000\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_11 = 0.10000\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_1 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_2 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_3 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_4 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_5 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_6 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_7 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_8 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_9 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_1 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_2 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_3 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_4 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_5 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_6 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_7 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_8 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_9 = -0.100000\n&#39;,
+ &#39;  END_GROUP = RADIOMETRIC_RESCALING\n&#39;,
+ &#39;  GROUP = TIRS_THERMAL_CONSTANTS\n&#39;,
+ &#39;    K1_CONSTANT_BAND_10 = 774.8853\n&#39;,
+ &#39;    K2_CONSTANT_BAND_10 = 1321.0789\n&#39;,
+ &#39;    K1_CONSTANT_BAND_11 = 480.8883\n&#39;,
+ &#39;    K2_CONSTANT_BAND_11 = 1201.1442\n&#39;,
+ &#39;  END_GROUP = TIRS_THERMAL_CONSTANTS\n&#39;,
+ &#39;  GROUP = PROJECTION_PARAMETERS\n&#39;,
+ &#39;    MAP_PROJECTION = &#34;UTM&#34;\n&#39;,
+ &#39;    DATUM = &#34;WGS84&#34;\n&#39;,
+ &#39;    ELLIPSOID = &#34;WGS84&#34;\n&#39;,
+ &#39;    UTM_ZONE = 28\n&#39;,
+ &#39;    GRID_CELL_SIZE_PANCHROMATIC = 15.00\n&#39;,
+ &#39;    GRID_CELL_SIZE_REFLECTIVE = 30.00\n&#39;,
+ &#39;    GRID_CELL_SIZE_THERMAL = 30.00\n&#39;,
+ &#39;    ORIENTATION = &#34;NORTH_UP&#34;\n&#39;,
+ &#39;    RESAMPLING_OPTION = &#34;CUBIC_CONVOLUTION&#34;\n&#39;,
+ &#39;  END_GROUP = PROJECTION_PARAMETERS\n&#39;,
+ &#39;END_GROUP = L1_METADATA_FILE\n&#39;,
+ &#39;END\n&#39;]
+</pre></div></div>
+</div>
+<p>uh, this looks really messy. Let’s try to parse the data so that it fits nicely into a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[114]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">radiance_mult</span> <span class="o">=</span> <span class="s2">&quot;REFLECTANCE_MULT_BAND_&quot;</span>
+<span class="n">radiance_add</span> <span class="o">=</span> <span class="s2">&quot;REFLECTANCE_ADD_BAND_&quot;</span>
+</pre></div>
+</div>
+</div>
+<p><strong>E:</strong> Write a function which takes the metadata (a list of tuples) and returns them as a dictionary where the keys are the parameter names and the values are the parameters values. Try to convert the values to float. If that is not possible, catch the exception with a <code class="docutils literal notranslate"><span class="pre">try:</span> <span class="pre">catch:</span></code> clause.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[154]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">parse_mtl</span><span class="p">(</span><span class="n">metadata</span><span class="p">):</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">metadata</span><span class="p">:</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="n">params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="k">return</span> <span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<p>The more complicated pandas version</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[150]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">parse_mtl</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">mtl</span><span class="p">):</span>
+    <span class="n">add_params</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">x</span><span class="p">,</span> <span class="n">mtl</span><span class="p">))</span>
+    <span class="n">add_params2</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">add_params</span><span class="p">]</span>
+    <span class="n">params_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">add_params2</span><span class="p">)</span>
+    <span class="n">params_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">match</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">]</span>
+    <span class="n">params_df</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_df</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)</span>
+    <span class="n">params_df</span><span class="p">[</span><span class="s2">&quot;band&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="n">match</span><span class="p">][</span><span class="n">x</span><span class="p">[</span><span class="n">match</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;BAND_&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span><span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">params_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;band&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Check whether your function is working correctly by executing the following code:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[159]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parse_mtl</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+<span class="n">parameters</span><span class="p">[</span><span class="n">radiance_mult</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[159]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2e-05
+</pre></div></div>
+</div>
+<p>Now we that we have the parameters, we can write a function which will perform the conversion.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[163]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">to_toa</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">add</span><span class="p">,</span> <span class="n">mult</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">val</span> <span class="o">*</span> <span class="n">mult</span> <span class="o">+</span> <span class="n">add</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="4.-Calculate-water-index">
+<h2>4. Calculate water index<a class="headerlink" href="#4.-Calculate-water-index" title="Permalink to this headline">¶</a></h2>
+<p>We will use the Normalized Difference Water Index (NDWI) defined by McFeeters as an indicator for the presence of surface water.</p>
+<p><span class="math notranslate nohighlight">\(NDWI = \frac{L_{NIR} - L_{SWIR}}{L_{NIR} + L_{SWIR}}\)</span></p>
+<p><strong>E:</strong> Write a function which calculate the NDWI based on the nir and swir bands.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[169]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">calc_ndwi</span><span class="p">(</span><span class="n">nir</span><span class="p">,</span> <span class="n">swir</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">nir</span> <span class="o">-</span> <span class="n">swir</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">nir</span> <span class="o">+</span> <span class="n">swir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="5.-Multi-temporal-Analysis">
+<h2>5. Multi-temporal Analysis<a class="headerlink" href="#5.-Multi-temporal-Analysis" title="Permalink to this headline">¶</a></h2>
+<p>Great! Almost there! Now let’s put everything together in a for loop which iterates through all the Landsat scenes. We don’t need the nir and swir bands for the further analysis, so we can just delete them and only store the numpy array containing the NDWI.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[201]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">sub_scenes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s2">&quot;eo:row&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;050&quot;</span><span class="p">:</span>
+        <span class="n">sub_scenes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[202]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">bands</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sub_scenes</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="n">band3_url</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;B3&quot;</span><span class="p">][</span><span class="s2">&quot;href&quot;</span><span class="p">]</span>
+    <span class="n">band7_url</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;B7&quot;</span><span class="p">][</span><span class="s2">&quot;href&quot;</span><span class="p">]</span>
+
+    <span class="n">window</span> <span class="o">=</span> <span class="n">get_window_for_scene</span><span class="p">(</span><span class="n">band3_url</span><span class="p">,</span> <span class="n">bbox</span><span class="p">)</span>
+
+    <span class="c1"># Read metadata for toa conversion</span>
+    <span class="n">mtl_file</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;MTL&quot;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">scene_dir</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">mtl_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+        <span class="n">mtl</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+    <span class="c1"># Extract required parameters</span>
+    <span class="n">parameters</span> <span class="o">=</span> <span class="n">parse_mtl</span><span class="p">(</span><span class="n">mtl</span><span class="p">)</span>
+    <span class="n">band3_mult</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="n">radiance_mult</span> <span class="o">+</span> <span class="s2">&quot;3&quot;</span><span class="p">]</span>
+    <span class="n">band3_add</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="n">radiance_add</span> <span class="o">+</span> <span class="s2">&quot;3&quot;</span><span class="p">]</span>
+    <span class="n">band7_mult</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="n">radiance_mult</span> <span class="o">+</span> <span class="s2">&quot;7&quot;</span><span class="p">]</span>
+    <span class="n">band7_add</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="n">radiance_add</span> <span class="o">+</span> <span class="s2">&quot;7&quot;</span><span class="p">]</span>
+
+    <span class="c1"># Read green spectral band (band 3)</span>
+    <span class="k">with</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">band3_url</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+        <span class="c1">#affine = src.transform</span>
+        <span class="n">nir</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">)</span>
+        <span class="n">nir</span> <span class="o">=</span> <span class="n">to_toa</span><span class="p">(</span><span class="n">nir</span><span class="p">,</span> <span class="n">band3_add</span><span class="p">,</span> <span class="n">band3_mult</span><span class="p">)</span>
+
+    <span class="c1"># Read sort-wave infrared spectral band (band 7)</span>
+    <span class="k">with</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">band7_url</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+        <span class="c1">#affine = src.transform</span>
+        <span class="n">swir</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">)</span>
+        <span class="n">swir</span> <span class="o">=</span> <span class="n">to_toa</span><span class="p">(</span><span class="n">swir</span><span class="p">,</span> <span class="n">band7_add</span><span class="p">,</span> <span class="n">band7_mult</span><span class="p">)</span>
+
+    <span class="n">ndwi</span> <span class="o">=</span> <span class="n">calc_ndwi</span><span class="p">(</span><span class="n">nir</span><span class="p">,</span> <span class="n">swir</span><span class="p">)</span>
+    <span class="n">bands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ndwi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+LC82050502019291
+LC82050502019211
+LC82050502019115
+LC82050502019099
+</pre></div></div>
+</div>
+<p><strong>E:</strong> Stack the NDWI images in a 3-dimensional array. Axis 0 should indicate the time axis.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[204]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">bands_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bands</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[205]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="p">[</span><span class="n">b</span><span class="o">.</span><span class="n">shape</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">bands_arr</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[205]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(1903, 1626), (1903, 1626), (1903, 1626), (1903, 1626)]
+</pre></div></div>
+</div>
+<p>Finally, let’s look at the data.</p>
+<p>The NDWI is an indicator for the presence of water. NDWI values above 0 indicate water, below 0 land.</p>
+<p><strong>E:</strong> Convert the NDWI array to an array holding binary water masks using the <code class="docutils literal notranslate"><span class="pre">np.where()</span></code> method. 1 should indicate water, 0 no water.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[206]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">water_masks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bands_arr</span> <span class="o">&gt;</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><strong>E:</strong> Calculate the number of water pixels along the time axis (axis=0).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[207]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">water_frequency</span> <span class="o">=</span> <span class="n">water_masks</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">water_masks</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p><strong>E:</strong> Plot the water frequency using <code class="docutils literal notranslate"><span class="pre">plt.imshow()</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[208]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ploot</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">water_frequency</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">mappable</span><span class="o">=</span><span class="n">ploot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[208]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.colorbar.Colorbar at 0x7ff8fa0de940&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/course_02_vectorized_geodata_processing_051_cs4geos_Downloading_Satellite_Imagery_111_1.png" src="../../_images/course_02_vectorized_geodata_processing_051_cs4geos_Downloading_Satellite_Imagery_111_1.png" />
+</div>
+</div>
+<p>We can still see some cloud artifacts over the ocean in the right lower corner. Lower the eo:cloudcov parameter to exclude clouded scenes.</p>
+<p>Check out the full tutorial on the <a class="reference external" href="https://github.com/sat-utils/sat-search">sat-search github repo</a> to learn about the full functionalities.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Congratulations!-You’ve-performed-your-(first)-multi-temporal-satellite-image-analysis!">
+<h2>Congratulations! You’ve performed your (first) multi-temporal satellite image analysis!<a class="headerlink" href="#Congratulations!-You’ve-performed-your-(first)-multi-temporal-satellite-image-analysis!" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="Exercise:-Perform-your-own-searches.">
+<h2>Exercise: Perform your own searches.<a class="headerlink" href="#Exercise:-Perform-your-own-searches." title="Permalink to this headline">¶</a></h2>
+<p>Checkout the documentation of sat-search to get to know the query parameters. They have a good <a class="reference external" href="https://github.com/sat-utils/sat-search/blob/master/tutorial-1.ipynb">jupyter notebook</a> to get started.</p>
+<ul class="simple">
+<li><p>extract the time series of one pixel and plot it as a pandas series.</p></li>
+<li><p>you could also do the imagery processing using googple earthin engine python bindings.</p></li>
+<li><p>you could analyse the distribution of images.</p></li>
+<li><p>Use the tile splitter to do the processing in tiles</p></li>
+<li><p>save the images to file</p></li>
+<li><p>optimize your script to use efficient data types</p></li>
+<li><p>do the analyses for different seasons</p></li>
+</ul>
+</div>
+<div class="section" id="translate-it-to-pyhton-files">
+<h2>translate it to pyhton files<a class="headerlink" href="#translate-it-to-pyhton-files" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Christina Ludwig
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

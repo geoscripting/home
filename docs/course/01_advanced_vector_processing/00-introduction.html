@@ -1,0 +1,1119 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Part 1: Introduction to Vector Data Processing in Python &mdash; Advanced Geoscripting 2020 2020 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Part 2: Why all these packages?" href="01-comparison.html" />
+    <link rel="prev" title="1. Advanced Geo Data Processing" href="README.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Advanced Geoscripting 2020
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/administration.html">Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/communication.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/resources.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/time_schedule.html">Time schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/learninggoals.html">Learning goals</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Preparation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/software_setup.html">Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/git_intro/index.html">git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/preparatory_assignment/README.html">Preparatory Assignment</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Content</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">1. Advanced Geo Data Processing</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Part 1: Introduction to Vector Data Processing in Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#1.-The-GeoJSON-Format">1. The GeoJSON Format</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Question:"><strong>Question:</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2.-json-/-geojson:-Reading-json-/-geojson-files">2. <code class="docutils literal notranslate"><span class="pre">json</span></code> / <code class="docutils literal notranslate"><span class="pre">geojson</span></code>: Reading json / geojson files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#3.-fiona:-Reading-and-writing-Geographic-Data">3. <code class="docutils literal notranslate"><span class="pre">fiona</span></code>: Reading and writing Geographic Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#BTW:-Why-the-name?">BTW: Why the name?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#4.-shapely:-Geometric-Operations-and-Manipulations">4. <code class="docutils literal notranslate"><span class="pre">shapely</span></code>: Geometric Operations and Manipulations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#5.-Summary">5. Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#References:">References:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="01-comparison.html">Part 2: Why all these packages?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-geopandas.html">Part 3: Vector Data Analysis using GeoPandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#learning-goals">Learning goals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#slides">Slides</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Final Assignment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/index.html">Final Assignment</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Advanced Geoscripting 2020</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="README.html">1. Advanced Geo Data Processing</a> &raquo;</li>
+        
+      <li>Part 1: Introduction to Vector Data Processing in Python</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/course/01_advanced_vector_processing/00-introduction.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Part-1:-Introduction-to-Vector-Data-Processing-in-Python">
+<h1>Part 1: Introduction to Vector Data Processing in Python<a class="headerlink" href="#Part-1:-Introduction-to-Vector-Data-Processing-in-Python" title="Permalink to this headline">¶</a></h1>
+<p>You probably know the ogr package for vector data processing in Python. But that’s not all. This notebook will give you a short overview of other Python packages used for vector data processing in Python. We will look at:</p>
+<ul class="simple">
+<li><p>geojson</p></li>
+<li><p>fiona</p></li>
+<li><p>shapely</p></li>
+</ul>
+<p>During the course we will mainly work with GeoJSON files instead of shapefiles. Therefore, the first section of this notebook gives a brief explanation of this format.</p>
+<div class="section" id="1.-The-GeoJSON-Format">
+<h2>1. The GeoJSON Format<a class="headerlink" href="#1.-The-GeoJSON-Format" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://geojson.org/">GeoJSON</a> is a format for encoding a variety of geographic data structures.</p>
+<p>It is <strong>based on JavaScript Object Notation (JSON)</strong> which is an open standard file format, and data interchange format, that uses <strong>human-readable text</strong> to store and transmit data objects consisting of <strong>attribute–value pairs and array data types</strong> (or any other serializable value). <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">Wikipedia</a></p>
+<p>A <strong>feature</strong> object contains a <strong>geometry</strong> and additional <strong>properties</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Point&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">125.6</span><span class="p">,</span> <span class="mf">10.1</span><span class="p">]</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Dinagat Islands&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>GeoJSON supports the following geometry types: * Point * LineString * Polygon * MultiPoint * MultiLineString * MultiPolygon</p>
+<p>A <strong>Feature Collection</strong> object contains sets of features.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;features&quot;</span><span class="p">:[{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;properties&quot;</span><span class="p">:{</span><span class="o">...</span><span class="p">},</span>
+                     <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">},</span>
+                    <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;properties&quot;</span><span class="p">:{</span><span class="o">...</span><span class="p">},</span>
+                     <span class="s2">&quot;geometry&quot;</span><span class="p">:{</span><span class="o">...</span><span class="p">}</span>
+                    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="Question:">
+<h3><strong>Question:</strong><a class="headerlink" href="#Question:" title="Permalink to this headline">¶</a></h3>
+<p>Which data types in Python are suitable to represent geojson data in Python?</p>
+<p>Why we use GeoJSON in this course: * Very good integration in Python as dictionaries → easily read using <code class="docutils literal notranslate"><span class="pre">json</span></code> or <code class="docutils literal notranslate"><span class="pre">geojson</span></code> packages * GeoJSON supported by many packages: <code class="docutils literal notranslate"><span class="pre">fiona</span></code>, <code class="docutils literal notranslate"><span class="pre">shapely</span></code>, <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> (all other GDAL file formats are supported as well) * Readible by humans and machines * Web APIs use json/geojson as reponse format</p>
+</div>
+</div>
+<div class="section" id="2.-json-/-geojson:-Reading-json-/-geojson-files">
+<h2>2. <code class="docutils literal notranslate"><span class="pre">json</span></code> / <code class="docutils literal notranslate"><span class="pre">geojson</span></code>: Reading json / geojson files<a class="headerlink" href="#2.-json-/-geojson:-Reading-json-/-geojson-files" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">json</span></code> package makes reading and writing json files easy in Python:</p>
+<p><code class="docutils literal notranslate"><span class="pre">json.load()</span></code>/<code class="docutils literal notranslate"><span class="pre">json.loads()</span></code> for decoding: file connection / string → dict</p>
+<p><code class="docutils literal notranslate"><span class="pre">json.dump()</span></code>/<code class="docutils literal notranslate"><span class="pre">json.dumps()</span></code> for encoding: dict → file connection / string</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;./data/some_features.geojson&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="n">src</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">data_geojson</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+<span class="n">src</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">type</span><span class="p">(</span><span class="n">data_geojson</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+dict
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">data_geojson</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;type&#39;: &#39;FeatureCollection&#39;,
+ &#39;features&#39;: [{&#39;type&#39;: &#39;Feature&#39;,
+   &#39;properties&#39;: {&#39;color&#39;: &#39;green&#39;, &#39;id&#39;: 1},
+   &#39;geometry&#39;: {&#39;type&#39;: &#39;Polygon&#39;,
+    &#39;coordinates&#39;: [[[8.670530319213867, 49.41337442939828],
+      [8.685293197631836, 49.41337442939828],
+      [8.685293197631836, 49.421861555723595],
+      [8.670530319213867, 49.421861555723595],
+      [8.670530319213867, 49.41337442939828]]]}},
+  {&#39;type&#39;: &#39;Feature&#39;,
+   &#39;properties&#39;: {&#39;color&#39;: &#39;blue&#39;, &#39;id&#39;: 2},
+   &#39;geometry&#39;: {&#39;type&#39;: &#39;Polygon&#39;,
+    &#39;coordinates&#39;: [[[8.680486679077148, 49.418455714236885],
+      [8.69619369506836, 49.418455714236885],
+      [8.69619369506836, 49.42833758576036],
+      [8.680486679077148, 49.42833758576036],
+      [8.680486679077148, 49.418455714236885]],
+     [[8.688468933105469, 49.42398310798032],
+      [8.693962097167969, 49.42398310798032],
+      [8.693962097167969, 49.426607006252176],
+      [8.688468933105469, 49.426607006252176],
+      [8.688468933105469, 49.42398310798032]]]}}]}
+</pre></div></div>
+</div>
+<p>When you open a file connection to read it, it is very important that you explicitly close it afterwards to avoid conflicts in file access with other programs. This is done using the <code class="docutils literal notranslate"><span class="pre">close()</span></code> method. However, we tend to forget it from time to time which can lead to problems in file access.</p>
+<p>To avoid this <strong>Context managers</strong> are very helpful. You create them using the <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">...</span> <span class="pre">as</span> <span class="pre">...:</span></code> statement. Everything inside the block is executed while the file is open. Afterwards the file is closed automatically.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="n">data_geojson</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">data_geojson</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;type&#39;: &#39;FeatureCollection&#39;,
+ &#39;features&#39;: [{&#39;type&#39;: &#39;Feature&#39;,
+   &#39;properties&#39;: {&#39;color&#39;: &#39;green&#39;, &#39;id&#39;: 1},
+   &#39;geometry&#39;: {&#39;type&#39;: &#39;Polygon&#39;,
+    &#39;coordinates&#39;: [[[8.670530319213867, 49.41337442939828],
+      [8.685293197631836, 49.41337442939828],
+      [8.685293197631836, 49.421861555723595],
+      [8.670530319213867, 49.421861555723595],
+      [8.670530319213867, 49.41337442939828]]]}},
+  {&#39;type&#39;: &#39;Feature&#39;,
+   &#39;properties&#39;: {&#39;color&#39;: &#39;blue&#39;, &#39;id&#39;: 2},
+   &#39;geometry&#39;: {&#39;type&#39;: &#39;Polygon&#39;,
+    &#39;coordinates&#39;: [[[8.680486679077148, 49.418455714236885],
+      [8.69619369506836, 49.418455714236885],
+      [8.69619369506836, 49.42833758576036],
+      [8.680486679077148, 49.42833758576036],
+      [8.680486679077148, 49.418455714236885]],
+     [[8.688468933105469, 49.42398310798032],
+      [8.693962097167969, 49.42398310798032],
+      [8.693962097167969, 49.426607006252176],
+      [8.688468933105469, 49.426607006252176],
+      [8.688468933105469, 49.42398310798032]]]}}]}
+</pre></div></div>
+</div>
+<p><strong>E:</strong> Extract the coordinates of the first feature.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">geojson</span></code> package is based on the <code class="docutils literal notranslate"><span class="pre">json</span></code> package but offers additional classes to represent different geometry types e.g. <code class="docutils literal notranslate"><span class="pre">geojson.feature.Polygon</span></code>.</p>
+<p>→ Check out the <a class="reference external" href="https://pypi.org/project/geojson">geojson package documentation</a> if you are interested</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">geojson</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="n">data_geojson</span> <span class="o">=</span> <span class="n">geojson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">type</span><span class="p">(</span><span class="n">data_geojson</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+geojson.feature.FeatureCollection
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">polygon</span> <span class="o">=</span> <span class="n">data_geojson</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">type</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+geojson.geometry.Polygon
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">new_feature</span> <span class="o">=</span> <span class="n">geojson</span><span class="o">.</span><span class="n">Feature</span><span class="p">(</span><span class="n">geometry</span><span class="o">=</span><span class="n">polygon</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">321</span><span class="p">})</span>
+<span class="n">new_feature_geojson</span> <span class="o">=</span> <span class="n">geojson</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">new_feature</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">type</span><span class="p">(</span><span class="n">new_feature_geojson</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+str
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">new_feature_geojson</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;{&#34;type&#34;: &#34;Feature&#34;, &#34;geometry&#34;: {&#34;type&#34;: &#34;Polygon&#34;, &#34;coordinates&#34;: [[[8.670530319213867, 49.41337442939828], [8.685293197631836, 49.41337442939828], [8.685293197631836, 49.421861555723595], [8.670530319213867, 49.421861555723595], [8.670530319213867, 49.41337442939828]]]}, &#34;properties&#34;: {&#34;id&#34;: 321}}&#39;
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="3.-fiona:-Reading-and-writing-Geographic-Data">
+<h2>3. <code class="docutils literal notranslate"><span class="pre">fiona</span></code>: Reading and writing Geographic Data<a class="headerlink" href="#3.-fiona:-Reading-and-writing-Geographic-Data" title="Permalink to this headline">¶</a></h2>
+<p>“[Fiona] focuses on reading and writing data in standard Python IO style and relies upon familiar Python types and protocols such as files, dictionaries, mappings, and iterators instead of classes specific to GDAL’s OpenGIS Reference Implementation (OGR).”</p>
+<p>→ Check out the <a class="reference external" href="https://github.com/Toblerity/Fiona">Fiona Documentation</a></p>
+<div class="section" id="BTW:-Why-the-name?">
+<h3>BTW: Why the name?<a class="headerlink" href="#BTW:-Why-the-name?" title="Permalink to this headline">¶</a></h3>
+<p>ogr → “Oger” → Shrek the Movie → Fiona</p>
+<div class="section" id="Reading-data">
+<h4>Reading data<a class="headerlink" href="#Reading-data" title="Permalink to this headline">¶</a></h4>
+<p>Opening a file using <code class="docutils literal notranslate"><span class="pre">fiona.open()</span></code> and extracting metadata from the file:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">fiona</span>
+<span class="n">source</span> <span class="o">=</span> <span class="n">fiona</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+<span class="n">features</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+<span class="n">crs</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">crs</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">meta</span>
+<span class="n">source</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p><strong>E 3.1:</strong> Wait this looks like we could use a Context Manager again! Reformat the above code so that it uses a context manager.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Writing-data">
+<h4>Writing data<a class="headerlink" href="#Writing-data" title="Permalink to this headline">¶</a></h4>
+<p>Writing data to file using fiona works in a similar way. You just need to pass <code class="docutils literal notranslate"><span class="pre">mode='w'</span></code> to the <code class="docutils literal notranslate"><span class="pre">open()</span></code> method.</p>
+<p>The default is <code class="docutils literal notranslate"><span class="pre">'r'</span></code> which stands for reading, while <code class="docutils literal notranslate"><span class="pre">'w'</span></code> stands for writing.</p>
+<p>When you create a new file you need to tell <code class="docutils literal notranslate"><span class="pre">fiona</span></code> the metadata of that file, e.g. driver, schema, etc. In this example we will just use the meta information of the input file contained in the <code class="docutils literal notranslate"><span class="pre">metadata</span></code> variable.</p>
+<p>Writing the first feature of the original file to a new file looks like:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">outfile</span> <span class="o">=</span> <span class="s2">&quot;./data/test_out.geojson&quot;</span>
+<span class="k">with</span> <span class="n">fiona</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">metadata</span><span class="p">)</span> <span class="k">as</span> <span class="n">dst</span><span class="p">:</span>
+    <span class="n">dst</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Exercises:">
+<h4>Exercises:<a class="headerlink" href="#Exercises:" title="Permalink to this headline">¶</a></h4>
+<p><strong>E 3.2:</strong> Extract all <strong>features</strong>, the <strong>crs</strong> (coordinate reference system) and the <strong>schema</strong> from the following file using <code class="docutils literal notranslate"><span class="pre">fiona</span></code>.</p>
+<p><strong>Hint:</strong> Place the mouse cursor next to the dot after the variable name and press <code class="docutils literal notranslate"><span class="pre">TAB</span></code> to show all available attributes and methods.</p>
+<p><img alt="show_methods" src="../../_images/show_methods.png" /></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">file_path_2</span> <span class="o">=</span> <span class="s2">&quot;./data/some_features.geojson&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<p><strong>Questions:</strong> 1. What how many features are contained in the geojson file? 2. What is the difference between the geometries of the features?</p>
+<p><strong>Answer:</strong></p>
+<p><strong>E 3.3:</strong> Save the features to separate new variables ‘feature1’ and ‘feature2’.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<p><strong>E 3.4:</strong> Print the coordinates of feature2.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<p><strong>E 3.5:</strong> Fill the hole of the geometry of <code class="docutils literal notranslate"><span class="pre">feature2</span></code> by manipulating the geojson dictionary. Afterwards, execute the cell above again to see how the coordinates changed.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="4.-shapely:-Geometric-Operations-and-Manipulations">
+<h2>4. <code class="docutils literal notranslate"><span class="pre">shapely</span></code>: Geometric Operations and Manipulations<a class="headerlink" href="#4.-shapely:-Geometric-Operations-and-Manipulations" title="Permalink to this headline">¶</a></h2>
+<p>Removing a hole from a polygon is easy when it is represented as a dictionary, but what if we want to perform more complex geometric operations such as intersections between two geometries? In this case, we need more complex data structures than a dictionary.</p>
+<p><code class="docutils literal notranslate"><span class="pre">shapely</span></code> is the perfect tool for this! It converts dictionary-like objects to geometry objects and allows us to perform geospatial operations.</p>
+<p>→ Check out the <a class="reference external" href="https://shapely.readthedocs.io/en/stable/manual.html">Shapely User Manual</a></p>
+<p>Shapely supports the same geometry types as GeoJSON (see above).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="k">import</span> <span class="n">Point</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">point</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mf">8.69</span><span class="p">,</span> <span class="mf">49.41</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+shapely.geometry.point.Point
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">point</span><span class="o">.</span><span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+8.69
+</pre></div></div>
+</div>
+<p>Using the method <code class="docutils literal notranslate"><span class="pre">shapely.geometry.shape</span></code> you can convert GeoJSON dictionaries to geometry objects.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="k">import</span> <span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">geometry1</span> <span class="o">=</span> <span class="n">feature1</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span>
+<span class="n">polygon1</span> <span class="o">=</span> <span class="n">shape</span><span class="p">(</span><span class="n">geometry1</span><span class="p">)</span>
+<span class="n">polygon1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/course_01_advanced_vector_processing_00-introduction_66_0.svg" src="../../_images/course_01_advanced_vector_processing_00-introduction_66_0.svg" /></div>
+</div>
+<p>The geometry obejcts contain <strong>attributes and methods which allow geometric operations.</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">polygon1</span><span class="o">.</span><span class="n">centroid</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/course_01_advanced_vector_processing_00-introduction_69_0.svg" src="../../_images/course_01_advanced_vector_processing_00-introduction_69_0.svg" /></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">point</span><span class="o">.</span><span class="n">within</span><span class="p">(</span><span class="n">polygon1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+False
+</pre></div></div>
+</div>
+<p>Converting geometry obejcts to geojson is done using <code class="docutils literal notranslate"><span class="pre">shapely.geometry.mapping()</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="k">import</span> <span class="n">mapping</span>
+<span class="n">mapping</span><span class="p">(</span><span class="n">polygon1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;type&#39;: &#39;Polygon&#39;,
+ &#39;coordinates&#39;: (((8.670530319213867, 49.41337442939828),
+   (8.685293197631836, 49.41337442939828),
+   (8.685293197631836, 49.421861555723595),
+   (8.670530319213867, 49.421861555723595),
+   (8.670530319213867, 49.41337442939828)),)}
+</pre></div></div>
+</div>
+<p><strong>E 4.1:</strong> Create a rectangle geometry with a hole using shapely.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<p><strong>E 4.2:</strong> Create a point which is located inside the rectangle.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<p><strong>E 4.3:</strong> Use the a suitbale shapely method to check whether the point is inside the rectangle.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<p><strong>E 4.4:</strong> Convert the geometry of the second feature to a <code class="docutils literal notranslate"><span class="pre">shapely.geometry.Polygon</span></code> called <code class="docutils literal notranslate"><span class="pre">polygon2</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<p><strong>E 4.6:</strong> Calculate the intersection between <code class="docutils literal notranslate"><span class="pre">poylgon1</span></code> and <code class="docutils literal notranslate"><span class="pre">poylgon2</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="5.-Summary">
+<h2>5. Summary<a class="headerlink" href="#5.-Summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>geojson and json in general work) very well with Python.</p></li>
+<li><p>shapely and fiona provide classes to represent geospatial data and perform geospatial analyses in Python.</p></li>
+<li><p>Of course there are more relevant packages, e.g. <a class="reference external" href="https://pyproj4.github.io/pyproj/stable/">pyproj</a> to transform geometries to different coordinate reference systems</p></li>
+</ul>
+<p>We already have the ogr package to do the same things? So why do we need shapely and fiona?</p>
+<p>→ Continue with <a class="reference external" href="./01-Why_all_these_packages.ipynb">Part 2: Why all these packages</a> to find out.</p>
+</div>
+<div class="section" id="References:">
+<h2>References:<a class="headerlink" href="#References:" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://geojson.org/">GeoJSON</a></p>
+<p><a class="reference external" href="https://pypi.org/project/geojson">Geojson python package Documentation</a></p>
+<p><a class="reference external" href="https://github.com/Toblerity/Fiona">Fiona Documentation</a></p>
+<p><a class="reference external" href="https://shapely.readthedocs.io/en/stable/manual.html">Shapely User Manual</a></p>
+<p><a class="reference external" href="https://pyproj4.github.io/pyproj/stable/">pyproj Documentation</a></p>
+<p><a class="reference external" href="https://www.twilio.com/blog/2017/08/geospatial-analysis-python-geojson-geopandas.html">Getting Started on Geospatial Analysis with Python, GeoJSON and GeoPandas</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="01-comparison.html" class="btn btn-neutral float-right" title="Part 2: Why all these packages?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="README.html" class="btn btn-neutral float-left" title="1. Advanced Geo Data Processing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Christina Ludwig
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

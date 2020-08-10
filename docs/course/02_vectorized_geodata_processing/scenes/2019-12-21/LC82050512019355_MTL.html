@@ -1,0 +1,485 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>&lt;no title&gt; &mdash; Advanced Geoscripting 2020 2020 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/jupyter-sphinx.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> Advanced Geoscripting 2020
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/administration.html">Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/communication.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/resources.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/time_schedule.html">Time schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/learninggoals.html">Learning goals</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Preparation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../preparation/software_setup.html">Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../preparation/git_intro/index.html">git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../preparation/preparatory_assignment/README.html">Preparatory Assignment</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../01_advanced_vector_processing/README.html">1. Advanced Geo Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">2. Vectorized Computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../03_scientific_programming/README.html">3. Best Practices in Scientific Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../04_geodata_visualization/README.html">4. Geo Data Visualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Final Assignment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../final_assignment/index.html">Final Assignment</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Advanced Geoscripting 2020</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>&lt;no title&gt;</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../_sources/course/02_vectorized_geodata_processing/scenes/2019-12-21/LC82050512019355_MTL.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<dl>
+<dt>GROUP = L1_METADATA_FILE</dt><dd><dl class="simple">
+<dt>GROUP = METADATA_FILE_INFO</dt><dd><p>ORIGIN = “Image courtesy of the U.S. Geological Survey”
+REQUEST_ID = “0501912211717_00004”
+LANDSAT_SCENE_ID = “LC82050512019355LGN00”
+LANDSAT_PRODUCT_ID = “LC08_L1TP_205051_20191221_20191222_01_RT”
+COLLECTION_NUMBER = 01
+FILE_DATE = 2019-12-22T04:55:32Z
+STATION_ID = “LGN”
+PROCESSING_SOFTWARE_VERSION = “LPGS_13.1.0”</p>
+</dd>
+</dl>
+<p>END_GROUP = METADATA_FILE_INFO
+GROUP = PRODUCT_METADATA</p>
+<blockquote>
+<div><p>DATA_TYPE = “L1TP”
+COLLECTION_CATEGORY = “RT”
+ELEVATION_SOURCE = “GLS2000”
+OUTPUT_FORMAT = “GEOTIFF”
+SPACECRAFT_ID = “LANDSAT_8”
+SENSOR_ID = “OLI_TIRS”
+WRS_PATH = 205
+WRS_ROW = 51
+NADIR_OFFNADIR = “NADIR”
+TARGET_WRS_PATH = 205
+TARGET_WRS_ROW = 51
+DATE_ACQUIRED = 2019-12-21
+SCENE_CENTER_TIME = “11:28:08.4727330Z”
+CORNER_UL_LAT_PRODUCT = 14.05403
+CORNER_UL_LON_PRODUCT = -18.02657
+CORNER_UR_LAT_PRODUCT = 14.07130
+CORNER_UR_LON_PRODUCT = -15.90773
+CORNER_LL_LAT_PRODUCT = 11.94369
+CORNER_LL_LON_PRODUCT = -18.00108
+CORNER_LR_LAT_PRODUCT = 11.95828
+CORNER_LR_LON_PRODUCT = -15.90007
+CORNER_UL_PROJECTION_X_PRODUCT = 173100.000
+CORNER_UL_PROJECTION_Y_PRODUCT = 1555800.000
+CORNER_UR_PROJECTION_X_PRODUCT = 402000.000
+CORNER_UR_PROJECTION_Y_PRODUCT = 1555800.000
+CORNER_LL_PROJECTION_X_PRODUCT = 173100.000
+CORNER_LL_PROJECTION_Y_PRODUCT = 1322100.000
+CORNER_LR_PROJECTION_X_PRODUCT = 402000.000
+CORNER_LR_PROJECTION_Y_PRODUCT = 1322100.000
+PANCHROMATIC_LINES = 15581
+PANCHROMATIC_SAMPLES = 15261
+REFLECTIVE_LINES = 7791
+REFLECTIVE_SAMPLES = 7631
+THERMAL_LINES = 7791
+THERMAL_SAMPLES = 7631
+FILE_NAME_BAND_1 = “LC08_L1TP_205051_20191221_20191222_01_RT_B1.TIF”
+FILE_NAME_BAND_2 = “LC08_L1TP_205051_20191221_20191222_01_RT_B2.TIF”
+FILE_NAME_BAND_3 = “LC08_L1TP_205051_20191221_20191222_01_RT_B3.TIF”
+FILE_NAME_BAND_4 = “LC08_L1TP_205051_20191221_20191222_01_RT_B4.TIF”
+FILE_NAME_BAND_5 = “LC08_L1TP_205051_20191221_20191222_01_RT_B5.TIF”
+FILE_NAME_BAND_6 = “LC08_L1TP_205051_20191221_20191222_01_RT_B6.TIF”
+FILE_NAME_BAND_7 = “LC08_L1TP_205051_20191221_20191222_01_RT_B7.TIF”
+FILE_NAME_BAND_8 = “LC08_L1TP_205051_20191221_20191222_01_RT_B8.TIF”
+FILE_NAME_BAND_9 = “LC08_L1TP_205051_20191221_20191222_01_RT_B9.TIF”
+FILE_NAME_BAND_10 = “LC08_L1TP_205051_20191221_20191222_01_RT_B10.TIF”
+FILE_NAME_BAND_11 = “LC08_L1TP_205051_20191221_20191222_01_RT_B11.TIF”
+FILE_NAME_BAND_QUALITY = “LC08_L1TP_205051_20191221_20191222_01_RT_BQA.TIF”
+ANGLE_COEFFICIENT_FILE_NAME = “LC08_L1TP_205051_20191221_20191222_01_RT_ANG.txt”
+METADATA_FILE_NAME = “LC08_L1TP_205051_20191221_20191222_01_RT_MTL.txt”
+CPF_NAME = “LC08CPF_20191001_20191231_01.02”
+BPF_NAME_OLI = “LO8BPF20191221111357_20191221115725.01”
+BPF_NAME_TIRS = “LT8BPF20191221034439_20191221041639.01”
+RLUT_FILE_NAME = “LC08RLUT_20150303_20431231_01_12.h5”</p>
+</div></blockquote>
+<p>END_GROUP = PRODUCT_METADATA
+GROUP = IMAGE_ATTRIBUTES</p>
+<blockquote>
+<div><p>CLOUD_COVER = 6.56
+CLOUD_COVER_LAND = 7.26
+IMAGE_QUALITY_OLI = 9
+IMAGE_QUALITY_TIRS = 5
+TIRS_SSM_MODEL = “PRELIMINARY”
+TIRS_SSM_POSITION_STATUS = “ESTIMATED”
+TIRS_STRAY_LIGHT_CORRECTION_SOURCE = “TIRS”
+ROLL_ANGLE = -0.001
+SUN_AZIMUTH = 146.64009615
+SUN_ELEVATION = 46.43282219
+EARTH_SUN_DISTANCE = 0.9837502
+SATURATION_BAND_1 = “N”
+SATURATION_BAND_2 = “N”
+SATURATION_BAND_3 = “N”
+SATURATION_BAND_4 = “N”
+SATURATION_BAND_5 = “N”
+SATURATION_BAND_6 = “Y”
+SATURATION_BAND_7 = “Y”
+SATURATION_BAND_8 = “N”
+SATURATION_BAND_9 = “N”
+GROUND_CONTROL_POINTS_VERSION = 4
+GROUND_CONTROL_POINTS_MODEL = 255
+GEOMETRIC_RMSE_MODEL = 7.232
+GEOMETRIC_RMSE_MODEL_Y = 4.547
+GEOMETRIC_RMSE_MODEL_X = 5.624
+GROUND_CONTROL_POINTS_VERIFY = 96
+GEOMETRIC_RMSE_VERIFY = 3.524
+TRUNCATION_OLI = “UPPER”</p>
+</div></blockquote>
+<p>END_GROUP = IMAGE_ATTRIBUTES
+GROUP = MIN_MAX_RADIANCE</p>
+<blockquote>
+<div><p>RADIANCE_MAXIMUM_BAND_1 = 785.37970
+RADIANCE_MINIMUM_BAND_1 = -64.85691
+RADIANCE_MAXIMUM_BAND_2 = 804.23840
+RADIANCE_MINIMUM_BAND_2 = -66.41427
+RADIANCE_MAXIMUM_BAND_3 = 741.09882
+RADIANCE_MINIMUM_BAND_3 = -61.20018
+RADIANCE_MAXIMUM_BAND_4 = 624.93628
+RADIANCE_MINIMUM_BAND_4 = -51.60744
+RADIANCE_MAXIMUM_BAND_5 = 382.42984
+RADIANCE_MINIMUM_BAND_5 = -31.58118
+RADIANCE_MAXIMUM_BAND_6 = 95.10682
+RADIANCE_MINIMUM_BAND_6 = -7.85395
+RADIANCE_MAXIMUM_BAND_7 = 32.05609
+RADIANCE_MINIMUM_BAND_7 = -2.64720
+RADIANCE_MAXIMUM_BAND_8 = 707.25586
+RADIANCE_MINIMUM_BAND_8 = -58.40542
+RADIANCE_MAXIMUM_BAND_9 = 149.46225
+RADIANCE_MINIMUM_BAND_9 = -12.34264
+RADIANCE_MAXIMUM_BAND_10 = 22.00180
+RADIANCE_MINIMUM_BAND_10 = 0.10033
+RADIANCE_MAXIMUM_BAND_11 = 22.00180
+RADIANCE_MINIMUM_BAND_11 = 0.10033</p>
+</div></blockquote>
+<p>END_GROUP = MIN_MAX_RADIANCE
+GROUP = MIN_MAX_REFLECTANCE</p>
+<blockquote>
+<div><p>REFLECTANCE_MAXIMUM_BAND_1 = 1.210700
+REFLECTANCE_MINIMUM_BAND_1 = -0.099980
+REFLECTANCE_MAXIMUM_BAND_2 = 1.210700
+REFLECTANCE_MINIMUM_BAND_2 = -0.099980
+REFLECTANCE_MAXIMUM_BAND_3 = 1.210700
+REFLECTANCE_MINIMUM_BAND_3 = -0.099980
+REFLECTANCE_MAXIMUM_BAND_4 = 1.210700
+REFLECTANCE_MINIMUM_BAND_4 = -0.099980
+REFLECTANCE_MAXIMUM_BAND_5 = 1.210700
+REFLECTANCE_MINIMUM_BAND_5 = -0.099980
+REFLECTANCE_MAXIMUM_BAND_6 = 1.210700
+REFLECTANCE_MINIMUM_BAND_6 = -0.099980
+REFLECTANCE_MAXIMUM_BAND_7 = 1.210700
+REFLECTANCE_MINIMUM_BAND_7 = -0.099980
+REFLECTANCE_MAXIMUM_BAND_8 = 1.210700
+REFLECTANCE_MINIMUM_BAND_8 = -0.099980
+REFLECTANCE_MAXIMUM_BAND_9 = 1.210700
+REFLECTANCE_MINIMUM_BAND_9 = -0.099980</p>
+</div></blockquote>
+<p>END_GROUP = MIN_MAX_REFLECTANCE
+GROUP = MIN_MAX_PIXEL_VALUE</p>
+<blockquote>
+<div><p>QUANTIZE_CAL_MAX_BAND_1 = 65535
+QUANTIZE_CAL_MIN_BAND_1 = 1
+QUANTIZE_CAL_MAX_BAND_2 = 65535
+QUANTIZE_CAL_MIN_BAND_2 = 1
+QUANTIZE_CAL_MAX_BAND_3 = 65535
+QUANTIZE_CAL_MIN_BAND_3 = 1
+QUANTIZE_CAL_MAX_BAND_4 = 65535
+QUANTIZE_CAL_MIN_BAND_4 = 1
+QUANTIZE_CAL_MAX_BAND_5 = 65535
+QUANTIZE_CAL_MIN_BAND_5 = 1
+QUANTIZE_CAL_MAX_BAND_6 = 65535
+QUANTIZE_CAL_MIN_BAND_6 = 1
+QUANTIZE_CAL_MAX_BAND_7 = 65535
+QUANTIZE_CAL_MIN_BAND_7 = 1
+QUANTIZE_CAL_MAX_BAND_8 = 65535
+QUANTIZE_CAL_MIN_BAND_8 = 1
+QUANTIZE_CAL_MAX_BAND_9 = 65535
+QUANTIZE_CAL_MIN_BAND_9 = 1
+QUANTIZE_CAL_MAX_BAND_10 = 65535
+QUANTIZE_CAL_MIN_BAND_10 = 1
+QUANTIZE_CAL_MAX_BAND_11 = 65535
+QUANTIZE_CAL_MIN_BAND_11 = 1</p>
+</div></blockquote>
+<p>END_GROUP = MIN_MAX_PIXEL_VALUE
+GROUP = RADIOMETRIC_RESCALING</p>
+<blockquote>
+<div><p>RADIANCE_MULT_BAND_1 = 1.2974E-02
+RADIANCE_MULT_BAND_2 = 1.3286E-02
+RADIANCE_MULT_BAND_3 = 1.2242E-02
+RADIANCE_MULT_BAND_4 = 1.0324E-02
+RADIANCE_MULT_BAND_5 = 6.3175E-03
+RADIANCE_MULT_BAND_6 = 1.5711E-03
+RADIANCE_MULT_BAND_7 = 5.2955E-04
+RADIANCE_MULT_BAND_8 = 1.1683E-02
+RADIANCE_MULT_BAND_9 = 2.4690E-03
+RADIANCE_MULT_BAND_10 = 3.3420E-04
+RADIANCE_MULT_BAND_11 = 3.3420E-04
+RADIANCE_ADD_BAND_1 = -64.86989
+RADIANCE_ADD_BAND_2 = -66.42756
+RADIANCE_ADD_BAND_3 = -61.21242
+RADIANCE_ADD_BAND_4 = -51.61776
+RADIANCE_ADD_BAND_5 = -31.58750
+RADIANCE_ADD_BAND_6 = -7.85552
+RADIANCE_ADD_BAND_7 = -2.64773
+RADIANCE_ADD_BAND_8 = -58.41710
+RADIANCE_ADD_BAND_9 = -12.34511
+RADIANCE_ADD_BAND_10 = 0.10000
+RADIANCE_ADD_BAND_11 = 0.10000
+REFLECTANCE_MULT_BAND_1 = 2.0000E-05
+REFLECTANCE_MULT_BAND_2 = 2.0000E-05
+REFLECTANCE_MULT_BAND_3 = 2.0000E-05
+REFLECTANCE_MULT_BAND_4 = 2.0000E-05
+REFLECTANCE_MULT_BAND_5 = 2.0000E-05
+REFLECTANCE_MULT_BAND_6 = 2.0000E-05
+REFLECTANCE_MULT_BAND_7 = 2.0000E-05
+REFLECTANCE_MULT_BAND_8 = 2.0000E-05
+REFLECTANCE_MULT_BAND_9 = 2.0000E-05
+REFLECTANCE_ADD_BAND_1 = -0.100000
+REFLECTANCE_ADD_BAND_2 = -0.100000
+REFLECTANCE_ADD_BAND_3 = -0.100000
+REFLECTANCE_ADD_BAND_4 = -0.100000
+REFLECTANCE_ADD_BAND_5 = -0.100000
+REFLECTANCE_ADD_BAND_6 = -0.100000
+REFLECTANCE_ADD_BAND_7 = -0.100000
+REFLECTANCE_ADD_BAND_8 = -0.100000
+REFLECTANCE_ADD_BAND_9 = -0.100000</p>
+</div></blockquote>
+<p>END_GROUP = RADIOMETRIC_RESCALING
+GROUP = TIRS_THERMAL_CONSTANTS</p>
+<blockquote>
+<div><p>K1_CONSTANT_BAND_10 = 774.8853
+K2_CONSTANT_BAND_10 = 1321.0789
+K1_CONSTANT_BAND_11 = 480.8883
+K2_CONSTANT_BAND_11 = 1201.1442</p>
+</div></blockquote>
+<p>END_GROUP = TIRS_THERMAL_CONSTANTS
+GROUP = PROJECTION_PARAMETERS</p>
+<blockquote>
+<div><p>MAP_PROJECTION = “UTM”
+DATUM = “WGS84”
+ELLIPSOID = “WGS84”
+UTM_ZONE = 28
+GRID_CELL_SIZE_PANCHROMATIC = 15.00
+GRID_CELL_SIZE_REFLECTIVE = 30.00
+GRID_CELL_SIZE_THERMAL = 30.00
+ORIENTATION = “NORTH_UP”
+RESAMPLING_OPTION = “CUBIC_CONVOLUTION”</p>
+</div></blockquote>
+<p>END_GROUP = PROJECTION_PARAMETERS</p>
+</dd>
+</dl>
+<p>END_GROUP = L1_METADATA_FILE
+END</p>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Christina Ludwig
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

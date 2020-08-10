@@ -1,43 +1,30 @@
-.. cs4geos20 documentation master file, created by
-   sphinx-quickstart on Thu Mar 19 20:06:07 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+Learning goals
+################################
 
-Welcome to Advanced GeoScripting: Introduction to Scientific Programming SS2020
-================================================================================
+Why is this course important
+==============================
 
-This website contains all material for the course "Advanced Geoscripting" given at the Heidelberg University during the summer term 2020.
+.. image:: ../_static/images/scientists_nightmare.png
+  :width: 500
+  :alt: A scientist's nightmare
 
+Read the full story |here|.
 
-.. toctree::
-   :maxdepth: 1
-   :caption: General Information
+  .. |here| raw:: html
 
-   general/administration
-   general/communication
-   general/resources
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Course Preparation
-
-   preparation/preparatory_assignment/README.md
-   preparation/software_setup
-   git/index
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Course Content
-
-.. raster/index
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Final Assignment
-
-   final_assignment/index
+     <a href="https://science.sciencemag.org/content/314/5807/1856.long" target="_blank">here</a>
 
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Contribute
+Learning goals
+==============================
+
+By the end of the course you will be able to …
+
+ * ... know and use state-of-the-art python packages for geodata processing,
+ * ... make (interactive) graphs and maps in Python,
+ * ... describe the components of a computer and explain how they affect your program,
+ * ... optimise your program for efficiency,
+ * ... write a well structured, readable and documented program,
+ * ... use git to keep track of all your changes during the development process,
+ * ... test your program to ensure correct and reproducible results.
+ * ... keep teaching yourself programming.

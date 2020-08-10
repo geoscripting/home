@@ -1,0 +1,800 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "# Part 2: Why all these packages?\n",
+    "\n",
+    "In the first part of this assignment you learned about `shapely` and `fiona` to represent geospatial vector data and perform geometric operations. From the GeoScripting course you already know the `ogr` package which provides the same functionalities. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Python packages `ogr` and `gdal` enable vector and raster data processing"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "* `ogr` and `gdal` are automatically generated Python bindings (using SWIG) to the C libraries GDAL and OGR "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "* So when you use `ogr` and `gdal` classes in Python you are actually executing C code. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "&rarr; Great! C is fast and we can use it from Python."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## So why would we need other Python packages for geo data processing? "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "In discussions about Python you will often read statements like this:\n",
+    "\n",
+    "![gdal_vs_rasterio](img/gdal_vs_rasterio.png)\n",
+    "\n",
+    "[Source: GitHub Issue - rasterio vs python gdal #11](https://github.com/inbo/niche_vlaanderen/issues/11)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### In this assignment we will focus on the following questions: "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "1. What does _[Pythonic](https://docs.python-guide.org/writing/style/)_ mean? Why is it suitable for scientists?\n",
+    "2. Why are `ogr` and `gdal` not _Pythonic_ enough? \n",
+    "3. What are the advantages and disadvantages of using ogr, shapely or your own implementation? "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Comparing ogr, shapely and pure Python"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "In this first section of the assignment we will **compare three different ways of representing a polygon in Python.**\n",
+    "\n",
+    "1. A very simplified, **pure Python implementation** written by yourself.\n",
+    "2. The **`Geometry` class provided by `ogr` package**.\n",
+    "3. The **`Polygon` class provided by the `shapely` package.**"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "#### The three methods should be compared in regard to:\n",
+    "* Execution time\n",
+    "* Programming time (how long did it take to write the code)\n",
+    "* Readability\n",
+    "* Flexibility (how easily can you adapt it to your needs)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### 1. Create your own `Polygon` class in Python"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 1.1:__ Write a class called `MyPolygon` which takes a list of tuples containing the coordinates of the polygon for initialization. The coordinates should be stored as an attribute of the instance called \"coordinates\". Use the `test_coordinates` below to test your class. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "test_coordinates = [(1,1),(1,2),(2,2),(2,1),(1,1)]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "class MyPolygon:\n",
+    "        \n",
+    "    def __init__(self, coordinates):\n",
+    "        pass\n",
+    "        "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "my_poly = MyPolygon(test_coordinates)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "source": [
+    "Test whether the instance of class `Polygon` returns the right value. If there is not error message, everything's fine. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "assert my_poly.coordinates == test_coordinates"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "__E 1.2:__ Add a method `envelope` which calculates the bounding box of the polygon. The method should return the bounding box as a list containing the coordinates of the bounding box `[min_x, min_y, max_x, max_y]`.\n",
+    "\n",
+    "__Note:__ A bounding box is often reffered to as the envelope of a geometry."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "class MyPolygon():\n",
+    "        \n",
+    "    def __init__(self, coordinates):\n",
+    "        pass\n",
+    "        \n",
+    "    def envelope(self):\n",
+    "        pass"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "my_poly = MyPolygon(test_coordinates)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "minX: 1, minY: 1, maxX: 2, maxY: 2\n"
+     ]
+    }
+   ],
+   "source": [
+    "my_poly_env = my_poly.envelope()\n",
+    "print(\"minX: {0}, minY: {1}, maxX: {2}, maxY: {3}\".format(*my_poly_env))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### 2. Calculate bounding box using  `ogr.Geometry`\n",
+    "So you've created a very simple Polygon class in Python with just a few lines of code. Now let's compare your implementation to the one provided by the `ogr` package. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "__E 2.1:__ Use the `ogr` package to create a polygon object using the same `test_coordinates` as above."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "import ogr"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "__E 2.2:__ Calculate the envelope of the polygon. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "Are the results from your class and the ogr class the same? If not check your code.\n",
+    "\n",
+    "__Note:__ Remember that the order of the coordinates of the bounding box returned by `ogr` method is  `[min_x, max_x, min_y, max_y]`. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### 3. Calculate the bounding box using `shapely` \n",
+    "\n",
+    "Those were a lot of lines just for creating a simple polygon. For this reason, `shapely` was developed. Creating a geometry using shapely works the same way as for our Python implementation. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__E 3.1:__ Use `shapely` package to create a polygon object using the same `test_coordinates` as above."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "from shapely.geometry import Polygon"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "__E 3.2:__ Calculate the bounding box of the shapely polygon using the method `bounds()`. Again, check if your results are the same."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### 4. Comparison of execution time\n",
+    "Compare the exectution times of both methods using the magic command `%%timeit`. This function will execute the cell multiple times to get a good estimate of the execution time. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Exection time of bounding box calculation\n",
+    "__E 4.1:__ Compare the exection times of the calculation of the bounding box of all three methods. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1.87 µs ± 117 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)\n"
+     ]
+    }
+   ],
+   "source": [
+    "%%timeit\n",
+    "my_poly.envelope()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "561 ns ± 28.7 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n"
+     ]
+    }
+   ],
+   "source": [
+    "%%timeit\n",
+    "ogr_poly.GetEnvelope()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {
+    "scrolled": true,
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "36.1 µs ± 3.58 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)\n"
+     ]
+    }
+   ],
+   "source": [
+    "%%timeit\n",
+    "shapely_poly.bounds"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "__Question:__ What do you observe when you compre the execution times of all three methods? Can you explain the difference in execution times?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "__Answer:__ "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "#### Comparison bounding box creation and object creation\n",
+    "\n",
+    "When choosing the most efficient way to calculate something, we also need to consider the _overhead_ of the calculation. The _overhead_ contains all the processing steps that need to be taken as a preparation before the execution of the desired calculation. Depending on the implementation, this can change your decision.  "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "__E 4.2:__ Measure the execution times of all three implementations __including the object creation.__ "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# my_poly"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# ogr_poly"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# shapely_poly"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "__Question:__ What do you observe when you compre the execution times and the object creation of all three polygon implementations? Can you explain the difference in execution times?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "source": [
+    "__Your Answer:__"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### 5. Questions for Discussion"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "__Q1:__ Based on your results of the exercises, evaluate the three methods in the table below. (Double click the cell, to edit it)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "\n",
+    "|            | Execution time <br> (fast - slow)| Programming time <br> (fast - slow)| Readability <br> (high - low) | Flexibility  <br> (high - low)       |\n",
+    "|------------|----------------|------------------|-------------|-------------------|\n",
+    "| __DIY Python__ |            |              |         |               |\n",
+    "| __OGR__        |      |              |          |  |\n",
+    "| __Shapely__    |      |              |         |  |"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "__Q2:__ Answer the questions from the beginning of the notebook. \n",
+    "\n",
+    "1. First, try to answer them on your own. \n",
+    "2. Then, discuss them in groups or pairs with your peers. \n",
+    "3. We will discuss the results in the course at the end of today's session. \n",
+    "\n",
+    "Please provide your answers below."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "1. What does _[Pythonic](https://docs.python-guide.org/writing/style/)_ mean? Why is it suitable for scientists?\n",
+    "2. Why are `ogr` and `gdal` not _Pythonic_ enough? \n",
+    "3. What are the advantages and disadvantages of using ogr, shapely or your own implementation for vector data processing? "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__Your answers:__"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### Summary:\n",
+    "\n",
+    "* There are different ways to perform geometric manipulations in Python. \n",
+    "* However, when we do complex spatial analysis, we will need to apply these operations to whole layers and not just single features. \n",
+    "* To make such analyses possible the `pandas` and `geopandas` packages are used. \n",
+    "\n",
+    "In the last part of the assignment, we will look at the `pandas` an `geopandas` packages to perform more complex spatial analyses. \n",
+    "\n",
+    "&rarr; Continue with [Part 3: Vector Data Analysis using GeoPandas](./02-geopandas.ipynb)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## References\n",
+    "\n",
+    "If you would like to take a deeper look at object oriented programming in Python take a look at the following resources: \n",
+    "\n",
+    "* [Object Oriented Programming in Python](https://github.com/TheDigitalCatOnline/thedigitalcatonline.github.com/tree/master/notebooks)\n",
+    "* [Python Tutorial](https://docs.python.org/3/tutorial/classes.html)\n",
+    "* [Abstract Classes](https://docs.python.org/3/library/abc.html#module-abc)\n",
+    "* [Computational Geometry in Python: From Theory to Application](https://www.toptal.com/python/computational-geometry-in-python-from-theory-to-implementation\n",
+    ")\n",
+    "\n",
+    "    \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "celltoolbar": "Slideshow",
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3"
+  },
+  "toc": {
+   "base_numbering": 1,
+   "nav_menu": {},
+   "number_sections": true,
+   "sideBar": true,
+   "skip_h1_title": false,
+   "title_cell": "Table of Contents",
+   "title_sidebar": "Contents",
+   "toc_cell": false,
+   "toc_position": {},
+   "toc_section_display": true,
+   "toc_window_display": false
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

@@ -1,0 +1,2082 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Vectorized Computation using Numpy"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We have just learned about the logical set-up of a computer and which factors affect the performance of it. Keeping this in mind, we will learn how we can improve the performance of our code in Python."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "https://pandas.pydata.org/pandas-docs/stable/user_guide/basics.html#accelerated-operations"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "heading_collapsed": true
+   },
+   "source": [
+    "## 1. Vectorization\n",
+    "\n",
+    "The motto of the EuroSciPy Conference 2018 was: _\"Vectorized is better than an explict loop\"_ \n",
+    "\n",
+    "![vectorized_tshirt](img/IMG_20190807_082235.jpg)\n",
+    "\n",
+    "What does that mean? Let's take a look back at the logical setup of a computer. \n",
+    "\n",
+    "![vectorized_setup](img/vectorization.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "__Example:__ We want to add the values of two lists of integers. How would you do this?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [],
+   "source": [
+    "values1 = [1,2,3,4]\n",
+    "values2 = [5,6,7,8]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[6, 8]"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "[values1[0] + values2[0], values1[1] + values2[1]]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "hidden": true,
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "663 ns ± 17.3 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n"
+     ]
+    }
+   ],
+   "source": [
+    "%%timeit \n",
+    "result = []\n",
+    "for v1, v2 in zip(values1, values2):\n",
+    "    #v_sum =  \n",
+    "    #print(v1, v2, v_sum)\n",
+    "    result.append(v1 + v2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "__Exercise:__ Let's try this with bigger data. Create a list of integers of length 100."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [],
+   "source": [
+    "nvals = 1000\n",
+    "values1 = list(range(0, nvals))\n",
+    "values2 = list(range(0, nvals))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [],
+   "source": [
+    "def loop_sum(values1, values2):\n",
+    "    result = []\n",
+    "    for v1, v2 in zip(values1, values2):\n",
+    "        result.append(v1 + v2)\n",
+    "    return result"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "110 µs ± 3.67 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)\n"
+     ]
+    }
+   ],
+   "source": [
+    "%%timeit\n",
+    "res = loop_sum(values1, values2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "### Numpy for vectorized computations\n",
+    "Numpy is a library that introduces vectorized computations in Python. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [],
+   "source": [
+    "import numpy as np"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "values1[0:10]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [],
+   "source": [
+    "np_values1 = np.array(values1)\n",
+    "np_values2 = np.array(values2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "numpy.ndarray"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(np_values2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "You can extract certain values by indexing it just like with lists. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np_values1[0]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "Let's implement the function above using numpy"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [],
+   "source": [
+    "def vectorized_sum(vals1, vals2):\n",
+    "    # alternativ geht auch \n",
+    "    #return vals1 + vals2\n",
+    "    return np.add(vals1, vals2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1.05 µs ± 44.3 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n"
+     ]
+    }
+   ],
+   "source": [
+    "%%timeit \n",
+    "res = vectorized_sum(np_values1, np_values2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "### Compare the execution times of \"loops\" vs. \"vectorized\" function"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "469 ns ± 19.2 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n",
+      "553 ns ± 6.39 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n",
+      "540 ns ± 16.1 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n",
+      "598 ns ± 23.9 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n",
+      "737 ns ± 6.19 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n",
+      "577 ns ± 27.1 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n",
+      "1.12 µs ± 23 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n",
+      "566 ns ± 5.9 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n",
+      "1.88 µs ± 17.6 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n",
+      "565 ns ± 6.77 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n",
+      "3.35 µs ± 59.7 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)\n",
+      "565 ns ± 5.89 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n",
+      "6.75 µs ± 367 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)\n",
+      "618 ns ± 19.6 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n",
+      "13.8 µs ± 297 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)\n",
+      "724 ns ± 41.7 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n",
+      "27.5 µs ± 769 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)\n",
+      "728 ns ± 24.7 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n",
+      "57.2 µs ± 2.95 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)\n",
+      "873 ns ± 50.8 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n"
+     ]
+    }
+   ],
+   "source": [
+    "loop_times = []\n",
+    "vectorized_times = []\n",
+    "length_of_list = []\n",
+    "for exponent in range(0, 10, 1):\n",
+    "    nvals = 2 ** exponent\n",
+    "    length_of_list.append(nvals)\n",
+    "    values1 = list(range(0, nvals))\n",
+    "    values2 = list(range(0, nvals))\n",
+    "    np_values1 = np.array(values1)\n",
+    "    np_values2 = np.array(values2)\n",
+    "    result = %timeit -o loop_sum(values1, values2)\n",
+    "    loop_times.append(result.average)\n",
+    "    result = %timeit -o vectorized_sum(np_values1, np_values2)\n",
+    "    vectorized_times.append(result.average)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 56,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [],
+   "source": [
+    "import matplotlib.pyplot as plt"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 58,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Text(0, 0.5, 'Execution time')"
+      ]
+     },
+     "execution_count": 58,
+     "metadata": {},
+     "output_type": "execute_result"
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<Figure size 432x288 with 1 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "plt.plot(length_of_list, loop_times)\n",
+    "plt.plot(length_of_list, vectorized_times)\n",
+    "plt.legend([\"for\", \"vectorized\"])\n",
+    "plt.title(\"Average execution times\")\n",
+    "plt.xlabel(\"Length of list/array\")\n",
+    "plt.ylabel(\"Execution time\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "### Take-Home Message\n",
+    "\n",
+    "__Try to get rid of for loops!__\n",
+    "\n",
+    "__When ever you are performing the same calculation on multiple data, use vectoried functions!__ \n",
+    "Numpy is a very powerful library for that and has many functions implemented in a very efficient way, partly in C.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Vectorization in Pandas"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Remeber that the package Pandas is built on Numpy. So every Pandas.DataFrame is basically a numpy.array with additional row and column anmes. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df = pd.DataFrame({\"pop\": [1,2,3,4,5,6,7,5,4,6,78,44,5,33,5,6,7], \n",
+    "                  \"area\": [1,2,3,4,5,6,7,5,4,6,78,44,5,33,5,6,7]})"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "pandas.core.frame.DataFrame"
+      ]
+     },
+     "execution_count": 39,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(df)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Intuitively you might want to use a for loop to iterate over the rows. Something like this: "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1.31 ms ± 4.52 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)\n"
+     ]
+    }
+   ],
+   "source": [
+    "%%timeit\n",
+    "for i, d in df.iterrows():\n",
+    "    d[\"pop\"] * d[\"area\"]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This is however a bad idea, because you are not making use of the built-in vectorized functions provided by numpy: "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "116 µs ± 1.42 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)\n"
+     ]
+    }
+   ],
+   "source": [
+    "%%timeit\n",
+    "df[\"pop\"] * df[\"area\"]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Using the vectorized calculation, the execution is 10 times faster!"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For more complex functions you will have use the `.DataFrame.apply` or `Series.map` methods. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 60,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df.loc[1, \"pop\"] = np.nan"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 61,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0        1.0\n",
+       "1      -99.0\n",
+       "2        9.0\n",
+       "3       16.0\n",
+       "4       25.0\n",
+       "5       36.0\n",
+       "6       49.0\n",
+       "7       25.0\n",
+       "8       16.0\n",
+       "9       36.0\n",
+       "10    6084.0\n",
+       "11    1936.0\n",
+       "12      25.0\n",
+       "13    1089.0\n",
+       "14      25.0\n",
+       "15      36.0\n",
+       "16      49.0\n",
+       "dtype: float64"
+      ]
+     },
+     "execution_count": 61,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.apply(lambda x: -99 if np.isnan(x[\"pop\"]) else x[\"pop\"] * x[\"area\"], axis=1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 62,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1.27 ms ± 70.3 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)\n"
+     ]
+    }
+   ],
+   "source": [
+    "%%timeit\n",
+    "df.apply(lambda x: 0 if np.isnan(x[\"pop\"]) else x[\"pop\"] * x[\"area\"], axis=1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "However there is still an overhead involved when using pandas.DataFrames compared to numpy.array, since the metadata (e.g. index, columns, dtype) of the data frame have to be stored as well. When setting `raw=True` the `apply` as applied to a numpy array instead of the series. This means the column names are gone but it is a lot faster. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 67,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1.29 ms ± 13.7 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)\n"
+     ]
+    }
+   ],
+   "source": [
+    "%%timeit\n",
+    "df.apply(lambda x: -99 if np.isnan(x[0]) else x[0] * x[1], axis=1, raw=True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Resources"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "[Cythonize Pandas](https://pandas.pydata.org/pandas-docs/stable/user_guide/enhancingperf.html)\n",
+    "\n",
+    "https://stackoverflow.com/questions/52673285/performance-of-pandas-apply-vs-np-vectorize-to-create-new-column-from-existing-c\n",
+    "\n",
+    "https://www.google.com/url?q=http://homepages.math.uic.edu/~jan/mcs275/running_cython.pdf&sa=U&ved=2ahUKEwiq_M3-vfrqAhWF-KQKHXBXCfwQFjAAegQICRAB&usg=AOvVaw0jX9BZrTt2aPsxKo30zmDb\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 3. Vectorization in GeoPandas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pygeos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import geopandas as gpd"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "gpd.use_pygeos = False"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Compare ogr and Geopandas"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "iterate over features"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Resources\n",
+    "\n",
+    "https://caspervdw.github.io/Introducing-Pygeos/\n",
+    "\n",
+    "[PyGEOS Documentation](https://pygeos.readthedocs.io/en/latest/)\n",
+    "    \n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "heading_collapsed": true
+   },
+   "source": [
+    "## 2. Basics of Numpy"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "### Generating Numpy Arrays"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {
+    "hidden": true,
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], dtype=int16)"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "values = np.arange(0, 10, 1, dtype=\"int16\")\n",
+    "values"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {
+    "hidden": true,
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0.])"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "ndzeros = np.zeros(10)\n",
+    "ndzeros"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1.])"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "ndone = np.ones(10)\n",
+    "ndone"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([26,  2,  8, 83, 59, 80, 55, 19, 30, 72])"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "random_ints = np.random.randint(0, 100, 10)\n",
+    "random_ints"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0.22550162, 0.19518921, 0.18987695, 0.98540563, 0.62319535,\n",
+       "       0.86390692, 0.44673619, 0.63848026, 0.19672036, 0.22730732])"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "random_float = np.random.random(10)\n",
+    "random_float"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "### Slicing an Array = Extracting a range of values from a numpy array"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], dtype=int16)"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "values"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "metadata": {
+    "hidden": true,
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([5, 6, 7, 8, 9], dtype=int16)"
+      ]
+     },
+     "execution_count": 23,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "values[5:]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0, 1, 2, 3, 4, 5, 6, 7], dtype=int16)"
+      ]
+     },
+     "execution_count": 24,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "values[:-2]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0, 2, 4, 6, 8], dtype=int16)"
+      ]
+     },
+     "execution_count": 25,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "values[::2]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "Replacing values"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ 0, 99,  2,  3,  4,  5,  6,  7,  8,  9], dtype=int16)"
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "values[1] = 99\n",
+    "values"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([88, 88,  2,  3,  4,  5,  6,  7,  8,  9], dtype=int16)"
+      ]
+     },
+     "execution_count": 27,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "values[:2] = [88, 88]\n",
+    "values"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "metadata": {
+    "hidden": true,
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ True,  True, False, False, False, False,  True,  True,  True,\n",
+       "        True])"
+      ]
+     },
+     "execution_count": 28,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "values > 5 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([5, 5, 2, 3, 4, 5, 5, 5, 5, 5], dtype=int16)"
+      ]
+     },
+     "execution_count": 29,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "values[values > 5] =  5\n",
+    "values"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "### Vectorized Calculations"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([2262,  152,  520, 4150, 3363, 6080, 1265, 1235, 1290, 3384])"
+      ]
+     },
+     "execution_count": 30,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "random_ints2 = np.random.randint(0, 100, 10)\n",
+    "result = random_ints * random_ints2\n",
+    "result"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "np.array([1,2,3]).min()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "### Multi-Dimensional Arrays\n",
+    "Numpy array can also be multidimensional. A 2D array with 10 rows and 5 columns can be created like this using the `reshape()` function."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16,\n",
+       "       17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33,\n",
+       "       34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49])"
+      ]
+     },
+     "execution_count": 31,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr1D = np.arange(0, 50, 1)\n",
+    "arr1D"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "metadata": {
+    "hidden": true,
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 0,  1,  2,  3,  4],\n",
+       "       [ 5,  6,  7,  8,  9],\n",
+       "       [10, 11, 12, 13, 14],\n",
+       "       [15, 16, 17, 18, 19],\n",
+       "       [20, 21, 22, 23, 24],\n",
+       "       [25, 26, 27, 28, 29],\n",
+       "       [30, 31, 32, 33, 34],\n",
+       "       [35, 36, 37, 38, 39],\n",
+       "       [40, 41, 42, 43, 44],\n",
+       "       [45, 46, 47, 48, 49]])"
+      ]
+     },
+     "execution_count": 32,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr2D = arr1D.reshape(10, 5)\n",
+    "arr2D"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 0,  1,  2,  3,  4],\n",
+       "       [ 5,  6,  7,  8,  9],\n",
+       "       [10, 11, 12, 13, 14],\n",
+       "       [15, 16, 17, 18, 19],\n",
+       "       [20, 21, 22, 23, 24],\n",
+       "       [25, 26, 27, 28, 29],\n",
+       "       [30, 31, 32, 33, 34],\n",
+       "       [35, 36, 37, 38, 39],\n",
+       "       [40, 41, 42, 43, 44],\n",
+       "       [45, 46, 47, 48, 49]])"
+      ]
+     },
+     "execution_count": 33,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr2D = np.arange(0,50, 1).reshape(10, 5)\n",
+    "arr2D"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [],
+   "source": [
+    "import matplotlib.pyplot as plt"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "metadata": {
+    "hidden": true,
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<matplotlib.colorbar.Colorbar at 0x11faa1518>"
+      ]
+     },
+     "execution_count": 35,
+     "metadata": {},
+     "output_type": "execute_result"
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<Figure size 432x288 with 2 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "plt.imshow(arr2D)\n",
+    "plt.colorbar()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(10, 5)"
+      ]
+     },
+     "execution_count": 36,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr2D.shape"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 6],\n",
+       "       [11]])"
+      ]
+     },
+     "execution_count": 37,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr2D[1:3,1:2]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ 2.,  7., 12., 17., 22., 27., 32., 37., 42., 47.])"
+      ]
+     },
+     "execution_count": 38,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr2D.mean(axis=1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "heading_collapsed": true
+   },
+   "source": [
+    "## Numpy Exercises:\n",
+    "Let's do some exercises to get familiar with Numpy. If you don't know the required function, type np. and press TAB to display availabel functions. If you have found the right function, but you don't know the required parameters, check the docstring of the function by putting the cursor on the function name and press SHIFT + Tab to get the docstring.\n",
+    "\n",
+    "__You can find the solutions and a lot more numpy exercises in this [repo](https://github.com/rougier/numpy-100).__"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "__1. Create a vector with values ranging from 10 to 49__"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "__2. Calculate the square root of each element of the array above.__ "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "__3. Create a null vector of size 10 but the fifth value which is 1.__ \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "__4. Create a random vector of size 30 and find the minimum and maximum value.__"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "__5. Bonus: Create a 3x3 matrix with values ranging from 0 to 8.__ Hint: Take a look at `np.reshape()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "__6. Bonus: Create a 10x10 array with random values and find the mean value of each row.__"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "__7. What are the results of the following expressions?__"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [],
+   "source": [
+    "#print(0 * np.nan)\n",
+    "#print(np.nan == np.nan)\n",
+    "#print(np.inf > np.nan)\n",
+    "#print(np.nan - np.nan)\n",
+    "#print(np.nan in set([np.nan]))\n",
+    "#print(0.3 == 3 * 0.1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "__8. Create a 8x8 matrix and fill it with a checkerboard pattern__"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "hidden": true
+   },
+   "source": [
+    "__9. What is the output of__ `print(b[0, 0], b[0, 1], b[1, 0])`?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "metadata": {
+    "hidden": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(2, 3)\n"
+     ]
+    }
+   ],
+   "source": [
+    "b = np.array([[1, 2, 3], [4, 5, 6]])\n",
+    "print(b.shape)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 3. Spatial Locality"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### A puzzling problem\n",
+    "\n",
+    "__Example:__ Let's create an 2 dimensional array with random numbers with 10000 rows and 10000 columns. Then we calculate the mean along the rows and along the columns. We will measure the computation time of each cell using the magic command `%%timeit`. What do you observe? Can you explain the result?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "arr_big = np.random.random(100000000).reshape(10000, 10000)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "78.4 ms ± 4.36 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)\n"
+     ]
+    }
+   ],
+   "source": [
+    "%%timeit\n",
+    "np.mean(arr_big, axis=0)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "55.4 ms ± 2.04 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)\n"
+     ]
+    }
+   ],
+   "source": [
+    "%%timeit\n",
+    "np.mean(arr_big, axis=1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Looking at the way arrays are stored in pyhsical memory might help us explain this phenomenon. \n",
+    "\n",
+    "![spatial_locality](img/row-major-order.png)\n",
+    "![spatial_locality_example1](img/spatial_locality_example.png)\n",
+    "![spatial_locality_example2](img/spatial_locality_example2.png)\n",
+    "![spatial_locality_example3](img/spatial_locality_example3.png)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "By default numpy arrays are stored in C order (row-major), not in F order (column-major). Therefore, calculations along the rows (axis=1) are faster than along the columns (axis=0). So calculating the mean of each row is faster than the mean of each column if the numpy array is stored as default in C order."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "arr2D = np.arange(0, 50, 1).reshape(10, 5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(10, 5)"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr2D.shape"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A multi-dimensional array can be converted to a 1D array using the function `ravel()` with the option to specify C or F order."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 0,  1,  2,  3,  4],\n",
+       "       [ 5,  6,  7,  8,  9],\n",
+       "       [10, 11, 12, 13, 14],\n",
+       "       [15, 16, 17, 18, 19],\n",
+       "       [20, 21, 22, 23, 24],\n",
+       "       [25, 26, 27, 28, 29],\n",
+       "       [30, 31, 32, 33, 34],\n",
+       "       [35, 36, 37, 38, 39],\n",
+       "       [40, 41, 42, 43, 44],\n",
+       "       [45, 46, 47, 48, 49]])"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr2D"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16,\n",
+       "       17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33,\n",
+       "       34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49])"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr2D.ravel()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ 0,  5, 10, 15, 20, 25, 30, 35, 40, 45,  1,  6, 11, 16, 21, 26, 31,\n",
+       "       36, 41, 46,  2,  7, 12, 17, 22, 27, 32, 37, 42, 47,  3,  8, 13, 18,\n",
+       "       23, 28, 33, 38, 43, 48,  4,  9, 14, 19, 24, 29, 34, 39, 44, 49])"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr2D.ravel(order=\"F\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Advanced: Numpy Strides\n",
+    "\"Strides are the number of bytes to jump-over in the memory in order to get from one item to the next item along each direction/dimension of the array. In other words, it's the byte-separation between consecutive items for each dimension.\" [Stack Overflow](https://stackoverflow.com/questions/53097952/how-to-understand-numpy-strides-for-layman)\n",
+    "\n",
+    "__Example:__ For an array of size 10(cols) * 5(rows) stored in C order this would be:\n",
+    "\n",
+    "column stride: 64bits * 5 cells / 8 bits = 40 bytes \n",
+    "\n",
+    "row stride: 64bits * 1 cell / 8 bits = 8 bytes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 49,
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(40, 8)"
+      ]
+     },
+     "execution_count": 49,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr2D.strides"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 50,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(8, 80)"
+      ]
+     },
+     "execution_count": 50,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.asfortranarray(arr2D).strides"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercise:\n",
+    "__Calculate the strides for an F ordered array with 35 columns and 14 rows by hand and then check result using numpy.__"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### FYI: Lists and spatial locality\n",
+    "Arrays are better than lists for continous reading of data, because lists usually only store pointers to variables stored in memory, not the variable values themselves. This can lead to bad spatial locality when reading the data, because the data might be spread all over the memory.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Dtypes of ndarray and how their sizes change\n",
+    "Working with raster data can be very memory intensive especially if you are working with time series analysis. By default a new numpy array has the type float 64bit. Oftentimes this is more than you really need. Therefore, you should choose the data types of your numpy arrays wisely! "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "dtype('float64')"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr = np.random.random(100).reshape(10, 10)\n",
+    "arr.dtype"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "dtype('float64')"
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "zeros = np.zeros(100)\n",
+    "zeros.dtype"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__Exercise:__ Print the data type (`.dtype`) and the size in number of bytes (`.nbytes`) of the array."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "dtype('float64')"
+      ]
+     },
+     "execution_count": 27,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr.dtype"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "800"
+      ]
+     },
+     "execution_count": 24,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr.nbytes"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__Exercise:__ Convert the `arr` to 16 bit integer (\"int16\") using the method `.astype()` and print the size of the variable again. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "arr = arr.astype(\"int16\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "200"
+      ]
+     },
+     "execution_count": 36,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "arr.nbytes"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercises:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__1. How big is an array of size 1000*1000 with these data types in Python in Megabytes?__\n",
+    "1. Bool\n",
+    "2. 8 bit integer\n",
+    "3. 32 bit float\n",
+    "4. 64 bit float\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "__2. Create an array of size 1000 * 1000 filled with zeros. Calculate its size in Megabytes and check the data type. Can you make it more memory efficient?__ "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Summary\n",
+    "\n",
+    "* You should be able now to explain the sentence \"vectorized is better than an explicit loop\".\n",
+    "* When performing calculations you should also consider the way the arrays are stored in memory (row or column major). \n",
+    "\n",
+    "For more on numpy, check out     https://github.com/mingrammer/cs231n-numpy-tutorial/blob/master/numpy_tutorial.ipynb\n",
+    "\n",
+    "Generally, the book by Schmidt, B. et al. (2017) *Parallel programming: concepts and practice* is a very good source for learning more about the numpy and efficient computation."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### References:\n",
+    "\n",
+    "__Micha Gorelick, Ian Ozsvald. High Performance Python. O'Reilly, 2014. (Safari Books)__ (very good)\n",
+    "\n",
+    "Schmidt, B., Gonzalez-Dominguez, J., Hundt, C., & Schlarb, M. (2017). Parallel programming: concepts and practice. Morgan Kaufmann. [Google Books](https://books.google.de/books?hl=en&lr=&id=-y9HDgAAQBAJ&oi=fnd&pg=PP1&dq=Parallel+Programming:+Concepts+and+Practice&ots=vPL3kPvTkJ&sig=gN5EA0okkbtUHufPvTB37MAGFis)\n",
+    "\n",
+    "Spatial locality explained: http://www.tophatstuff.co.uk/index.html@p=119.html\n",
+    " "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

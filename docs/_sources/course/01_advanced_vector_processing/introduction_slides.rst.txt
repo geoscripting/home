@@ -1,0 +1,152 @@
+.. title: Introduction to Advanced geoscripting
+
+.. role::  raw-html(raw)
+    :format: html
+
+.. role:: red
+.. role:: blue
+
+
+Advanced Geoscripting: Introduction to Scientific Computing
+===============================================================
+
+Heidelberg University | Institute of Geography | August 10th 2020
+
+Christina Ludwig
+
+----
+
+:data-y: r1000
+
+Agenda
+=======
+
+0. Learning goals
+1. Geography vs. GIS vs. Computer Science
+2. Programming Languages
+3. Practical: Assignment
+
+----
+
+
+.. include:: learning_goals.rst
+
+----
+
+Geography vs. Geo-Information Science vs. Computer Science
+============================================================
+
+Build three groups:
+
+* Geographer (Breakout room 1)
+* Geo-Information Scientist (Breakout room 2)
+* Computer Scientist (Breakout room 3)
+
+**Discuss in groups:**
+
+What is the expertise of a geographer/GIScientist/computer scientist in regard to (spatial) data analysis?
+
+----
+
+Subdisciplines of computer science
+==========================================
+
+.. image:: ./img/computer_science.png
+  :width: 750
+  :align: center
+  :alt: computerscience
+
+----
+
+Geography - GIS - Computer Science
+==========================================
+
+:raw-html:`<br>`
+
+**Quantitative Geography:** Using GIS to learn about the :red:`world` .
+
+:raw-html:`<br>`
+
+**Geoinformatics:** Studying :red:`geographic` :blue:`methods, data structures`, etc.
+
+:raw-html:`<br>`
+
+**Computer Science:** Focusing on :blue:`methods, data structures`, etc.
+
+
+----
+
+Abstraction in Geographic Analyses
+=====================================
+
+.. image:: ./img/abstraction_geography.png
+  :width: 300
+  :align: left
+  :alt: abstraction_geography
+
+
+:raw-html:`<br>`
+
+
+Which data is necessary to model the problem or process?
+
+Which geometric representation is suitable to model the problem or process?
+
+:raw-html:`<br>`
+:raw-html:`<br>`
+:raw-html:`<br>`
+
+----
+
+Abstraction in Computer Science
+================================
+
+.. image:: ./img/programming_languages.png
+  :width: 900
+  :alt: programming_languages
+
+----
+
+
+Interpretation vs. Compilation
+================================
+
+.. image:: ./img/compiler_interpreter.png
+  :width: 700
+  :alt: compiled_interpreted
+
+What are the **differences between compilers and interpreters** regarding the following aspects?
+
+* Execution time (fast - slow)
+* Degree of abstraction (natural language - machine language)
+* Typing (dynamic - static)
+* Memory management (manual - automatic)
+
+
+----
+
+Interpretation vs. Compilation
+================================
+
+.. image:: ./img/py_vs_c.png
+  :width: 700
+  :align: center
+  :alt: pro_con
+
+----
+
+Questions?
+================================
+
+----
+
+Practical Part: Advanced Vector Data Analysis
+===============================================
+
+The assignment has three parts:
+
+* Part 1: Introduction to vector data processing in Python
+* Part 2: Why all these packages?
+* Part 3: Vector Data Analysis using GeoPandas
+
+Access and submission via GitHub Classroom (see course webpage).

@@ -1,0 +1,358 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "# Bonus: Object Oriented Programming\n",
+    "\n",
+    "Heidelberg University | Institute of Geography | August 10th 2020\n",
+    "\n",
+    "Christina Ludwig"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "* add an __iter__ and __next__ class: use generator to yield coordinates\n",
+    "* create a point class and a geometry class from which point and polygon inherit from \n",
+    "* write abstract base class\n",
+    "* Write a decorator function for the print coordinates function:\n",
+    "* add a class attribute \"Polygon\"\n",
+    "* add a __str__ mehdos"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Conclusions"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "* Why do we need more Pyhtonic modules than OGR and GDAL? For prototyping you should be able to write code fast. Only later on you optimize if necessary. Don't step into the the trap of premature optimization.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## For the interested ones: Bonus exercises on Object-oriented Programming"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "1. __Set Geometry Type:__ All instances of this class are considered polygons. Therefore, we can add a _class attribute_ `geom_type='polygon'` which will hold this information. Add a new class attribute `geom_type = 'Polygon'`. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 353,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class MyPolygon:\n",
+    "        \n",
+    "    geom_type = \"Polygon\"\n",
+    "    \n",
+    "    def __init__(self, coordinates):\n",
+    "        self.coordinates = coordinates\n",
+    "        \n",
+    "    def envelope(self):\n",
+    "        pass"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 354,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_poly = MyPolygon(test_coordinates)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 355,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Polygon'"
+      ]
+     },
+     "execution_count": 355,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "my_poly.geom_type"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "2. We don't want this property to be changed by the user since it is inherent to the class. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_poly.geom_type = \"line\"\n",
+    "my_poly.geom_type"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We don't want this to happen. There add a method called `geom_type` an add a `@property` decorator to it. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 341,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class MyPolygon:\n",
+    "        \n",
+    "    __geom_type = \"Polygon\"\n",
+    "    \n",
+    "    def __init__(self, coordinates):\n",
+    "        self.coordinates = coordinates\n",
+    "        \n",
+    "    def envelope(self):\n",
+    "        pass\n",
+    "    \n",
+    "    @property\n",
+    "    def geom_type(self):\n",
+    "        return self.__geom_type"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 309,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_poly2 = MyPolygon(test_coordinates)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "3. Adapt your `Polygon` class so that it also represents holes of the polygon. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 185,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class Polygon():\n",
+    "    \n",
+    "    def __init__(self, shell, holes):\n",
+    "        self.exterior = shell\n",
+    "        self.interiors = holes\n",
+    "        \n",
+    "    def envelope(self):\n",
+    "        xcoords = [x for x, y in self.shell]\n",
+    "        ycoords = [y for x, y in self.shell]\n",
+    "        \n",
+    "        minx = min(xcoords)\n",
+    "        maxx = max(xcoords)\n",
+    "        miny = min(ycoords)\n",
+    "        maxy = max(ycoords)\n",
+    "        \n",
+    "        return [minx, miny, maxx, maxy]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Read geojson"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 186,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import json"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 187,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "with open(polygons_file) as src:\n",
+    "    poly_str = json.load(src)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 188,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "polygons = []\n",
+    "for p in poly_str[\"features\"]:\n",
+    "    poly_new = Polygon(p[\"geometry\"][\"coordinates\"][0], p[\"geometry\"][\"coordinates\"][1:])\n",
+    "    polygons.append(poly_new)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 190,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[[[8.688468933105469, 49.42398310798032],\n",
+       "  [8.693962097167969, 49.42398310798032],\n",
+       "  [8.693962097167969, 49.426607006252176],\n",
+       "  [8.688468933105469, 49.426607006252176],\n",
+       "  [8.688468933105469, 49.42398310798032]]]"
+      ]
+     },
+     "execution_count": 190,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "polygons[1].interiors"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "5. Write a method `fill_holes` which removes the holes from the geometry. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 240,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class Polygon():\n",
+    "    \n",
+    "    def __init__(self, shell, holes=[]):\n",
+    "        self.exterior = shell\n",
+    "        self.interiors = holes\n",
+    "        \n",
+    "    def envelope(self):\n",
+    "        xcoords = [x for x, y in self.exterior]\n",
+    "        ycoords = [y for x, y in self.exterior]\n",
+    "        \n",
+    "        minx = min(xcoords)\n",
+    "        maxx = max(xcoords)\n",
+    "        miny = min(ycoords)\n",
+    "        maxy = max(ycoords)\n",
+    "        \n",
+    "        return [minx, miny, maxx, maxy]\n",
+    "    \n",
+    "    def fill_holes(self):\n",
+    "        self.interiors = []"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 199,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[[8.680486679077148, 49.418455714236885],\n",
+       " [8.69619369506836, 49.418455714236885],\n",
+       " [8.69619369506836, 49.42833758576036],\n",
+       " [8.680486679077148, 49.42833758576036],\n",
+       " [8.680486679077148, 49.418455714236885]]"
+      ]
+     },
+     "execution_count": 199,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "coords = poly_str[\"features\"][1][\"geometry\"][\"coordinates\"]\n",
+    "coords[0]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## References\n",
+    "\n",
+    "#### Object Oriented Programming \n",
+    "\n",
+    "* [Object Oriented Programming in Python](https://github.com/TheDigitalCatOnline/thedigitalcatonline.github.com/tree/master/notebooks)\n",
+    "* [Python Tutorial](https://docs.python.org/3/tutorial/classes.html)\n",
+    "* [Abstract Classes](https://docs.python.org/3/library/abc.html#module-abc)\n",
+    "\n",
+    "https://www.toptal.com/python/computational-geometry-in-python-from-theory-to-implementation\n",
+    "    \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "celltoolbar": "Slideshow",
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

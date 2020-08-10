@@ -1,0 +1,64 @@
+.. title: Introduction to Advanced geoscripting
+
+.. role::  raw-html(raw)
+    :format: html
+
+.. role:: red
+.. role:: blue
+
+
+Introduction to Vectorized Processing
+======================================
+
+Heidelberg University | Institute of Geography | August 10th 2020
+
+Christina Ludwig
+
+----
+
+:data-y: r1000
+
+Agenda
+=======
+
+0. Learning Goals
+1. Computer Hardware
+2. Vectorization
+3. Practical: Assignment
+
+----
+
+Learning Goals
+============================================
+
+1. Use a generator to create tile bounding boxes
+2. Use 
+
+----
+
+The task of a Geo-Information Scientist
+============================================
+
+Build three groups:
+
+`group 1 <.>`_
+`group 2 <.>`_
+`group 3 <.>`_
+
+**Discuss in groups:**
+
+Order the terms as it makes sense to you. Which of them belong together? What do they mean?
+
+----
+
+
+
+Summary
+========
+
+* There is usually a trade off between programming time and execution time.
+* Programming time is more expensive than execution time. That's why Python is so popular.
+* In 99% of the time you don't need to worry about execution time, because Python optimizes a lot internally.
+* When you run Python code, a lot of it is actually happening in C.
+* Be aware of the the *trap of premature optimization*.
+* Start simple, optimize only when necessary.

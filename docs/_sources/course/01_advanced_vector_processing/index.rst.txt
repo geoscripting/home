@@ -1,0 +1,8 @@
+1. Advanced Geo Data Processing
+##################################
+
+.. toctree::
+   :maxdepth: 1
+
+   README.md
+   assignment.ipynb

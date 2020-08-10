@@ -1,0 +1,42 @@
+Advanced resources
+======================
+
+One week is short and there is so much more to discover. So if you're not tired yet, take a look at the following projects.
+
+Other geoprocessing packages:
+------------------------------
+
+* [PySAL](https://pysal.org/)
+* [PyGEOS](https://pygeos.readthedocs.io/en/latest/)
+* [PyGEOS and GeoPandas](https://geopandas.readthedocs.io/en/latest/install.html#using-the-optional-pygeos-dependency) - [GitHub](https://github.com/geopandas/geopandas/issues/430)
+
+Processing Big Data
+---------------------
+
+* Dask: Processing of large data &rarr; [Tutorial](https://tutorial.dask.org/00_overview.html)
+* [multiprocessing](https://docs.python.org/3/library/multiprocessing.html)
+* [Cython and Pandas](https://pandas.pydata.org/pandas-docs/stable/user_guide/enhancingperf.html)
+* [Numba](http://numba.pydata.org/): High Performance python compiler
+
+(Geo) Data Visualization
+---------------------------
+
+* [dash](https://dash.plotly.com/): Interactive dashboards using Python
+* [plotly-geo](https://plotly.com/python/getting-started/#extended-geo-support)
+* [plotly maps](https://plotly.com/python/maps/)
+
+Advanced Python Data structures
+--------------------------------
+
+* [Interfaces, Mixins and Building Powerful Custom Data Structures in Python](https://rednafi.github.io/digressions/python/2020/07/03/python-mixins.html)
+
+Conferences related to Python Data Analysis
+----------------------------------------------
+
+Some of these conference put the talks and workshops online. A good way to stay up to date in the Python ecosystem.
+
+* [SciPy](https://conference.scipy.org/)
+* [EuroSciPy](https://www.euroscipy.org/)
+* [GeoPython](http://2020.geopython.net/)
+* [PyData](https://pydata.org/)
+* .. and many more.

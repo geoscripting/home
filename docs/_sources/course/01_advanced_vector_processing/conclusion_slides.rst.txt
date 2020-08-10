@@ -1,0 +1,99 @@
+.. title: Introduction to Advanced geoscripting
+
+.. role::  raw-html(raw)
+    :format: html
+
+.. role:: red
+.. role:: blue
+
+
+Abstraction in Computer Science
+================================
+
+.. image:: ./img/programming_languages.png
+  :width: 900
+  :align: center
+  :alt: programming_languages
+
+----
+
+Compilation vs. Interpretation
+================================
+
+.. image:: ./img/compiled_interpreted.png
+  :width: 700
+  :align: center
+  :alt: compiled_interpreted
+
+What are the **differences between compilers and interpreters** in regard to the following aspects?
+
+* Execution time (fast - slow)
+* Degree of abstraction (closer to natural language or machine language)
+* Syntax (simple - complex)
+* Typing (dynamic - static)
+* Memory management (manual - automatic)
+
+----
+
+Compilation vs. Interpretation
+================================
+
++---------------------------+------------------------------+
+| Python                    |    C                         |
++===========================+==============================+
+| * Compilation at runtime  | * Compilation before runtime |
+| * Closer to natural lang. | * Closer to machine lang.    |
+| * Dynamic typing          | * Static typing              |
+| * Many built-in functions | * No built-in functions      |
+| * Garbarge collection     | * Manual memory management   |
++---------------------------+------------------------------+
+
+
+----
+
+Practical: Assignment
+================================
+
+See course webpage for access to the assignment!
+
+We will meet back here at 2 pm.
+
+Help each other, use pair programming.
+
+If you cannot find the answer collect them as an issue on GitHub!
+
+----
+
+Compilation vs. Interpretation
+================================
+
+**Discuss in groups:**
+
+What are the advantages and disadvantages of compiled and interpreted languages?
+
+
+----
+
+
+Summary
+========
+
+* There is usually a trade off between programming time and execution time.
+* Programming time is more expensive than execution time. That's why Python is so popular.
+* In 99% of the time you don't need to worry about execution time, because Python optimizes a lot internally.
+* When you run Python code, a lot of it is actually happening in C.
+* Be aware of the the *trap of premature optimization*.
+* Start simple, optimize only when necessary.
+
+
+Resources
+==========
+
+* `Hackernoon:Compilers and Interpreters <https://hackernoon.com/compilers-and-interpreters-3e354a2e41cf>`_
+* `How Python runs` <https://indianpythonista.wordpress.com/2018/01/04/how-python-runs/>`_
+
+
+* ogr (and gdal) are swig generated modules for Python. Therefore, the python bindings resemble C and don't seem pythonic.
+* Shapely is more written in python, therefore it is slower but seems more pythonic.
+* but ogr, is less Pythonic
+* Keep the overhead of creating python or C classes in mind. This might be important when you optimize code!

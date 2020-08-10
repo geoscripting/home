@@ -4,3 +4,15 @@
 [submodule "source/preparation/git_intro"]
 	path = source/preparation/git_intro
 	url = https://github.com/geoscripting/git_intro.git
+[submodule "source/course/01_advanced_vector_processing"]
+	path = source/course/01_advanced_vector_processing
+	url = https://github.com/geoscripting/01_advanced_vector_processing.git
+[submodule "source/course/02_vectorized_geodata_processing"]
+	path = source/course/02_vectorized_geodata_processing
+	url = https://github.com/geoscripting/02_vectorized_geodata_processing.git
+[submodule "source/course/03_scientific_programming"]
+	path = source/course/03_scientific_programming
+	url = https://github.com/geoscripting/03_scientific_programming.git
+[submodule "source/course/04_geodata_visualization"]
+	path = source/course/04_geodata_visualization
+	url = https://github.com/geoscripting/04_geodata_visualization.git

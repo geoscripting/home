@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Advanced Vector Data Processing &mdash; Advanced Geoscripting 2020 2020 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Advanced Geoscripting 2020
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/administration.html">Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/communication.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/resources.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/time_schedule.html">Time schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/learninggoals.html">Learning goals</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Preparation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/software_setup.html">Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/git_intro/index.html">git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/preparatory_assignment/README.html">Preparatory Assignment</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">1. Advanced Geo Data Processing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Final Assignment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/index.html">Final Assignment</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Advanced Geoscripting 2020</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Advanced Vector Data Processing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/course/01_advanced_vector_processing/intro_slides.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="advanced-vector-data-processing">
+<h1>Advanced Vector Data Processing<a class="headerlink" href="#advanced-vector-data-processing" title="Permalink to this headline">¶</a></h1>
+<p>Heidelberg University | Institute of Geography | August 10th 2020</p>
+<p>Christina Ludwig</p>
+<hr class="docutils" />
+<dl class="field-list simple">
+<dt class="field-odd">data-y</dt>
+<dd class="field-odd"><p>r1000</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="agenda">
+<h1>Agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple" start="0">
+<li><p>Learning goals</p></li>
+<li><p>Geography vs. GIS vs. Computer Science</p></li>
+<li><p>Programming Languages</p></li>
+<li><p>Practical: Assignment</p></li>
+</ol>
+</div>
+<hr class="docutils" />
+<div class="section" id="learning-goals">
+<h1>Learning goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li><p>Name Python packages for vector data processing and explain their dependencies.</p></li>
+<li><p>Use fiona, shapely and geopandas for vector data processing.</p></li>
+<li><p>Measure and explain the difference in execution time between different vector data structures.</p></li>
+<li><p>Explain the advantages and disadvantages of compiled and interpreted languages.</p></li>
+<li><p>Use context managers to read data in Python.</p></li>
+</ol>
+</div>
+<hr class="docutils" />
+<div class="section" id="geography-vs-geo-information-science-vs-computer-science">
+<h1>Geography vs. Geo-Information Science vs. Computer Science<a class="headerlink" href="#geography-vs-geo-information-science-vs-computer-science" title="Permalink to this headline">¶</a></h1>
+<p>Build three groups:</p>
+<ul class="simple">
+<li><p>Geographer (Breakout room 1)</p></li>
+<li><p>Geo-Information Scientist (Breakout room 2)</p></li>
+<li><p>Computer Scientist (Breakout room 3)</p></li>
+</ul>
+<p><strong>Discuss in groups:</strong></p>
+<p>What is the expertise of a geographer/GIScientist/computer scientist in regard to (spatial) data analysis?</p>
+<p><span class="raw-html">&rarr;</span> 10 minutes, Please collect your thoughts here: <a class="reference external" href="https://pads.ccc.de/r61LZPBk8L">https://pads.ccc.de/r61LZPBk8L</a></p>
+</div>
+<hr class="docutils" />
+<div class="section" id="subdisciplines-of-computer-science">
+<h1>Subdisciplines of computer science<a class="headerlink" href="#subdisciplines-of-computer-science" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="../../_images/computer_science.png"><img alt="computerscience" class="align-center" src="../../_images/computer_science.png" style="width: 750px;" /></a>
+</div>
+<hr class="docutils" />
+<div class="section" id="geography-gis-computer-science">
+<h1>Geography - GIS - Computer Science<a class="headerlink" href="#geography-gis-computer-science" title="Permalink to this headline">¶</a></h1>
+<p><span class="raw-html"><br></span></p>
+<p><strong>Quantitative Geography:</strong> Using GIS to learn about the <span class="red">world</span> .</p>
+<p><span class="raw-html"><br></span></p>
+<p><strong>Geoinformatics:</strong> Studying <span class="red">geographic</span> <span class="blue">methods, data structures</span>, etc.</p>
+<p><span class="raw-html"><br></span></p>
+<p><strong>Computer Science:</strong> Focusing on <span class="blue">methods, data structures</span>, etc.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="abstraction-in-geographic-analyses">
+<h1>Abstraction in Geographic Analyses<a class="headerlink" href="#abstraction-in-geographic-analyses" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="../../_images/abstraction_geography.png"><img alt="abstraction_geography" class="align-left" src="../../_images/abstraction_geography.png" style="width: 300px;" /></a>
+<p><span class="raw-html"><br></span></p>
+<p>Which data is necessary to model the problem or process?</p>
+<p>Which geometric representation is suitable to model the problem or process?</p>
+<p>Which types of geometric representation are necessary to perform spatial analysis? (Can a forest or wetlands be sufficiently well represented by a polygon?)</p>
+<p><span class="raw-html"><br></span>
+<span class="raw-html"><br></span>
+<span class="raw-html"><br></span></p>
+</div>
+<hr class="docutils" />
+<div class="section" id="abstraction-in-computer-science">
+<h1>Abstraction in Computer Science<a class="headerlink" href="#abstraction-in-computer-science" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="../../_images/programming_languages.png"><img alt="programming_languages" src="../../_images/programming_languages.png" style="width: 900px;" /></a>
+</div>
+<hr class="docutils" />
+<div class="section" id="what-do-you-remember-about-interpretation-vs-compilation">
+<h1>What do you remember about Interpretation vs. Compilation<a class="headerlink" href="#what-do-you-remember-about-interpretation-vs-compilation" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="../../_images/compiler_interpreter.png"><img alt="compiled_interpreted" src="../../_images/compiler_interpreter.png" style="width: 700px;" /></a>
+<ol class="arabic simple">
+<li><p>How do compilers and interpreters work?</p></li>
+<li><p>What are the <strong>differences between compilers and interpreters</strong> regarding the following aspects?</p></li>
+</ol>
+<ul class="simple">
+<li><p>Degree of abstraction (natural language - machine language)</p></li>
+<li><p>Typing (dynamic - static)</p></li>
+<li><p>Memory management (manual - automatic)</p></li>
+<li><p>Execution time (fast - slow)</p></li>
+</ul>
+<p>Discuss in breakout rooms - 10 minutes</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="interpretation-vs-compilation">
+<h1>Interpretation vs. Compilation<a class="headerlink" href="#interpretation-vs-compilation" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="../../_images/py_vs_c.png"><img alt="pro_con" class="align-center" src="../../_images/py_vs_c.png" style="width: 700px;" /></a>
+</div>
+<hr class="docutils" />
+<div class="section" id="typing">
+<h1>Typing<a class="headerlink" href="#typing" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="../../_images/typing.png"><img alt="typing" class="align-center" src="../../_images/typing.png" style="width: 700px;" /></a>
+</div>
+<hr class="docutils" />
+<div class="section" id="questions">
+<h1>Questions?<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h1>
+</div>
+<hr class="docutils" />
+<div class="section" id="next">
+<h1>Next<a class="headerlink" href="#next" title="Permalink to this headline">¶</a></h1>
+<p><strong>First, 10 Minutes Break</strong></p>
+<p><strong>Then, continue with Practical Part: Advanced Vector Data Analysis</strong></p>
+<ul class="simple">
+<li><p>Part 1: Introduction to vector data processing in Python</p></li>
+<li><p>Part 2: Why all these packages?</p></li>
+<li><p>Part 3: Vector Data Analysis using GeoPandas</p></li>
+</ul>
+<p>Access and submission via GitHub Classroom (see course webpage).</p>
+<p><strong>Switch to MS Teams</strong></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Christina Ludwig
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

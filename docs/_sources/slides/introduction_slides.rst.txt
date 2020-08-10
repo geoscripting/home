@@ -1,0 +1,13 @@
+Introduction to Advanced Geoscripting
+#######################################
+
+
+----
+
+Agenda
+=======
+
+1. Welcome
+2. Organizational Information (
+    * Time Table)
+    * Course collaboration (Pair Programming) + Survey "What do you need for this course?"

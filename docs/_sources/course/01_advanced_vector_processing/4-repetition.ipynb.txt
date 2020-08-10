@@ -1,0 +1,354 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Vector Data Analysis using GeoPandas"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On the map it seems like points located close to the main streets show worse ratings than others. We will analyze this by calculating the distance to main streets extracted from OpenStreetMap. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Further ideas:\n",
+    "* Time Series analysis: [Pandas Time Series](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Bonus: "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Remember Exercise D from the GeoScripting course? You had to calculate the descriptive statistics for the temperature of DWD measure locations. To demonstrate pandas and geopandas we will perform this analysis. \n",
+    "\n",
+    "1. Read the shapefile _DWD_temperature.shp_ using GeoPandas.\n",
+    "2. Derive and print the descriptive statistical values of the column _temperature_ (min, max, mean, median,\n",
+    "sum).\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### 1. Read the shapefile _DWD_temperature.shp_ using GeoPandas."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The pandas and geopandas packages are usually abbreviated like this when importing them. Please stick to it. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import geopandas as gpd"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Reading a vector data set of GDAL supported format is done using the `gpd.read_file()` method."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "temperature_file = \"./data/DWD_temperature_shp/DWD_temperature.shp\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "temperature = gpd.read_file(temperature_file)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "To see if the import worked correctly, you can display the first 5 rows of the data set using the `head()` method. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>ALIASNAME</th>\n",
+       "      <th>Elevation</th>\n",
+       "      <th>Lat</th>\n",
+       "      <th>Lon</th>\n",
+       "      <th>temperatur</th>\n",
+       "      <th>geometry</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>AACHEN (WEWA)</td>\n",
+       "      <td>202.0</td>\n",
+       "      <td>50.7833</td>\n",
+       "      <td>6.0833</td>\n",
+       "      <td>9.7</td>\n",
+       "      <td>POINT (6.08330 50.78330)</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>AHRENSBURG-WULFSDORF</td>\n",
+       "      <td>46.0</td>\n",
+       "      <td>53.6500</td>\n",
+       "      <td>10.2000</td>\n",
+       "      <td>8.2</td>\n",
+       "      <td>POINT (10.20000 53.65000)</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>ALBSTADT-BADKAP</td>\n",
+       "      <td>759.0</td>\n",
+       "      <td>48.2000</td>\n",
+       "      <td>8.9667</td>\n",
+       "      <td>7.3</td>\n",
+       "      <td>POINT (8.96670 48.20000)</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>ALBSTADT-EBINGEN</td>\n",
+       "      <td>712.0</td>\n",
+       "      <td>48.2000</td>\n",
+       "      <td>9.0333</td>\n",
+       "      <td>6.4</td>\n",
+       "      <td>POINT (9.03330 48.20000)</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>ALBSTADT-ONSTMETTINGEN</td>\n",
+       "      <td>794.0</td>\n",
+       "      <td>48.2667</td>\n",
+       "      <td>9.0000</td>\n",
+       "      <td>6.4</td>\n",
+       "      <td>POINT (9.00000 48.26670)</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "                ALIASNAME  Elevation      Lat      Lon  temperatur  \\\n",
+       "0           AACHEN (WEWA)      202.0  50.7833   6.0833         9.7   \n",
+       "1    AHRENSBURG-WULFSDORF       46.0  53.6500  10.2000         8.2   \n",
+       "2         ALBSTADT-BADKAP      759.0  48.2000   8.9667         7.3   \n",
+       "3        ALBSTADT-EBINGEN      712.0  48.2000   9.0333         6.4   \n",
+       "4  ALBSTADT-ONSTMETTINGEN      794.0  48.2667   9.0000         6.4   \n",
+       "\n",
+       "                    geometry  \n",
+       "0   POINT (6.08330 50.78330)  \n",
+       "1  POINT (10.20000 53.65000)  \n",
+       "2   POINT (8.96670 48.20000)  \n",
+       "3   POINT (9.03330 48.20000)  \n",
+       "4   POINT (9.00000 48.26670)  "
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "temperature.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "geopandas.geodataframe.GeoDataFrame"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(temperature)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Explore the methods and attributes which the `geopandas.geodataframe.GeoDataFrame` provides. Retrieve the coordiante references system"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<Geographic 2D CRS: EPSG:4326>\n",
+       "Name: WGS 84\n",
+       "Axis Info [ellipsoidal]:\n",
+       "- Lat[north]: Geodetic latitude (degree)\n",
+       "- Lon[east]: Geodetic longitude (degree)\n",
+       "Area of Use:\n",
+       "- name: World\n",
+       "- bounds: (-180.0, -90.0, 180.0, 90.0)\n",
+       "Datum: World Geodetic System 1984\n",
+       "- Ellipsoid: WGS 84\n",
+       "- Prime Meridian: Greenwich"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "temperature.crs"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### pd.DataFrame or gpd.GeoDataFrame?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A GeoDataFrame is a pandas.DataFrame with some extra methods and attribtues which facilitate spatial analysis. You can observe this when converting the GeoDataFrame object to a pandas.DataFrame."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "temperature_pd = pd.DataFrame(temperature)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "AttributeError",
+     "evalue": "'DataFrame' object has no attribute 'crs'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mAttributeError\u001b[0m                            Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-22-6d98a94e183e>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mtemperature_pd\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcrs\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;32m~/miniconda3/envs/advgeo/lib/python3.8/site-packages/pandas/core/generic.py\u001b[0m in \u001b[0;36m__getattr__\u001b[0;34m(self, name)\u001b[0m\n\u001b[1;32m   5272\u001b[0m             \u001b[0;32mif\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_info_axis\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_can_hold_identifiers_and_holds_name\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mname\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   5273\u001b[0m                 \u001b[0;32mreturn\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0mname\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 5274\u001b[0;31m             \u001b[0;32mreturn\u001b[0m \u001b[0mobject\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m__getattribute__\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mname\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m   5275\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   5276\u001b[0m     \u001b[0;32mdef\u001b[0m \u001b[0m__setattr__\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mname\u001b[0m\u001b[0;34m:\u001b[0m \u001b[0mstr\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mvalue\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;34m->\u001b[0m \u001b[0;32mNone\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mAttributeError\u001b[0m: 'DataFrame' object has no attribute 'crs'"
+     ]
+    }
+   ],
+   "source": [
+    "temperature_pd.crs"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "2. Derive and print the descriptive statistical values of the column _temperature_ (min, max, mean, median,\n",
+    "sum)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python (advgeo)",
+   "language": "python",
+   "name": "advgeo"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

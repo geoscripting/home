@@ -1,0 +1,10 @@
+Course content
+################################
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Course Content
+
+   learninggoals
+   01_advanced_vector_processing/README.md
