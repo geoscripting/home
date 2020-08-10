@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Advanced Geoscripting SS2020'
+project = 'Advanced Geoscripting 2020'
 copyright = '2020, Christina Ludwig'
 author = 'Christina Ludwig'
 
