@@ -182,6 +182,80 @@
   {
    "cell_type": "code",
    "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def myfunc():\n",
+    "    return 1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "myfunc()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class car():\n",
+    "    \n",
+    "    color = \"rot\"\n",
+    "    \n",
+    "    def __init__(self, color):\n",
+    "        self.color = color\n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "gelbes_auto = car(\"gelb\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'gelb'"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "gelbes_auto.color"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
@@ -192,13 +266,13 @@
     "class MyPolygon:\n",
     "        \n",
     "    def __init__(self, coordinates):\n",
-    "        pass\n",
+    "        self.coordinates = coordinates\n",
     "        "
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 19,
    "metadata": {
     "slideshow": {
      "slide_type": "slide"
@@ -222,7 +296,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": 23,
    "metadata": {
     "slideshow": {
      "slide_type": "-"
@@ -248,7 +322,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": 24,
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
@@ -259,15 +333,23 @@
     "class MyPolygon():\n",
     "        \n",
     "    def __init__(self, coordinates):\n",
-    "        pass\n",
+    "        self.coordinates = coordinates\n",
     "        \n",
     "    def envelope(self):\n",
-    "        pass"
+    "        xcoords = [x for x, y in self.coordinates]\n",
+    "        ycoords = [y for x, y in self.coordinates]\n",
+    "        \n",
+    "        minx = min(xcoords)\n",
+    "        maxx = max(xcoords)\n",
+    "        miny = min(ycoords)\n",
+    "        maxy = max(ycoords)\n",
+    "        \n",
+    "        return [minx, miny, maxx, maxy] "
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": 25,
    "metadata": {
     "slideshow": {
      "slide_type": "slide"
@@ -280,7 +362,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": 26,
    "metadata": {
     "slideshow": {
      "slide_type": "-"
@@ -325,7 +407,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 10,
+   "execution_count": 28,
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
@@ -338,14 +420,31 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 36,
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
     }
    },
-   "outputs": [],
-   "source": []
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "POLYGON ((1 1 0,1 2 0,2 2 0,2 1 0,1 1 0))\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Create ring\n",
+    "ring = ogr.Geometry(ogr.wkbLinearRing)\n",
+    "for c in test_coordinates:\n",
+    "    ring.AddPoint(c[0],c[1])\n",
+    "# Create polygon\n",
+    "ogr_poly = ogr.Geometry(ogr.wkbPolygon)\n",
+    "ogr_poly.AddGeometry(ring)\n",
+    "print(ogr_poly.ExportToWkt())"
+   ]
   },
   {
    "cell_type": "markdown",
@@ -360,14 +459,27 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 39,
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
     }
    },
-   "outputs": [],
-   "source": []
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(1.0, 2.0, 1.0, 2.0)"
+      ]
+     },
+     "execution_count": 39,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "ogr_poly.GetEnvelope()"
+   ]
   },
   {
    "cell_type": "markdown",
@@ -404,7 +516,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 13,
+   "execution_count": 40,
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
@@ -417,7 +529,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 41,
    "metadata": {
     "scrolled": true,
     "slideshow": {
@@ -425,7 +537,9 @@
     }
    },
    "outputs": [],
-   "source": []
+   "source": [
+    "shapely_poly = Polygon(test_coordinates)"
+   ]
   },
   {
    "cell_type": "markdown",
@@ -440,14 +554,27 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 44,
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
     }
    },
-   "outputs": [],
-   "source": []
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(1.0, 1.0, 2.0, 2.0)"
+      ]
+     },
+     "execution_count": 44,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "shapely_poly.bounds"
+   ]
   },
   {
    "cell_type": "markdown",
@@ -471,7 +598,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 16,
+   "execution_count": 46,
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
@@ -482,7 +609,7 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "1.87 µs ± 117 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)\n"
+      "2.24 µs ± 311 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)\n"
      ]
     }
    ],
@@ -493,7 +620,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 17,
+   "execution_count": 47,
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
@@ -504,7 +631,7 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "561 ns ± 28.7 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n"
+      "650 ns ± 3.63 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\n"
      ]
     }
    ],
@@ -515,7 +642,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 18,
+   "execution_count": 51,
    "metadata": {
     "scrolled": true,
     "slideshow": {
@@ -527,7 +654,7 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "36.1 µs ± 3.58 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)\n"
+      "36.1 µs ± 2.91 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)\n"
      ]
     }
    ],
@@ -584,41 +711,77 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 60,
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
     }
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2.31 µs ± 122 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)\n"
+     ]
+    }
+   ],
    "source": [
-    "# my_poly"
+    "%%timeit \n",
+    "my_poly = MyPolygon(test_coordinates)\n",
+    "my_poly.envelope()"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 59,
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
     }
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "18.6 µs ± 1.59 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)\n"
+     ]
+    }
+   ],
    "source": [
-    "# ogr_poly"
+    "%%timeit \n",
+    "# Create ring\n",
+    "ring = ogr.Geometry(ogr.wkbLinearRing)\n",
+    "for c in test_coordinates:\n",
+    "    ring.AddPoint(c[0],c[1])\n",
+    "# Create polygon\n",
+    "ogr_poly = ogr.Geometry(ogr.wkbPolygon)\n",
+    "ogr_poly.AddGeometry(ring)\n",
+    "ogr_poly.GetEnvelope()"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 56,
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
     }
    },
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "54.4 µs ± 4.83 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)\n"
+     ]
+    }
+   ],
    "source": [
-    "# shapely_poly"
+    "%%timeit\n",
+    "shapely_poly = Polygon(test_coordinates)\n",
+    "shapely_poly.bounds"
    ]
   },
   {
@@ -676,9 +839,9 @@
     "\n",
     "|            | Execution time <br> (fast - slow)| Programming time <br> (fast - slow)| Readability <br> (high - low) | Flexibility  <br> (high - low)       |\n",
     "|------------|----------------|------------------|-------------|-------------------|\n",
-    "| __DIY Python__ |            |              |         |               |\n",
-    "| __OGR__        |      |              |          |  |\n",
-    "| __Shapely__    |      |              |         |  |"
+    "| __DIY Python__ | fast           | slow             | high        | high              |\n",
+    "| __OGR__        | very fast      | medium             | low         | 99% sufficient |\n",
+    "| __Shapely__    | quite slow     | fast             | high        | 99% sufficient |"
    ]
   },
   {

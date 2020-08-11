@@ -1,0 +1,1069 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Part 1: Vectorized Computation using Numpy &mdash; Advanced Geoscripting 2020 2020 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Part 2: Vectorized Computation using Pandas and GeoPandas" href="11-Vectorization-Pandas-GeoPandas.html" />
+    <link rel="prev" title="2. Vectorized Data Processing" href="README.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Advanced Geoscripting 2020
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/administration.html">Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/communication.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/resources.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/time_schedule.html">Time schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/learninggoals.html">Learning goals</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Preparation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/software_setup.html">Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/git_intro/index.html">git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/preparatory_assignment/README.html">Preparatory Assignment</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Content</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_advanced_vector_processing/README.html">1. Advanced Geo Data Processing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">2. Vectorized Data Processing</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Part 1: Vectorized Computation using Numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#1.-Vectorization-in-Python">1. Vectorization in Python</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#The-theme-of-the-EuroSciPy-Conference-2018-was:-“Vectorized-is-better-than-an-explict-loop”">The theme of the EuroSciPy Conference 2018 was: <em>“Vectorized is better than an explict loop”</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#What-does-that-mean?-Let’s-take-a-look-back-at-the-logical-setup-of-a-computer.">What does that mean? Let’s take a look back at the logical setup of a computer.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Simple-Example:-Calculate-the-sum-of-two-arrays">Simple Example: Calculate the sum of two arrays</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Vectorizing-your-script-using-Numpy">Vectorizing your script using Numpy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2.-Numpy-Warm-Up-Exercises">2. Numpy Warm-Up Exercises</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#When-you’re-done,-choose-three-more-exercises-which-suite-your-level-from-Nicolas-Rougier’s-100-Numpy-Exercises.">When you’re done, choose three more exercises which suite your level from Nicolas Rougier’s 100 Numpy Exercises.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#3.-Spatial-Locality">3. Spatial Locality</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#A-puzzling-problem">A puzzling problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Looking-at-the-way-arrays-are-stored-in-pyhsical-memory-might-help-us-explain-this-phenomenon.">Looking at the way arrays are stored in pyhsical memory might help us explain this phenomenon.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Row-and-Column-Major-Order">Row and Column Major Order</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Numpy-Strides">Numpy Strides</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise:">Exercise:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Lists-and-spatial-locality">Lists and spatial locality</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Summary">Summary</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Resources:">Resources:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="11-Vectorization-Pandas-GeoPandas.html">Part 2: Vectorized Computation using Pandas and GeoPandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#learning-goals">Learning goals</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Final Assignment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/index.html">Final Assignment</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Advanced Geoscripting 2020</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="README.html">2. Vectorized Data Processing</a> &raquo;</li>
+        
+      <li>Part 1: Vectorized Computation using Numpy</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/course/02_vectorized_geodata_processing/10-Vectorization-Numpy.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Part-1:-Vectorized-Computation-using-Numpy">
+<h1>Part 1: Vectorized Computation using Numpy<a class="headerlink" href="#Part-1:-Vectorized-Computation-using-Numpy" title="Permalink to this headline">¶</a></h1>
+<p>We have just learned about the logical set-up of a computer and which factors affect the performance of it. Keeping this in mind, we will learn how we can improve the performance of our code in Python.</p>
+<div class="section" id="1.-Vectorization-in-Python">
+<h2>1. Vectorization in Python<a class="headerlink" href="#1.-Vectorization-in-Python" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="The-theme-of-the-EuroSciPy-Conference-2018-was:-“Vectorized-is-better-than-an-explict-loop”">
+<h3>The theme of the EuroSciPy Conference 2018 was: <em>“Vectorized is better than an explict loop”</em><a class="headerlink" href="#The-theme-of-the-EuroSciPy-Conference-2018-was:-“Vectorized-is-better-than-an-explict-loop”" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="../../_images/IMG_20190807_082235.jpg"><img alt="tshirt" src="../../_images/IMG_20190807_082235.jpg" style="width: 600px;" /></a></p>
+</div>
+<div class="section" id="What-does-that-mean?-Let’s-take-a-look-back-at-the-logical-setup-of-a-computer.">
+<h3>What does that mean? Let’s take a look back at the logical setup of a computer.<a class="headerlink" href="#What-does-that-mean?-Let’s-take-a-look-back-at-the-logical-setup-of-a-computer." title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="../../_images/vectorization.png"><img alt="setup" src="../../_images/vectorization.png" style="width: 600px;" /></a></p>
+</div>
+<div class="section" id="Simple-Example:-Calculate-the-sum-of-two-arrays">
+<h3>Simple Example: Calculate the sum of two arrays<a class="headerlink" href="#Simple-Example:-Calculate-the-sum-of-two-arrays" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">nvals</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">values1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nvals</span><span class="p">)</span>
+<span class="n">values2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nvals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="…-using-an-explicit-for-loop">
+<h4>… using an explicit for loop<a class="headerlink" href="#…-using-an-explicit-for-loop" title="Permalink to this headline">¶</a></h4>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">loop_sum</span><span class="p">(</span><span class="n">values1</span><span class="p">,</span> <span class="n">values2</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">values1</span><span class="p">,</span> <span class="n">values2</span><span class="p">):</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%time</span>it
+<span class="n">res</span> <span class="o">=</span> <span class="n">loop_sum</span><span class="p">(</span><span class="n">values1</span><span class="p">,</span> <span class="n">values2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+243 µs ± 7.74 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="…-using-a-numpy-universal-function">
+<h4>… using a numpy universal function<a class="headerlink" href="#…-using-a-numpy-universal-function" title="Permalink to this headline">¶</a></h4>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%time</span>it
+<span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">values1</span><span class="p">,</span> <span class="n">values2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+938 ns ± 13.6 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="What-about-np.vectorize?">
+<h4>What about <code class="docutils literal notranslate"><span class="pre">np.vectorize</span></code>?<a class="headerlink" href="#What-about-np.vectorize?" title="Permalink to this headline">¶</a></h4>
+<p>There is a <code class="docutils literal notranslate"><span class="pre">numpy.vectorize()</span></code> functions which seems like it vectorizes your Python code. But beware, always read the small print in the docs: “The vectorize function is provided primarily for convenience, not for performance. The implementation is essentially a for loop.” <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.vectorize.html">numpy doc</a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">add_values</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+
+    <span class="s2">&quot;Return a-b if a&gt;b, otherwise return a+b&quot;</span>
+
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">add_values_vect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">add_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%time</span>it
+<span class="n">add_values_vect</span><span class="p">(</span><span class="n">values1</span><span class="p">,</span> <span class="n">values2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+215 µs ± 37 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Vectorizing-your-script-using-Numpy">
+<h3>Vectorizing your script using Numpy<a class="headerlink" href="#Vectorizing-your-script-using-Numpy" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Avoid for loops (or even nested for loops) when possible.</p></li>
+<li><p>Perform <strong>calculations on arrays</strong> rather than scalars</p></li>
+<li><p>Use Numpy’s built-in universal functions whenever possible to enable vectorized computation.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="2.-Numpy-Warm-Up-Exercises">
+<h2>2. Numpy Warm-Up Exercises<a class="headerlink" href="#2.-Numpy-Warm-Up-Exercises" title="Permalink to this headline">¶</a></h2>
+<p>Let’s do some numpy warm up exercises.</p>
+<p><strong>E 2.1:</strong> Create a vector with values ranging from 10 to 49</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<p><strong>E 2.2:</strong> Calculate the square root of each element of the array above.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<p><strong>E 2.3:</strong> Create a null vector of size 10 but the fifth value which is 1.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<p><strong>E 2.4:</strong> Create a random vector of size 30 and find the minimum and maximum value.</p>
+<p>Bonus: How can you make the function always yield the same result?</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<p><strong>E 5.5:</strong> Create a 3x3 matrix with values ranging from 0 to 8.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<p><strong>E 2.6:</strong> Create a 5x10 array (rows x cols) with random values and find the mean value of each row.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<p><strong>E 2.7:</strong> The numpy array <code class="docutils literal notranslate"><span class="pre">b</span></code> is given. Predict the output of <code class="docutils literal notranslate"><span class="pre">print(b[0,</span> <span class="pre">0],</span> <span class="pre">b[0,</span> <span class="pre">1],</span> <span class="pre">b[1,</span> <span class="pre">0])</span></code> before executing it?</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<p><strong>E 2.8:</strong> Predict the shape of the resulting array when you compute the mean of <code class="docutils literal notranslate"><span class="pre">c</span></code> along the axis=0, axis=1 and axis=2.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="o">*</span><span class="mi">4</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="When-you’re-done,-choose-three-more-exercises-which-suite-your-level-from-Nicolas-Rougier’s-100-Numpy-Exercises.">
+<h3>When you’re done, choose three more exercises which suite your level from <a class="reference external" href="https://github.com/rougier/numpy-100">Nicolas Rougier’s 100 Numpy Exercises</a>.<a class="headerlink" href="#When-you’re-done,-choose-three-more-exercises-which-suite-your-level-from-Nicolas-Rougier’s-100-Numpy-Exercises." title="Permalink to this headline">¶</a></h3>
+<p><strong>E 2.9:</strong> Paste your chosen exercise here</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<p><strong>E 2.10:</strong> Paste your chosen exercise here</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<p><strong>E 2.11:</strong> Paste your chosen exercise here</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="3.-Spatial-Locality">
+<h2>3. Spatial Locality<a class="headerlink" href="#3.-Spatial-Locality" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="A-puzzling-problem">
+<h3>A puzzling problem<a class="headerlink" href="#A-puzzling-problem" title="Permalink to this headline">¶</a></h3>
+<p><strong>Example:</strong> Let’s create an 2 dimensional array with random numbers with 10000 rows and 10000 columns. Then we calculate the mean along the rows and along the columns. We will measure the computation time of each cell using the magic command <code class="docutils literal notranslate"><span class="pre">%%timeit</span></code>. What do you observe? Can you explain the result?</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">arr_big</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">100000000</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%time</span>it
+<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">arr_big</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+100 ms ± 3.52 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%time</span>it
+<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">arr_big</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+55.3 ms ± 213 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Looking-at-the-way-arrays-are-stored-in-pyhsical-memory-might-help-us-explain-this-phenomenon.">
+<h3>Looking at the way arrays are stored in pyhsical memory might help us explain this phenomenon.<a class="headerlink" href="#Looking-at-the-way-arrays-are-stored-in-pyhsical-memory-might-help-us-explain-this-phenomenon." title="Permalink to this headline">¶</a></h3>
+<p><img alt="spatial_locality_example1" src="../../_images/spatial_locality_example.png" /> <img alt="spatial_locality_example2" src="../../_images/spatial_locality_example2.png" /> <img alt="spatial_locality_example3" src="../../_images/spatial_locality_example3.png" /></p>
+<p>Source: <a class="reference external" href="http://www.tophatstuff.co.uk/index.html&#64;p=119.html">Spatial locality explained</a></p>
+</div>
+<div class="section" id="Row-and-Column-Major-Order">
+<h3>Row and Column Major Order<a class="headerlink" href="#Row-and-Column-Major-Order" title="Permalink to this headline">¶</a></h3>
+<p>By default numpy arrays are stored in C order (row-major), not in F order (column-major). Therefore, calculations along the rows (axis=1) are faster than along the columns (axis=0) for a 2D array. So calculating the mean of each row is faster than the mean of each column if the numpy array is stored as default in C order.</p>
+<p>→ <a class="reference external" href="https://scipy-lectures.org/advanced/advanced_numpy/index.html#c-and-fortran-order">SciPy Lectures: C/F order</a></p>
+<p><a class="reference internal" href="../../_images/row-major-order.png"><img alt="row-major" src="../../_images/row-major-order.png" style="width: 500px;" /></a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">arr2D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>A multi-dimensional array can be converted to a 1D array using the function <code class="docutils literal notranslate"><span class="pre">ravel()</span></code> with the option to specify C or F order.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">arr2D</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([ 0, 10, 20, 30, 40,  1, 11, 21, 31, 41,  2, 12, 22, 32, 42,  3, 13,
+       23, 33, 43,  4, 14, 24, 34, 44,  5, 15, 25, 35, 45,  6, 16, 26, 36,
+       46,  7, 17, 27, 37, 47,  8, 18, 28, 38, 48,  9, 19, 29, 39, 49])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">arr2D</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16,
+       17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33,
+       34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49])
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Numpy-Strides">
+<h3>Numpy Strides<a class="headerlink" href="#Numpy-Strides" title="Permalink to this headline">¶</a></h3>
+<p>“Strides are the number of bytes to jump-over in the memory in order to get from one item to the next item along each direction/dimension of the array. In other words, it’s the byte-separation between consecutive items for each dimension.” <a class="reference external" href="https://stackoverflow.com/questions/53097952/how-to-understand-numpy-strides-for-layman">Stack Overflow</a></p>
+<p>–&gt; <a class="reference external" href="https://scipy-lectures.org/advanced/advanced_numpy/index.html#indexing-scheme-strides">SciPy Lectures: Strides</a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">x</span><span class="o">.</span><span class="n">strides</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(6, 2)
+</pre></div></div>
+</div>
+<p>To get to the next row you need to jump 3 * 2 byte (16 bit integer = 2 byte). To get to the next column you need to jump 1 * 2 byte.</p>
+<p><strong>E:</strong> How do the strides change when you change the data type to 64 bit float?</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<p><strong>E:</strong> What happens to the data in memory when you transpose an array?</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float64&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">arr</span><span class="o">.</span><span class="n">strides</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(40, 8)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">arr</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">strides</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(8, 40)
+</pre></div></div>
+</div>
+<p><strong>Answer:</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Exercise:">
+<h3>Exercise:<a class="headerlink" href="#Exercise:" title="Permalink to this headline">¶</a></h3>
+<p>Create an F ordered array with 15 columns and 10 rows with data type 32bit float. Calculate the strides by yourself. Check your result by executing the <code class="docutils literal notranslate"><span class="pre">strides</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Lists-and-spatial-locality">
+<h3>Lists and spatial locality<a class="headerlink" href="#Lists-and-spatial-locality" title="Permalink to this headline">¶</a></h3>
+<p>Arrays are better than lists for continous reading of data, because lists usually only store pointers to variables stored in memory, not the variable values themselves. This can lead to bad spatial locality when reading the data, because the data might be spread all over the memory.</p>
+<p><a class="reference internal" href="https://i.stack.imgur.com/K26b0.png"><img alt="drawing" src="https://i.stack.imgur.com/K26b0.png" style="width: 600px;" /></a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Summary">
+<h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>You should be able now to explain the sentence “vectorized is better than an explicit loop”.</p></li>
+<li><p>When performing calculations it is good to keep in mind how arrays are stored in memory, since it can influence your processing time.</p></li>
+<li><p>Most of the time however, NumPy or Python take care of it.</p></li>
+</ul>
+<div class="section" id="Resources:">
+<h3>Resources:<a class="headerlink" href="#Resources:" title="Permalink to this headline">¶</a></h3>
+<p><strong>Micha Gorelick, Ian Ozsvald. High Performance Python. O’Reilly, 2014. (Safari Books)</strong> (very good)</p>
+<p>Schmidt, B., Gonzalez-Dominguez, J., Hundt, C., &amp; Schlarb, M. (2017). Parallel programming: concepts and practice. Morgan Kaufmann. <a class="reference external" href="https://books.google.de/books?hl=en&amp;lr=&amp;id=-y9HDgAAQBAJ&amp;oi=fnd&amp;pg=PP1&amp;dq=Parallel+Programming:+Concepts+and+Practice&amp;ots=vPL3kPvTkJ&amp;sig=gN5EA0okkbtUHufPvTB37MAGFis">Google Books</a></p>
+<p><a class="reference external" href="http://www.tophatstuff.co.uk/index.html&#64;p=119.html">Spatial locality explained</a></p>
+<p><a class="reference external" href="https://scipy-lectures.org/advanced/advanced_numpy/index.html">SciPy Lecture Notes: Advanced Numpy</a></p>
+<p><a class="reference external" href="https://realpython.com/numpy-array-programming/">Real Python: Numpy array programming</a></p>
+<p><a class="reference external" href="https://github.com/mingrammer/cs231n-numpy-tutorial/blob/master/numpy_tutorial.ipynb">NumPy Tutorial</a></p>
+<p><a class="reference external" href="https://github.com/ASPP/MemoryBoundComputations">Memory Bound Problems</a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="11-Vectorization-Pandas-GeoPandas.html" class="btn btn-neutral float-right" title="Part 2: Vectorized Computation using Pandas and GeoPandas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="README.html" class="btn btn-neutral float-left" title="2. Vectorized Data Processing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Christina Ludwig
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

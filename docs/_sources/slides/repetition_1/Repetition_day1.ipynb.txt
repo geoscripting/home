@@ -1,0 +1,839 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "# Introduction to Computer Science for Geographers\n",
+    "\n",
+    "## What we've done on day 1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## How this course works"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "### Ask questions"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "### Work together &rarr; Pair programming\n",
+    "<img src=\"img/pairprogramming.png\" alt=\"Drawing\" style=\"width: 70%\"/>\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "### Good learning environment\n",
+    "![learning_environment](img/group_rules.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "### Time table\n",
+    "![](img/timetable.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "### All course material is on\n",
+    "\n",
+    "## [https://github.com/redfrexx/cs4geos19](https://github.com/redfrexx/cs4geos19)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "#### Why is git useful for you? "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "We will learn how to use __git__ to track our work progress."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "### We will use Anaconda to manage Python environments"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "#### Why would we need several Python environments and why do you we need help with managing them? "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## What we've done on day 1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "## Computer Science and Geography \n",
+    "![cs_geo](img/cs_geo.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "## Programming Languages\n",
+    "![](img/programming_languages.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "## What ist the difference between comilers and interpreters? "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "![](img/compiler_interpreter.png)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "## What are examples for compiled and interpreted languages? "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "<img src=\"img/python_c_2.png\" alt=\"Drawing\" style=\"width: 70%\"/>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "<img src=\"img/python_c_3.png\" alt=\"Drawing\" style=\"width: 70%\"/>\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Which data structures did we use to read GeoJSON in Python? "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "### String"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "geojson_path = \"./data/some_features.geojson\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"color\":\"green\",\"id\":1},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[8.670530319213867,49.41337442939828],[8.685293197631836,49.41337442939828],[8.685293197631836,49.421861555723595],[8.670530319213867,49.421861555723595],[8.670530319213867,49.41337442939828]]]}},{\"type\":\"Feature\",\"properties\":{\"color\":\"blue\",\"id\":2},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[8.680486679077148,49.418455714236885],[8.69619369506836,49.418455714236885],[8.69619369506836,49.42833758576036],[8.680486679077148,49.42833758576036],[8.680486679077148,49.418455714236885]],[[8.688468933105469, 49.42398310798032],[8.693962097167969, 49.42398310798032],[8.693962097167969, 49.426607006252176],[8.688468933105469, 49.426607006252176],[8.688468933105469, 49.42398310798032]]]}}]}\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "with open(geojson_path, \"r\") as src:\n",
+    "    geojson_str = src.read()\n",
+    "print(geojson_str)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "### Decode a string to a dictionary using `json.loads()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Data type: <class 'dict'>\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "{'type': 'FeatureCollection',\n",
+       " 'features': [{'type': 'Feature',\n",
+       "   'properties': {'color': 'green', 'id': 1},\n",
+       "   'geometry': {'type': 'Polygon',\n",
+       "    'coordinates': [[[8.670530319213867, 49.41337442939828],\n",
+       "      [8.685293197631836, 49.41337442939828],\n",
+       "      [8.685293197631836, 49.421861555723595],\n",
+       "      [8.670530319213867, 49.421861555723595],\n",
+       "      [8.670530319213867, 49.41337442939828]]]}},\n",
+       "  {'type': 'Feature',\n",
+       "   'properties': {'color': 'blue', 'id': 2},\n",
+       "   'geometry': {'type': 'Polygon',\n",
+       "    'coordinates': [[[8.680486679077148, 49.418455714236885],\n",
+       "      [8.69619369506836, 49.418455714236885],\n",
+       "      [8.69619369506836, 49.42833758576036],\n",
+       "      [8.680486679077148, 49.42833758576036],\n",
+       "      [8.680486679077148, 49.418455714236885]],\n",
+       "     [[8.688468933105469, 49.42398310798032],\n",
+       "      [8.693962097167969, 49.42398310798032],\n",
+       "      [8.693962097167969, 49.426607006252176],\n",
+       "      [8.688468933105469, 49.426607006252176],\n",
+       "      [8.688468933105469, 49.42398310798032]]]}}]}"
+      ]
+     },
+     "execution_count": 34,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import json\n",
+    "geojson_dict = json.loads(geojson_str)\n",
+    "print(\"Data type: %s\" % type(geojson_dict))\n",
+    "geojson_dict"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "Access an item of a __dictionary__ using *dict[key]*:\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "metadata": {
+    "scrolled": true,
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Data type: <class 'list'>\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "[{'type': 'Feature',\n",
+       "  'properties': {'color': 'green', 'id': 1},\n",
+       "  'geometry': {'type': 'Polygon',\n",
+       "   'coordinates': [[[8.670530319213867, 49.41337442939828],\n",
+       "     [8.685293197631836, 49.41337442939828],\n",
+       "     [8.685293197631836, 49.421861555723595],\n",
+       "     [8.670530319213867, 49.421861555723595],\n",
+       "     [8.670530319213867, 49.41337442939828]]]}},\n",
+       " {'type': 'Feature',\n",
+       "  'properties': {'color': 'blue', 'id': 2},\n",
+       "  'geometry': {'type': 'Polygon',\n",
+       "   'coordinates': [[[8.680486679077148, 49.418455714236885],\n",
+       "     [8.69619369506836, 49.418455714236885],\n",
+       "     [8.69619369506836, 49.42833758576036],\n",
+       "     [8.680486679077148, 49.42833758576036],\n",
+       "     [8.680486679077148, 49.418455714236885]],\n",
+       "    [[8.688468933105469, 49.42398310798032],\n",
+       "     [8.693962097167969, 49.42398310798032],\n",
+       "     [8.693962097167969, 49.426607006252176],\n",
+       "     [8.688468933105469, 49.426607006252176],\n",
+       "     [8.688468933105469, 49.42398310798032]]]}}]"
+      ]
+     },
+     "execution_count": 35,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "features = geojson_dict[\"features\"]\n",
+    "print(\"Data type: %s\" % type(features))\n",
+    "features"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "Access an item from a __list__ using *list[index]*:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Data type: <class 'dict'>\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "{'type': 'Feature',\n",
+       " 'properties': {'color': 'green', 'id': 1},\n",
+       " 'geometry': {'type': 'Polygon',\n",
+       "  'coordinates': [[[8.670530319213867, 49.41337442939828],\n",
+       "    [8.685293197631836, 49.41337442939828],\n",
+       "    [8.685293197631836, 49.421861555723595],\n",
+       "    [8.670530319213867, 49.421861555723595],\n",
+       "    [8.670530319213867, 49.41337442939828]]]}}"
+      ]
+     },
+     "execution_count": 32,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "first_feature = features[0]\n",
+    "print(\"Data type: %s\" % type(first_feature))\n",
+    "first_feature"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 43,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'type': 'Polygon',\n",
+       " 'coordinates': [[[8.670530319213867, 49.41337442939828],\n",
+       "   [8.685293197631836, 49.41337442939828],\n",
+       "   [8.685293197631836, 49.421861555723595],\n",
+       "   [8.670530319213867, 49.421861555723595],\n",
+       "   [8.670530319213867, 49.41337442939828]]]}"
+      ]
+     },
+     "execution_count": 43,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "first_geometry = first_feature[\"geometry\"]\n",
+    "first_geometry"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "## Fiona to read and write different geospatial data formats"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[{'type': 'Feature',\n",
+       "  'id': '1',\n",
+       "  'properties': OrderedDict([('color', 'green'), ('id', 1)]),\n",
+       "  'geometry': {'type': 'Polygon',\n",
+       "   'coordinates': [[(8.670530319213867, 49.41337442939828),\n",
+       "     (8.685293197631836, 49.41337442939828),\n",
+       "     (8.685293197631836, 49.421861555723595),\n",
+       "     (8.670530319213867, 49.421861555723595),\n",
+       "     (8.670530319213867, 49.41337442939828)]]}},\n",
+       " {'type': 'Feature',\n",
+       "  'id': '2',\n",
+       "  'properties': OrderedDict([('color', 'blue'), ('id', 2)]),\n",
+       "  'geometry': {'type': 'Polygon',\n",
+       "   'coordinates': [[(8.680486679077148, 49.418455714236885),\n",
+       "     (8.69619369506836, 49.418455714236885),\n",
+       "     (8.69619369506836, 49.42833758576036),\n",
+       "     (8.680486679077148, 49.42833758576036),\n",
+       "     (8.680486679077148, 49.418455714236885)],\n",
+       "    [(8.688468933105469, 49.42398310798032),\n",
+       "     (8.693962097167969, 49.42398310798032),\n",
+       "     (8.693962097167969, 49.426607006252176),\n",
+       "     (8.688468933105469, 49.426607006252176),\n",
+       "     (8.688468933105469, 49.42398310798032)]]}}]"
+      ]
+     },
+     "execution_count": 39,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import fiona\n",
+    "with fiona.open(geojson_path, \"r\") as src:\n",
+    "    features = list(src)\n",
+    "features"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "## How can you perform geospatial operations in Python? "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 71,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Data type: <class 'shapely.geometry.polygon.Polygon'>\n"
+     ]
+    },
+    {
+     "data": {
+      "image/svg+xml": [
+       "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"100.0\" height=\"100.0\" viewBox=\"8.66993980407715 49.41278391426156 0.01594390869140483 0.009668156598756639\" preserveAspectRatio=\"xMinYMin meet\"><g transform=\"matrix(1,0,0,-1,0,98.83523598512187)\"><path fill-rule=\"evenodd\" fill=\"#66cc99\" stroke=\"#555555\" stroke-width=\"0.0003188781738280966\" opacity=\"0.6\" d=\"M 8.670530319213867,49.41337442939828 L 8.685293197631836,49.41337442939828 L 8.685293197631836,49.421861555723595 L 8.670530319213867,49.421861555723595 L 8.670530319213867,49.41337442939828 z\" /></g></svg>"
+      ],
+      "text/plain": [
+       "<shapely.geometry.polygon.Polygon at 0x124426048>"
+      ]
+     },
+     "execution_count": 71,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "from shapely.geometry import shape\n",
+    "first_geometry_obj = shape(first_geometry)\n",
+    "print(\"Data type: %s\" % type(first_geometry_obj))\n",
+    "first_geometry_obj"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "__You can also do this all at once:__"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 54,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "image/svg+xml": [
+       "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"100.0\" height=\"100.0\" viewBox=\"8.6798583984375 49.41782743359724 0.016963577270509234 0.011138432802766829\" preserveAspectRatio=\"xMinYMin meet\"><g transform=\"matrix(1,0,0,-1,0,98.84679329999724)\"><path fill-rule=\"evenodd\" fill=\"#66cc99\" stroke=\"#555555\" stroke-width=\"0.00033927154541018467\" opacity=\"0.6\" d=\"M 8.680486679077148,49.418455714236885 L 8.69619369506836,49.418455714236885 L 8.69619369506836,49.42833758576036 L 8.680486679077148,49.42833758576036 L 8.680486679077148,49.418455714236885 z M 8.688468933105469,49.42398310798032 L 8.693962097167969,49.42398310798032 L 8.693962097167969,49.426607006252176 L 8.688468933105469,49.426607006252176 L 8.688468933105469,49.42398310798032 z\" /></g></svg>"
+      ],
+      "text/plain": [
+       "<shapely.geometry.polygon.Polygon at 0x1215ce0b8>"
+      ]
+     },
+     "execution_count": 54,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "second_geometry_obj = shape(features[1][\"geometry\"])\n",
+    "second_geometry_obj"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "__Everything in Python is an object. Objects have attributes ...__"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 78,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Polygon'"
+      ]
+     },
+     "execution_count": 78,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "first_geometry_obj.geom_type"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "__... and methods:__"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 80,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Does the first feature intersect the second feature?\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 80,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print(\"Does the first feature intersect the second feature?\")\n",
+    "first_geometry_obj.intersects(second_geometry_obj)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "## Performing complex geospatial analyses using 'GeoPandas'\n",
+    "GeoPandas is built upon fiona, shapely and pandas to facilitate geospatial analysis in Python."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 67,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<matplotlib.axes._subplots.AxesSubplot at 0x12402a940>"
+      ]
+     },
+     "execution_count": 67,
+     "metadata": {},
+     "output_type": "execute_result"
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<Figure size 432x288 with 1 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "import geopandas as gpd\n",
+    "polygons_df = gpd.read_file(geojson_path)\n",
+    "polygons_df.head()\n",
+    "polygons_df.plot()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 83,
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/Users/chludwig/miniconda3/envs/cs4geos/lib/python3.7/site-packages/IPython/core/display.py:694: UserWarning: Consider using IPython.display.IFrame instead\n",
+      "  warnings.warn(\"Consider using IPython.display.IFrame instead\")\n"
+     ]
+    },
+    {
+     "data": {
+      "text/html": [
+       "<iframe src=\"data:text/html;base64,PGhlYWQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvbGVhZmxldC8wLjcuMy9sZWFmbGV0LmpzIj48L3NjcmlwdD4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvbGVhZmxldC8wLjcuMy9sZWFmbGV0LmNzcyIgLz4KICA8c3R5bGU+CiAgICAjbWFwMjkzMWU4Y2YzNTJhNDUxYTgwYjc0ZmEwMTI5Yjg3NDIgewogICAgICBoZWlnaHQ6MTAwJTsKICAgIH0KICA8L3N0eWxlPiAKPC9oZWFkPgo8Ym9keT4KICA8ZGl2IGlkPSJtYXAyOTMxZThjZjM1MmE0NTFhODBiNzRmYTAxMjliODc0MiI+PC9kaXY+CjxzY3JpcHQgdGV4dD0idGV4dC9qYXZhc2NyaXB0Ij4KdmFyIG1hcCA9IEwubWFwKCdtYXAyOTMxZThjZjM1MmE0NTFhODBiNzRmYTAxMjliODc0MicpOwpMLnRpbGVMYXllcigKICAiaHR0cDovL3tzfS50aWxlLm9wZW5zdHJlZXRtYXAub3JnL3t6fS97eH0ve3l9LnBuZyIsCiAge21heFpvb206MTksIGF0dHJpYnV0aW9uOiAnPGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2p3YXNzL21wbGxlYWZsZXQiPm1wbGxlYWZsZXQ8L2E+IHwgTWFwIGRhdGEgKGMpIDxhIGhyZWY9Imh0dHA6Ly9vcGVuc3RyZWV0bWFwLm9yZyI+T3BlblN0cmVldE1hcDwvYT4gY29udHJpYnV0b3JzJ30pLmFkZFRvKG1hcCk7CnZhciBnakRhdGEgPSB7InR5cGUiOiAiRmVhdHVyZUNvbGxlY3Rpb24iLCAiZmVhdHVyZXMiOiBbeyJ0eXBlIjogIkZlYXR1cmUiLCAiZ2VvbWV0cnkiOiB7InR5cGUiOiAiUG9seWdvbiIsICJjb29yZGluYXRlcyI6IFtbWzguNjcwNTMwMzE5MjEzODY3LCA0OS40MTMzNzQ0MjkzOTgyOF0sIFs4LjY4NTI5MzE5NzYzMTgzNiwgNDkuNDEzMzc0NDI5Mzk4MjhdLCBbOC42ODUyOTMxOTc2MzE4MzYsIDQ5LjQyMTg2MTU1NTcyMzU5NV0sIFs4LjY3MDUzMDMxOTIxMzg2NywgNDkuNDIxODYxNTU1NzIzNTk1XSwgWzguNjcwNTMwMzE5MjEzODY3LCA0OS40MTMzNzQ0MjkzOTgyOF1dXX0sICJwcm9wZXJ0aWVzIjogeyJjb2xvciI6ICJub25lIiwgIndlaWdodCI6IDEuMCwgIm9wYWNpdHkiOiBudWxsLCAiZmlsbENvbG9yIjogIiMxRjc3QjQiLCAiZGFzaEFycmF5IjogIjEwLDAifX0sIHsidHlwZSI6ICJGZWF0dXJlIiwgImdlb21ldHJ5IjogeyJ0eXBlIjogIlBvbHlnb24iLCAiY29vcmRpbmF0ZXMiOiBbW1s4LjY4MDQ4NjY3OTA3NzE0OCwgNDkuNDE4NDU1NzE0MjM2ODg1XSwgWzguNjk2MTkzNjk1MDY4MzYsIDQ5LjQxODQ1NTcxNDIzNjg4NV0sIFs4LjY5NjE5MzY5NTA2ODM2LCA0OS40MjgzMzc1ODU3NjAzNl0sIFs4LjY4MDQ4NjY3OTA3NzE0OCwgNDkuNDI4MzM3NTg1NzYwMzZdLCBbOC42ODA0ODY2NzkwNzcxNDgsIDQ5LjQxODQ1NTcxNDIzNjg4NV1dLCBbWzguNjg4NDY4OTMzMTA1NDY5LCA0OS40MjM5ODMxMDc5ODAzMl0sIFs4LjY5Mzk2MjA5NzE2Nzk2OSwgNDkuNDIzOTgzMTA3OTgwMzJdLCBbOC42OTM5NjIwOTcxNjc5NjksIDQ5LjQyNjYwNzAwNjI1MjE3Nl0sIFs4LjY4ODQ2ODkzMzEwNTQ2OSwgNDkuNDI2NjA3MDA2MjUyMTc2XSwgWzguNjg4NDY4OTMzMTA1NDY5LCA0OS40MjM5ODMxMDc5ODAzMl1dXX0sICJwcm9wZXJ0aWVzIjogeyJjb2xvciI6ICJub25lIiwgIndlaWdodCI6IDEuMCwgIm9wYWNpdHkiOiBudWxsLCAiZmlsbENvbG9yIjogIiMxRjc3QjQiLCAiZGFzaEFycmF5IjogIjEwLDAifX1dfTsKCmlmIChnakRhdGEuZmVhdHVyZXMubGVuZ3RoICE9IDApIHsKICB2YXIgZ2ogPSBMLmdlb0pzb24oZ2pEYXRhLCB7CiAgICBzdHlsZTogZnVuY3Rpb24gKGZlYXR1cmUpIHsKICAgICAgcmV0dXJuIGZlYXR1cmUucHJvcGVydGllczsKICAgIH0sCiAgICBwb2ludFRvTGF5ZXI6IGZ1bmN0aW9uIChmZWF0dXJlLCBsYXRsbmcpIHsKICAgICAgdmFyIGljb24gPSBMLmRpdkljb24oeydodG1sJzogZmVhdHVyZS5wcm9wZXJ0aWVzLmh0bWwsIAogICAgICAgIGljb25BbmNob3I6IFtmZWF0dXJlLnByb3BlcnRpZXMuYW5jaG9yX3gsIAogICAgICAgICAgICAgICAgICAgICBmZWF0dXJlLnByb3BlcnRpZXMuYW5jaG9yX3ldLCAKICAgICAgICAgIGNsYXNzTmFtZTogJ2VtcHR5J30pOyAgLy8gV2hhdCBjYW4gSSBkbyBhYm91dCBlbXB0eT8KICAgICAgcmV0dXJuIEwubWFya2VyKGxhdGxuZywge2ljb246IGljb259KTsKICAgIH0KICB9KTsKICBnai5hZGRUbyhtYXApOwogIAogIG1hcC5maXRCb3VuZHMoZ2ouZ2V0Qm91bmRzKCkpOwp9IGVsc2UgewogIG1hcC5zZXRWaWV3KFswLCAwXSwgMSk7Cn0KPC9zY3JpcHQ+CjwvYm9keT4=\" width=\"100%\" height=\"240\"></iframe>"
+      ],
+      "text/plain": [
+       "<IPython.core.display.HTML object>"
+      ]
+     },
+     "execution_count": 83,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import mplleaflet\n",
+    "polygons_df.plot()\n",
+    "mplleaflet.display()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "If you want to learn more about GeoPandas, check out [this tutorial.](https://github.com/jorisvandenbossche/geopandas-tutorial)"
+   ]
+  }
+ ],
+ "metadata": {
+  "celltoolbar": "Slideshow",
+  "kernelspec": {
+   "display_name": "Python (cs4geos)",
+   "language": "python",
+   "name": "cs4geos"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

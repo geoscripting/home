@@ -1,0 +1,922 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction to Computer Science for Geographers &mdash; Advanced Geoscripting 2020 2020 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Advanced Geoscripting 2020
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/administration.html">Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/communication.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/resources.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/time_schedule.html">Time schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/learninggoals.html">Learning goals</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Preparation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/software_setup.html">Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/git_intro/index.html">git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/preparatory_assignment/README.html">Preparatory Assignment</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../course/01_advanced_vector_processing/README.html">1. Advanced Geo Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../course/02_vectorized_geodata_processing/README.html">2. Vectorized Data Processing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Final Assignment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/index.html">Final Assignment</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Advanced Geoscripting 2020</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Introduction to Computer Science for Geographers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/slides/repetition_1/Repetition_day1.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Introduction-to-Computer-Science-for-Geographers">
+<h1>Introduction to Computer Science for Geographers<a class="headerlink" href="#Introduction-to-Computer-Science-for-Geographers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="What-we’ve-done-on-day-1">
+<h2>What we’ve done on day 1<a class="headerlink" href="#What-we’ve-done-on-day-1" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="How-this-course-works">
+<h2>How this course works<a class="headerlink" href="#How-this-course-works" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Ask-questions">
+<h3>Ask questions<a class="headerlink" href="#Ask-questions" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="Work-together-→-Pair-programming">
+<h3>Work together → Pair programming<a class="headerlink" href="#Work-together-→-Pair-programming" title="Permalink to this headline">¶</a></h3>
+<p><img alt="Drawing" src="../../_images/pairprogramming.png" /></p>
+</div>
+<div class="section" id="Good-learning-environment">
+<h3>Good learning environment<a class="headerlink" href="#Good-learning-environment" title="Permalink to this headline">¶</a></h3>
+<p><img alt="learning_environment" src="../../_images/group_rules.png" /></p>
+</div>
+<div class="section" id="Time-table">
+<h3>Time table<a class="headerlink" href="#Time-table" title="Permalink to this headline">¶</a></h3>
+<p><img alt="image0" src="../../_images/compiler_interpreter1.png" /></p>
+</div>
+<div class="section" id="All-course-material-is-on">
+<h3>All course material is on<a class="headerlink" href="#All-course-material-is-on" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="https://github.com/redfrexx/cs4geos19">
+<h2><a class="reference external" href="https://github.com/redfrexx/cs4geos19">https://github.com/redfrexx/cs4geos19</a><a class="headerlink" href="#https://github.com/redfrexx/cs4geos19" title="Permalink to this headline">¶</a></h2>
+<p>We will learn how to use <strong>git</strong> to track our work progress.</p>
+<div class="section" id="We-will-use-Anaconda-to-manage-Python-environments">
+<h3>We will use Anaconda to manage Python environments<a class="headerlink" href="#We-will-use-Anaconda-to-manage-Python-environments" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Why-would-we-need-several-Python-environments-and-why-do-you-we-need-help-with-managing-them?">
+<h4>Why would we need several Python environments and why do you we need help with managing them?<a class="headerlink" href="#Why-would-we-need-several-Python-environments-and-why-do-you-we-need-help-with-managing-them?" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>What we’ve done on day 1<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="Computer-Science-and-Geography">
+<h2>Computer Science and Geography<a class="headerlink" href="#Computer-Science-and-Geography" title="Permalink to this headline">¶</a></h2>
+<p><img alt="cs_geo" src="../../_images/cs_geo.png" /></p>
+</div>
+<div class="section" id="Programming-Languages">
+<h2>Programming Languages<a class="headerlink" href="#Programming-Languages" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image0" src="../../_images/compiler_interpreter1.png" /></p>
+</div>
+<div class="section" id="What-ist-the-difference-between-comilers-and-interpreters?">
+<h2>What ist the difference between comilers and interpreters?<a class="headerlink" href="#What-ist-the-difference-between-comilers-and-interpreters?" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image0" src="../../_images/compiler_interpreter1.png" /></p>
+</div>
+<div class="section" id="What-are-examples-for-compiled-and-interpreted-languages?">
+<h2>What are examples for compiled and interpreted languages?<a class="headerlink" href="#What-are-examples-for-compiled-and-interpreted-languages?" title="Permalink to this headline">¶</a></h2>
+<p><img alt="Drawing" src="../../_images/python_c_2.png" /></p>
+<p><img alt="Drawing" src="../../_images/python_c_3.png" /></p>
+</div>
+<div class="section" id="Which-data-structures-did-we-use-to-read-GeoJSON-in-Python?">
+<h2>Which data structures did we use to read GeoJSON in Python?<a class="headerlink" href="#Which-data-structures-did-we-use-to-read-GeoJSON-in-Python?" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="String">
+<h3>String<a class="headerlink" href="#String" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">geojson_path</span> <span class="o">=</span> <span class="s2">&quot;./data/some_features.geojson&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">geojson_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="n">geojson_str</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">geojson_str</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#34;type&#34;:&#34;FeatureCollection&#34;,&#34;features&#34;:[{&#34;type&#34;:&#34;Feature&#34;,&#34;properties&#34;:{&#34;color&#34;:&#34;green&#34;,&#34;id&#34;:1},&#34;geometry&#34;:{&#34;type&#34;:&#34;Polygon&#34;,&#34;coordinates&#34;:[[[8.670530319213867,49.41337442939828],[8.685293197631836,49.41337442939828],[8.685293197631836,49.421861555723595],[8.670530319213867,49.421861555723595],[8.670530319213867,49.41337442939828]]]}},{&#34;type&#34;:&#34;Feature&#34;,&#34;properties&#34;:{&#34;color&#34;:&#34;blue&#34;,&#34;id&#34;:2},&#34;geometry&#34;:{&#34;type&#34;:&#34;Polygon&#34;,&#34;coordinates&#34;:[[[8.680486679077148,49.418455714236885],[8.69619369506836,49.418455714236885],[8.69619369506836,49.42833758576036],[8.680486679077148,49.42833758576036],[8.680486679077148,49.418455714236885]],[[8.688468933105469, 49.42398310798032],[8.693962097167969, 49.42398310798032],[8.693962097167969, 49.426607006252176],[8.688468933105469, 49.426607006252176],[8.688468933105469, 49.42398310798032]]]}}]}
+
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Decode-a-string-to-a-dictionary-using-json.loads()">
+<h3>Decode a string to a dictionary using <code class="docutils literal notranslate"><span class="pre">json.loads()</span></code><a class="headerlink" href="#Decode-a-string-to-a-dictionary-using-json.loads()" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="n">geojson_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">geojson_str</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">geojson_dict</span><span class="p">))</span>
+<span class="n">geojson_dict</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Data type: &lt;class &#39;dict&#39;&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;type&#39;: &#39;FeatureCollection&#39;,
+ &#39;features&#39;: [{&#39;type&#39;: &#39;Feature&#39;,
+   &#39;properties&#39;: {&#39;color&#39;: &#39;green&#39;, &#39;id&#39;: 1},
+   &#39;geometry&#39;: {&#39;type&#39;: &#39;Polygon&#39;,
+    &#39;coordinates&#39;: [[[8.670530319213867, 49.41337442939828],
+      [8.685293197631836, 49.41337442939828],
+      [8.685293197631836, 49.421861555723595],
+      [8.670530319213867, 49.421861555723595],
+      [8.670530319213867, 49.41337442939828]]]}},
+  {&#39;type&#39;: &#39;Feature&#39;,
+   &#39;properties&#39;: {&#39;color&#39;: &#39;blue&#39;, &#39;id&#39;: 2},
+   &#39;geometry&#39;: {&#39;type&#39;: &#39;Polygon&#39;,
+    &#39;coordinates&#39;: [[[8.680486679077148, 49.418455714236885],
+      [8.69619369506836, 49.418455714236885],
+      [8.69619369506836, 49.42833758576036],
+      [8.680486679077148, 49.42833758576036],
+      [8.680486679077148, 49.418455714236885]],
+     [[8.688468933105469, 49.42398310798032],
+      [8.693962097167969, 49.42398310798032],
+      [8.693962097167969, 49.426607006252176],
+      [8.688468933105469, 49.426607006252176],
+      [8.688468933105469, 49.42398310798032]]]}}]}
+</pre></div></div>
+</div>
+<p>Access an item of a <strong>dictionary</strong> using <em>dict[key]</em>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">features</span> <span class="o">=</span> <span class="n">geojson_dict</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">features</span><span class="p">))</span>
+<span class="n">features</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Data type: &lt;class &#39;list&#39;&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[{&#39;type&#39;: &#39;Feature&#39;,
+  &#39;properties&#39;: {&#39;color&#39;: &#39;green&#39;, &#39;id&#39;: 1},
+  &#39;geometry&#39;: {&#39;type&#39;: &#39;Polygon&#39;,
+   &#39;coordinates&#39;: [[[8.670530319213867, 49.41337442939828],
+     [8.685293197631836, 49.41337442939828],
+     [8.685293197631836, 49.421861555723595],
+     [8.670530319213867, 49.421861555723595],
+     [8.670530319213867, 49.41337442939828]]]}},
+ {&#39;type&#39;: &#39;Feature&#39;,
+  &#39;properties&#39;: {&#39;color&#39;: &#39;blue&#39;, &#39;id&#39;: 2},
+  &#39;geometry&#39;: {&#39;type&#39;: &#39;Polygon&#39;,
+   &#39;coordinates&#39;: [[[8.680486679077148, 49.418455714236885],
+     [8.69619369506836, 49.418455714236885],
+     [8.69619369506836, 49.42833758576036],
+     [8.680486679077148, 49.42833758576036],
+     [8.680486679077148, 49.418455714236885]],
+    [[8.688468933105469, 49.42398310798032],
+     [8.693962097167969, 49.42398310798032],
+     [8.693962097167969, 49.426607006252176],
+     [8.688468933105469, 49.426607006252176],
+     [8.688468933105469, 49.42398310798032]]]}}]
+</pre></div></div>
+</div>
+<p>Access an item from a <strong>list</strong> using <em>list[index]</em>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">first_feature</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">first_feature</span><span class="p">))</span>
+<span class="n">first_feature</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Data type: &lt;class &#39;dict&#39;&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;type&#39;: &#39;Feature&#39;,
+ &#39;properties&#39;: {&#39;color&#39;: &#39;green&#39;, &#39;id&#39;: 1},
+ &#39;geometry&#39;: {&#39;type&#39;: &#39;Polygon&#39;,
+  &#39;coordinates&#39;: [[[8.670530319213867, 49.41337442939828],
+    [8.685293197631836, 49.41337442939828],
+    [8.685293197631836, 49.421861555723595],
+    [8.670530319213867, 49.421861555723595],
+    [8.670530319213867, 49.41337442939828]]]}}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">first_geometry</span> <span class="o">=</span> <span class="n">first_feature</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span>
+<span class="n">first_geometry</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;type&#39;: &#39;Polygon&#39;,
+ &#39;coordinates&#39;: [[[8.670530319213867, 49.41337442939828],
+   [8.685293197631836, 49.41337442939828],
+   [8.685293197631836, 49.421861555723595],
+   [8.670530319213867, 49.421861555723595],
+   [8.670530319213867, 49.41337442939828]]]}
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Fiona-to-read-and-write-different-geospatial-data-formats">
+<h2>Fiona to read and write different geospatial data formats<a class="headerlink" href="#Fiona-to-read-and-write-different-geospatial-data-formats" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">fiona</span>
+<span class="k">with</span> <span class="n">fiona</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">geojson_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+<span class="n">features</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[{&#39;type&#39;: &#39;Feature&#39;,
+  &#39;id&#39;: &#39;1&#39;,
+  &#39;properties&#39;: OrderedDict([(&#39;color&#39;, &#39;green&#39;), (&#39;id&#39;, 1)]),
+  &#39;geometry&#39;: {&#39;type&#39;: &#39;Polygon&#39;,
+   &#39;coordinates&#39;: [[(8.670530319213867, 49.41337442939828),
+     (8.685293197631836, 49.41337442939828),
+     (8.685293197631836, 49.421861555723595),
+     (8.670530319213867, 49.421861555723595),
+     (8.670530319213867, 49.41337442939828)]]}},
+ {&#39;type&#39;: &#39;Feature&#39;,
+  &#39;id&#39;: &#39;2&#39;,
+  &#39;properties&#39;: OrderedDict([(&#39;color&#39;, &#39;blue&#39;), (&#39;id&#39;, 2)]),
+  &#39;geometry&#39;: {&#39;type&#39;: &#39;Polygon&#39;,
+   &#39;coordinates&#39;: [[(8.680486679077148, 49.418455714236885),
+     (8.69619369506836, 49.418455714236885),
+     (8.69619369506836, 49.42833758576036),
+     (8.680486679077148, 49.42833758576036),
+     (8.680486679077148, 49.418455714236885)],
+    [(8.688468933105469, 49.42398310798032),
+     (8.693962097167969, 49.42398310798032),
+     (8.693962097167969, 49.426607006252176),
+     (8.688468933105469, 49.426607006252176),
+     (8.688468933105469, 49.42398310798032)]]}}]
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="How-can-you-perform-geospatial-operations-in-Python?">
+<h2>How can you perform geospatial operations in Python?<a class="headerlink" href="#How-can-you-perform-geospatial-operations-in-Python?" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[71]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="k">import</span> <span class="n">shape</span>
+<span class="n">first_geometry_obj</span> <span class="o">=</span> <span class="n">shape</span><span class="p">(</span><span class="n">first_geometry</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">first_geometry_obj</span><span class="p">))</span>
+<span class="n">first_geometry_obj</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Data type: &lt;class &#39;shapely.geometry.polygon.Polygon&#39;&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[71]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/slides_repetition_1_Repetition_day1_33_1.svg" src="../../_images/slides_repetition_1_Repetition_day1_33_1.svg" /></div>
+</div>
+<p><strong>You can also do this all at once:</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">second_geometry_obj</span> <span class="o">=</span> <span class="n">shape</span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;geometry&quot;</span><span class="p">])</span>
+<span class="n">second_geometry_obj</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/slides_repetition_1_Repetition_day1_35_0.svg" src="../../_images/slides_repetition_1_Repetition_day1_35_0.svg" /></div>
+</div>
+<p><strong>Everything in Python is an object. Objects have attributes …</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[78]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">first_geometry_obj</span><span class="o">.</span><span class="n">geom_type</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[78]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;Polygon&#39;
+</pre></div></div>
+</div>
+<p><strong>… and methods:</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[80]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Does the first feature intersect the second feature?&quot;</span><span class="p">)</span>
+<span class="n">first_geometry_obj</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">second_geometry_obj</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Does the first feature intersect the second feature?
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[80]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Performing-complex-geospatial-analyses-using-‘GeoPandas’">
+<h2>Performing complex geospatial analyses using ‘GeoPandas’<a class="headerlink" href="#Performing-complex-geospatial-analyses-using-‘GeoPandas’" title="Permalink to this headline">¶</a></h2>
+<p>GeoPandas is built upon fiona, shapely and pandas to facilitate geospatial analysis in Python.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="n">polygons_df</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">geojson_path</span><span class="p">)</span>
+<span class="n">polygons_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">polygons_df</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x12402a940&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/slides_repetition_1_Repetition_day1_41_1.png" src="../../_images/slides_repetition_1_Repetition_day1_41_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[83]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">mplleaflet</span>
+<span class="n">polygons_df</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">mplleaflet</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/chludwig/miniconda3/envs/cs4geos/lib/python3.7/site-packages/IPython/core/display.py:694: UserWarning: Consider using IPython.display.IFrame instead
+  warnings.warn(&#34;Consider using IPython.display.IFrame instead&#34;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[83]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<iframe src="data:text/html;base64,PGhlYWQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvbGVhZmxldC8wLjcuMy9sZWFmbGV0LmpzIj48L3NjcmlwdD4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvbGVhZmxldC8wLjcuMy9sZWFmbGV0LmNzcyIgLz4KICA8c3R5bGU+CiAgICAjbWFwMjkzMWU4Y2YzNTJhNDUxYTgwYjc0ZmEwMTI5Yjg3NDIgewogICAgICBoZWlnaHQ6MTAwJTsKICAgIH0KICA8L3N0eWxlPiAKPC9oZWFkPgo8Ym9keT4KICA8ZGl2IGlkPSJtYXAyOTMxZThjZjM1MmE0NTFhODBiNzRmYTAxMjliODc0MiI+PC9kaXY+CjxzY3JpcHQgdGV4dD0idGV4dC9qYXZhc2NyaXB0Ij4KdmFyIG1hcCA9IEwubWFwKCdtYXAyOTMxZThjZjM1MmE0NTFhODBiNzRmYTAxMjliODc0MicpOwpMLnRpbGVMYXllcigKICAiaHR0cDovL3tzfS50aWxlLm9wZW5zdHJlZXRtYXAub3JnL3t6fS97eH0ve3l9LnBuZyIsCiAge21heFpvb206MTksIGF0dHJpYnV0aW9uOiAnPGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2p3YXNzL21wbGxlYWZsZXQiPm1wbGxlYWZsZXQ8L2E+IHwgTWFwIGRhdGEgKGMpIDxhIGhyZWY9Imh0dHA6Ly9vcGVuc3RyZWV0bWFwLm9yZyI+T3BlblN0cmVldE1hcDwvYT4gY29udHJpYnV0b3JzJ30pLmFkZFRvKG1hcCk7CnZhciBnakRhdGEgPSB7InR5cGUiOiAiRmVhdHVyZUNvbGxlY3Rpb24iLCAiZmVhdHVyZXMiOiBbeyJ0eXBlIjogIkZlYXR1cmUiLCAiZ2VvbWV0cnkiOiB7InR5cGUiOiAiUG9seWdvbiIsICJjb29yZGluYXRlcyI6IFtbWzguNjcwNTMwMzE5MjEzODY3LCA0OS40MTMzNzQ0MjkzOTgyOF0sIFs4LjY4NTI5MzE5NzYzMTgzNiwgNDkuNDEzMzc0NDI5Mzk4MjhdLCBbOC42ODUyOTMxOTc2MzE4MzYsIDQ5LjQyMTg2MTU1NTcyMzU5NV0sIFs4LjY3MDUzMDMxOTIxMzg2NywgNDkuNDIxODYxNTU1NzIzNTk1XSwgWzguNjcwNTMwMzE5MjEzODY3LCA0OS40MTMzNzQ0MjkzOTgyOF1dXX0sICJwcm9wZXJ0aWVzIjogeyJjb2xvciI6ICJub25lIiwgIndlaWdodCI6IDEuMCwgIm9wYWNpdHkiOiBudWxsLCAiZmlsbENvbG9yIjogIiMxRjc3QjQiLCAiZGFzaEFycmF5IjogIjEwLDAifX0sIHsidHlwZSI6ICJGZWF0dXJlIiwgImdlb21ldHJ5IjogeyJ0eXBlIjogIlBvbHlnb24iLCAiY29vcmRpbmF0ZXMiOiBbW1s4LjY4MDQ4NjY3OTA3NzE0OCwgNDkuNDE4NDU1NzE0MjM2ODg1XSwgWzguNjk2MTkzNjk1MDY4MzYsIDQ5LjQxODQ1NTcxNDIzNjg4NV0sIFs4LjY5NjE5MzY5NTA2ODM2LCA0OS40MjgzMzc1ODU3NjAzNl0sIFs4LjY4MDQ4NjY3OTA3NzE0OCwgNDkuNDI4MzM3NTg1NzYwMzZdLCBbOC42ODA0ODY2NzkwNzcxNDgsIDQ5LjQxODQ1NTcxNDIzNjg4NV1dLCBbWzguNjg4NDY4OTMzMTA1NDY5LCA0OS40MjM5ODMxMDc5ODAzMl0sIFs4LjY5Mzk2MjA5NzE2Nzk2OSwgNDkuNDIzOTgzMTA3OTgwMzJdLCBbOC42OTM5NjIwOTcxNjc5NjksIDQ5LjQyNjYwNzAwNjI1MjE3Nl0sIFs4LjY4ODQ2ODkzMzEwNTQ2OSwgNDkuNDI2NjA3MDA2MjUyMTc2XSwgWzguNjg4NDY4OTMzMTA1NDY5LCA0OS40MjM5ODMxMDc5ODAzMl1dXX0sICJwcm9wZXJ0aWVzIjogeyJjb2xvciI6ICJub25lIiwgIndlaWdodCI6IDEuMCwgIm9wYWNpdHkiOiBudWxsLCAiZmlsbENvbG9yIjogIiMxRjc3QjQiLCAiZGFzaEFycmF5IjogIjEwLDAifX1dfTsKCmlmIChnakRhdGEuZmVhdHVyZXMubGVuZ3RoICE9IDApIHsKICB2YXIgZ2ogPSBMLmdlb0pzb24oZ2pEYXRhLCB7CiAgICBzdHlsZTogZnVuY3Rpb24gKGZlYXR1cmUpIHsKICAgICAgcmV0dXJuIGZlYXR1cmUucHJvcGVydGllczsKICAgIH0sCiAgICBwb2ludFRvTGF5ZXI6IGZ1bmN0aW9uIChmZWF0dXJlLCBsYXRsbmcpIHsKICAgICAgdmFyIGljb24gPSBMLmRpdkljb24oeydodG1sJzogZmVhdHVyZS5wcm9wZXJ0aWVzLmh0bWwsIAogICAgICAgIGljb25BbmNob3I6IFtmZWF0dXJlLnByb3BlcnRpZXMuYW5jaG9yX3gsIAogICAgICAgICAgICAgICAgICAgICBmZWF0dXJlLnByb3BlcnRpZXMuYW5jaG9yX3ldLCAKICAgICAgICAgIGNsYXNzTmFtZTogJ2VtcHR5J30pOyAgLy8gV2hhdCBjYW4gSSBkbyBhYm91dCBlbXB0eT8KICAgICAgcmV0dXJuIEwubWFya2VyKGxhdGxuZywge2ljb246IGljb259KTsKICAgIH0KICB9KTsKICBnai5hZGRUbyhtYXApOwogIAogIG1hcC5maXRCb3VuZHMoZ2ouZ2V0Qm91bmRzKCkpOwp9IGVsc2UgewogIG1hcC5zZXRWaWV3KFswLCAwXSwgMSk7Cn0KPC9zY3JpcHQ+CjwvYm9keT4=" width="100%" height="240"></iframe></div>
+</div>
+<p>If you want to learn more about GeoPandas, check out <a class="reference external" href="https://github.com/jorisvandenbossche/geopandas-tutorial">this tutorial.</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Christina Ludwig
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

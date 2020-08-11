@@ -1,0 +1,8 @@
+Learning goals
+=================
+
+1. Explain the logical set-up of a computer.
+2. Name the factors affecting performance of a computer.
+3. Explain the von Neumann Bottleneck and strategies of how to overcome it.
+4. Use vectorization in Python based on numpy and (geo)pandas.
+5. Fork a Github repository.  

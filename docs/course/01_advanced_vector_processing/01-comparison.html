@@ -28,8 +28,6 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -40,7 +38,9 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Part 3: Vector Data Analysis using GeoPandas" href="02-geopandas.html" />
+    <link rel="prev" title="Part 1: Introduction to Vector Data Processing in Python" href="00-introduction.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,11 +99,33 @@
 <li class="toctree-l1"><a class="reference internal" href="../../preparation/preparatory_assignment/README.html">Preparatory Assignment</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Course Content</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="README.html">1. Advanced Geo Data Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02_vectorized_geodata_processing/README.html">2. Vectorized Computation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../03_scientific_programming/README.html">3. Best Practices in Scientific Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04_geodata_visualization/README.html">4. Geo Data Visualization</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">1. Advanced Geo Data Processing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="00-introduction.html">Part 1: Introduction to Vector Data Processing in Python</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Part 2: Why all these packages?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Python-packages-ogr-and-gdal-enable-vector-and-raster-data-processing">Python packages <code class="docutils literal notranslate"><span class="pre">ogr</span></code> and <code class="docutils literal notranslate"><span class="pre">gdal</span></code> enable vector and raster data processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#So-why-would-we-need-other-Python-packages-for-geo-data-processing?">So why would we need other Python packages for geo data processing?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#In-this-assignment-we-will-focus-on-the-following-questions:">In this assignment we will focus on the following questions:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Comparing-ogr,-shapely-and-pure-Python">Comparing ogr, shapely and pure Python</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#1.-Create-your-own-Polygon-class-in-Python">1. Create your own <code class="docutils literal notranslate"><span class="pre">Polygon</span></code> class in Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#2.-Calculate-bounding-box-using-ogr.Geometry">2. Calculate bounding box using <code class="docutils literal notranslate"><span class="pre">ogr.Geometry</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#3.-Calculate-the-bounding-box-using-shapely">3. Calculate the bounding box using <code class="docutils literal notranslate"><span class="pre">shapely</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#4.-Comparison-of-execution-time">4. Comparison of execution time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#5.-Questions-for-Discussion">5. Questions for Discussion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Summary:">Summary:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#References">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02-geopandas.html">Part 3: Vector Data Analysis using GeoPandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#learning-goals">Learning goals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#slides">Slides</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02_vectorized_geodata_processing/README.html">2. Vectorized Data Processing</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Final Assignment</span></p>
 <ul>
@@ -152,6 +174,8 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="README.html">1. Advanced Geo Data Processing</a> &raquo;</li>
         
       <li>Part 2: Why all these packages?</li>
     
@@ -485,15 +509,84 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">class</span> <span class="nc">MyPolygon</span><span class="p">:</span>
+<span></span><span class="k">def</span> <span class="nf">myfunc</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">myfunc</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">class</span> <span class="nc">car</span><span class="p">():</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">):</span>
-        <span class="k">pass</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;rot&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">gelbes_auto</span> <span class="o">=</span> <span class="n">car</span><span class="p">(</span><span class="s2">&quot;gelb&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">gelbes_auto</span><span class="o">.</span><span class="n">color</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;gelb&#39;
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">class</span> <span class="nc">MyPolygon</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">coordinates</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -503,7 +596,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Test whether the instance of class <code class="docutils literal notranslate"><span class="pre">Polygon</span></code> returns the right value. If there is not error message, everything’s fine.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -514,22 +607,30 @@ div.rendered_html tbody tr:hover {
 <p><strong>E 1.2:</strong> Add a method <code class="docutils literal notranslate"><span class="pre">envelope</span></code> which calculates the bounding box of the polygon. The method should return the bounding box as a list containing the coordinates of the bounding box <code class="docutils literal notranslate"><span class="pre">[min_x,</span> <span class="pre">min_y,</span> <span class="pre">max_x,</span> <span class="pre">max_y]</span></code>.</p>
 <p><strong>Note:</strong> A bounding box is often reffered to as the envelope of a geometry.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">class</span> <span class="nc">MyPolygon</span><span class="p">():</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">):</span>
-        <span class="k">pass</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">coordinates</span>
 
     <span class="k">def</span> <span class="nf">envelope</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span>
+        <span class="n">xcoords</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">]</span>
+        <span class="n">ycoords</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">]</span>
+
+        <span class="n">minx</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">xcoords</span><span class="p">)</span>
+        <span class="n">maxx</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">xcoords</span><span class="p">)</span>
+        <span class="n">miny</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ycoords</span><span class="p">)</span>
+        <span class="n">maxy</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ycoords</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">minx</span><span class="p">,</span> <span class="n">miny</span><span class="p">,</span> <span class="n">maxx</span><span class="p">,</span> <span class="n">maxy</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -538,7 +639,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -561,7 +662,7 @@ minX: 1, minY: 1, maxX: 2, maxY: 2
 <p>So you’ve created a very simple Polygon class in Python with just a few lines of code. Now let’s compare your implementation to the one provided by the <code class="docutils literal notranslate"><span class="pre">ogr</span></code> package.</p>
 <p><strong>E 2.1:</strong> Use the <code class="docutils literal notranslate"><span class="pre">ogr</span></code> package to create a polygon object using the same <code class="docutils literal notranslate"><span class="pre">test_coordinates</span></code> as above.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -569,24 +670,48 @@ minX: 1, minY: 1, maxX: 2, maxY: 2
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<span></span><span class="c1"># Create ring</span>
+<span class="n">ring</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">Geometry</span><span class="p">(</span><span class="n">ogr</span><span class="o">.</span><span class="n">wkbLinearRing</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">test_coordinates</span><span class="p">:</span>
+    <span class="n">ring</span><span class="o">.</span><span class="n">AddPoint</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1"># Create polygon</span>
+<span class="n">ogr_poly</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">Geometry</span><span class="p">(</span><span class="n">ogr</span><span class="o">.</span><span class="n">wkbPolygon</span><span class="p">)</span>
+<span class="n">ogr_poly</span><span class="o">.</span><span class="n">AddGeometry</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ogr_poly</span><span class="o">.</span><span class="n">ExportToWkt</span><span class="p">())</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+POLYGON ((1 1 0,1 2 0,2 2 0,2 1 0,1 1 0))
+</pre></div></div>
 </div>
 <p><strong>E 2.2:</strong> Calculate the envelope of the polygon.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<span></span><span class="n">ogr_poly</span><span class="o">.</span><span class="n">GetEnvelope</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(1.0, 2.0, 1.0, 2.0)
+</pre></div></div>
 </div>
 <p>Are the results from your class and the ogr class the same? If not check your code.</p>
 <p><strong>Note:</strong> Remember that the order of the coordinates of the bounding box returned by <code class="docutils literal notranslate"><span class="pre">ogr</span></code> method is <code class="docutils literal notranslate"><span class="pre">[min_x,</span> <span class="pre">max_x,</span> <span class="pre">min_y,</span> <span class="pre">max_y]</span></code>.</p>
@@ -596,7 +721,7 @@ minX: 1, minY: 1, maxX: 2, maxY: 2
 <p>Those were a lot of lines just for creating a simple polygon. For this reason, <code class="docutils literal notranslate"><span class="pre">shapely</span></code> was developed. Creating a geometry using shapely works the same way as for our Python implementation.</p>
 <p><strong>E 3.1:</strong> Use <code class="docutils literal notranslate"><span class="pre">shapely</span></code> package to create a polygon object using the same <code class="docutils literal notranslate"><span class="pre">test_coordinates</span></code> as above.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -605,23 +730,32 @@ minX: 1, minY: 1, maxX: 2, maxY: 2
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<span></span><span class="n">shapely_poly</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">(</span><span class="n">test_coordinates</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <p><strong>E 3.2:</strong> Calculate the bounding box of the shapely polygon using the method <code class="docutils literal notranslate"><span class="pre">bounds()</span></code>. Again, check if your results are the same.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<span></span><span class="n">shapely_poly</span><span class="o">.</span><span class="n">bounds</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(1.0, 1.0, 2.0, 2.0)
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="4.-Comparison-of-execution-time">
@@ -631,7 +765,7 @@ minX: 1, minY: 1, maxX: 2, maxY: 2
 <h4>Exection time of bounding box calculation<a class="headerlink" href="#Exection-time-of-bounding-box-calculation" title="Permalink to this headline">¶</a></h4>
 <p><strong>E 4.1:</strong> Compare the exection times of the calculation of the bounding box of all three methods.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -645,11 +779,11 @@ minX: 1, minY: 1, maxX: 2, maxY: 2
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-1.87 µs ± 117 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+2.24 µs ± 311 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -663,11 +797,11 @@ minX: 1, minY: 1, maxX: 2, maxY: 2
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-561 ns ± 28.7 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
+650 ns ± 3.63 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -681,7 +815,7 @@ minX: 1, minY: 1, maxX: 2, maxY: 2
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-36.1 µs ± 3.58 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+36.1 µs ± 2.91 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </pre></div></div>
 </div>
 <p><strong>Question:</strong> What do you observe when you compre the execution times of all three methods? Can you explain the difference in execution times?</p>
@@ -691,32 +825,68 @@ minX: 1, minY: 1, maxX: 2, maxY: 2
 <h4>Comparison bounding box creation and object creation<a class="headerlink" href="#Comparison-bounding-box-creation-and-object-creation" title="Permalink to this headline">¶</a></h4>
 <p>When choosing the most efficient way to calculate something, we also need to consider the <em>overhead</em> of the calculation. The <em>overhead</em> contains all the processing steps that need to be taken as a preparation before the execution of the desired calculation. Depending on the implementation, this can change your decision.</p>
 <p><strong>E 4.2:</strong> Measure the execution times of all three implementations <strong>including the object creation.</strong></p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># my_poly</span>
+<span></span><span class="o">%%time</span>it
+<span class="n">my_poly</span> <span class="o">=</span> <span class="n">MyPolygon</span><span class="p">(</span><span class="n">test_coordinates</span><span class="p">)</span>
+<span class="n">my_poly</span><span class="o">.</span><span class="n">envelope</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2.31 µs ± 122 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># ogr_poly</span>
+<span></span><span class="o">%%time</span>it
+<span class="c1"># Create ring</span>
+<span class="n">ring</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">Geometry</span><span class="p">(</span><span class="n">ogr</span><span class="o">.</span><span class="n">wkbLinearRing</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">test_coordinates</span><span class="p">:</span>
+    <span class="n">ring</span><span class="o">.</span><span class="n">AddPoint</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1"># Create polygon</span>
+<span class="n">ogr_poly</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">Geometry</span><span class="p">(</span><span class="n">ogr</span><span class="o">.</span><span class="n">wkbPolygon</span><span class="p">)</span>
+<span class="n">ogr_poly</span><span class="o">.</span><span class="n">AddGeometry</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span>
+<span class="n">ogr_poly</span><span class="o">.</span><span class="n">GetEnvelope</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+18.6 µs ± 1.59 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># shapely_poly</span>
+<span></span><span class="o">%%time</span>it
+<span class="n">shapely_poly</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">(</span><span class="n">test_coordinates</span><span class="p">)</span>
+<span class="n">shapely_poly</span><span class="o">.</span><span class="n">bounds</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+54.4 µs ± 4.83 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+</pre></div></div>
 </div>
 <p><strong>Question:</strong> What do you observe when you compre the execution times and the object creation of all three polygon implementations? Can you explain the difference in execution times?</p>
 <p><strong>Your Answer:</strong></p>
@@ -743,22 +913,22 @@ minX: 1, minY: 1, maxX: 2, maxY: 2
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>DIY Python</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td><p>fast</p></td>
+<td><p>slow</p></td>
+<td><p>high</p></td>
+<td><p>high</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>OGR</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td><p>very fast</p></td>
+<td><p>medium</p></td>
+<td><p>low</p></td>
+<td><p>99% sufficient</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Shapely</strong></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td><p>quite slow</p></td>
+<td><p>fast</p></td>
+<td><p>high</p></td>
+<td><p>99% sufficient</p></td>
 </tr>
 </tbody>
 </table>
@@ -813,6 +983,15 @@ minX: 1, minY: 1, maxX: 2, maxY: 2
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="02-geopandas.html" class="btn btn-neutral float-right" title="Part 3: Vector Data Analysis using GeoPandas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="00-introduction.html" class="btn btn-neutral float-left" title="Part 1: Introduction to Vector Data Processing in Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

@@ -28,8 +28,6 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -124,6 +122,7 @@
 <li class="toctree-l2"><a class="reference internal" href="README.html#slides">Slides</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../02_vectorized_geodata_processing/README.html">2. Vectorized Data Processing</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Final Assignment</span></p>
 <ul>
@@ -501,7 +500,7 @@ div.rendered_html tbody tr:hover {
 <p><code class="docutils literal notranslate"><span class="pre">json.load()</span></code>/<code class="docutils literal notranslate"><span class="pre">json.loads()</span></code> for decoding: file connection / string → dict</p>
 <p><code class="docutils literal notranslate"><span class="pre">json.dump()</span></code>/<code class="docutils literal notranslate"><span class="pre">json.dumps()</span></code> for encoding: dict → file connection / string</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -510,7 +509,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -522,7 +521,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -531,7 +530,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -540,7 +539,7 @@ dict
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -549,7 +548,7 @@ dict
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -581,79 +580,53 @@ dict
 <p>When you open a file connection to read it, it is very important that you explicitly close it afterwards to avoid conflicts in file access with other programs. This is done using the <code class="docutils literal notranslate"><span class="pre">close()</span></code> method. However, we tend to forget it from time to time which can lead to problems in file access.</p>
 <p>To avoid this <strong>Context managers</strong> are very helpful. You create them using the <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">...</span> <span class="pre">as</span> <span class="pre">...:</span></code> statement. Everything inside the block is executed while the file is open. Afterwards the file is closed automatically.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
-    <span class="n">data_geojson</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+<span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">src2</span><span class="p">:</span>
+    <span class="n">data_geojson</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">src2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<p><strong>E:</strong> Extract the coordinates of the first feature.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">data_geojson</span>
+<span></span><span class="n">data_geojson</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;geometry&quot;</span><span class="p">][</span><span class="s2">&quot;coordinates&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#39;type&#39;: &#39;FeatureCollection&#39;,
- &#39;features&#39;: [{&#39;type&#39;: &#39;Feature&#39;,
-   &#39;properties&#39;: {&#39;color&#39;: &#39;green&#39;, &#39;id&#39;: 1},
-   &#39;geometry&#39;: {&#39;type&#39;: &#39;Polygon&#39;,
-    &#39;coordinates&#39;: [[[8.670530319213867, 49.41337442939828],
-      [8.685293197631836, 49.41337442939828],
-      [8.685293197631836, 49.421861555723595],
-      [8.670530319213867, 49.421861555723595],
-      [8.670530319213867, 49.41337442939828]]]}},
-  {&#39;type&#39;: &#39;Feature&#39;,
-   &#39;properties&#39;: {&#39;color&#39;: &#39;blue&#39;, &#39;id&#39;: 2},
-   &#39;geometry&#39;: {&#39;type&#39;: &#39;Polygon&#39;,
-    &#39;coordinates&#39;: [[[8.680486679077148, 49.418455714236885],
-      [8.69619369506836, 49.418455714236885],
-      [8.69619369506836, 49.42833758576036],
-      [8.680486679077148, 49.42833758576036],
-      [8.680486679077148, 49.418455714236885]],
-     [[8.688468933105469, 49.42398310798032],
-      [8.693962097167969, 49.42398310798032],
-      [8.693962097167969, 49.426607006252176],
-      [8.688468933105469, 49.426607006252176],
-      [8.688468933105469, 49.42398310798032]]]}}]}
+[[[8.670530319213867, 49.41337442939828],
+  [8.685293197631836, 49.41337442939828],
+  [8.685293197631836, 49.421861555723595],
+  [8.670530319213867, 49.421861555723595],
+  [8.670530319213867, 49.41337442939828]]]
 </pre></div></div>
-</div>
-<p><strong>E:</strong> Extract the coordinates of the first feature.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
-</pre></div>
-</div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">geojson</span></code> package is based on the <code class="docutils literal notranslate"><span class="pre">json</span></code> package but offers additional classes to represent different geometry types e.g. <code class="docutils literal notranslate"><span class="pre">geojson.feature.Polygon</span></code>.</p>
 <p>→ Check out the <a class="reference external" href="https://pypi.org/project/geojson">geojson package documentation</a> if you are interested</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">geojson</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
-    <span class="n">data_geojson</span> <span class="o">=</span> <span class="n">geojson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    <span class="n">data_geojson</span> <span class="o">=</span> <span class="n">geojson</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -662,7 +635,7 @@ dict
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -671,7 +644,7 @@ geojson.feature.FeatureCollection
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -680,7 +653,7 @@ geojson.feature.FeatureCollection
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -689,7 +662,7 @@ geojson.feature.FeatureCollection
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -697,8 +670,26 @@ geojson.feature.FeatureCollection
 geojson.geometry.Polygon
 </pre></div></div>
 </div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">polygon</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+dict_keys([&#39;type&#39;, &#39;coordinates&#39;])
+</pre></div></div>
+</div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -708,7 +699,25 @@ geojson.geometry.Polygon
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">new_feature_geojson</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;{&#34;type&#34;: &#34;Feature&#34;, &#34;geometry&#34;: {&#34;type&#34;: &#34;Polygon&#34;, &#34;coordinates&#34;: [[[8.670530319213867, 49.41337442939828], [8.685293197631836, 49.41337442939828], [8.685293197631836, 49.421861555723595], [8.670530319213867, 49.421861555723595], [8.670530319213867, 49.41337442939828]]]}, &#34;properties&#34;: {&#34;id&#34;: 321}}&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -717,12 +726,30 @@ geojson.geometry.Polygon
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 str
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">geojson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">new_feature_geojson</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#34;geometry&#34;: {&#34;coordinates&#34;: [[[8.670530319213867, 49.41337442939828], [8.685293197631836, 49.41337442939828], [8.685293197631836, 49.421861555723595], [8.670530319213867, 49.421861555723595], [8.670530319213867, 49.41337442939828]]], &#34;type&#34;: &#34;Polygon&#34;}, &#34;properties&#34;: {&#34;id&#34;: 321}, &#34;type&#34;: &#34;Feature&#34;}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -755,7 +782,7 @@ str
 <h4>Reading data<a class="headerlink" href="#Reading-data" title="Permalink to this headline">¶</a></h4>
 <p>Opening a file using <code class="docutils literal notranslate"><span class="pre">fiona.open()</span></code> and extracting metadata from the file:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -785,6 +812,28 @@ str
 <p>The default is <code class="docutils literal notranslate"><span class="pre">'r'</span></code> which stands for reading, while <code class="docutils literal notranslate"><span class="pre">'w'</span></code> stands for writing.</p>
 <p>When you create a new file you need to tell <code class="docutils literal notranslate"><span class="pre">fiona</span></code> the metadata of that file, e.g. driver, schema, etc. In this example we will just use the meta information of the input file contained in the <code class="docutils literal notranslate"><span class="pre">metadata</span></code> variable.</p>
 <p>Writing the first feature of the original file to a new file looks like:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">metadata</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;driver&#39;: &#39;GeoJSON&#39;,
+ &#39;schema&#39;: {&#39;properties&#39;: OrderedDict([(&#39;color&#39;, &#39;str&#39;), (&#39;id&#39;, &#39;int&#39;)]),
+  &#39;geometry&#39;: &#39;Polygon&#39;},
+ &#39;crs&#39;: {&#39;init&#39;: &#39;epsg:4326&#39;},
+ &#39;crs_wkt&#39;: &#39;GEOGCS[&#34;WGS 84&#34;,DATUM[&#34;WGS_1984&#34;,SPHEROID[&#34;WGS 84&#34;,6378137,298.257223563,AUTHORITY[&#34;EPSG&#34;,&#34;7030&#34;]],AUTHORITY[&#34;EPSG&#34;,&#34;6326&#34;]],PRIMEM[&#34;Greenwich&#34;,0,AUTHORITY[&#34;EPSG&#34;,&#34;8901&#34;]],UNIT[&#34;degree&#34;,0.0174532925199433,AUTHORITY[&#34;EPSG&#34;,&#34;9122&#34;]],AUTHORITY[&#34;EPSG&#34;,&#34;4326&#34;]]&#39;}
+</pre></div></div>
+</div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
@@ -803,7 +852,7 @@ str
 <p><strong>Hint:</strong> Place the mouse cursor next to the dot after the variable name and press <code class="docutils literal notranslate"><span class="pre">TAB</span></code> to show all available attributes and methods.</p>
 <p><img alt="show_methods" src="../../_images/show_methods.png" /></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -812,43 +861,171 @@ str
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<span></span><span class="k">with</span> <span class="n">fiona</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_path_2</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+    <span class="n">crs</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">crs</span>
+    <span class="n">schema</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">schema</span>
 </pre></div>
 </div>
 </div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">schema</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;properties&#39;: OrderedDict([(&#39;color&#39;, &#39;str&#39;), (&#39;id&#39;, &#39;int&#39;)]),
+ &#39;geometry&#39;: &#39;Polygon&#39;}
+</pre></div></div>
+</div>
 <p><strong>Questions:</strong> 1. What how many features are contained in the geojson file? 2. What is the difference between the geometries of the features?</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">features</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[{&#39;type&#39;: &#39;Feature&#39;,
+  &#39;id&#39;: &#39;1&#39;,
+  &#39;properties&#39;: OrderedDict([(&#39;color&#39;, &#39;green&#39;), (&#39;id&#39;, 1)]),
+  &#39;geometry&#39;: {&#39;type&#39;: &#39;Polygon&#39;,
+   &#39;coordinates&#39;: [[(8.670530319213867, 49.41337442939828),
+     (8.685293197631836, 49.41337442939828),
+     (8.685293197631836, 49.421861555723595),
+     (8.670530319213867, 49.421861555723595),
+     (8.670530319213867, 49.41337442939828)]]}},
+ {&#39;type&#39;: &#39;Feature&#39;,
+  &#39;id&#39;: &#39;2&#39;,
+  &#39;properties&#39;: OrderedDict([(&#39;color&#39;, &#39;blue&#39;), (&#39;id&#39;, 2)]),
+  &#39;geometry&#39;: {&#39;type&#39;: &#39;Polygon&#39;,
+   &#39;coordinates&#39;: [[(8.680486679077148, 49.418455714236885),
+     (8.69619369506836, 49.418455714236885),
+     (8.69619369506836, 49.42833758576036),
+     (8.680486679077148, 49.42833758576036),
+     (8.680486679077148, 49.418455714236885)],
+    [(8.688468933105469, 49.42398310798032),
+     (8.693962097167969, 49.42398310798032),
+     (8.693962097167969, 49.426607006252176),
+     (8.688468933105469, 49.426607006252176),
+     (8.688468933105469, 49.42398310798032)]]}}]
+</pre></div></div>
+</div>
 <p><strong>Answer:</strong></p>
 <p><strong>E 3.3:</strong> Save the features to separate new variables ‘feature1’ and ‘feature2’.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<span></span><span class="n">feature1</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">feature2</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">feature1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;type&#39;: &#39;Feature&#39;,
+ &#39;id&#39;: &#39;1&#39;,
+ &#39;properties&#39;: OrderedDict([(&#39;color&#39;, &#39;green&#39;), (&#39;id&#39;, 1)]),
+ &#39;geometry&#39;: {&#39;type&#39;: &#39;Polygon&#39;,
+  &#39;coordinates&#39;: [[(8.670530319213867, 49.41337442939828),
+    (8.685293197631836, 49.41337442939828),
+    (8.685293197631836, 49.421861555723595),
+    (8.670530319213867, 49.421861555723595),
+    (8.670530319213867, 49.41337442939828)]]}}
+</pre></div></div>
 </div>
 <p><strong>E 3.4:</strong> Print the coordinates of feature2.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<span></span><span class="n">feature2</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">][</span><span class="s2">&quot;coordinates&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(8.688468933105469, 49.42398310798032),
+ (8.693962097167969, 49.42398310798032),
+ (8.693962097167969, 49.426607006252176),
+ (8.688468933105469, 49.426607006252176),
+ (8.688468933105469, 49.42398310798032)]
+</pre></div></div>
 </div>
 <p><strong>E 3.5:</strong> Fill the hole of the geometry of <code class="docutils literal notranslate"><span class="pre">feature2</span></code> by manipulating the geojson dictionary. Afterwards, execute the cell above again to see how the coordinates changed.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[68]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<span></span><span class="n">feature2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[68]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;type&#39;: &#39;Feature&#39;,
+ &#39;id&#39;: &#39;2&#39;,
+ &#39;properties&#39;: OrderedDict([(&#39;color&#39;, &#39;blue&#39;), (&#39;id&#39;, 2)]),
+ &#39;geometry&#39;: {&#39;type&#39;: &#39;Polygon&#39;,
+  &#39;coordinates&#39;: [[(8.680486679077148, 49.418455714236885),
+    (8.69619369506836, 49.418455714236885),
+    (8.69619369506836, 49.42833758576036),
+    (8.680486679077148, 49.42833758576036),
+    (8.680486679077148, 49.418455714236885)]]}}
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">del</span> <span class="n">feature2</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">][</span><span class="s2">&quot;coordinates&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -862,16 +1039,16 @@ str
 <p>→ Check out the <a class="reference external" href="https://shapely.readthedocs.io/en/stable/manual.html">Shapely User Manual</a></p>
 <p>Shapely supports the same geometry types as GeoJSON (see above).</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="k">import</span> <span class="n">Point</span>
+<span></span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="k">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">LineString</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[70]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -881,7 +1058,7 @@ str
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[70]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -890,26 +1067,24 @@ shapely.geometry.point.Point
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[76]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">point</span><span class="o">.</span><span class="n">x</span>
+<span></span><span class="n">point</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[76]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-8.69
-</pre></div></div>
+<img alt="../../_images/course_01_advanced_vector_processing_00-introduction_70_0.svg" src="../../_images/course_01_advanced_vector_processing_00-introduction_70_0.svg" /></div>
 </div>
 <p>Using the method <code class="docutils literal notranslate"><span class="pre">shapely.geometry.shape</span></code> you can convert GeoJSON dictionaries to geometry objects.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[77]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -918,7 +1093,7 @@ shapely.geometry.point.Point
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[81]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -929,15 +1104,33 @@ shapely.geometry.point.Point
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[81]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/course_01_advanced_vector_processing_00-introduction_66_0.svg" src="../../_images/course_01_advanced_vector_processing_00-introduction_66_0.svg" /></div>
+<img alt="../../_images/course_01_advanced_vector_processing_00-introduction_73_0.svg" src="../../_images/course_01_advanced_vector_processing_00-introduction_73_0.svg" /></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[82]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">type</span><span class="p">(</span><span class="n">polygon1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[82]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+shapely.geometry.polygon.Polygon
+</pre></div></div>
 </div>
 <p>The geometry obejcts contain <strong>attributes and methods which allow geometric operations.</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[83]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -946,53 +1139,84 @@ shapely.geometry.point.Point
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[83]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/course_01_advanced_vector_processing_00-introduction_69_0.svg" src="../../_images/course_01_advanced_vector_processing_00-introduction_69_0.svg" /></div>
+<img alt="../../_images/course_01_advanced_vector_processing_00-introduction_77_0.svg" src="../../_images/course_01_advanced_vector_processing_00-introduction_77_0.svg" /></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[88]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">point</span><span class="o">.</span><span class="n">within</span><span class="p">(</span><span class="n">polygon1</span><span class="p">)</span>
+<span></span><span class="n">polygon1</span><span class="o">.</span><span class="n">to_wkt</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[88]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-False
+&#39;POLYGON ((8.6705303192138672 49.4133744293982815, 8.6852931976318359 49.4133744293982815, 8.6852931976318359 49.4218615557235950, 8.6705303192138672 49.4218615557235950, 8.6705303192138672 49.4133744293982815))&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[88]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">polygon1</span><span class="o">.</span><span class="n">to_wkt</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[88]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;POLYGON ((8.6705303192138672 49.4133744293982815, 8.6852931976318359 49.4133744293982815, 8.6852931976318359 49.4218615557235950, 8.6705303192138672 49.4218615557235950, 8.6705303192138672 49.4133744293982815))&#39;
 </pre></div></div>
 </div>
 <p>Converting geometry obejcts to geojson is done using <code class="docutils literal notranslate"><span class="pre">shapely.geometry.mapping()</span></code>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[90]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="k">import</span> <span class="n">mapping</span>
-<span class="n">mapping</span><span class="p">(</span><span class="n">polygon1</span><span class="p">)</span>
+<span></span><span class="nb">type</span><span class="p">(</span><span class="n">polygon1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[90]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#39;type&#39;: &#39;Polygon&#39;,
- &#39;coordinates&#39;: (((8.670530319213867, 49.41337442939828),
-   (8.685293197631836, 49.41337442939828),
-   (8.685293197631836, 49.421861555723595),
-   (8.670530319213867, 49.421861555723595),
-   (8.670530319213867, 49.41337442939828)),)}
+shapely.geometry.polygon.Polygon
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[92]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="k">import</span> <span class="n">mapping</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">mapping</span><span class="p">(</span><span class="n">polygon1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[92]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+dict
 </pre></div></div>
 </div>
 <p><strong>E 4.1:</strong> Create a rectangle geometry with a hole using shapely.</p>
