@@ -37,6 +37,9 @@ Prior to the block course, please work though the section "Course Preparation" a
    :caption: Course Content
 
    course/01_advanced_vector_processing/README
+   course/02_vectorized_geodata_processing/README
+   course/03_scientific_programming/README
+   course/assignment-2-part2/README
 
 
 .. toctree::
@@ -44,7 +47,6 @@ Prior to the block course, please work though the section "Course Preparation" a
    :caption: Final Assignment
 
    final_assignment/index
-
 
 .. toctree::
    :maxdepth: 1
