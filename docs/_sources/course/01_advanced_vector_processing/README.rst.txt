@@ -2,8 +2,8 @@
     :format: html
 
 
-1. Advanced Geo Data Processing
-#################################
+1. Advanced Vector Data Processing
+#####################################
 
 The assignment can be accessed and submitted via GitHub classroom. :raw-html:`&rarr;` `Accept Assignment 1: Vector Data Analysis <https://classroom.github.com/a/B9bfzGrP>`_
 

@@ -1,0 +1,1983 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Part 3: Advanced Raster Data Processing &mdash; Advanced Geoscripting 2020 2020 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Advanced Geoscripting 2020
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/administration.html">Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/communication.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/resources.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/time_schedule.html">Time schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/learninggoals.html">Learning goals</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Preparation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/software_setup.html">Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/git_intro/index.html">git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/preparatory_assignment/README.html">Preparatory Assignment</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../01_advanced_vector_processing/README.html">1. Advanced Geo Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_vectorized_geodata_processing/README.html">2. Vectorized Data Processing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Final Assignment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/index.html">Final Assignment</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Advanced Geoscripting 2020</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Part 3: Advanced Raster Data Processing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/course/assignment-2-part2/12-Advanced-Raster-Data-Analysis_solution.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Part-3:-Advanced-Raster-Data-Processing">
+<h1>Part 3: Advanced Raster Data Processing<a class="headerlink" href="#Part-3:-Advanced-Raster-Data-Processing" title="Permalink to this headline">¶</a></h1>
+<p>In this assignment we will work with raster data in Python using <em>rasterio</em> and <em>numpy</em>. We will use the <em>sat-search</em> package to search for suitable satellite imagery from the <a class="reference external" href="https://registry.opendata.aws/">Amazon AWS Open Data Registry</a>.</p>
+<p>The study area of the assignment is the <a class="reference external" href="https://rsis.ramsar.org/ris/288">Delta de Saloum</a>, a Ramsar protect wetland at the coast of Senegal. We will use multi-temporal satellite imagery to monitor the changing water levels of the wetland over time.</p>
+<p>Most of the analysis is already implemented. Just a few functions still need to be written. The main purpose of this assignment is to practice converting a notebook, in which the methodology for the study was developed, into a processing chain in form of python scripts. In this way, the analysis can be run fully automatically on different study regions without changing the parameters in the notebook each time. The processing parameters should be stored in a configuration file, so you always know
+which parameters have been used to run the analyses.</p>
+<div class="section" id="Python-Environment">
+<h2>Python Environment<a class="headerlink" href="#Python-Environment" title="Permalink to this headline">¶</a></h2>
+<p>There seem to some issues with the sat-search package and python 3.8. So you will have to set up a new anaconda environment for this assignment containing the packages in requirements.txt.</p>
+<p><strong>IMPORTANT:</strong> Make sure that you <strong>use version 0.2.3 of sat-search</strong> using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">sat-search==0.2.3</span></code> and with <strong>python=3.7.</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">rasterio</span> <span class="k">as</span> <span class="nn">rio</span>
+<span class="kn">import</span> <span class="nn">pyproj</span>
+<span class="kn">from</span> <span class="nn">satsearch</span> <span class="k">import</span> <span class="n">Search</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<p>Please refer to the following sources for information on the usage of the packages (or google it): * <a class="reference external" href="https://rasterio.readthedocs.io/en/latest/quickstart.html">Rasterio Python Quickstart</a> * <a class="reference external" href="https://github.com/sat-utils/sat-search">sat-search Quickstart</a> * <a class="reference external" href="https://github.com/sat-utils/sat-search/blob/master/tutorial-1.ipynb">sat-search Python Tutorial</a></p>
+</div>
+<div class="section" id="This-analysis-will-include-the-following-steps:">
+<h2>This analysis will include the following steps:<a class="headerlink" href="#This-analysis-will-include-the-following-steps:" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Search suitable satillite imagery using sat-search</p></li>
+<li><p>Load satellite imagery</p></li>
+<li><p>Convertion of raw satellite imagery to ToA reflectance</p></li>
+<li><p>Calculate Water Index</p></li>
+<li><p>Calculate water frequency</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="Implementing-a-prototype-of-the-methodology">
+<h1>Implementing a prototype of the methodology<a class="headerlink" href="#Implementing-a-prototype-of-the-methodology" title="Permalink to this headline">¶</a></h1>
+<p>In the first step, we will use the package <a class="reference external" href="https://github.com/sat-utils/sat-search">sat-search</a> to search for suitable satellite scenes within our study area and <a class="reference external" href="https://rasterio.readthedocs.io/en/latest/quickstart.html">rasterio</a> to load the data into Python. The search is based on the Spatio-Temporal Asset Catalogs (STAC) format which should make it easier to search and query satellite imagery.</p>
+<p><strong>FYI:</strong> <a class="reference external" href="https://github.com/sat-utils/sat-search">sat-search</a> is developed by <a class="reference external" href="https://developmentseed.org/">Development Seed</a>. Check out their <a class="reference external" href="https://github.com/sat-utils">sat-utils on GitHub</a>.</p>
+<p>Let’s perform a search for satellite scenes for the area of Heidelberg. You can get metadata about all scenes using the <code class="docutils literal notranslate"><span class="pre">items()</span></code> method.</p>
+<div class="section" id="Define-search-parameters">
+<h2>Define search parameters<a class="headerlink" href="#Define-search-parameters" title="Permalink to this headline">¶</a></h2>
+<p>The input parameters for our search for satellite scenes are:</p>
+<ul class="simple">
+<li><p>We are interested in all scenes from 2019-6-01 until 2020-06-01.</p></li>
+<li><p><strong>Only Landsat 8 scenes</strong>, since these are downloadable via Amazon AWS without an account.</p></li>
+<li><p><strong>Maximum cloud coverage of 3%</strong> so we get mostly cloud free scenes.</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#bbox = [28.859 ,44.722 ,29.868 ,45.301]</span>
+
+<span class="n">bbox</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">16.811</span><span class="p">,</span><span class="mf">13.627</span><span class="p">,</span><span class="o">-</span><span class="mf">16.356</span><span class="p">,</span><span class="mf">14.14</span><span class="p">]</span><span class="c1"># [minx, miny, maxx, maxy]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">time_period</span> <span class="o">=</span> <span class="s1">&#39;2019-06-01/2020-06-01&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">cloud_cover</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;eo:cloud_cover&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;lt&quot;</span><span class="p">:</span> <span class="n">cloud_cover</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;collection&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;eq&quot;</span><span class="p">:</span> <span class="s2">&quot;landsat-8-l1&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Execute-the-search">
+<h2>Execute the search<a class="headerlink" href="#Execute-the-search" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">search_result</span> <span class="o">=</span> <span class="n">Search</span><span class="p">(</span><span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">datetime</span><span class="o">=</span><span class="n">time_period</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The object <code class="docutils literal notranslate"><span class="pre">search_result</span></code> is of type <code class="docutils literal notranslate"><span class="pre">satsearch.search.Search</span></code> and has a method <code class="docutils literal notranslate"><span class="pre">.items()</span></code>. Execute it to get the metadata to all scenes found during the search.</p>
+<p><strong>Tipp:</strong> When you are working with unfamiliar classes, use frequently use the <code class="docutils literal notranslate"><span class="pre">type()</span></code> and <code class="docutils literal notranslate"><span class="pre">dir()</span></code> functions to learn about how the class works and what it can do.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> satellite scenes were found&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">search_result</span><span class="o">.</span><span class="n">found</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+16 satellite scenes were found
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">items</span> <span class="o">=</span> <span class="n">search_result</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> items&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> collections&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">_collections</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">_collections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+16 items
+1 collections
+[landsat-8-l1]
+</pre></div></div>
+</div>
+<p><strong>E:</strong> Print a calender showing the dates on which the scenes were captured.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Items (16):
+date                      id
+2020-05-29                LC82050502020150
+2020-05-13                LC82050502020134
+2020-04-27                LC82050512020118
+2020-04-27                LC82050502020118
+2020-04-11                LC82050502020102
+2020-03-26                LC82050512020086
+2020-03-26                LC82050502020086
+2020-03-10                LC82050502020070
+2020-02-07                LC82050512020038
+2020-02-07                LC82050502020038
+2020-01-06                LC82050512020006
+2020-01-06                LC82050502020006
+2019-12-21                LC82050512019355
+2019-10-18                LC82050502019291
+2019-07-30                LC82050512019211
+2019-07-30                LC82050502019211
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">calendar</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+                              2019
+
+        July                 August              September
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+ 1  2  3  4  5  6  7            1  2  3  4                     1
+ 8  9 10 11 12 13 14   5  6  7  8  9 10 11   2  3  4  5  6  7  8
+15 16 17 18 19 20 21  12 13 14 15 16 17 18   9 10 11 12 13 14 15
+22 23 24 25 26 27 28  19 20 21 22 23 24 25  16 17 18 19 20 21 22
+29 <span class="ansi-red-bg">30</span> 31              26 27 28 29 30 31     23 24 25 26 27 28 29
+
+      October               November              December
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+    1  2  3  4  5  6               1  2  3                     1
+ 7  8  9 10 11 12 13   4  5  6  7  8  9 10   2  3  4  5  6  7  8
+14 15 16 17 <span class="ansi-red-bg">18</span> 19 20  11 12 13 14 15 16 17   9 10 11 12 13 14 15
+21 22 23 24 25 26 27  18 19 20 21 22 23 24  16 17 18 19 20 <span class="ansi-red-bg">21</span> 22
+28 29 30 31           25 26 27 28 29 30     23 24 25 26 27 28 29
+
+                              2020
+
+      January               February               March
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+       1  2  3  4  5                  1  2                     1
+<span class="ansi-red-bg"> 6</span>  7  8  9 10 11 12   3  4  5  6 <span class="ansi-red-bg"> 7</span>  8  9   2  3  4  5  6  7  8
+13 14 15 16 17 18 19  10 11 12 13 14 15 16   9 <span class="ansi-red-bg">10</span> 11 12 13 14 15
+20 21 22 23 24 25 26  17 18 19 20 21 22 23  16 17 18 19 20 21 22
+27 28 29 30 31        24 25 26 27 28 29     23 24 25 <span class="ansi-red-bg">26</span> 27 28 29
+
+       April                  May                   June
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+       1  2  3  4  5               1  2  3   1  2  3  4  5  6  7
+ 6  7  8  9 10 <span class="ansi-red-bg">11</span> 12   4  5  6  7  8  9 10   8  9 10 11 12 13 14
+13 14 15 16 17 18 19  11 12 <span class="ansi-red-bg">13</span> 14 15 16 17  15 16 17 18 19 20 21
+20 21 22 23 24 25 26  18 19 20 21 22 23 24  22 23 24 25 26 27 28
+<span class="ansi-red-bg">27</span> 28 29 30           25 26 27 28 <span class="ansi-red-bg">29</span> 30 31  29 30
+
+<span class="ansi-red-bg">None (1)</span>
+11 total dates
+</pre></div></div>
+</div>
+<div class="section" id="Steps-2---4-will-be-testen-using-a-single-test-scene-before-applying-it-to-the-whole-study-area">
+<h3>Steps 2 - 4 will be testen using a single test scene before applying it to the whole study area<a class="headerlink" href="#Steps-2---4-will-be-testen-using-a-single-test-scene-before-applying-it-to-the-whole-study-area" title="Permalink to this headline">¶</a></h3>
+<p>We will implement the whole processing chain using one of the scenes as an example. When the processing chain is up and running we will apply it to all Landsat scenes.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">test_item</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Step-2:-Load-satellite-data">
+<h3>Step 2: Load satellite data<a class="headerlink" href="#Step-2:-Load-satellite-data" title="Permalink to this headline">¶</a></h3>
+<p>First, let’s create a folder to store the data.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">scene_dir</span> <span class="o">=</span> <span class="s2">&quot;./scenes&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">os</span></code> package can help us with interactiong wiht the file system. For example, it can check whether the folder exisits. If not it will create it.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">scene_dir</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">scene_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Load-image-using-rasterio">
+<h2>Load image using rasterio<a class="headerlink" href="#Load-image-using-rasterio" title="Permalink to this headline">¶</a></h2>
+<p>For the calculation of the water index we need the <strong>green and short-wave infrared spectral bands</strong> of the satellite image.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> package read images form URLs. The advantage using rasterio is that we can specify which spatial extent of the image we want to download using a <code class="docutils literal notranslate"><span class="pre">window</span></code>. This can be very useful when you want to test your method in a small test region with many images, so you don’t have to download all the data.</p>
+<p>Each spectral band has a unique URL through which we can download it. This information is stored in the <code class="docutils literal notranslate"><span class="pre">item.assets</span></code>. Since these are stored as a dictionary, so we can access this information using the right keys.</p>
+<p><strong>E:</strong> Extract the URLs for the green (band 3) and short-wave infrared (band 7) spectral bands.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">band7_url</span> <span class="o">=</span> <span class="n">test_item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;B7&quot;</span><span class="p">][</span><span class="s2">&quot;href&quot;</span><span class="p">]</span>
+<span class="n">band3_url</span> <span class="o">=</span> <span class="n">test_item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;B3&quot;</span><span class="p">][</span><span class="s2">&quot;href&quot;</span><span class="p">]</span>
+<span class="n">band3_url</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;https://landsat-pds.s3.amazonaws.com/c1/L8/205/051/LC08_L1TP_205051_20200427_20200509_01_T1/LC08_L1TP_205051_20200427_20200509_01_T1_B3.TIF&#39;
+</pre></div></div>
+</div>
+<p>in the last notebook you’ve learned that the window has to be defined using image coordinates. However, our bounding box is in geogrpahic coordisntes. When we continue using rasterio we will probably need to do this kind of conversion regularly. So it would be worth writing a function for it. :)</p>
+<p><strong>E:</strong> Write a function which takes a bounding box with geographic coordinates as a list (same as <code class="docutils literal notranslate"><span class="pre">bbox</span></code>) and the path to the image which we would like to read. The function should return a list containing the the upper left image coordinates and the number of rows and columns.</p>
+<p><strong>Hint:</strong> The bounding box is given in geographic coordinates. The Landsat scene has a UTM projection. And the window needs image coordinates. So you need to go from geographic coordinates to UTM to image coordinates. <code class="docutils literal notranslate"><span class="pre">pyproj.transform</span></code> can convert point coordinates from one crs to another. In order to convert from crs to image use the functions from the last notebook.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">geogr_2_image</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">~</span><span class="n">affine</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">image_2_geogr</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">affine</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">get_window_for_scene</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="n">bbox</span><span class="p">):</span>
+
+    <span class="k">with</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">band</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+        <span class="n">affine</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">transform</span>
+        <span class="n">crs</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">crs</span>
+
+    <span class="n">ul_x</span><span class="p">,</span> <span class="n">ul_y</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="s1">&#39;epsg:4326&#39;</span><span class="p">),</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">crs</span><span class="p">)),</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">lr_x</span><span class="p">,</span> <span class="n">lr_y</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="s1">&#39;epsg:4326&#39;</span><span class="p">),</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">crs</span><span class="p">)),</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">ul_row</span><span class="p">,</span> <span class="n">ul_col</span> <span class="o">=</span> <span class="n">geogr_2_image</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span> <span class="n">ul_x</span><span class="p">,</span> <span class="n">ul_y</span><span class="p">)</span>
+    <span class="n">lr_row</span><span class="p">,</span> <span class="n">lr_col</span> <span class="o">=</span> <span class="n">geogr_2_image</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span> <span class="n">lr_x</span><span class="p">,</span> <span class="n">lr_y</span><span class="p">)</span>
+
+    <span class="n">ul_row</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">ul_row</span><span class="p">)</span>
+    <span class="n">ul_col</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">ul_col</span><span class="p">)</span>
+    <span class="n">lr_row</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lr_row</span><span class="p">)</span>
+    <span class="n">lr_col</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lr_col</span><span class="p">)</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lr_row</span> <span class="o">-</span> <span class="n">ul_row</span><span class="p">)</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lr_col</span> <span class="o">-</span> <span class="n">ul_col</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">rio</span><span class="o">.</span><span class="n">windows</span><span class="o">.</span><span class="n">Window</span><span class="p">(</span><span class="n">ul_row</span><span class="p">,</span> <span class="n">ul_col</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">win</span> <span class="o">=</span> <span class="n">get_window_for_scene</span><span class="p">(</span><span class="n">band3_url</span><span class="p">,</span> <span class="n">bbox</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:7: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+  import sys
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:8: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">band3_url</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="n">band3</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">win</span><span class="p">,</span> <span class="n">boundless</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">65535</span><span class="p">)</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">profile</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">band7_url</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="n">band7</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">win</span><span class="p">,</span> <span class="n">boundless</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">65535</span><span class="p">)</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">profile</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#outfile = os.path.join(scene_dir, str(test_item.date), os.path.basename(band3_url))</span>
+<span class="c1">#with rio.open(outfile, &quot;w&quot;, **profile) as dst:</span>
+<span class="c1">#    dst.write(band3, 1)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Step-3:-Conversion-of-raw-satellite-imagery-to-ToA-reflectance">
+<h3>Step 3: Conversion of raw satellite imagery to ToA reflectance<a class="headerlink" href="#Step-3:-Conversion-of-raw-satellite-imagery-to-ToA-reflectance" title="Permalink to this headline">¶</a></h3>
+<p>The spectral bands are still in raw format. Their unit is DN (digital number). But for the calculation of the NDWI we need Top-of-Atmosphere (ToA) radiance values, i.e. the amount of radiance which reflected by the Earth’s surface at the wavelength of the repective band. Therefore, we need to perform the conversion from DN to radiance using</p>
+<p><span class="math notranslate nohighlight">\(L_{\lambda} = M_L Q_{cal} + A_L\)</span></p>
+<p><span class="math notranslate nohighlight">\(L_\lambda\)</span> = TOA planetary reflectance, without correction for solar angle. Note that ρλ’ does not contain a correction for the sun angle.</p>
+<p><span class="math notranslate nohighlight">\(M_L\)</span> = Band-specific multiplicative rescaling factor from the metadata (REFLECTANCE_MULT_BAND_x, where x is the band number)</p>
+<p><span class="math notranslate nohighlight">\(A_L\)</span> = Band-specific additive rescaling factor from the metadata (REFLECTANCE_ADD_BAND_x, where x is the band number)</p>
+<p><span class="math notranslate nohighlight">\(Q_{cal}\)</span> = Quantized and calibrated standard product pixel values (DN)</p>
+<p>see <a class="reference external" href="https://www.usgs.gov/land-resources/nli/landsat/using-usgs-landsat-level-1-data-product">USGS Documentation</a></p>
+<p>The parameters <span class="math notranslate nohighlight">\(M_L\)</span> and <span class="math notranslate nohighlight">\(A_L\)</span> are contained in the MTL file of each satellite image.</p>
+<p><span class="math notranslate nohighlight">\(M_L\)</span> : “REFLECTANCE_MULT_BAND_” <span class="math notranslate nohighlight">\(A_L\)</span> : “REFLECTANCE_ADD_BAND_”</p>
+<p>To convert an image from raw digital numbers to ToA reflectance, we need to do the following steps: 1. Download the metadata file of the satellite scene. 2. Parse the metadata file in Python and extract the reuqired parameters. 3. Perform the conversion of the spectral bands.</p>
+</div>
+</div>
+<div class="section" id="1.-Downloading-the-metadata-file">
+<h2>1. Downloading the metadata file<a class="headerlink" href="#1.-Downloading-the-metadata-file" title="Permalink to this headline">¶</a></h2>
+<p>We’ve actually already done this above using</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">meta_file</span> <span class="o">=</span> <span class="n">test_item</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;MTL&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">scene_dir</span><span class="p">,</span> <span class="s2">&quot;$</span><span class="si">{date}</span><span class="s2">&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="2.-Reading-the-metadata-files-in-Python">
+<h2>2. Reading the metadata files in Python<a class="headerlink" href="#2.-Reading-the-metadata-files-in-Python" title="Permalink to this headline">¶</a></h2>
+<p>Let’s try reading one of the metadata files using the standard <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> method.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">meta_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">metadata</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;GROUP = L1_METADATA_FILE\n&#39;,
+ &#39;  GROUP = METADATA_FILE_INFO\n&#39;,
+ &#39;    ORIGIN = &#34;Image courtesy of the U.S. Geological Survey&#34;\n&#39;,
+ &#39;    REQUEST_ID = &#34;0702005089830_00012&#34;\n&#39;,
+ &#39;    LANDSAT_SCENE_ID = &#34;LC82050512020118LGN00&#34;\n&#39;,
+ &#39;    LANDSAT_PRODUCT_ID = &#34;LC08_L1TP_205051_20200427_20200509_01_T1&#34;\n&#39;,
+ &#39;    COLLECTION_NUMBER = 01\n&#39;,
+ &#39;    FILE_DATE = 2020-05-09T04:56:11Z\n&#39;,
+ &#39;    STATION_ID = &#34;LGN&#34;\n&#39;,
+ &#39;    PROCESSING_SOFTWARE_VERSION = &#34;LPGS_13.1.0&#34;\n&#39;,
+ &#39;  END_GROUP = METADATA_FILE_INFO\n&#39;,
+ &#39;  GROUP = PRODUCT_METADATA\n&#39;,
+ &#39;    DATA_TYPE = &#34;L1TP&#34;\n&#39;,
+ &#39;    COLLECTION_CATEGORY = &#34;T1&#34;\n&#39;,
+ &#39;    ELEVATION_SOURCE = &#34;GLS2000&#34;\n&#39;,
+ &#39;    OUTPUT_FORMAT = &#34;GEOTIFF&#34;\n&#39;,
+ &#39;    SPACECRAFT_ID = &#34;LANDSAT_8&#34;\n&#39;,
+ &#39;    SENSOR_ID = &#34;OLI_TIRS&#34;\n&#39;,
+ &#39;    WRS_PATH = 205\n&#39;,
+ &#39;    WRS_ROW = 51\n&#39;,
+ &#39;    NADIR_OFFNADIR = &#34;NADIR&#34;\n&#39;,
+ &#39;    TARGET_WRS_PATH = 205\n&#39;,
+ &#39;    TARGET_WRS_ROW = 51\n&#39;,
+ &#39;    DATE_ACQUIRED = 2020-04-27\n&#39;,
+ &#39;    SCENE_CENTER_TIME = &#34;11:27:22.0966320Z&#34;\n&#39;,
+ &#39;    CORNER_UL_LAT_PRODUCT = 14.05361\n&#39;,
+ &#39;    CORNER_UL_LON_PRODUCT = -18.05987\n&#39;,
+ &#39;    CORNER_UR_LAT_PRODUCT = 14.07117\n&#39;,
+ &#39;    CORNER_UR_LON_PRODUCT = -15.94107\n&#39;,
+ &#39;    CORNER_LL_LAT_PRODUCT = 11.94334\n&#39;,
+ &#39;    CORNER_LL_LON_PRODUCT = -18.03410\n&#39;,
+ &#39;    CORNER_LR_LAT_PRODUCT = 11.95817\n&#39;,
+ &#39;    CORNER_LR_LON_PRODUCT = -15.93314\n&#39;,
+ &#39;    CORNER_UL_PROJECTION_X_PRODUCT = 169500.000\n&#39;,
+ &#39;    CORNER_UL_PROJECTION_Y_PRODUCT = 1555800.000\n&#39;,
+ &#39;    CORNER_UR_PROJECTION_X_PRODUCT = 398400.000\n&#39;,
+ &#39;    CORNER_UR_PROJECTION_Y_PRODUCT = 1555800.000\n&#39;,
+ &#39;    CORNER_LL_PROJECTION_X_PRODUCT = 169500.000\n&#39;,
+ &#39;    CORNER_LL_PROJECTION_Y_PRODUCT = 1322100.000\n&#39;,
+ &#39;    CORNER_LR_PROJECTION_X_PRODUCT = 398400.000\n&#39;,
+ &#39;    CORNER_LR_PROJECTION_Y_PRODUCT = 1322100.000\n&#39;,
+ &#39;    PANCHROMATIC_LINES = 15581\n&#39;,
+ &#39;    PANCHROMATIC_SAMPLES = 15261\n&#39;,
+ &#39;    REFLECTIVE_LINES = 7791\n&#39;,
+ &#39;    REFLECTIVE_SAMPLES = 7631\n&#39;,
+ &#39;    THERMAL_LINES = 7791\n&#39;,
+ &#39;    THERMAL_SAMPLES = 7631\n&#39;,
+ &#39;    FILE_NAME_BAND_1 = &#34;LC08_L1TP_205051_20200427_20200509_01_T1_B1.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_2 = &#34;LC08_L1TP_205051_20200427_20200509_01_T1_B2.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_3 = &#34;LC08_L1TP_205051_20200427_20200509_01_T1_B3.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_4 = &#34;LC08_L1TP_205051_20200427_20200509_01_T1_B4.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_5 = &#34;LC08_L1TP_205051_20200427_20200509_01_T1_B5.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_6 = &#34;LC08_L1TP_205051_20200427_20200509_01_T1_B6.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_7 = &#34;LC08_L1TP_205051_20200427_20200509_01_T1_B7.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_8 = &#34;LC08_L1TP_205051_20200427_20200509_01_T1_B8.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_9 = &#34;LC08_L1TP_205051_20200427_20200509_01_T1_B9.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_10 = &#34;LC08_L1TP_205051_20200427_20200509_01_T1_B10.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_11 = &#34;LC08_L1TP_205051_20200427_20200509_01_T1_B11.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_QUALITY = &#34;LC08_L1TP_205051_20200427_20200509_01_T1_BQA.TIF&#34;\n&#39;,
+ &#39;    ANGLE_COEFFICIENT_FILE_NAME = &#34;LC08_L1TP_205051_20200427_20200509_01_T1_ANG.txt&#34;\n&#39;,
+ &#39;    METADATA_FILE_NAME = &#34;LC08_L1TP_205051_20200427_20200509_01_T1_MTL.txt&#34;\n&#39;,
+ &#39;    CPF_NAME = &#34;LC08CPF_20200401_20200630_01.01&#34;\n&#39;,
+ &#39;    BPF_NAME_OLI = &#34;LO8BPF20200427110139_20200427114951.01&#34;\n&#39;,
+ &#39;    BPF_NAME_TIRS = &#34;LT8BPF20200419000412_20200507172808.01&#34;\n&#39;,
+ &#39;    RLUT_FILE_NAME = &#34;LC08RLUT_20150303_20431231_01_12.h5&#34;\n&#39;,
+ &#39;  END_GROUP = PRODUCT_METADATA\n&#39;,
+ &#39;  GROUP = IMAGE_ATTRIBUTES\n&#39;,
+ &#39;    CLOUD_COVER = 0.81\n&#39;,
+ &#39;    CLOUD_COVER_LAND = 0.28\n&#39;,
+ &#39;    IMAGE_QUALITY_OLI = 9\n&#39;,
+ &#39;    IMAGE_QUALITY_TIRS = 9\n&#39;,
+ &#39;    TIRS_SSM_MODEL = &#34;FINAL&#34;\n&#39;,
+ &#39;    TIRS_SSM_POSITION_STATUS = &#34;ESTIMATED&#34;\n&#39;,
+ &#39;    TIRS_STRAY_LIGHT_CORRECTION_SOURCE = &#34;TIRS&#34;\n&#39;,
+ &#39;    ROLL_ANGLE = -0.001\n&#39;,
+ &#39;    SUN_AZIMUTH = 84.59707214\n&#39;,
+ &#39;    SUN_ELEVATION = 66.12145998\n&#39;,
+ &#39;    EARTH_SUN_DISTANCE = 1.0067045\n&#39;,
+ &#39;    SATURATION_BAND_1 = &#34;N&#34;\n&#39;,
+ &#39;    SATURATION_BAND_2 = &#34;N&#34;\n&#39;,
+ &#39;    SATURATION_BAND_3 = &#34;N&#34;\n&#39;,
+ &#39;    SATURATION_BAND_4 = &#34;N&#34;\n&#39;,
+ &#39;    SATURATION_BAND_5 = &#34;N&#34;\n&#39;,
+ &#39;    SATURATION_BAND_6 = &#34;Y&#34;\n&#39;,
+ &#39;    SATURATION_BAND_7 = &#34;Y&#34;\n&#39;,
+ &#39;    SATURATION_BAND_8 = &#34;N&#34;\n&#39;,
+ &#39;    SATURATION_BAND_9 = &#34;N&#34;\n&#39;,
+ &#39;    GROUND_CONTROL_POINTS_VERSION = 4\n&#39;,
+ &#39;    GROUND_CONTROL_POINTS_MODEL = 235\n&#39;,
+ &#39;    GEOMETRIC_RMSE_MODEL = 7.964\n&#39;,
+ &#39;    GEOMETRIC_RMSE_MODEL_Y = 5.731\n&#39;,
+ &#39;    GEOMETRIC_RMSE_MODEL_X = 5.531\n&#39;,
+ &#39;    GROUND_CONTROL_POINTS_VERIFY = 78\n&#39;,
+ &#39;    GEOMETRIC_RMSE_VERIFY = 4.361\n&#39;,
+ &#39;    TRUNCATION_OLI = &#34;UPPER&#34;\n&#39;,
+ &#39;  END_GROUP = IMAGE_ATTRIBUTES\n&#39;,
+ &#39;  GROUP = MIN_MAX_RADIANCE\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_1 = 749.97253\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_1 = -61.93298\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_2 = 767.98102\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_2 = -63.42012\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_3 = 707.68793\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_3 = -58.44110\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_4 = 596.76233\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_4 = -49.28083\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_5 = 365.18878\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_5 = -30.15741\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_6 = 90.81913\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_6 = -7.49987\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_7 = 30.61091\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_7 = -2.52786\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_8 = 675.37073\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_8 = -55.77234\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_9 = 142.72406\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_9 = -11.78620\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_10 = 22.00180\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_10 = 0.10033\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_11 = 22.00180\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_11 = 0.10033\n&#39;,
+ &#39;  END_GROUP = MIN_MAX_RADIANCE\n&#39;,
+ &#39;  GROUP = MIN_MAX_REFLECTANCE\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_1 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_1 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_2 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_2 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_3 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_3 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_4 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_4 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_5 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_5 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_6 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_6 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_7 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_7 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_8 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_8 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_9 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_9 = -0.099980\n&#39;,
+ &#39;  END_GROUP = MIN_MAX_REFLECTANCE\n&#39;,
+ &#39;  GROUP = MIN_MAX_PIXEL_VALUE\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_1 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_1 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_2 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_2 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_3 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_3 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_4 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_4 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_5 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_5 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_6 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_6 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_7 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_7 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_8 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_8 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_9 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_9 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_10 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_10 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_11 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_11 = 1\n&#39;,
+ &#39;  END_GROUP = MIN_MAX_PIXEL_VALUE\n&#39;,
+ &#39;  GROUP = RADIOMETRIC_RESCALING\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_1 = 1.2389E-02\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_2 = 1.2687E-02\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_3 = 1.1691E-02\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_4 = 9.8581E-03\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_5 = 6.0327E-03\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_6 = 1.5003E-03\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_7 = 5.0567E-04\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_8 = 1.1157E-02\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_9 = 2.3577E-03\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_10 = 3.3420E-04\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_11 = 3.3420E-04\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_1 = -61.94536\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_2 = -63.43281\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_3 = -58.45279\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_4 = -49.29069\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_5 = -30.16344\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_6 = -7.50137\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_7 = -2.52836\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_8 = -55.78349\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_9 = -11.78856\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_10 = 0.10000\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_11 = 0.10000\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_1 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_2 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_3 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_4 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_5 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_6 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_7 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_8 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_9 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_1 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_2 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_3 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_4 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_5 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_6 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_7 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_8 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_9 = -0.100000\n&#39;,
+ &#39;  END_GROUP = RADIOMETRIC_RESCALING\n&#39;,
+ &#39;  GROUP = TIRS_THERMAL_CONSTANTS\n&#39;,
+ &#39;    K1_CONSTANT_BAND_10 = 774.8853\n&#39;,
+ &#39;    K2_CONSTANT_BAND_10 = 1321.0789\n&#39;,
+ &#39;    K1_CONSTANT_BAND_11 = 480.8883\n&#39;,
+ &#39;    K2_CONSTANT_BAND_11 = 1201.1442\n&#39;,
+ &#39;  END_GROUP = TIRS_THERMAL_CONSTANTS\n&#39;,
+ &#39;  GROUP = PROJECTION_PARAMETERS\n&#39;,
+ &#39;    MAP_PROJECTION = &#34;UTM&#34;\n&#39;,
+ &#39;    DATUM = &#34;WGS84&#34;\n&#39;,
+ &#39;    ELLIPSOID = &#34;WGS84&#34;\n&#39;,
+ &#39;    UTM_ZONE = 28\n&#39;,
+ &#39;    GRID_CELL_SIZE_PANCHROMATIC = 15.00\n&#39;,
+ &#39;    GRID_CELL_SIZE_REFLECTIVE = 30.00\n&#39;,
+ &#39;    GRID_CELL_SIZE_THERMAL = 30.00\n&#39;,
+ &#39;    ORIENTATION = &#34;NORTH_UP&#34;\n&#39;,
+ &#39;    RESAMPLING_OPTION = &#34;CUBIC_CONVOLUTION&#34;\n&#39;,
+ &#39;  END_GROUP = PROJECTION_PARAMETERS\n&#39;,
+ &#39;END_GROUP = L1_METADATA_FILE\n&#39;,
+ &#39;END\n&#39;]
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="3.-Parsing-the-metadata-files">
+<h2>3. Parsing the metadata files<a class="headerlink" href="#3.-Parsing-the-metadata-files" title="Permalink to this headline">¶</a></h2>
+<p>uh, this looks really messy. Let’s try to parse the data into a dictionary, so we can extract the necessary parameters.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">reflectance_mult</span> <span class="o">=</span> <span class="s2">&quot;REFLECTANCE_MULT_BAND_&quot;</span>
+<span class="n">reflectance_add</span> <span class="o">=</span> <span class="s2">&quot;REFLECTANCE_ADD_BAND_&quot;</span>
+</pre></div>
+</div>
+</div>
+<p><strong>E:</strong> Write a function which takes the metadata (a list of tuples) and returns them as a dictionary where the keys are the parameter names and the values are the parameters values. Try to convert the values to float. If that is not possible, catch the exception with a <code class="docutils literal notranslate"><span class="pre">try:</span> <span class="pre">...</span> <span class="pre">catch:</span> <span class="pre">...</span></code> clause.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">parse_mtl</span><span class="p">(</span><span class="n">metadata</span><span class="p">):</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">metadata</span><span class="p">:</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="n">params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="k">return</span> <span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<p>Test whether your function is working correctly writing tests which check that the correct values are extracted from the file, e.g.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parse_mtl</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">parameters</span><span class="p">[</span><span class="n">reflectance_mult</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span> <span class="o">==</span> <span class="mf">2e-05</span>
+</pre></div>
+</div>
+</div>
+<p>Extract all required parameters for conversion to ToA reflectance.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">band3_mult</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="n">reflectance_mult</span> <span class="o">+</span> <span class="s2">&quot;3&quot;</span><span class="p">]</span>
+<span class="n">band3_add</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="n">reflectance_add</span> <span class="o">+</span> <span class="s2">&quot;3&quot;</span><span class="p">]</span>
+<span class="n">band7_mult</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="n">reflectance_mult</span> <span class="o">+</span> <span class="s2">&quot;7&quot;</span><span class="p">]</span>
+<span class="n">band7_add</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="n">reflectance_add</span> <span class="o">+</span> <span class="s2">&quot;7&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="4.-Conversion-to-reflectance">
+<h2>4. Conversion to reflectance<a class="headerlink" href="#4.-Conversion-to-reflectance" title="Permalink to this headline">¶</a></h2>
+<p>Now we that we have the parameters, we can write a function which will perform the conversion.</p>
+<p><strong>E:</strong> Write a function which converts the raw band to reflectance:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">to_toa</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">add</span><span class="p">,</span> <span class="n">mult</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">val</span> <span class="o">*</span> <span class="n">mult</span> <span class="o">+</span> <span class="n">add</span>
+</pre></div>
+</div>
+</div>
+<p><strong>E:</strong> Convert the the two spectral bands to reflectance.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">band3_r</span> <span class="o">=</span> <span class="n">to_toa</span><span class="p">(</span><span class="n">band3</span><span class="p">,</span> <span class="n">band3_add</span><span class="p">,</span> <span class="n">band3_mult</span><span class="p">)</span>
+<span class="n">band7_r</span> <span class="o">=</span> <span class="n">to_toa</span><span class="p">(</span><span class="n">band7</span><span class="p">,</span> <span class="n">band7_add</span><span class="p">,</span> <span class="n">band7_mult</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">band3_r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.image.AxesImage at 0x7fdd20cd19d0&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/course_assignment-2-part2_12-Advanced-Raster-Data-Analysis_solution_76_1.png" src="../../_images/course_assignment-2-part2_12-Advanced-Raster-Data-Analysis_solution_76_1.png" />
+</div>
+</div>
+<div class="section" id="Step-4:-Calculate-the-water-index">
+<h3>Step 4: Calculate the water index<a class="headerlink" href="#Step-4:-Calculate-the-water-index" title="Permalink to this headline">¶</a></h3>
+<p>We will use the Normalized Difference Water Index (NDWI) defined by McFeeters as an indicator for the presence of surface water.</p>
+<p><span class="math notranslate nohighlight">\(NDWI = \frac{L_{GREEN} - L_{SWIR}}{L_{GREEN} + L_{SWIR}}\)</span></p>
+<p><strong>E:</strong> Write a function which calculate the NDWI based on the green and SWIR2 (short wave infrared 2) bands.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">calc_ndwi</span><span class="p">(</span><span class="n">green</span><span class="p">,</span> <span class="n">swir</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">green</span> <span class="o">-</span> <span class="n">swir</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">green</span> <span class="o">+</span> <span class="n">swir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ndwi</span> <span class="o">=</span> <span class="n">calc_ndwi</span><span class="p">(</span><span class="n">band3_r</span><span class="p">,</span> <span class="n">band7_r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ndwi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.image.AxesImage at 0x7fdd1e5b2a10&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/course_assignment-2-part2_12-Advanced-Raster-Data-Analysis_solution_81_1.png" src="../../_images/course_assignment-2-part2_12-Advanced-Raster-Data-Analysis_solution_81_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Step-5:-Calculate-water-frequency-based-on-the-whole-time-series">
+<h3>Step 5: Calculate water frequency based on the whole time series<a class="headerlink" href="#Step-5:-Calculate-water-frequency-based-on-the-whole-time-series" title="Permalink to this headline">¶</a></h3>
+<p>Great! So we have the code to load and convert the satellite imagery and to calculate the NDWI of a single satellite image. Now let’s put everything together in a for loop which iterates through all the Landsat scenes. We don’t need the spectral bands for the further analysis, so we can just delete them and only store the numpy array containing the NDWI.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">FILL_VALUE</span> <span class="o">=</span> <span class="mi">65535</span>
+<span class="n">bands</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="n">band3_url</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;B3&quot;</span><span class="p">][</span><span class="s2">&quot;href&quot;</span><span class="p">]</span>
+    <span class="n">band7_url</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;B7&quot;</span><span class="p">][</span><span class="s2">&quot;href&quot;</span><span class="p">]</span>
+
+    <span class="n">window</span> <span class="o">=</span> <span class="n">get_window_for_scene</span><span class="p">(</span><span class="n">band3_url</span><span class="p">,</span> <span class="n">bbox</span><span class="p">)</span>
+
+    <span class="c1"># Read metadata</span>
+    <span class="n">mtl_file</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;MTL&quot;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">scene_dir</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">mtl_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+        <span class="n">mtl</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+    <span class="c1"># Extract required parameters for conversion</span>
+    <span class="n">parameters</span> <span class="o">=</span> <span class="n">parse_mtl</span><span class="p">(</span><span class="n">mtl</span><span class="p">)</span>
+    <span class="n">band3_mult</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="n">reflectance_mult</span> <span class="o">+</span> <span class="s2">&quot;3&quot;</span><span class="p">]</span>
+    <span class="n">band3_add</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="n">reflectance_add</span> <span class="o">+</span> <span class="s2">&quot;3&quot;</span><span class="p">]</span>
+    <span class="n">band7_mult</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="n">reflectance_mult</span> <span class="o">+</span> <span class="s2">&quot;7&quot;</span><span class="p">]</span>
+    <span class="n">band7_add</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="n">reflectance_add</span> <span class="o">+</span> <span class="s2">&quot;7&quot;</span><span class="p">]</span>
+
+    <span class="c1"># Read green spectral band (band 3)</span>
+    <span class="k">with</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">band3_url</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+        <span class="n">green</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">,</span> <span class="n">boundless</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="n">FILL_VALUE</span><span class="p">)</span>
+
+    <span class="c1"># Read sort-wave infrared spectral band (band 7)</span>
+    <span class="k">with</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">band7_url</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+        <span class="n">swir</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">,</span> <span class="n">boundless</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="n">FILL_VALUE</span><span class="p">)</span>
+
+    <span class="c1"># Create a binary array indicating pixels which contain valid data</span>
+    <span class="n">valid_pixels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">green</span> <span class="o">!=</span> <span class="n">FILL_VALUE</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">swir</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">green</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># perform toa conversion</span>
+    <span class="n">green</span> <span class="o">=</span> <span class="n">to_toa</span><span class="p">(</span><span class="n">green</span><span class="p">,</span> <span class="n">band3_add</span><span class="p">,</span> <span class="n">band3_mult</span><span class="p">)</span>
+    <span class="n">swir</span> <span class="o">=</span> <span class="n">to_toa</span><span class="p">(</span><span class="n">swir</span><span class="p">,</span> <span class="n">band7_add</span><span class="p">,</span> <span class="n">band7_mult</span><span class="p">)</span>
+
+    <span class="c1"># calculate ndwi</span>
+    <span class="n">ndwi</span> <span class="o">=</span> <span class="n">calc_ndwi</span><span class="p">(</span><span class="n">green</span><span class="p">,</span> <span class="n">swir</span><span class="p">)</span>
+
+    <span class="c1"># convert invalid pixels to nan</span>
+    <span class="n">ndwi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">valid_pixels</span><span class="p">,</span> <span class="n">ndwi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">bands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ndwi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+LC82050502020150
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:7: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+  import sys
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:8: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+LC82050502020134
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:7: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+  import sys
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:8: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+LC82050512020118
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:7: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+  import sys
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:8: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+LC82050502020118
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:7: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+  import sys
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:8: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+LC82050502020102
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:7: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+  import sys
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:8: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+LC82050512020086
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:7: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+  import sys
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:8: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+LC82050502020086
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:7: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+  import sys
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:8: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+LC82050502020070
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:7: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+  import sys
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:8: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+LC82050512020038
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:7: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+  import sys
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:8: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+LC82050502020038
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:7: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+  import sys
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:8: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+LC82050512020006
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:7: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+  import sys
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:8: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+LC82050502020006
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:7: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+  import sys
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:8: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+LC82050512019355
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:7: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+  import sys
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:8: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+LC82050502019291
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:7: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+  import sys
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:53: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  return _prepare_from_string(&#34; &#34;.join(pjargs))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/pyproj/crs/crs.py:294: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(&#34; &#34;.join((projstring, projkwargs)))
+/Users/chludwig/miniconda3/envs/advgeo37/lib/python3.7/site-packages/ipykernel_launcher.py:8: DeprecationWarning: This function is deprecated. See: https://pyproj4.github.io/pyproj/stable/gotchas.html#upgrading-to-pyproj-2-from-pyproj-1
+
+</pre></div></div>
+</div>
+<p><strong>E:</strong> Stack the NDWI images into a 3-dimensional array. Axis 0 should indicate the time axis.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">bands_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bands</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Calculate-the-water-frequency">
+<h2>Calculate the water frequency<a class="headerlink" href="#Calculate-the-water-frequency" title="Permalink to this headline">¶</a></h2>
+<p>The NDWI is an indicator for the presence of water. NDWI values above 0 indicate water, below 0 land.</p>
+<p><strong>E:</strong> Convert the NDWI array to an array holding binary water masks using the <code class="docutils literal notranslate"><span class="pre">np.where()</span></code> method. NDWI &gt;= 0.3 should be classified as water (1), NDWI &lt; 0.3 as no-water (0).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">water_masks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bands_arr</span> <span class="o">&gt;=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><strong>E:</strong> Calculate the number valid pixels (not nodata) along the time axis (axis=0)</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">valid_pixels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">bands</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><strong>E:</strong> Calculate the number of water pixels along the time axis (axis=0).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">water_frequency</span> <span class="o">=</span> <span class="n">water_masks</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">valid_pixels</span>
+</pre></div>
+</div>
+</div>
+<p><strong>E:</strong> Plot the water frequency using <code class="docutils literal notranslate"><span class="pre">plt.imshow()</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">water_freq_plot</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">water_frequency</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">mappable</span><span class="o">=</span><span class="n">water_freq_plot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We can still see some cloud artifacts over the ocean in the right lower corner. Lower the eo:cloudcov parameter to exclude clouded scenes.</p>
+<p><strong>E:</strong> Show the number of valid observations.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">valid_obs_plot</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">valid_pixels</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Reds&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">mappable</span><span class="o">=</span><span class="n">valid_obs_plot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Check out the full tutorial on the <a class="reference external" href="https://github.com/sat-utils/sat-search">sat-search github repo</a> to learn about the full functionalities.</p>
+</div>
+</div>
+<div class="section" id="Converting-it-to-a-python-script-for-processing-multiple-regions">
+<h1>Converting it to a python script for processing multiple regions<a class="headerlink" href="#Converting-it-to-a-python-script-for-processing-multiple-regions" title="Permalink to this headline">¶</a></h1>
+<p>Congratulations! You’ve set up a running processing chain. But if we want to apply this method to other, maybe larger or multiple areas, it would be easier if the code was in python scripts which can be run multiple times with different parameters in an automatized way.</p>
+<p>So the last step of this assignment, is to convert the processing chain to a Python script</p>
+<p>The parameters for the satellite data search (bbox, time_period, cloud_cover) should be retrieved from a config_file, so it is always retracible which parameters you used for the data processing.</p>
+<p>See the files <code class="docutils literal notranslate"><span class="pre">calc_water_frequency.py</span></code> and <code class="docutils literal notranslate"><span class="pre">config.json</span></code> for templates. Fill the python file with the code from this notebook. Don’t forget to apply the best-practices for scientific programming:</p>
+<ul class="simple">
+<li><p><strong>Write tests:</strong> Check special cases. Satellite images often show no data values. What happens to them during the ToA conversion or when calculating the spectral index, when calculating the number valid pixels.</p></li>
+<li><p><strong>Organize the code</strong> in functions and modules</p></li>
+<li><p>Follow the PEP8 Style guide and refactore (rename) variables for better readability</p></li>
+<li><p>Use git</p></li>
+<li></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Christina Ludwig
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+
+.. role::  raw-html(raw)
+    :format: html
+
+
+Advanced Geoscripting 2020
+======================================
+
+Heidelberg University | Institute of Geography | August 13th 2020
+
+Christina Ludwig
+
+----
+
+:data-y: r1000
+
+Agenda
+=======
+
+1. Questions
+2. Raster Data Assignment
+3. Introduction to rasterio
+4. Work on assignment
+
+----

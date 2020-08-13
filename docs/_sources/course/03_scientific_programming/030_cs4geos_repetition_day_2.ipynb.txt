@@ -1,0 +1,281 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "# Repetition Day 1 and 2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### First, think for yourself. Then discuss with your neighbour.\n",
+    "\n",
+    "## 1. What is the \"Von-Neumann\" bottelneck and what has memory hierarchy to do with it?\n",
+    "## 2. \"Vectorized is better than an explicit loop.\" What does that mean and how are vectorized computations performed in the computer?\n",
+    "## 3. How is a numpy array phyiscally stored in memory and how does that affect the computation times?\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "skip"
+    }
+   },
+   "source": [
+    "### 4. What are the differenes between Python and C and what are their respective advantages and disadvantages? \n",
+    "### 5. Describe different data structures that represent geospatial vector data in Python. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## 1. What is the \"Von-Neumann\" bottelneck and what has memory hierarchy  to do with it?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "source": [
+    "<img src=\"img/bottleneck.png\" alt=\"bottleneck\" style=\"width: 90%\" align=\"center\"/>\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Computer Memory Hierarchy\n",
+    "\n",
+    "![memory_hierarchy](img/memory_hierarchy.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## 3. \"Vectorized is better than an explicit loop.\" What does that mean and how are vectorized computations performed in the computer?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "source": [
+    "<img src=\"img/vectorization_computer.png\" alt=\"vectorization\" style=\"width: 80%\" align=\"center\"/>\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## 2. How is a numpy array phyiscally stored in memory and how does that affect the computation times?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "-"
+    }
+   },
+   "source": [
+    "![row-major-order](img/row-major-order.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Reading along rows is fast due to continous reading\n",
+    "![spatial_locality_example3](img/spatial_locality_example3.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Reading along columns is slow because no continous reading\n",
+    "![spatial_locality_example2](img/spatial_locality_example2.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "### What are the differenes between Python and C and what are their respective advantages and disadvantages? "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "<img src=\"img/python_c_2.png\" alt=\"Drawing\" style=\"width: 70%\"/>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "<img src=\"img/python_c_3.png\" alt=\"Drawing\" style=\"width: 70%\"/>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "### Describe different data structures that represent geospatial vector data in Python. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "1. Strings\n",
+    "2. Dictionaries and lists\n",
+    "3. Geometry objects from Shapely\n",
+    "4. Table objects from Geopandas"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Time Table\n",
+    "![img/timetable_day3.png](img/timetable_day3.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "### Work together &rarr; Pair programming\n",
+    "<img src=\"img/pairprogramming.png\" alt=\"Drawing\" style=\"width: 70%\"/>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "### All course material is on\n",
+    "\n",
+    "## [https://github.com/redfrexx/cs4geos19](https://github.com/redfrexx/cs4geos19)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "subslide"
+    }
+   },
+   "source": [
+    "### We will use Anaconda to manage Python environments"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "celltoolbar": "Slideshow",
+  "kernelspec": {
+   "display_name": "Python (cs4geos)",
+   "language": "python",
+   "name": "cs4geos"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

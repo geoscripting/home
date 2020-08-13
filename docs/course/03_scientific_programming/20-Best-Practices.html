@@ -1,0 +1,972 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Best Practices in Scientific Programming &mdash; Advanced Geoscripting 2020 2020 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4. Advanced Raster Data Processing" href="../assignment-2-part2/README.html" />
+    <link rel="prev" title="3. Best Practices in Scientific Programming" href="README.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Advanced Geoscripting 2020
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/administration.html">Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/communication.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/resources.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/time_schedule.html">Time schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../general/learninggoals.html">Learning goals</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Preparation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/software_setup.html">Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/git_intro/index.html">git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/preparatory_assignment/README.html">Preparatory Assignment</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Content</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_advanced_vector_processing/README.html">1. Advanced Vector Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_vectorized_geodata_processing/README.html">2. Vectorized Data Processing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">3. Best Practices in Scientific Programming</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Best Practices in Scientific Programming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Agenda">Agenda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Learning-goals">Learning goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Open-Reproducible-Science">Open Reproducible Science</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#1.-What-does-‘open’-mean?">1. What does ‘open’ mean?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#2.-What-does-‘reproducible’-mean?">2. What does ‘reproducible’ mean?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#3.-Why-is-it-important?">3. Why is it important?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#What-does-Open-Scientific-Data-mean?">What does <em>Open Scientific Data</em> mean?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#What-does-Reproducible-Science-mean?">What does <em>Reproducible Science</em> mean?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">What does <em>Reproducible Science</em> mean?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#What-are-the-benefits-of-Open-Reproducible-Science-?">What are the benefits of <em>Open Reproducible Science</em> ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#What-is-good-scientific-code-?">What is <em>good scientific code</em> ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">What is <em>good scientific code</em> ?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#There-is-usually-a-compromise-between-readability-and-efficiency-(Rougier,-2017)">There is usually a compromise between readability and efficiency (Rougier, 2017)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#How-to-write-good-scientific-code">How to write <em>good scientific code</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Enough-theory,-let’s-put-it-into-practice!">Enough theory, let’s put it into practice!</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#1.-Unit-Testing">1. Unit Testing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#What-a-good-test-looks-like">What a good test looks like</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Basic-structure-of-a-test">Basic structure of a test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Example:-Tests-for-‘lower’-method-of-strings">Example: Tests for ‘lower’ method of strings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Code-often-breaks-in-corner-cases:">Code often breaks in corner cases:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Integrating-debugging-and-testing">Integrating debugging and testing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#When-you-find-a-bug:">When you find a bug:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise:">Exercise:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2.-Optimization">2. Optimization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Order-the-following-optimization-steps-in-chronological-order-of-how-you-would-proceed:">Order the following optimization steps in chronological order of how you would proceed:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#When-optimizing-code,-remember:">When optimizing code, remember:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#2.-Optimization-Workflow">2. Optimization Workflow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Optimization-workflow">Optimization workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Tools-for-profiling">Tools for profiling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Jupyter-Notebook">Jupyter Notebook</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#IDEs">IDEs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Command-line">Command line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Profiling-using-line_profiler-in-PyCharm">Profiling using line_profiler in PyCharm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#The-Agile-Development-Cycle">The Agile Development Cycle</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Exercise">Exercise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Resources">Resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../assignment-2-part2/README.html">4. Advanced Raster Data Processing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Final Assignment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/index.html">Final Assignment</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Advanced Geoscripting 2020</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="README.html">3. Best Practices in Scientific Programming</a> &raquo;</li>
+        
+      <li>Best Practices in Scientific Programming</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/course/03_scientific_programming/20-Best-Practices.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Best-Practices-in-Scientific-Programming">
+<h1>Best Practices in Scientific Programming<a class="headerlink" href="#Best-Practices-in-Scientific-Programming" title="Permalink to this headline">¶</a></h1>
+<p>Heidelberg University | Institute of Geography | August 12th 2020</p>
+<p>Christina Ludwig</p>
+<div class="section" id="Agenda">
+<h2>Agenda<a class="headerlink" href="#Agenda" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple" start="0">
+<li><p>Recap: Vectorization</p></li>
+<li><p>Learning goals</p></li>
+<li><p>Open Reproducible Science</p></li>
+<li><p>Good scientific code</p></li>
+<li><p>Practical:</p>
+<ul class="simple">
+<li><p>Unit testing</p></li>
+<li><p>Optimization</p></li>
+<li><p>Some more useful git stuff</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="Learning-goals">
+<h2>Learning goals<a class="headerlink" href="#Learning-goals" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Define <em>open reproducible science</em> and name its benefits.</p></li>
+<li><p>Explain the requirements of <em>good scientific code</em>.</p></li>
+<li><p>Test your code in python.</p></li>
+<li><p>Explain optimization strategies.</p></li>
+<li><p>Compare your code to previous versions using git.</p></li>
+</ol>
+</div>
+<div class="section" id="Open-Reproducible-Science">
+<h2>Open Reproducible Science<a class="headerlink" href="#Open-Reproducible-Science" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="1.-What-does-‘open’-mean?">
+<h3>1. What does ‘open’ mean?<a class="headerlink" href="#1.-What-does-‘open’-mean?" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="2.-What-does-‘reproducible’-mean?">
+<h3>2. What does ‘reproducible’ mean?<a class="headerlink" href="#2.-What-does-‘reproducible’-mean?" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="3.-Why-is-it-important?">
+<h3>3. Why is it important?<a class="headerlink" href="#3.-Why-is-it-important?" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Discuss-in-breakout-rooms---10-min">
+<h4>Discuss in breakout rooms - 10 min<a class="headerlink" href="#Discuss-in-breakout-rooms---10-min" title="Permalink to this headline">¶</a></h4>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">course_utils</span> <span class="k">import</span> <span class="n">make_groups</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">make_groups</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#34;Breakout Room 1: [&#39;Hannah&#39; &#39;Leonie Marie&#39; &#39;Julian P&#39; &#39;Rebekka&#39;]&#34;,
+ &#34;Breakout Room 2: [&#39;Mark&#39; &#39;Julian G&#39; &#39;Anna&#39; &#39;Matthias&#39;]&#34;]
+</pre></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="What-does-Open-Scientific-Data-mean?">
+<h2>What does <em>Open Scientific Data</em> mean?<a class="headerlink" href="#What-does-Open-Scientific-Data-mean?" title="Permalink to this headline">¶</a></h2>
+<p>In 2016, the <a class="reference external" href="https://www.nature.com/articles/sdata201618">FAIR Guiding Principles for scientific data management and stewardship</a> were published in Scientific Data.</p>
+<p>The authors intended to provide guidelines to improve the * Findability, * Accessibility, * Interoperability, and * Reuse of digital assets.</p>
+<p>The principles emphasise machine-actionability because humans increasingly rely on computational support to deal with data as a result of the increase in volume, complexity, and creation speed of data.</p>
+<p>Source: <a class="reference external" href="https://www.go-fair.org/fair-principles/%3E">go-fair.ogr</a></p>
+</div>
+<div class="section" id="What-does-Reproducible-Science-mean?">
+<h2>What does <em>Reproducible Science</em> mean?<a class="headerlink" href="#What-does-Reproducible-Science-mean?" title="Permalink to this headline">¶</a></h2>
+<p><strong>Reproducing</strong> the result of a computation means running the same software on the same input data and obtaining the same results. (<a class="reference external" href="https://www.frontiersin.org/articles/10.3389/fninf.2017.00076/full">Rougier et al, 2017</a>)</p>
+<p><strong>Replicating</strong> a published result means writing and then running new software based on the description of a computational model or method provided in the original pub-lication, and obtaining results that are similar enough tobe considered equivalent. (<a class="reference external" href="https://www.frontiersin.org/articles/10.3389/fninf.2017.00076/full">Rougier et al, 2017</a>)</p>
+<p>→ But there are different opinions on this definition see <a class="reference external" href="https://www.frontiersin.org/articles/10.3389/fninf.2017.00076/full#B17">Plesser, 2018</a></p>
+</div>
+<div class="section" id="id1">
+<h2>What does <em>Reproducible Science</em> mean?<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><strong>re-runnable, repeatable, reproducible, reusable, and replicable.</strong></p>
+<p>“The code should be executable (re-runnable) and produce the same result more than once (repeatable); it should allow an investigator to reobtain the published results (reproducible) while being easy to use, understand and modify (reusable), and it should act as an available reference for any ambiguity in the algorithmic descriptions of the article (replicable).” (<a class="reference external" href="https://www.frontiersin.org/articles/10.3389/fninf.2017.00069/full">Benureau &amp; Rougier, 2018</a>)</p>
+</div>
+<div class="section" id="What-are-the-benefits-of-Open-Reproducible-Science-?">
+<h2>What are the benefits of <em>Open Reproducible Science</em> ?<a class="headerlink" href="#What-are-the-benefits-of-Open-Reproducible-Science-?" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Transparency</strong> in the scientific process, as anyone including the general public can access the data, methods, and results.</p></li>
+<li><p><strong>Ease of replication and extension</strong> of your work by others, which further supports <strong>peer review and collaborative learning in the scientific community.</strong> → Avoiding paper retractions due to computation bugs
+→ Code is increasingly more required for journal review (e.g. <a class="reference external" href="https://o2r.info/results/">o2r</a>)</p></li>
+<li><p>It supports you! You can <strong>easily understand and re-run your own analyses</strong> as often as needed and after time has passed.</p></li>
+</ul>
+<p><a class="reference external" href="https://www.earthdatascience.org/courses/intro-to-earth-data-science/open-reproducible-science/get-started-open-reproducible-science/">Source</a></p>
+</div>
+<div class="section" id="What-is-good-scientific-code-?">
+<h2>What is <em>good scientific code</em> ?<a class="headerlink" href="#What-is-good-scientific-code-?" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../../_images/wtf_minute.jpeg"><img alt="wtf_per_minute" src="../../_images/wtf_minute.jpeg" style="width: 500px;" /></a></p>
+</div>
+<div class="section" id="id2">
+<h2>What is <em>good scientific code</em> ?<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Group 1: Imagine you are a <strong>web developer</strong>.</p>
+<p>Group 2: Imagine you are a <strong>scientist</strong>.</p>
+<p><strong>What is important for your software to be considered good ?</strong></p>
+<ul class="simple">
+<li><p>Efficiency / Speed</p></li>
+<li><p>Readability</p></li>
+<li><p>Maintainability</p></li>
+<li><p>Reusability</p></li>
+<li><p>Reliability / Accurate results</p></li>
+</ul>
+<p><strong>Order the criteria by priority</strong> starting with the most important one on top:</p>
+<p>→ Put your ranking on the chaospad <a class="reference external" href="https://pads.ccc.de/r61LZPBk8L">https://pads.ccc.de/r61LZPBk8L</a></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">make_groups</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#34;Breakout Room 1: [&#39;Mark&#39; &#39;Anna&#39; &#39;Julian G&#39; &#39;Leonie Marie&#39;]&#34;,
+ &#34;Breakout Room 2: [&#39;Julian P&#39; &#39;Hannah&#39; &#39;Rebekka&#39; &#39;Matthias&#39;]&#34;]
+</pre></div></div>
+</div>
+<div class="section" id="There-is-usually-a-compromise-between-readability-and-efficiency-(Rougier,-2017)">
+<h3>There is usually a compromise between readability and efficiency <a class="reference external" href="https://www.labri.fr/perso/nrougier/from-python-to-numpy/#readability-vs-speed">(Rougier, 2017)</a><a class="headerlink" href="#There-is-usually-a-compromise-between-readability-and-efficiency-(Rougier,-2017)" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">function_1</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">sub</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">sub</span><span class="p">))</span> <span class="k">if</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">sub</span><span class="p">)]</span> <span class="o">==</span> <span class="n">sub</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">function_2</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">sub</span><span class="p">):</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="n">sub</span><span class="p">)</span>
+    <span class="n">candidates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">correlate</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">sub</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">target</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">check</span> <span class="o">=</span> <span class="n">candidates</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sub</span><span class="p">))</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">check</span><span class="p">)</span> <span class="o">==</span> <span class="n">sub</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">candidates</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="How-to-write-good-scientific-code">
+<h2>How to write <em>good scientific code</em><a class="headerlink" href="#How-to-write-good-scientific-code" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Wilson, G., Aruliah, D. A., Brown, C. T., Hong, N. P. C., Davis, M., Guy, R. T., … &amp; Waugh, B. (2014). <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3886731/">Best practices for scientific computing</a>. PLoS biology, 12(1).</p></li>
+<li><p>Wilson, G., Bryan, J., Cranston, K., Kitzes, J., Nederbragt, L., &amp; Teal, T. K. (2017). <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5480810/">Good enough practices in scientific computing.</a> PLoS computational biology, 13(6).</p></li>
+</ul>
+</div>
+<div class="section" id="Enough-theory,-let’s-put-it-into-practice!">
+<h2>Enough theory, let’s put it into practice!<a class="headerlink" href="#Enough-theory,-let’s-put-it-into-practice!" title="Permalink to this headline">¶</a></h2>
+<p>Today, we will look at these methods:</p>
+<ol class="arabic simple">
+<li><p><strong>Unit testing</strong></p></li>
+<li><p><strong>Optimization</strong></p></li>
+<li><p><strong>Some useful git stuff</strong></p></li>
+</ol>
+<p>More later, e.g.</p>
+<ul class="simple">
+<li><p>Increase readability using refactoring, pylint, and pre-commit hooks</p></li>
+<li><p><strong>Organize code</strong> into functions, modules and config files.</p></li>
+<li><p>Use <strong>assertions</strong> to find errors quickly</p></li>
+<li><p>Write <strong>documentation</strong></p></li>
+<li><p>etc.</p></li>
+</ul>
+</div>
+<div class="section" id="1.-Unit-Testing">
+<h2>1. Unit Testing<a class="headerlink" href="#1.-Unit-Testing" title="Permalink to this headline">¶</a></h2>
+<p>Testing frameworks in Python * unittest * nosetest * <strong>pytest</strong></p>
+<p>Every test function needs to start with “test_”</p>
+<div class="section" id="What-a-good-test-looks-like">
+<h3>What a good test looks like<a class="headerlink" href="#What-a-good-test-looks-like" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Good:">
+<h4>Good:<a class="headerlink" href="#Good:" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Short and quick to execute</p></li>
+<li><p>Easy to read</p></li>
+<li><p>Exercise one thing</p></li>
+<li><p>Fails fast</p></li>
+</ul>
+</div>
+<div class="section" id="Bad:">
+<h4>Bad:<a class="headerlink" href="#Bad:" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Relies on data files</p></li>
+<li><p>Messes with “real-life” files, servers, databases</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="Basic-structure-of-a-test">
+<h3>Basic structure of a test<a class="headerlink" href="#Basic-structure-of-a-test" title="Permalink to this headline">¶</a></h3>
+<p><strong>Given:</strong> Put your system in the right state for testing * Create data, initialize parameters, define constants…</p>
+<p><strong>When:</strong> Execute the feature that you are testing * Typically one or two lines of code</p>
+<p><strong>Then:</strong> Compare outcomes with the expected ones * Define the expected result of the test * Set of assertions that check that the new state of your system matches your expectations</p>
+</div>
+<div class="section" id="Example:-Tests-for-‘lower’-method-of-strings">
+<h3>Example: Tests for ‘lower’ method of strings<a class="headerlink" href="#Example:-Tests-for-‘lower’-method-of-strings" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">test_lower</span><span class="p">():</span>
+    <span class="c1"># Given</span>
+    <span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;HeLlO wOrld&#39;</span>
+    <span class="n">expected</span> <span class="o">=</span> <span class="s1">&#39;hello world&#39;</span>
+    <span class="c1"># When</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="c1"># Then</span>
+    <span class="k">assert</span> <span class="n">output</span> <span class="o">==</span> <span class="n">expected</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">test_lower</span><span class="p">():</span>
+    <span class="c1"># Given</span>
+    <span class="c1"># Each test case is a tuple of (input, expected_result)</span>
+    <span class="n">test_cases</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;HeLlO wOrld&#39;</span><span class="p">,</span> <span class="s1">&#39;hello world&#39;</span><span class="p">),(</span><span class="s1">&#39;hi&#39;</span><span class="p">,</span> <span class="s1">&#39;hi&#39;</span><span class="p">),(</span><span class="s1">&#39;123 ([?&#39;</span><span class="p">,</span> <span class="s1">&#39;123 ([?&#39;</span><span class="p">),(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">string</span><span class="p">,</span> <span class="n">expected</span> <span class="ow">in</span> <span class="n">test_cases</span><span class="p">:</span>
+        <span class="c1"># When</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="c1"># Then</span>
+        <span class="k">assert</span> <span class="n">output</span> <span class="o">==</span> <span class="n">expected</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Code-often-breaks-in-corner-cases:">
+<h3>Code often breaks in corner cases:<a class="headerlink" href="#Code-often-breaks-in-corner-cases:" title="Permalink to this headline">¶</a></h3>
+<p>empty lists, None, NaN, 0.0, lists with repeated elements, non-existing file, …</p>
+<p>This often involves making design decision: respond to corner case with <strong>special behavior, or raise meaningful exception?</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">string</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">string</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-19-f5e8a0b3a989&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> string <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span>
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>string<span class="ansi-blue-fg">.</span>lower<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;lower&#39;
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Integrating-debugging-and-testing">
+<h3>Integrating debugging and testing<a class="headerlink" href="#Integrating-debugging-and-testing" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="When-you-find-a-bug:">
+<h3>When you find a bug:<a class="headerlink" href="#When-you-find-a-bug:" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Reproduce it in a <strong>small simple test</strong> to make it fail fast.</p></li>
+<li><p><strong>Debug your code</strong> so that all tests pass.</p></li>
+</ol>
+<p>→ In this way, you <strong>increase your test coverage</strong> step by step <strong>making your code more robust</strong> with each test.</p>
+<p>→ If you work on your code, <strong>run the tests regularly</strong> so you can make sure that none of your fixed bugs come back unanounced.</p>
+</div>
+<div class="section" id="Exercise:">
+<h3>Exercise:<a class="headerlink" href="#Exercise:" title="Permalink to this headline">¶</a></h3>
+<p>Open this repository folder in PyCharm. The folder <em>src</em> contains the <code class="docutils literal notranslate"><span class="pre">Poylgon</span></code> class which we have written on the first day.</p>
+<ol class="arabic simple">
+<li><p>Fork this repository: <a class="reference external" href="https://github.com/geoscripting/03_scientific_programming.git">https://github.com/geoscripting/03_scientific_programming.git</a></p></li>
+<li><p>Clone <strong>your</strong> forked repository to your computer.</p></li>
+<li><p>Implement the <code class="docutils literal notranslate"><span class="pre">MyPolygon.envelope()</span></code> method with the code you wrote on Monday.</p></li>
+<li><p>Write tests to make sure that the <code class="docutils literal notranslate"><span class="pre">MyPolygon.envelope()</span></code> works correctly. Don’t forget corner cases.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="2.-Optimization">
+<h2>2. Optimization<a class="headerlink" href="#2.-Optimization" title="Permalink to this headline">¶</a></h2>
+<p>Once the reliability of your code is ensured using the tests, your code is ready for optimization.</p>
+<div class="section" id="Order-the-following-optimization-steps-in-chronological-order-of-how-you-would-proceed:">
+<h3>Order the following optimization steps in chronological order of how you would proceed:<a class="headerlink" href="#Order-the-following-optimization-steps-in-chronological-order-of-how-you-would-proceed:" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Use GPU acceleration</p></li>
+<li><p>Use a “magic optimization” tool, like numexpr, or numba;  or a “magic parallelization” tool, like joblib or dask</p></li>
+<li><p>Use Cython</p></li>
+<li><p>Don’t do anything</p></li>
+<li><p>Vectorize your code using numpy</p></li>
+<li><p>Parallelize your code</p></li>
+<li><p>Spend some money on better hardware</p></li>
+</ul>
+<p>→ Put your ranking down as notes in your Breakout room in Teams.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">make_groups</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#34;Breakout Room 1: [&#39;Matthias&#39; &#39;Leonie Marie&#39; &#39;Hannah&#39;]&#34;,
+ &#34;Breakout Room 2: [&#39;Rebekka&#39; &#39;Mark&#39; &#39;Anna&#39;]&#34;,
+ &#34;Breakout Room 3: [&#39;Julian G&#39; &#39;Julian P&#39;]&#34;]
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="When-optimizing-code,-remember:">
+<h2>When optimizing code, remember:<a class="headerlink" href="#When-optimizing-code,-remember:" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Avoid premature optimization</strong></p></li>
+<li><p>Python is slower than C, but - as we’ve seen - <strong>many costly operations are already optimized</strong> in the background</p></li>
+<li><p><strong>Programming time is mostly more expensive</strong> than computation time.</p></li>
+<li><p><strong>Prioritize your tasks:</strong> Always weight the time you spend on a task vs its benefits e.g. us an issue tracker on GitHub</p></li>
+</ul>
+</div>
+<div class="section" id="2.-Optimization-Workflow">
+<h2>2. Optimization Workflow<a class="headerlink" href="#2.-Optimization-Workflow" title="Permalink to this headline">¶</a></h2>
+<p><strong>1. Make it work:</strong> * Write simple code which gets the job done. * Don’t optimize prematurely or add functionalities which you might not even need.</p>
+<p><strong>2. Make it work reliably:</strong> * Write automated unit tests. * Remember to cover special corner cases.</p>
+<p><strong>3. Profile it:</strong> * Don’t assume, use a profiler. * Profile simple test cases to find the bottlenecks. Which functions take up a lot of time Computations? Disk I/O?  Memory I/O? * Get a benchmark time to which you will compare how much you optimized your code</p>
+<p><strong>4. Optimize it:</strong> * Only optimize the time consuming parts of the code you identified using the profiler. * Keep running your tests to make sure that they are still passing during and after optimization. * Stop optimizing as soon as possible.</p>
+<div class="section" id="Optimization-workflow">
+<h3>Optimization workflow<a class="headerlink" href="#Optimization-workflow" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="1.-Make-it-work">
+<h4>1. Make it work<a class="headerlink" href="#1.-Make-it-work" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="2.-Make-it-work-reliably">
+<h4>2. Make it work reliably<a class="headerlink" href="#2.-Make-it-work-reliably" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="3.-Profile-it">
+<h4>3. Profile it<a class="headerlink" href="#3.-Profile-it" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="4.-Optimize-it">
+<h4>4. Optimize it<a class="headerlink" href="#4.-Optimize-it" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="Tools-for-profiling">
+<h3>Tools for profiling<a class="headerlink" href="#Tools-for-profiling" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="Jupyter-Notebook">
+<h3>Jupyter Notebook<a class="headerlink" href="#Jupyter-Notebook" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Magic commands %%timeit</p></li>
+<li><p>line_profiler and memory_profiler extentions</p></li>
+</ul>
+</div>
+<div class="section" id="IDEs">
+<h3>IDEs<a class="headerlink" href="#IDEs" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Most IDEs have an integrated Profiler</p></li>
+<li><p>In PyCharm, the profiler is only included in the Professional Version. → Register for the Eduction Program to use it</p></li>
+</ul>
+</div>
+<div class="section" id="Command-line">
+<h3>Command line<a class="headerlink" href="#Command-line" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Use cProfile <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">cProfile</span> <span class="pre">–o</span> <span class="pre">filename.prof</span> <span class="pre">myscript.py</span></code> and visualize the result using the package <code class="docutils literal notranslate"><span class="pre">snakeviz</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="Profiling-using-line_profiler-in-PyCharm">
+<h3>Profiling using line_profiler in PyCharm<a class="headerlink" href="#Profiling-using-line_profiler-in-PyCharm" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Open the Python console with IPython enabled.</p></li>
+<li><p>Load all necessary variables and functions in the console.</p></li>
+<li><p>Load the line_profiler:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">load_ext</span> <span class="n">line_profiler</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Example: Run line profiling for the __init__ function.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">lprun</span> <span class="o">-</span><span class="n">f</span> <span class="n">MyPolygon</span><span class="o">.</span><span class="fm">__init__</span> <span class="n">test_coordinates</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="The-Agile-Development-Cycle">
+<h3>The Agile Development Cycle<a class="headerlink" href="#The-Agile-Development-Cycle" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="../../_images/agile_cycle.png"><img alt="agile_cycle" src="../../_images/agile_cycle.png" style="width: 400px;" /></a></p>
+<p>Source: <a class="reference external" href="https://github.com/ASPP/testing_debugging_profiling">Pietro Berkes: Testing, Debugging, Profiling</a></p>
+</div>
+</div>
+<div class="section" id="Exercise">
+<h2>Exercise<a class="headerlink" href="#Exercise" title="Permalink to this headline">¶</a></h2>
+<p>Take a look at the <a class="reference external" href="https://github.com/geoscripting/03_scientific_programming/issues">GitHub Issues</a> of the main repository.</p>
+<ol class="arabic simple">
+<li><p><strong>Pick an issue</strong> and use the agile development cycle to solve it.</p></li>
+<li><p><strong>Assign the issue to yourself.</strong> There can be several people assigned to an issue. In this way you know who else is wokring on it, so you know whom to ask if you want to discuss someting or ask questions.</p></li>
+<li><p><strong>Solve the issue</strong> by editing the python files.</p></li>
+<li><p>When you are done, <strong>create a commit</strong> whose message contains the issue number. Push it to GitHub.</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;added</span> <span class="pre">test</span> <span class="pre">for</span> <span class="pre">MyPolygon.envelope()</span> <span class="pre">#1&quot;</span></code></p>
+<ol class="arabic simple" start="4">
+<li><p><strong>Pick two more issues</strong> and solve them in the same way. Create commits for each one and push them to GitHub.</p></li>
+<li><p><strong>Create new issues:</strong> Come up with a new functionality for your class, propose new classes, report bugs, etc. Create a new issue describing it on the <a class="reference external" href="https://github.com/geoscripting/03_scientific_programming/issues">GitHub Issues</a> page of the main repository.</p></li>
+</ol>
+</div>
+<div class="section" id="Resources">
+<h2>Resources<a class="headerlink" href="#Resources" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=_ZEWDGpM-vM&amp;list=PLYCpMb24GpOC704uO9svUrihl-HY1tTJJ">Jake Vanderplas: Videos on Reproducible Data Analysis in Jupyter</a></p>
+<p><a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/01.07-timing-and-profiling.html">Jake VanderPlas: Python Data Science Handbook</a></p>
+<p><a class="reference external" href="https://github.com/ASPP/testing_debugging_profiling">Pietro Berkes: Testing, Debugging, Profiling</a></p>
+<p><a class="reference external" href="http://gael-varoquaux.info/programming/software-design-for-maintainability.html">Software Design for Maintainability</a></p>
+<p><a class="reference external" href="http://gael-varoquaux.info/programming/improving-your-programming-style-in-python.html">Improving your programming style in Python</a></p>
+<p><a class="reference external" href="https://www.labri.fr/perso/nrougier/from-python-to-numpy/">From Python to Numpy</a></p>
+<p><a class="reference external" href="https://scipy-lectures.org/advanced/optimizing/index.html">SciPy Lectures: Optimizing code</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../assignment-2-part2/README.html" class="btn btn-neutral float-right" title="4. Advanced Raster Data Processing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="README.html" class="btn btn-neutral float-left" title="3. Best Practices in Scientific Programming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Christina Ludwig
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
