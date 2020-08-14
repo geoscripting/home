@@ -100,12 +100,17 @@
 </ul>
 <p class="caption"><span class="caption-text">Course Content</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../01_advanced_vector_processing/README.html">1. Advanced Geo Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_advanced_vector_processing/README.html">1. Advanced Vector Data Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_vectorized_geodata_processing/README.html">2. Vectorized Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_scientific_programming/README.html">3. Best Practices in Scientific Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">4. Advanced Raster Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_geodata_visualization/3-Data-Visualization.html">Geo Data visualization</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Final Assignment</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/index.html">Final Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/final_assignment.html">Final Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/final_assignment.html#Questions?">Questions?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/final_assignment.html#Thank-you-for-your-participation-and-feedback!-:)">Thank you for your participation and feedback! :)</a></li>
 </ul>
 
             
@@ -435,8 +440,13 @@ which parameters have been used to run the analyses.</p>
 <h2>Python Environment<a class="headerlink" href="#Python-Environment" title="Permalink to this headline">¶</a></h2>
 <p>There seem to some issues with the sat-search package and python 3.8. So you will have to set up a new anaconda environment for this assignment containing the packages in requirements.txt.</p>
 <p><strong>IMPORTANT:</strong> Make sure that you <strong>use version 0.2.3 of sat-search</strong> using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">sat-search==0.2.3</span></code> and with <strong>python=3.7.</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda create -n advgeo37 python=3.7 rasterio jupyter matplotlib
+$ conda activate advgeo37
+$ pip install sat-search==0.2.3
+</pre></div>
+</div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -478,7 +488,7 @@ which parameters have been used to run the analyses.</p>
 <li><p><strong>Maximum cloud coverage of 3%</strong> so we get mostly cloud free scenes.</p></li>
 </ul>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -487,25 +497,25 @@ which parameters have been used to run the analyses.</p>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">time_period</span> <span class="o">=</span> <span class="s1">&#39;2014-06-01/2020-06-01&#39;</span>
+<span></span><span class="n">time_period</span> <span class="o">=</span> <span class="s1">&#39;2019-06-01/2020-06-01&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">cloud_cover</span> <span class="o">=</span> <span class="mi">5</span>
+<span></span><span class="n">cloud_cover</span> <span class="o">=</span> <span class="mi">10</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -524,7 +534,7 @@ which parameters have been used to run the analyses.</p>
 <div class="section" id="Execute-the-search">
 <h2>Execute the search<a class="headerlink" href="#Execute-the-search" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -535,7 +545,7 @@ which parameters have been used to run the analyses.</p>
 <p>The object <code class="docutils literal notranslate"><span class="pre">search_result</span></code> is of type <code class="docutils literal notranslate"><span class="pre">satsearch.search.Search</span></code> and has a method <code class="docutils literal notranslate"><span class="pre">.items()</span></code>. Execute it to get the metadata to all scenes found during the search.</p>
 <p><strong>Tipp:</strong> When you are working with unfamiliar classes, use frequently use the <code class="docutils literal notranslate"><span class="pre">type()</span></code> and <code class="docutils literal notranslate"><span class="pre">dir()</span></code> functions to learn about how the class works and what it can do.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -552,7 +562,7 @@ which parameters have been used to run the analyses.</p>
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -561,7 +571,7 @@ which parameters have been used to run the analyses.</p>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -583,7 +593,7 @@ which parameters have been used to run the analyses.</p>
 </div>
 <p><strong>E:</strong> Print a calender showing the dates on which the scenes were captured.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -598,28 +608,20 @@ which parameters have been used to run the analyses.</p>
 <div class="highlight"><pre>
                               2019
 
-       April                  May                   June
-Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
- 1  2  3  4  5  6  7         1  2  3  4  5                  1  2
- 8 <span class="ansi-red-bg"> 9</span> 10 11 12 13 14   6  7  8  9 10 11 12   3  4  5  6  7  8  9
-15 16 17 18 19 20 21  13 14 15 16 17 18 19  10 11 12 13 14 15 16
-22 23 24 <span class="ansi-red-bg">25</span> 26 27 28  20 21 22 23 24 25 26  17 18 19 20 21 22 23
-29 30                 27 28 29 30 31        24 25 26 27 28 29 30
-
         July                 August              September
 Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
  1  2  3  4  5  6  7            1  2  3  4                     1
  8  9 10 11 12 13 14   5  6  7  8  9 10 11   2  3  4  5  6  7  8
 15 16 17 18 19 20 21  12 13 14 15 16 17 18   9 10 11 12 13 14 15
 22 23 24 25 26 27 28  19 20 21 22 23 24 25  16 17 18 19 20 21 22
-29 30 31              26 27 28 29 30 31     23 24 25 26 27 28 29
+29 <span class="ansi-red-bg">30</span> 31              26 27 28 29 30 31     23 24 25 26 27 28 29
 
       October               November              December
 Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
     1  2  3  4  5  6               1  2  3                     1
  7  8  9 10 11 12 13   4  5  6  7  8  9 10   2  3  4  5  6  7  8
-14 15 16 17 18 19 20  11 12 13 14 15 16 17   9 10 11 12 13 14 15
-21 22 23 24 25 26 27  18 19 20 21 22 23 24  16 17 18 19 20 21 22
+14 15 16 17 <span class="ansi-red-bg">18</span> 19 20  11 12 13 14 15 16 17   9 10 11 12 13 14 15
+21 22 23 24 25 26 27  18 19 20 21 22 23 24  16 17 18 19 20 <span class="ansi-red-bg">21</span> 22
 28 29 30 31           25 26 27 28 29 30     23 24 25 26 27 28 29
 
                               2020
@@ -641,11 +643,11 @@ Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
 <span class="ansi-red-bg">27</span> 28 29 30           25 26 27 28 <span class="ansi-red-bg">29</span> 30 31  29 30
 
 <span class="ansi-red-bg">None (1)</span>
-10 total dates
+11 total dates
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -672,10 +674,10 @@ date                      id
 2020-02-07                LC82050502020038
 2020-01-06                LC82050512020006
 2020-01-06                LC82050502020006
-2019-04-25                LC82050512019115
-2019-04-25                LC82050502019115
-2019-04-09                LC82050512019099
-2019-04-09                LC82050502019099
+2019-12-21                LC82050512019355
+2019-10-18                LC82050502019291
+2019-07-30                LC82050512019211
+2019-07-30                LC82050502019211
 
 </pre></div></div>
 </div>
@@ -684,7 +686,7 @@ date                      id
 <h3>Steps 2 - 4 will be testen using a single test scene before applying it to the whole study area<a class="headerlink" href="#Steps-2---4-will-be-testen-using-a-single-test-scene-before-applying-it-to-the-whole-study-area" title="Permalink to this headline">¶</a></h3>
 <p>We will implement the whole processing chain using one of the scenes as an example. When the processing chain is up and running we will apply it to all Landsat scenes.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -697,7 +699,7 @@ date                      id
 <h3>Step 2: Load satellite data<a class="headerlink" href="#Step-2:-Load-satellite-data" title="Permalink to this headline">¶</a></h3>
 <p>First, let’s create a folder to store the data.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -707,7 +709,7 @@ date                      id
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">os</span></code> package can help us with interactiong wiht the file system. For example, it can check whether the folder exisits. If not it will create it.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -724,14 +726,31 @@ date                      id
 <p>The <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> package read images form URLs. The advantage using rasterio is that we can specify which spatial extent of the image we want to download using a <code class="docutils literal notranslate"><span class="pre">window</span></code>. This can be very useful when you want to test your method in a small test region with many images, so you don’t have to download all the data.</p>
 <p>Each spectral band has a unique URL through which we can download it. This information is stored in the <code class="docutils literal notranslate"><span class="pre">item.assets</span></code>. Since these are stored as a dictionary, so we can access this information using the right keys.</p>
 <p><strong>E:</strong> Extract the URLs (href) for the green (B3) and short-wave infrared (B7) spectral bands.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">#band7_url =</span>
-<span class="c1">#band3_url =</span>
-<span class="n">band3_url</span>
+<span></span><span class="n">test_item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;B3&quot;</span><span class="p">][</span><span class="s2">&quot;href&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;https://landsat-pds.s3.amazonaws.com/c1/L8/205/051/LC08_L1TP_205051_20200427_20200509_01_T1/LC08_L1TP_205051_20200427_20200509_01_T1_B3.TIF&#39;
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">band7_url</span> <span class="o">=</span> <span class="n">test_item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;B3&quot;</span><span class="p">][</span><span class="s2">&quot;href&quot;</span><span class="p">]</span>
+<span class="n">band3_url</span> <span class="o">=</span> <span class="n">test_item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;B7&quot;</span><span class="p">][</span><span class="s2">&quot;href&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -739,21 +758,21 @@ date                      id
 <p><strong>E:</strong> Write a function which takes a bounding box with geographic coordinates as a list (same as <code class="docutils literal notranslate"><span class="pre">bbox</span></code>) and the path to the image which we would like to read. The function should return a list containing the the upper left image coordinates and the number of rows and columns.</p>
 <p><strong>Hint:</strong> The bounding box is given in geographic coordinates. The Landsat scene has a UTM projection. And the window needs image coordinates. So you need to go from geographic coordinates to UTM to image coordinates. <code class="docutils literal notranslate"><span class="pre">pyproj.transform</span></code> can convert point coordinates from one crs to another. In order to convert from crs to image use the functions from the last notebook.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">geogr_2_image</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span></span><span class="k">def</span> <span class="nf">geogr_2_image</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">return</span> <span class="o">~</span><span class="n">affine</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">image_2_geogr</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span></span><span class="k">def</span> <span class="nf">image_2_geogr</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">affine</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -763,37 +782,114 @@ date                      id
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">get_window_for_scene</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="n">bbox</span><span class="p">):</span>
-
-    <span class="k">with</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">band</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
-        <span class="n">affine</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">transform</span>
-        <span class="n">crs</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">crs</span>
-
-    <span class="n">ul_x</span><span class="p">,</span> <span class="n">ul_y</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="s1">&#39;epsg:4326&#39;</span><span class="p">),</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">crs</span><span class="p">)),</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
-    <span class="n">lr_x</span><span class="p">,</span> <span class="n">lr_y</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="s1">&#39;epsg:4326&#39;</span><span class="p">),</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">crs</span><span class="p">)),</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
-    <span class="n">ul_row</span><span class="p">,</span> <span class="n">ul_col</span> <span class="o">=</span> <span class="n">geogr_2_image</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span> <span class="n">ul_x</span><span class="p">,</span> <span class="n">ul_y</span><span class="p">)</span>
-    <span class="n">lr_row</span><span class="p">,</span> <span class="n">lr_col</span> <span class="o">=</span> <span class="n">geogr_2_image</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span> <span class="n">lr_x</span><span class="p">,</span> <span class="n">lr_y</span><span class="p">)</span>
-
-    <span class="n">ul_row</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">ul_row</span><span class="p">)</span>
-    <span class="n">ul_col</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">ul_col</span><span class="p">)</span>
-    <span class="n">lr_row</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lr_row</span><span class="p">)</span>
-    <span class="n">lr_col</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lr_col</span><span class="p">)</span>
-    <span class="n">rows</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lr_row</span> <span class="o">-</span> <span class="n">ul_row</span><span class="p">)</span>
-    <span class="n">cols</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lr_col</span> <span class="o">-</span> <span class="n">ul_col</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">rio</span><span class="o">.</span><span class="n">windows</span><span class="o">.</span><span class="n">Window</span><span class="p">(</span><span class="n">ul_row</span><span class="p">,</span> <span class="n">ul_col</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">)</span>
+<span></span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">win</span> <span class="o">=</span> <span class="n">get_window_for_scene</span><span class="p">(</span><span class="n">band3_url</span><span class="p">,</span> <span class="n">bbox</span><span class="p">)</span>
+<span></span><span class="k">with</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">band3_url</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="n">affine</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">transform</span>
+    <span class="n">crs</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">crs</span>
 </pre></div>
 </div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="s1">&#39;epsg:4326&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+pyproj.Proj(&#39;+units=m +init=epsg:4326 &#39;, preserve_units=True)
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[89]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">get_window_for_scene</span><span class="p">(</span><span class="n">bbox</span><span class="p">,</span> <span class="n">bbox_epsg</span><span class="p">,</span> <span class="n">scene_affine</span><span class="p">,</span> <span class="n">scene_epsg</span><span class="p">):</span>
+
+    <span class="n">ul_x</span><span class="p">,</span> <span class="n">ul_y</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="n">bbox_epsg</span><span class="p">),</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="n">scene_epsg</span><span class="p">),</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">lr_x</span><span class="p">,</span> <span class="n">lr_y</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="n">bbox_epsg</span><span class="p">),</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="n">scene_epsg</span><span class="p">),</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+    <span class="n">ul_row</span><span class="p">,</span> <span class="n">ul_col</span> <span class="o">=</span> <span class="n">rio</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rowcol</span><span class="p">(</span><span class="n">scene_affine</span><span class="p">,</span> <span class="n">ul_x</span><span class="p">,</span> <span class="n">ul_y</span><span class="p">)</span> <span class="c1"># geogr_2_image(scene_affine, ul_x, ul_y)</span>
+    <span class="n">lr_row</span><span class="p">,</span> <span class="n">lr_col</span> <span class="o">=</span> <span class="n">rio</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rowcol</span><span class="p">(</span><span class="n">scene_affine</span><span class="p">,</span> <span class="n">lr_x</span><span class="p">,</span> <span class="n">lr_y</span><span class="p">)</span> <span class="c1">#geogr_2_image(scene_affine, lr_x, lr_y)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">lr_col</span><span class="p">)</span>
+
+    <span class="c1">#ul_row = math.floor(ul_row)</span>
+    <span class="c1">#ul_col = math.floor(ul_col)</span>
+    <span class="c1">#lr_row = math.floor(lr_row)</span>
+    <span class="c1">#lr_col = math.floor(lr_col)</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lr_row</span> <span class="o">-</span> <span class="n">ul_row</span><span class="p">)</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lr_col</span> <span class="o">-</span> <span class="n">ul_col</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">rio</span><span class="o">.</span><span class="n">windows</span><span class="o">.</span><span class="n">Window</span><span class="p">(</span><span class="n">ul_col</span><span class="p">,</span> <span class="n">ul_row</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[90]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">test_get_window</span><span class="p">():</span>
+
+    <span class="c1"># Given</span>
+    <span class="n">west</span> <span class="o">=</span> <span class="mf">204285.0</span>
+    <span class="n">north</span> <span class="o">=</span> <span class="mf">4268115.0</span>
+    <span class="n">pixel_size_y</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">pixel_size_x</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">scene_affine</span> <span class="o">=</span> <span class="n">rio</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">from_origin</span><span class="p">(</span><span class="n">west</span><span class="p">,</span> <span class="n">north</span><span class="p">,</span> <span class="n">pixel_size_x</span><span class="p">,</span> <span class="n">pixel_size_y</span><span class="p">)</span>
+    <span class="n">scene_crs</span> <span class="o">=</span> <span class="s1">&#39;EPSG:32628&#39;</span>
+
+    <span class="n">rows</span> <span class="o">=</span> <span class="mi">40</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="mi">10</span>
+
+    <span class="n">bbox</span> <span class="o">=</span> <span class="p">[</span><span class="n">west</span><span class="p">,</span> <span class="n">west</span> <span class="o">+</span> <span class="n">cols</span> <span class="o">*</span> <span class="n">pixel_size_x</span><span class="p">,</span> <span class="n">north</span> <span class="o">-</span> <span class="n">rows</span> <span class="o">*</span> <span class="n">pixel_size_y</span><span class="p">,</span> <span class="n">north</span><span class="p">]</span>
+    <span class="n">bbox_crs</span> <span class="o">=</span> <span class="s1">&#39;EPSG:32628&#39;</span>
+
+    <span class="c1"># when</span>
+    <span class="n">win</span> <span class="o">=</span> <span class="n">get_window_for_scene</span><span class="p">(</span><span class="n">bbox</span><span class="p">,</span> <span class="n">bbox_crs</span><span class="p">,</span> <span class="n">scene_affine</span><span class="p">,</span> <span class="n">scene_crs</span><span class="p">)</span>
+    <span class="n">expected_win</span> <span class="o">=</span> <span class="n">rio</span><span class="o">.</span><span class="n">windows</span><span class="o">.</span><span class="n">Window</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">rows</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">win</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">expected_win</span><span class="p">)</span>
+    <span class="c1"># then</span>
+    <span class="k">assert</span> <span class="n">win</span> <span class="o">==</span> <span class="n">expected_win</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[91]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">test_get_window</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+10
+Window(col_off=0, row_off=0, width=10, height=40)
+Window(col_off=0, row_off=0, width=10, height=40)
+</pre></div></div>
 </div>
 <p><strong>E:</strong> This looks like quiet a complicated function. So write some tests to check if it works correctly.</p>
 <div class="nbinput nblast docutils container">
@@ -832,9 +928,9 @@ date                      id
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">#outfile = os.path.join(scene_dir, str(test_item.date), os.path.basename(band3_url))</span>
-<span class="c1">#with rio.open(outfile, &quot;w&quot;, **profile) as dst:</span>
-<span class="c1">#    dst.write(band3, 1)</span>
+<span></span><span class="n">outfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">scene_dir</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">test_item</span><span class="o">.</span><span class="n">date</span><span class="p">),</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">band3_url</span><span class="p">))</span>
+<span class="k">with</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">profile</span><span class="p">)</span> <span class="k">as</span> <span class="n">dst</span><span class="p">:</span>
+    <span class="n">dst</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">band3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -949,6 +1045,7 @@ date                      id
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">def</span> <span class="nf">to_toa</span><span class="p">(</span><span class="n">raw_band</span><span class="p">,</span> <span class="n">add</span><span class="p">,</span> <span class="n">mult</span><span class="p">):</span>
+    <span class="k">pass</span>
     <span class="c1"># your code here according to the equation above</span>
 </pre></div>
 </div>
@@ -984,6 +1081,7 @@ date                      id
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">def</span> <span class="nf">calc_ndwi</span><span class="p">(</span><span class="n">green</span><span class="p">,</span> <span class="n">swir</span><span class="p">):</span>
+    <span class="k">pass</span>
     <span class="c1"># YOUR CODE HERE</span>
 </pre></div>
 </div>
@@ -1009,7 +1107,7 @@ date                      id
 </div>
 <div class="section" id="Step-5:-Calculate-water-frequency-based-on-the-whole-time-series">
 <h3>Step 5: Calculate water frequency based on the whole time series<a class="headerlink" href="#Step-5:-Calculate-water-frequency-based-on-the-whole-time-series" title="Permalink to this headline">¶</a></h3>
-<p>Great! So we have the code to load and convert the satellite imagery and to calculate the NDWI of a single satellite image. Now let’s put everything together in a for loop which iterates through all the Landsat scenes. We don’t need the spectral bands for the further analysis, so we can just delete them and only store the numpy array containing the NDWI.</p>
+<p>Great! So we have the code to load and convert the satellite imagery and to calculate the NDWI of a single satellite image. Now let’s put everything together in a for loop which iterates over all the Landsat scenes and calculates the NDWI. We don’t need the spectral bands for the further analysis, so we can just delete them and only store the numpy array containing the NDWI.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -1119,7 +1217,6 @@ date                      id
 </pre></div>
 </div>
 </div>
-<p>We can still see some cloud artifacts over the ocean in the right lower corner. Set the maximum cloud cover to 3% (<code class="docutils literal notranslate"><span class="pre">cloud_cover=3</span></code>) parameter to exclude clouded scenes and run the analysis again.</p>
 <p><strong>E:</strong> Plot a map similar to the one above showing the number of valid observations (valid_pixels)</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -1130,6 +1227,8 @@ date                      id
 </pre></div>
 </div>
 </div>
+<p>Looks good, but there are some cloud artifacts over the ocean in the left lower corner. It would be possible to mask them out using the BQA band of the Landsat scene. However, for now it is enough if we just adjust the satellite scene selection.</p>
+<p><strong>E:</strong> Reduce the maximum cloud cover to 3% (<code class="docutils literal notranslate"><span class="pre">cloud_cover=3</span></code>) to exclude clouded scenes and run the analysis again.</p>
 </div>
 </div>
 <div class="section" id="Converting-it-to-a-python-script-for-processing-multiple-regions">

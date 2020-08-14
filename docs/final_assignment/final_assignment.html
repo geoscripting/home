@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Final Assignment &mdash; Advanced Geoscripting 2020 2020 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="5. Geo Data Visualization" href="../course/04_geodata_visualization/3-Data-Visualization.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Advanced Geoscripting 2020
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/administration.html">Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/communication.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/resources.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/time_schedule.html">Time schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/learninggoals.html">Learning goals</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Preparation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/software_setup.html">Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/git_intro/index.html">git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/preparatory_assignment/README.html">Preparatory Assignment</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Course Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../course/01_advanced_vector_processing/README.html">1. Advanced Vector Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/02_vectorized_geodata_processing/README.html">2. Vectorized Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/03_scientific_programming/README.html">3. Best Practices in Scientific Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/assignment-2-part2/README.html">4. Advanced Raster Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/04_geodata_visualization/3-Data-Visualization.html">5. Geo Data Visualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Final Assignment</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Final Assignment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#1.-Assignments-(50%)">1. Assignments (50%)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Notebooks-for-submission-through-GitHub-Classroom">Notebooks for submission through GitHub Classroom</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#2.-Project-(50%)">2. Project (50%)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Criteria-for-evaluation">Criteria for evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Deliverables-for-Submission">Deliverables for Submission</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Advanced Geoscripting 2020</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Final Assignment</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/final_assignment/final_assignment.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Final-Assignment">
+<h1>Final Assignment<a class="headerlink" href="#Final-Assignment" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="1.-Assignments-(50%)">
+<h2>1. Assignments (50%)<a class="headerlink" href="#1.-Assignments-(50%)" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Notebooks-for-submission-through-GitHub-Classroom">
+<h3>Notebooks for submission through GitHub Classroom<a class="headerlink" href="#Notebooks-for-submission-through-GitHub-Classroom" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>assignment-1/02-geopandas.ipynb (bike safety analysis)</p></li>
+<li><p>assignment-3/13-Advanced-Raster-Data-Analysis.ipynb (water frequency)</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="2.-Project-(50%)">
+<h2>2. Project (50%)<a class="headerlink" href="#2.-Project-(50%)" title="Permalink to this headline">¶</a></h2>
+<p><strong>Purpose:</strong> Practice applying best-practices in scientific programming</p>
+<p>Reflect on your programming habits and improve them.</p>
+<p>It is not so much about <strong>what you do</strong>, it is more about <strong>how you implement it</strong></p>
+<ul class="simple">
+<li><p>Perform an exploratory data analysis including → <a class="reference external" href="https://www.youtube.com/watch?v=_ZEWDGpM-vM&amp;list=PLYCpMb24GpOC704uO9svUrihl-HY1tTJJ">Reproducible Data Analysis in Jupyter</a></p></li>
+<li><p>Create a dashboard which lets users explore data.</p></li>
+<li><p>Write a program that performs a geospatial analysis by splitting the AOI into tiles and processing them each individually.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Let the user decide the size of the tiles or the number of tiles in a row or column.</p></li>
+<li><p>Parallelize the processing of your tiles if you like (e.g. multiprocessing)</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/tiles.png"><img alt="wtf" src="../_images/tiles.png" style="width: 600px;" /></a></p>
+<ul class="simple">
+<li><p>Remote sensing data e.g.</p>
+<ul>
+<li><p>Perform the water frequency analysis</p></li>
+<li><p>Calculate the NDVI at two different points in time and calculate the difference.</p></li>
+</ul>
+</li>
+<li><p>OpenStreetMap data</p></li>
+<li><p><a class="reference external" href="https://www.kaggle.com/datasets=">kaggle Data sets</a></p></li>
+<li><p><a class="reference external" href="https://datasetsearch.research.google.com/">Google Data Set Search</a></p></li>
+<li><p>etc.</p></li>
+</ul>
+<p><strong>Before</strong> you start working on the project, choose three best practices from the papers which you would like to practice, e.g. * I want to use git regularly during development * I want to write tests * I want to follow Python code style continuously during development.</p>
+<p><strong>While</strong> doing the project, focus especially on applying these best practices.</p>
+<p><strong>After</strong> the project, reflect on how well you were able to apply them and what benefits you got from applying them.</p>
+</div>
+<div class="section" id="Criteria-for-evaluation">
+<h2>Criteria for evaluation<a class="headerlink" href="#Criteria-for-evaluation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>How readable and easily understandible is it? e.g. hide details in functions</p></li>
+<li><p>Code structure: Split code in functions, modules, python scripts and notebooks</p></li>
+<li><p>Where does it make sense to use jupyter notebooks? Where is better to use python scripts?</p></li>
+<li><p>Code style conform (use pylint to check)</p></li>
+</ul>
+<ul class="simple">
+<li><p>Describe what your programm does</p></li>
+<li><p>What are the dependencies and how to setup the environment.</p></li>
+<li><p>Document how to set up the python environment</p></li>
+<li><p>Document how to run it:</p>
+<ul>
+<li><p>Which parameters are necessary?</p></li>
+<li><p>How are they specified?</p></li>
+<li><p>Which files are important?</p></li>
+<li><p>Maybe integrate error handling e.g. check if user input is valid and give feedback so the user knows how to solve the problem</p></li>
+</ul>
+</li>
+<li><p>Provide an example</p></li>
+<li><p>use config files if suitable</p></li>
+</ul>
+<p>→ Watch this series of videos on <a class="reference external" href="https://www.youtube.com/watch?v=_ZEWDGpM-vM&amp;list=PLYCpMb24GpOC704uO9svUrihl-HY1tTJJ">Reproducible Data Analysis in Jupyter</a></p>
+<ul class="simple">
+<li><p>Write tests where it makes sense</p></li>
+</ul>
+<ul class="simple">
+<li><p>Split your programm into functions which you can use in other programs (“Don’t repeat yourself”)</p></li>
+</ul>
+<ul class="simple">
+<li><p>Write reasonably efficient code (e.g. apply vectorization when you perform raster calculations) You don’t need to perform profiling and optimization.</p></li>
+</ul>
+</div>
+<div class="section" id="Deliverables-for-Submission">
+<h2>Deliverables for Submission<a class="headerlink" href="#Deliverables-for-Submission" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>All Python code necessary to run the programm</p></li>
+<li><p>Maybe a small data set to demonstrate how it is run</p></li>
+</ul>
+<ul class="simple">
+<li><p>Short description of the program</p></li>
+<li><p>Dependencies (Python Version + python libraries)</p></li>
+<li><p>Instrtructions on how to use the programm (give example code to run)</p></li>
+</ul>
+<ul class="simple">
+<li><p>Which best practices did you apply?</p></li>
+<li><p>Reflect on how well you were able to apply them?</p></li>
+<li><p>What benefits did you get from applying them?</p></li>
+<li><p>What can you improve in the future?</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../course/04_geodata_visualization/3-Data-Visualization.html" class="btn btn-neutral float-left" title="5. Geo Data Visualization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Christina Ludwig
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

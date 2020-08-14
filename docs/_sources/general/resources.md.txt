@@ -1,7 +1,7 @@
 # Resources
 
-
 One week is short and there is so much more to discover. So if you're not tired yet, take a look at the following projects.
+
 
 ## Geo data processing packages
 
@@ -11,21 +11,20 @@ One week is short and there is so much more to discover. So if you're not tired 
 
 ## Processing Big Data
 
-
 * Dask: Processing of large data &rarr; [Tutorial](https://tutorial.dask.org/00_overview.html)
 * [multiprocessing](https://docs.python.org/3/library/multiprocessing.html)
 * [Cython and Pandas](https://pandas.pydata.org/pandas-docs/stable/user_guide/enhancingperf.html)
 * [Numba](http://numba.pydata.org/): High Performance python compiler
 
-## (Geo) Data Visualization
 
+## (Geo) Data Visualization
 
 * [dash](https://dash.plotly.com/): Interactive dashboards using Python
 * [plotly-geo](https://plotly.com/python/getting-started/#extended-geo-support)
 * [plotly maps](https://plotly.com/python/maps/)
+* Bokeh
 
 ## Advanced Python Data structures
-
 
 * [Interfaces, Mixins and Building Powerful Custom Data Structures in Python](https://rednafi.github.io/digressions/python/2020/07/03/python-mixins.html)
 
@@ -40,7 +39,8 @@ Some of these conference put the talks and workshops online. A good way to stay 
 * [PyCon](https://pycon.org/)
 * .. and many more.
 
-## Books
+
+## Theory
 
 Here are some book recommendations taken from [1]
 
@@ -57,6 +57,8 @@ Here are some book recommendations taken from [1]
 * Anthony Scopatz and Kathryn D. Huff (2015): _Effective Computation in Physics_. ([Safari Books](http://proquest.tech.safaribooksonline.de/book/physics/9781491901564))
 * Hans Petter Langtangen (2014): _A Primer on Scientific Programming with Python._ ([eBook](http://link.springer.com/book/10.1007%2F978-3-642-54959-5))
 * Harriet Dashnow, Juan Nunez-Iglesias, and Stéfan van der Walt (2017): _Elegant SciPy: The Art of Scientific Python._ ([GitHub](https://github.com/elegant-scipy/elegant-scipy))
+* [Nicolas Rougier: From Python to Numpy](https://www.labri.fr/perso/nrougier/from-python-to-numpy/)
+
 
 ### High Performance Computing with Python
 

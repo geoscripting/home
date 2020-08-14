@@ -6,7 +6,7 @@
 Advanced Geoscripting 2020
 ======================================
 
-Heidelberg University | Institute of Geography | August 13th 2020
+Heidelberg University | Institute of Geography | August 14th 2020
 
 Christina Ludwig
 
@@ -14,12 +14,83 @@ Christina Ludwig
 
 :data-y: r1000
 
-Agenda
-=======
 
-1. Questions
-2. Raster Data Assignment
-3. Introduction to rasterio
-4. Work on assignment
+Agenda
+=================
+
+1. Testing the get_window function
+2. Geodata visualisation
+3. Assignments and project
 
 ----
+
+
+Assignments
+==========================
+
+Notebooks for submission through GitHub Classroom
+----------------------------------------------------
+
+1. assignment-1/02-geopandas.ipynb (bike safety analysis)
+2. assignment-3/13-Advanced-Raster-Data-Analysis.ipynb (water frequency)
+
+----
+
+
+Project
+==========
+
+**Purpose:** Practice applying best-practices in scientific programming
+
+**Before** you start working on the project, choose three best practices which you would like to practice, e.g.
+* Use git regularly during development
+* Write tests
+* Follow Python code style.
+
+**While** doing the project, focus especially on applying these best practices.
+
+**After** the project, reflect on how well you were able to apply them and what benefits you got from applying them.
+
+One requirement: It needs to be reproducible!
+-------------------------------------------------------
+
+* Document how to set up the python environment
+* Document how to run it:
+  * Which parameters are necessary?
+  * How are they specified?
+  * Which files are important?
+* If possible, add error handling when your python script needs user input
+
+:raw-html:`&rarr;` Watch this series of videos on `Reproducible Data Analysis in Jupyter <https://www.youtube.com/watch?v=_ZEWDGpM-vM&list=PLYCpMb24GpOC704uO9svUrihl-HY1tTJJ>`_
+
+
+----
+
+Project topic
+===============
+
+You can choose a topic / data set you're interested in.
+
+**Suggestions:**
+
+* Perform an exploratory data analysis similar to the bike safety analysis
+  * Create a notebook containing the analysis
+  * Create module which holds the functions used during the analysis
+
+* Set up a processing chain similar to the water frequency analysis
+  * use configuration files to separate parameters and code
+  *
+
+* Write a script which processes a spatial data set in chunks by splitting the bounding box of the study area in tiles
+  * Try implementing parallelisation if you are interested
+  *
+
+
+Project submission
+======================
+
+* Create a new GitHub repository
+  * If it is public, send me the `
+  * If it is private, add me as contributor so I can see it
+
+*

@@ -28,6 +28,8 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -38,8 +40,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="4. Advanced Raster Data Processing" href="../course/assignment-2-part2/README.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -103,10 +104,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../course/02_vectorized_geodata_processing/README.html">2. Vectorized Data Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../course/03_scientific_programming/README.html">3. Best Practices in Scientific Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../course/assignment-2-part2/README.html">4. Advanced Raster Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/04_geodata_visualization/3-Data-Visualization.html">5. Geo Data Visualization</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Final Assignment</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Final Assignment</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="final_assignment.html">Final Assignment</a></li>
 </ul>
 
             
@@ -198,9 +200,474 @@
 <div class="section" id="final-assignment">
 <h1>Final Assignment<a class="headerlink" href="#final-assignment" title="Permalink to this headline">¶</a></h1>
 <p>The final assignment of this course will be a practical programming project to be completed after the block course. Submission deadline is October 18th 2020. More information will follow during the block course.</p>
-<p><strong>50%:</strong> 4 assignments + group assignment during the course</p>
-<p><strong>50%:</strong> Individual programming project (with peer-review)</p>
+<p><strong>50%:</strong> 2 assignments</p>
+<p><strong>50%:</strong> Individual programming project</p>
 <p>Assignments and project must be <strong>submitted individually</strong> via GitHub Classroom, but you are encouraged to <strong>work together and help each other</strong>! (e.g. pair programming)</p>
+<dl>
+<dt>{</dt><dd><dl>
+<dt>“cells”: [</dt><dd><dl>
+<dt>{</dt><dd><p>“cell_type”: “markdown”,
+“metadata”: {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“slideshow”: {</dt><dd><p>“slide_type”: “slide”</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+“source”: [</p>
+<blockquote>
+<div><p>“# Final Assignment”</p>
+</div></blockquote>
+<p>]</p>
+</dd>
+</dl>
+<p>},
+{</p>
+<blockquote>
+<div><p>“cell_type”: “markdown”,
+“metadata”: {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“slideshow”: {</dt><dd><p>“slide_type”: “fragment”</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+“source”: [</p>
+<blockquote>
+<div><p>“## 1. Assignments (50%)n”,
+“n”,
+“##### Notebooks for submission through GitHub Classroomn”,
+“n”,
+“1. assignment-1/02-geopandas.ipynb (bike safety analysis)n”,
+“2. assignment-3/13-Advanced-Raster-Data-Analysis.ipynb (water frequency)n”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“cell_type”: “markdown”,
+“metadata”: {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“slideshow”: {</dt><dd><p>“slide_type”: “fragment”</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+“source”: [</p>
+<blockquote>
+<div><p>“## 2. Project (50%)n”,
+“n”,
+“__Purpose:__ Practice applying best-practices in scientific programmingn”,
+“n”,
+“Reflect on your programming habits and improve them. n”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“cell_type”: “markdown”,
+“metadata”: {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“slideshow”: {</dt><dd><p>“slide_type”: “slide”</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+“source”: [</p>
+<blockquote>
+<div><p>“### What to do? n”,
+“n”,
+“It is not so much about <strong>what you do</strong>, it is more about <strong>how you implement it</strong>”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“cell_type”: “markdown”,
+“metadata”: {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“slideshow”: {</dt><dd><p>“slide_type”: “fragment”</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+“source”: [</p>
+<blockquote>
+<div><p>“### 1. Choose a type of analysis you want to do n”,
+“n”,
+“#### Some suggestionsn”,
+“* Perform an exploratory data analysis includingn”,
+”    &amp;rarr; [Reproducible Data Analysis in Jupyter](<a class="reference external" href="https://www.youtube.com/watch?v=_ZEWDGpM-vM&amp;list=PLYCpMb24GpOC704uO9svUrihl-HY1tTJJ)n">https://www.youtube.com/watch?v=_ZEWDGpM-vM&amp;list=PLYCpMb24GpOC704uO9svUrihl-HY1tTJJ)n</a>”,
+“n”,
+“* Create a dashboard which lets users explore data.n”,
+“n”,
+“* Write a program that performs a geospatial analysis by splitting the AOI into tiles and processing them each individually.n”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“cell_type”: “markdown”,
+“metadata”: {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“slideshow”: {</dt><dd><p>“slide_type”: “slide”</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+“source”: [</p>
+<blockquote>
+<div><p>“#### Write a function/class which splits the Area of Interest (AOI) into rectangular tiles which are processed independently. n”,
+“* Let the user decide the size of the tiles or the number of tiles in a row or column. n”,
+“* Parallelize the processing of your tiles if you like (e.g. multiprocessing) n”,
+“n”,
+“&lt;img src=”img/tiles.png” alt=”wtf” width=”600” align=”center”/&gt;”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“cell_type”: “markdown”,
+“metadata”: {},
+“source”: [</p>
+<blockquote>
+<div><p>“### 2. Choose a topic / data set you’re interested in and which suits your type of analysisn”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“cell_type”: “markdown”,
+“metadata”: {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“slideshow”: {</dt><dd><p>“slide_type”: “slide”</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+“source”: [</p>
+<blockquote>
+<div><p>“n”,
+“* Remote sensing data e.g.n”,
+”    * Perform the water frequency analysisn”,
+”    * Calculate the NDVI at two different points in time and calculate the difference.n”,
+“* OpenStreetMap datan”,
+“* [kaggle Data sets](<a class="reference external" href="https://www.kaggle.com/datasets=)n">https://www.kaggle.com/datasets=)n</a>”,
+“* [Google Data Set Search](<a class="reference external" href="https://datasetsearch.research.google.com/)n">https://datasetsearch.research.google.com/)n</a>”,
+“* etc.”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“cell_type”: “markdown”,
+“metadata”: {},
+“source”: [</p>
+<blockquote>
+<div><p>“### 3.  Apply the best-practices in scientific programming while implementing itn”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“cell_type”: “markdown”,
+“metadata”: {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“slideshow”: {</dt><dd><p>“slide_type”: “slide”</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+“source”: [</p>
+<blockquote>
+<div><p>“n”,
+“<strong>Before</strong> you start working on the project, choose three best practices from the papers which you would like to practice, e.g.n”,
+“* I want to use git regularly during developmentn”,
+“* I want to write testsn”,
+“* I want to follow Python code style continuously during development.n”,
+“n”,
+“<strong>While</strong> doing the project, focus especially on applying these best practices.n”,
+“n”,
+“<strong>After</strong> the project, reflect on how well you were able to apply them and what benefits you got from applying them.”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“cell_type”: “markdown”,
+“metadata”: {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“slideshow”: {</dt><dd><p>“slide_type”: “slide”</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+“source”: [</p>
+<blockquote>
+<div><p>“## Criteria for evaluationn”,
+“n”,
+“### Is it good scientific code? n”,
+“n”,
+“#### Readability: n”,
+“* How readable and easily understandible is it? e.g. hide details in functionsn”,
+“* Code structure: Split code in functions, modules, python scripts and notebooksn”,
+“* Where does it make sense to use jupyter notebooks? Where is better to use python scripts?n”,
+“* Code style conform (use pylint to check)n”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“cell_type”: “markdown”,
+“metadata”: {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“slideshow”: {</dt><dd><p>“slide_type”: “subslide”</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+“source”: [</p>
+<blockquote>
+<div><p>“n”,
+“#### Reproducibility n”,
+“* Describe what your programm doesn”,
+“* What are the dependencies and how to setup the environment. n”,
+“* Document how to set up the python environmentn”,
+“* Document how to run it:n”,
+”  * Which parameters are necessary?n”,
+”  * How are they specified?n”,
+”  * Which files are important?n”,
+”  * Maybe integrate error handling e.g. check if user input is valid and give feedback so the user knows how to solve the problemn”,
+“* Provide an example n”,
+“* use config files if suitablen”,
+“n”,
+“n”,
+“&amp;rarr; Watch this series of videos on [Reproducible Data Analysis in Jupyter](https://www.youtube.com/watch?v=_ZEWDGpM-vM&amp;list=PLYCpMb24GpOC704uO9svUrihl-HY1tTJJ)n”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“cell_type”: “markdown”,
+“metadata”: {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“slideshow”: {</dt><dd><p>“slide_type”: “subslide”</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+“source”: [</p>
+<blockquote>
+<div><p>“n”,
+“#### Reliability: n”,
+“* Write tests where it makes sense”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“cell_type”: “markdown”,
+“metadata”: {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“slideshow”: {</dt><dd><p>“slide_type”: “fragment”</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+“source”: [</p>
+<blockquote>
+<div><p>“#### Reusability: n”,
+“* Split your programm into functions which you can use in other programs (“Don’t repeat yourself”)”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“cell_type”: “markdown”,
+“metadata”: {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“slideshow”: {</dt><dd><p>“slide_type”: “fragment”</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+“source”: [</p>
+<blockquote>
+<div><p>“#### Efficiency: n”,
+“* Write reasonably efficient code (e.g. apply vectorization when you perform raster calculations) You don’t need to perform profiling and optimization.”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“cell_type”: “markdown”,
+“metadata”: {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“slideshow”: {</dt><dd><p>“slide_type”: “slide”</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+“source”: [</p>
+<blockquote>
+<div><p>“## Deliverables for Submission n”,
+“n”,
+“### Create  a new GitHub Repository which contains:n”,
+“n”,
+“### 1. Python code n”,
+“- All Python code necessary to run the programm n”,
+“- Maybe a small data set to demonstrate how it is run”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“cell_type”: “markdown”,
+“metadata”: {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“slideshow”: {</dt><dd><p>“slide_type”: “fragment”</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+“source”: [</p>
+<blockquote>
+<div><p>“### 2. README.mdn”,
+“* Short description of the programn”,
+“* Dependencies (Python Version + python libraries)n”,
+“- Instrtructions on how to use the programm (give example code to run)   “</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“cell_type”: “markdown”,
+“metadata”: {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“slideshow”: {</dt><dd><p>“slide_type”: “fragment”</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+“source”: [</p>
+<blockquote>
+<div><p>“n”,
+“### 3. Reflection (text document ~ 1-3 pages)n”,
+“n”,
+“* Which best practices did you apply?n”,
+“* Reflect on how well you were able to apply them? n”,
+“* What benefits did you get from applying them?n”,
+“* What can you improve in the future? n”,
+“n”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“cell_type”: “markdown”,
+“metadata”: {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“slideshow”: {</dt><dd><p>“slide_type”: “slide”</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+“source”: [</p>
+<blockquote>
+<div><p>“### Grant me access if it is private or just send me the link if it is public.n”,
+“n”,
+“### Submission date: November 1st 2020”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>}</p>
+</dd>
+</dl>
+<p>],
+“metadata”: {</p>
+<blockquote>
+<div><p>“celltoolbar”: “Slideshow”,
+“kernelspec”: {</p>
+<blockquote>
+<div><p>“display_name”: “Python (cs4geos)”,
+“language”: “python”,
+“name”: “cs4geos”</p>
+</div></blockquote>
+<p>},
+“language_info”: {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“codemirror_mode”: {</dt><dd><p>“name”: “ipython”,
+“version”: 3</p>
+</dd>
+</dl>
+<p>},
+“file_extension”: “.py”,
+“mimetype”: “text/x-python”,
+“name”: “python”,
+“nbconvert_exporter”: “python”,
+“pygments_lexer”: “ipython3”,
+“version”: “3.7.3”</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>},
+“nbformat”: 4,
+“nbformat_minor”: 2</p>
+</dd>
+</dl>
+<p>}</p>
 </div>
 
 
@@ -208,13 +675,6 @@
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-      
-        <a href="../course/assignment-2-part2/README.html" class="btn btn-neutral float-left" title="4. Advanced Raster Data Processing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

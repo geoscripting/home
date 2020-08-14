@@ -28,6 +28,8 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -102,10 +104,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../course/02_vectorized_geodata_processing/README.html">2. Vectorized Data Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../course/03_scientific_programming/README.html">3. Best Practices in Scientific Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../course/assignment-2-part2/README.html">4. Advanced Raster Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../course/04_geodata_visualization/3-Data-Visualization.html">Geo Data visualization</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Final Assignment</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/index.html">Final Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/final_assignment.html">Final Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/final_assignment.html#Questions?">Questions?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/final_assignment.html#Thank-you-for-your-participation-and-feedback!-:)">Thank you for your participation and feedback! :)</a></li>
 </ul>
 
             
@@ -196,7 +201,7 @@
 </style>
 <div class="section" id="advanced-geoscripting-2020">
 <h1>Advanced Geoscripting 2020<a class="headerlink" href="#advanced-geoscripting-2020" title="Permalink to this headline">¶</a></h1>
-<p>Heidelberg University | Institute of Geography | August 13th 2020</p>
+<p>Heidelberg University | Institute of Geography | August 14th 2020</p>
 <p>Christina Ludwig</p>
 <hr class="docutils" />
 <dl class="field-list simple">
@@ -208,12 +213,70 @@
 <div class="section" id="agenda">
 <h1>Agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
-<li><p>Questions</p></li>
-<li><p>Raster Data Assignment</p></li>
-<li><p>Introduction to rasterio</p></li>
-<li><p>Work on assignment</p></li>
+<li><p>Testing the get_window function</p></li>
+<li><p>Geodata visualisation</p></li>
+<li><p>Assignments and project</p></li>
 </ol>
+</div>
 <hr class="docutils" />
+<div class="section" id="assignments">
+<h1>Assignments<a class="headerlink" href="#assignments" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="notebooks-for-submission-through-github-classroom">
+<h2>Notebooks for submission through GitHub Classroom<a class="headerlink" href="#notebooks-for-submission-through-github-classroom" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>assignment-1/02-geopandas.ipynb (bike safety analysis)</p></li>
+<li><p>assignment-3/13-Advanced-Raster-Data-Analysis.ipynb (water frequency)</p></li>
+</ol>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="project">
+<h1>Project<a class="headerlink" href="#project" title="Permalink to this headline">¶</a></h1>
+<p><strong>Purpose:</strong> Practice applying best-practices in scientific programming</p>
+<p><strong>Before</strong> you start working on the project, choose three best practices which you would like to practice, e.g.
+* Use git regularly during development
+* Write tests
+* Follow Python code style.</p>
+<p><strong>While</strong> doing the project, focus especially on applying these best practices.</p>
+<p><strong>After</strong> the project, reflect on how well you were able to apply them and what benefits you got from applying them.</p>
+<div class="section" id="one-requirement-it-needs-to-be-reproducible">
+<h2>One requirement: It needs to be reproducible!<a class="headerlink" href="#one-requirement-it-needs-to-be-reproducible" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Document how to set up the python environment</p></li>
+<li><p>Document how to run it:
+* Which parameters are necessary?
+* How are they specified?
+* Which files are important?</p></li>
+<li><p>If possible, add error handling when your python script needs user input</p></li>
+</ul>
+<p><span class="raw-html">&rarr;</span> Watch this series of videos on <a class="reference external" href="https://www.youtube.com/watch?v=_ZEWDGpM-vM&amp;list=PLYCpMb24GpOC704uO9svUrihl-HY1tTJJ">Reproducible Data Analysis in Jupyter</a></p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="project-topic">
+<h1>Project topic<a class="headerlink" href="#project-topic" title="Permalink to this headline">¶</a></h1>
+<p>You can choose a topic / data set you’re interested in.</p>
+<p><strong>Suggestions:</strong></p>
+<ul class="simple">
+<li><p>Perform an exploratory data analysis similar to the bike safety analysis
+* Create a notebook containing the analysis
+* Create module which holds the functions used during the analysis</p></li>
+<li><p>Set up a processing chain similar to the water frequency analysis
+* use configuration files to separate parameters and code
+*</p></li>
+<li><p>Write a script which processes a spatial data set in chunks by splitting the bounding box of the study area in tiles
+* Try implementing parallelisation if you are interested
+*</p></li>
+</ul>
+</div>
+<div class="section" id="project-submission">
+<h1>Project submission<a class="headerlink" href="#project-submission" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Create a new GitHub repository
+* If it is public, send me the `
+* If it is private, add me as contributor so I can see it</p></li>
+<li></li>
+</ul>
 </div>
 
 

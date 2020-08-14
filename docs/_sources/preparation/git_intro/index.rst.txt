@@ -14,3 +14,4 @@ This page contains introductory material to learn using git and GitHub Classroom
 
    git_introduction
    git_videos
+   

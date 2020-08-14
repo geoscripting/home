@@ -28,6 +28,8 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -102,10 +104,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../02_vectorized_geodata_processing/README.html">2. Vectorized Data Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03_scientific_programming/README.html">3. Best Practices in Scientific Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html">4. Advanced Raster Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_geodata_visualization/3-Data-Visualization.html">5. Geo Data Visualization</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Final Assignment</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/index.html">Final Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/final_assignment.html">Final Assignment</a></li>
 </ul>
 
             
@@ -430,7 +433,7 @@ div.rendered_html tbody tr:hover {
 <p>Handling geospatial raster data in Python is best done using these packages: * “rasterio” for reading and writing raster files (e.g. .tiff) * “numpy” for performing raster calculations (e.g. calcualate the NDVI)</p>
 <p>There are also Python bindings directly based on gdal, but they are less “pythonic”.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[76]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -440,6 +443,7 @@ div.rendered_html tbody tr:hover {
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">math</span>
 </pre></div>
 </div>
 </div>
@@ -449,7 +453,7 @@ AWS or Google Cloud, for example look at the band 4 image for the date we select
 <p>Or, the same file is available on Google Cloud storage: ​</p>
 <p><a class="reference external" href="https://storage.googleapis.com/gcp-public-data-landsat/LC08/01/042/034/LC08_L1TP_042034_20170616_20170629_01_T1/LC08_L1TP_042034_20170616_20170629_01_T1_B4.TIF">https://storage.googleapis.com/gcp-public-data-landsat/LC08/01/042/034/LC08_L1TP_042034_20170616_20170629_01_T1/LC08_L1TP_042034_20170616_20170629_01_T1_B4.TIF</a></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -471,12 +475,13 @@ Landsat on Google:
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Landsat on AWS:&#39;</span><span class="p">)</span>
 <span class="n">filepath</span> <span class="o">=</span> <span class="s1">&#39;http://landsat-pds.s3.amazonaws.com/c1/L8/042/034/LC08_L1TP_042034_20170616_20170629_01_T1/LC08_L1TP_042034_20170616_20170629_01_T1_B4.TIF&#39;</span>
+
 <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">profile</span><span class="p">)</span>
 </pre></div>
@@ -497,7 +502,7 @@ Landsat on AWS:
 <div class="section" id="Reading-a-spectral-band-within-a-bounding-box">
 <h2>Reading a spectral band within a bounding box<a class="headerlink" href="#Reading-a-spectral-band-within-a-bounding-box" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -508,7 +513,7 @@ Landsat on AWS:
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -517,7 +522,7 @@ Landsat on AWS:
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -706,13 +711,423 @@ Text(0, 0.5, &#39;Row #&#39;)
 </pre></div>
 </div>
 </div>
+<div class="section" id="Image-coordinates">
+<h3>Image coordinates<a class="headerlink" href="#Image-coordinates" title="Permalink to this headline">¶</a></h3>
+<p>→ Y coordinates increase downwards.</p>
+<p><img alt="fdsfds" src="https://cdn-learn.adafruit.com/assets/assets/000/001/264/original/lcds___displays_coordsys.png?1396770439" /></p>
+</div>
+<div class="section" id="Map-coordinates">
+<h3>Map coordinates<a class="headerlink" href="#Map-coordinates" title="Permalink to this headline">¶</a></h3>
+<p>→ Y coordinates increase upwards</p>
+<p><img alt="e3a9393ce5184abab99515c11ba711c9" src="http://www.geography.hunter.cuny.edu/~jochen/GTECH361/lectures/lecture04/concepts/06%20-%20Projected%20coordinate%20systems_files/image002.gif" /></p>
+</div>
+</div>
+<div class="section" id="Convert-geogr.-coordinates-to-image-coordinates">
+<h2>Convert geogr. coordinates to image coordinates<a class="headerlink" href="#Convert-geogr.-coordinates-to-image-coordinates" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<span></span><span class="k">def</span> <span class="nf">geogr_2_image</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">~</span><span class="n">affine</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">image_2_geogr</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">affine</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[81]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="c1">#band1 = src.read(1)</span>
+    <span class="n">affine</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">transform</span>
+    <span class="n">crs</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">crs</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[94]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">test_get_window2</span><span class="p">():</span>
+
+    <span class="c1"># Given</span>
+    <span class="n">west</span> <span class="o">=</span> <span class="mf">204285.0</span>
+    <span class="n">north</span> <span class="o">=</span> <span class="mf">4268115.0</span>
+    <span class="n">pixel_size_y</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">pixel_size_x</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">affine</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">from_origin</span><span class="p">(</span><span class="n">west</span><span class="p">,</span> <span class="n">north</span><span class="p">,</span> <span class="n">pixel_size_x</span><span class="p">,</span> <span class="n">pixel_size_y</span><span class="p">)</span>
+
+    <span class="n">exp_x</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">exp_y</span> <span class="o">=</span> <span class="mi">20</span>
+
+    <span class="n">pixel_x</span> <span class="o">=</span> <span class="n">west</span> <span class="o">+</span> <span class="n">exp_x</span> <span class="o">*</span> <span class="n">pixel_size_x</span>
+    <span class="n">pixel_y</span> <span class="o">=</span> <span class="n">north</span> <span class="o">-</span> <span class="n">exp_y</span> <span class="o">*</span> <span class="n">pixel_size_y</span>
+
+    <span class="c1"># when</span>
+    <span class="n">img_x</span><span class="p">,</span> <span class="n">img_y</span> <span class="o">=</span> <span class="n">geogr_2_image</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span> <span class="n">pixel_x</span><span class="p">,</span> <span class="n">pixel_y</span><span class="p">)</span>
+
+    <span class="c1"># then</span>
+    <span class="k">assert</span> <span class="n">img_x</span> <span class="o">==</span> <span class="n">exp_x</span>
+    <span class="k">assert</span> <span class="n">img_y</span> <span class="o">==</span> <span class="n">exp_y</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[96]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">test_get_window2</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[89]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">test_get_window</span><span class="p">():</span>
+
+    <span class="c1"># Given</span>
+    <span class="n">west</span> <span class="o">=</span> <span class="mf">204285.0</span>
+    <span class="n">north</span> <span class="o">=</span> <span class="mf">4268115.0</span>
+    <span class="n">pixel_size_y</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">pixel_size_x</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">affine</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">from_origin</span><span class="p">(</span><span class="n">west</span><span class="p">,</span> <span class="n">north</span><span class="p">,</span> <span class="n">pixel_size_x</span><span class="p">,</span> <span class="n">pixel_size_y</span><span class="p">)</span>
+
+    <span class="c1"># when</span>
+    <span class="n">img_x</span><span class="p">,</span> <span class="n">img_y</span> <span class="o">=</span> <span class="n">geogr_2_image</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span> <span class="n">west</span><span class="p">,</span> <span class="n">north</span><span class="p">)</span>
+    <span class="n">exp_x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">exp_y</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># then</span>
+    <span class="k">assert</span> <span class="n">img_x</span> <span class="o">==</span> <span class="n">exp_x</span>
+    <span class="k">assert</span> <span class="n">img_y</span> <span class="o">==</span> <span class="n">exp_y</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[90]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">west</span> <span class="o">=</span> <span class="mf">204285.0</span>
+<span class="n">north</span> <span class="o">=</span> <span class="mf">4268115.0</span>
+<span class="n">pixel_size_y</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">pixel_size_x</span> <span class="o">=</span> <span class="mi">30</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[92]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">test_get_window</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[88]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">geogr_2_image</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span> <span class="n">west</span><span class="p">,</span> <span class="n">north</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[88]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(0.0, 0.0)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[126]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="s1">&#39;epsg:4326&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[126]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Proj(&#39;+proj=longlat +datum=WGS84 +no_defs&#39;, preserve_units=True)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[87]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">rasterio</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rowcol</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span> <span class="n">west</span><span class="p">,</span> <span class="n">north</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[87]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(0, 0)
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[119]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">get_window_for_scene</span><span class="p">(</span><span class="n">bbox</span><span class="p">,</span> <span class="n">scene_affine</span><span class="p">):</span>
+
+    <span class="n">ul_col</span><span class="p">,</span> <span class="n">ul_row</span> <span class="o">=</span> <span class="n">geogr_2_image</span><span class="p">(</span><span class="n">scene_affine</span><span class="p">,</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">lr_col</span><span class="p">,</span> <span class="n">lr_row</span> <span class="o">=</span> <span class="n">geogr_2_image</span><span class="p">(</span><span class="n">scene_affine</span><span class="p">,</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+    <span class="n">ul_row</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">ul_row</span><span class="p">)</span>
+    <span class="n">ul_col</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">ul_col</span><span class="p">)</span>
+    <span class="n">lr_row</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lr_row</span><span class="p">)</span>
+    <span class="n">lr_col</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lr_col</span><span class="p">)</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lr_row</span> <span class="o">-</span> <span class="n">ul_row</span><span class="p">)</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lr_col</span> <span class="o">-</span> <span class="n">ul_col</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">windows</span><span class="o">.</span><span class="n">Window</span><span class="p">(</span><span class="n">ul_row</span><span class="p">,</span> <span class="n">ul_col</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[120]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">bbox</span> <span class="o">=</span> <span class="p">[</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[122]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">win</span> <span class="o">=</span> <span class="n">get_window_for_scene</span><span class="p">(</span><span class="n">bbox</span><span class="p">,</span> <span class="n">affine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Upper left image coordinates</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ul_x</span><span class="p">,</span> <span class="n">ul_y</span> <span class="o">=</span> <span class="n">geogr_2_image</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Lower right image coordinates</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">lr_x</span><span class="p">,</span> <span class="n">lr_y</span> <span class="o">=</span> <span class="n">geogr_2_image</span><span class="p">(</span><span class="n">affine</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>convert to integer</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">lr_x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lr_x</span><span class="p">)</span>
+<span class="n">lr_y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lr_y</span><span class="p">)</span>
+<span class="n">ul_x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ul_x</span><span class="p">)</span>
+<span class="n">ul_y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ul_x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">lr_x</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3333
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ul_x</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1666
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">window</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">windows</span><span class="o">.</span><span class="n">Window</span><span class="o">.</span><span class="n">from_slices</span><span class="p">((</span><span class="n">ul_y</span><span class="p">,</span> <span class="n">lr_y</span><span class="p">),</span> <span class="p">(</span><span class="n">ul_x</span><span class="p">,</span> <span class="n">lr_</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">window</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">windows</span><span class="o">.</span><span class="n">Window</span><span class="p">(</span><span class="n">ul_x</span><span class="p">,</span> <span class="n">ul_y</span><span class="p">,</span> <span class="n">lr_x</span> <span class="o">-</span> <span class="n">ul_x</span><span class="p">,</span> <span class="n">lr_y</span> <span class="o">-</span> <span class="n">ul_y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[123]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="n">band1</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">win</span><span class="p">)</span>
+    <span class="n">affine</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">transform</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[124]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">band1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[124]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.image.AxesImage at 0x7f9593379950&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/course_assignment-2-part2_12-introduction-rasterio_53_1.png" src="../../_images/course_assignment-2-part2_12-introduction-rasterio_53_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">band1</span><span class="p">[</span><span class="n">ul_x</span><span class="p">:</span><span class="n">lr_x</span><span class="p">,</span> <span class="n">ul_y</span><span class="p">:</span><span class="n">lr_y</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([[12418, 13173, 15160, ..., 11606, 12031, 12472],
+       [15285, 17270, 16356, ..., 12299, 13039, 13489],
+       [16544, 18909, 18095, ..., 13257, 13263, 12823],
+       ...,
+       [10620, 10534, 10403, ..., 12572, 13700, 13750],
+       [10310, 10172,  9931, ..., 12569, 13800, 13646],
+       [10948, 10446, 10050, ..., 13260, 13803, 13777]], dtype=uint16)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">band1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.image.AxesImage at 0x7f9593a3af10&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/course_assignment-2-part2_12-introduction-rasterio_55_1.png" src="../../_images/course_assignment-2-part2_12-introduction-rasterio_55_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">band1</span><span class="p">[</span><span class="n">ul_x</span><span class="p">:</span><span class="n">lr_x</span><span class="p">,</span> <span class="n">ul_y</span><span class="p">:</span><span class="n">lr_y</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.image.AxesImage at 0x7f9593a00950&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/course_assignment-2-part2_12-introduction-rasterio_56_1.png" src="../../_images/course_assignment-2-part2_12-introduction-rasterio_56_1.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
