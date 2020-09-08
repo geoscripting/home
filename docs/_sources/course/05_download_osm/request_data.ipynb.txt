@@ -1,0 +1,313 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Automated download of OpenStreetMap data "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In this notebook we will learn how to query a REST API using the `requests` package in Python. If it is not installed in your environment, install it using `conda install requests`. We will demonstrate it using the OHSOME API developed by HeiGIT and GIScience Research Group in Heidelberg."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "import requests\n",
+    "import geopandas as gpd\n",
+    "%matplotlib inline\n",
+    "import mplleaflet"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# this will only work if you have scikit-learn installed in your environment\n",
+    "# Create a memory cache so queries that have been sent before are not sent again\n",
+    "#from sklearn.externals.joblib import Memory\n",
+    "#memory = Memory(location='./tmp', verbose=0)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def _url(path):\n",
+    "    return 'https://api.ohsome.org/v0.9/' + path"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Query highways\n",
+    "Query all features with the tag landuse=grass"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "keys = [\"highway\"]\n",
+    "values = [\"\"]\n",
+    "bbox = \"8.66744,49.41217,8.68465,49.42278\"\n",
+    "types = [\"WAY\"]\n",
+    "date = \"20180101\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data = {'bboxes': bbox,\n",
+    "        'keys': \",\".join(keys),\n",
+    "        'values': \",\".join(values),\n",
+    "        'types': \",\".join(types),\n",
+    "        'time': f'{date}',\n",
+    "        'format': 'geojson',\n",
+    "        'properties': 'tags',\n",
+    "        'showMetadata': 'false'}\n",
+    "response = requests.post(_url('elements/geometry'), data=data)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Check if the query returned a valid response:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "response.ok"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Show the returned data in goejson format:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "response.json()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Load the data into a geopandas data frame:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "highways = gpd.GeoDataFrame().from_features(response.json())\n",
+    "highways.crs = {'init': 'epsg:4326'}\n",
+    "highways.head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Let's buffer the highways:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "highways.plot()\n",
+    "mplleaflet.display()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Query trees\n",
+    "Query all features with the tag natural=tree"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "keys = [\"natural\"]\n",
+    "values = [\"tree\"]\n",
+    "bbox = \"8.66744,49.41217,8.68465,49.42278\"\n",
+    "types = [\"NODE\"]\n",
+    "date = \"20180101\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data = {'bboxes': bbox,\n",
+    "        'keys': \",\".join(keys),\n",
+    "        'values': \",\".join(values),\n",
+    "        'types': \",\".join(types),\n",
+    "        'time': f'{date}',\n",
+    "        'format': 'geojson',\n",
+    "        'properties': 'tags',\n",
+    "        'showMetadata': 'false'}\n",
+    "response = requests.post(_url('elements/geometry'), data=data)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "trees = gpd.GeoDataFrame().from_features(response.json())\n",
+    "trees.crs = {'init': 'epsg:4326'}\n",
+    "trees = trees.to_crs({'init': 'epsg:32632'})\n",
+    "trees.head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Count the number of trees close to each highways segment"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "First, we will buffer the highways by 10 meters."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "highways_buffered = highways.to_crs({'init': 'epsg:32632'}).buffer(10)\n",
+    "highways_buffered.to_crs({'init': 'epsg:4326'}).plot()\n",
+    "mplleaflet.display()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Plot both trees and buffered highways"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import matplotlib.pyplot as plt\n",
+    "fig, axes = plt.subplots(1, 1, figsize=(10, 6))\n",
+    "trees.to_crs({'init': 'epsg:4326'}).plot(ax=axes, color=\"red\")\n",
+    "highways_buffered.to_crs({'init': 'epsg:4326'}).plot(ax=axes)\n",
+    "mplleaflet.display()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Count the number of trees for each highway"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "highways[\"green\"] = highways_buffered.apply(lambda x: trees.within(x).sum())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "highways.plot(column=\"green\", cmap=\"Greens\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python (ors2)",
+   "language": "python",
+   "name": "ors"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.2"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

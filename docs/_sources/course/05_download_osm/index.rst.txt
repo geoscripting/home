@@ -1,0 +1,37 @@
+6. Downloading OSM Data using Python
+######################################
+
+If you want to integrate OSM data in your project, there are several ways how to download OSM data using Python:
+
+1. ohsome API
+****************
+
+The `ohsome API <https://docs.ohsome.org/ohsome-api/stable/index.html>`_ is being developed by `HeiGIT <https://heigit.org/>`_ and the `GIScience Research Group <https://www.geog.uni-heidelberg.de/gis/index_en.html>`_ at Heidelberg University. You can use it to query OSM features (Data extraction) or get aggregated OSM data (Data Aggregation).
+
+2.1 ohsome-py package
+-----------------------
+
+To query data from the ohsome API you can use the `ohsome-py package on GitHub <https://github.com/GIScience/ohsome-py>`_. It's still under construction but querying OSM features should work fine. Check out the section `Data Extraction of the tutorial <https://github.com/GIScience/ohsome-py/blob/master/notebooks/Tutorial.ipynb>`_.
+
+2.2 requests package
+------------------------
+
+If you have problems with ohsome-py or you want to query other kinds of APIs, you can use the `requests <https://pypi.org/project/requests/>`_ package in Python. The link below contains a notebook which shows you how to download data from an API using the requests package.
+
+.. toctree::
+   :maxdepth: 0
+   :titlesonly:
+
+   request_data.ipynb
+
+
+2. Overpass API
+*******************
+
+The overpass API is another way of downloading OSM data based on tags and location. You can download OSM data manually through the web browser at `overpass-turbo.eu <www.overpass-turbo.eu>`_ or use the the `overpass Python package <https://python-overpy.readthedocs.io/en/latest/>`_.
+
+.. toctree::
+   :maxdepth: 0
+   :titlesonly:
+
+   overpass.md

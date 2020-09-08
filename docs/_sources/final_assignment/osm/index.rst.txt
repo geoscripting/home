@@ -1,0 +1,16 @@
+Downloading OSM Data using Python
+==================================
+
+If you want to integrate OSM data in your project, there are several ways how to download OSM data using Python:
+
+1.  Overpass API
+
+
+2. ohsome API
+
+2.1 requests package
+
+2.2. ohsome-py package
+
+
+.. include:: request_data.ipynb

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction to git &mdash; Advanced Geoscripting 2020 2020 documentation</title>
+  <title>Download OpenStreetMap Data using the Overpass API &mdash; Advanced Geoscripting 2020 2020 documentation</title>
   
 
   
@@ -40,7 +40,9 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Final Assignment" href="../../final_assignment/final_assignment.html" />
+    <link rel="prev" title="Automated download of OpenStreetMap data" href="request_data.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,18 +96,28 @@
 </ul>
 <p class="caption"><span class="caption-text">Course Preparation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../software_setup.html">Software Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">git</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../preparatory_assignment/README.html">Preparatory Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/software_setup.html">Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/git_intro/index.html">git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preparation/preparatory_assignment/README.html">Preparatory Assignment</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Course Content</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../course/01_advanced_vector_processing/README.html">1. Advanced Vector Data Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../course/02_vectorized_geodata_processing/README.html">2. Vectorized Data Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../course/03_scientific_programming/README.html">3. Best Practices in Scientific Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../course/assignment-2-part2/README.html">4. Advanced Raster Data Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../course/04_geodata_visualization/3-Data-Visualization.html">5. Geo Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../course/05_download_osm/index.html">6. Downloading OSM Data using Python</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_advanced_vector_processing/README.html">1. Advanced Vector Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_vectorized_geodata_processing/README.html">2. Vectorized Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_scientific_programming/README.html">3. Best Practices in Scientific Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignment-2-part2/README.html">4. Advanced Raster Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_geodata_visualization/3-Data-Visualization.html">5. Geo Data Visualization</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. Downloading OSM Data using Python</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#ohsome-api">1. ohsome API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#overpass-api">2. Overpass API</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Download OpenStreetMap Data using the Overpass API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#resources">Resources:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Final Assignment</span></p>
 <ul>
@@ -155,13 +167,15 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Introduction to git</li>
+          <li><a href="index.html">6. Downloading OSM Data using Python</a> &raquo;</li>
+        
+      <li>Download OpenStreetMap Data using the Overpass API</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/preparation/git_intro/git_basics.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/course/05_download_osm/overpass.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -198,56 +212,33 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="introduction-to-git">
-<h1>Introduction to git<a class="headerlink" href="#introduction-to-git" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="git-is-a-version-control-system">
-<h2>git is a Version Control System<a class="headerlink" href="#git-is-a-version-control-system" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="substep">
-<em class="property">class </em><code class="sig-name descname">substep</code><a class="headerlink" href="#substep" title="Permalink to this definition">¶</a></dt>
-<dd><ul class="simple">
-<li><p>A Version Control System is a software which <strong>tracks file changes</strong> within a project.</p></li>
-<li><p>All tracked files of a project are stored in a <strong>git repository</strong>.</p></li>
-<li><p>Originally developed to assist collaborative software development.</p></li>
-</ul>
-<p>So why do scientist need git?</p>
-<ul class="simple">
-<li><p>Within git, projects are organised as repositories.</p></li>
-<li><p>A repository contains all tracked files of a project.</p></li>
-</ul>
-</dd></dl>
-
-</div>
-<hr class="docutils" />
-<div class="section" id="why-do-scientists-need-git">
-<h2>Why do scientists need git…<a class="headerlink" href="#why-do-scientists-need-git" title="Permalink to this headline">¶</a></h2>
-<a class="reference internal image-reference" href="../../_images/phdcomic_final.png"><img alt="phdcomic" class="align-center" src="../../_images/phdcomic_final.png" style="width: 300px;" /></a>
-</div>
-<hr class="docutils" />
-<div class="section" id="git-tracks-your-file-modifications">
-<h2>git tracks your file modifications<a class="headerlink" href="#git-tracks-your-file-modifications" title="Permalink to this headline">¶</a></h2>
-<a class="reference internal image-reference" href="../../_images/git_tracking.svg"><div align="center" class="align-center"><img alt="git_log" src="../../_images/git_tracking.svg" width="800" /></div>
-</a>
-</div>
-<hr class="docutils" />
-<div class="section" id="git-commits-record-changes-to-the-repository">
-<h2>git commits record changes to the repository<a class="headerlink" href="#git-commits-record-changes-to-the-repository" title="Permalink to this headline">¶</a></h2>
-<p>Creating a commit using the command line:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git add ham.py
-$ git add spam.txt
-$ git commit -m &quot;edited ham.py, created spam.txt&quot;
+<div class="section" id="download-openstreetmap-data-using-the-overpass-api">
+<h1>Download OpenStreetMap Data using the Overpass API<a class="headerlink" href="#download-openstreetmap-data-using-the-overpass-api" title="Permalink to this headline">¶</a></h1>
+<p>Open your browser and go to <a class="reference external" href="https://overpass-turbo.eu/">https://overpass-turbo.eu/</a>.</p>
+<p>By changing the code on the left you can query different features in OSM:</p>
+<p>Restaurants mapped as points (nodes in OSM)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node</span><span class="p">[</span><span class="s2">&quot;amenity&quot;</span><span class="o">=</span><span class="s2">&quot;restaurant&quot;</span><span class="p">](</span><span class="mf">8.4048</span><span class="p">,</span><span class="mf">49.0074</span><span class="p">,</span><span class="mf">8.4166</span><span class="p">,</span><span class="mf">49.0139</span><span class="p">);</span>
+<span class="n">out</span><span class="p">;</span>
 </pre></div>
 </div>
+<p>Restaurants mapped as polygons (ways in OSM)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">way</span><span class="p">[</span><span class="s2">&quot;amenity&quot;</span><span class="o">=</span><span class="s2">&quot;restaurant&quot;</span><span class="p">](</span><span class="mf">8.4048</span><span class="p">,</span><span class="mf">49.0074</span><span class="p">,</span><span class="mf">8.4166</span><span class="p">,</span><span class="mf">49.0139</span><span class="p">);</span>
+<span class="n">out</span><span class="p">;</span>
+</pre></div>
 </div>
-<hr class="docutils" />
-<div class="section" id="synchronizing-your-local-commits-with-a-central-git-repository">
-<h2>Synchronizing your local commits with a central git repository<a class="headerlink" href="#synchronizing-your-local-commits-with-a-central-git-repository" title="Permalink to this headline">¶</a></h2>
-<a class="reference internal image-reference" href="preparation/git_intro/img/git_push_pull.svg"><div align="center" class="align-center"><img alt="git_push_pull" src="preparation/git_intro/img/git_push_pull.svg" width="800" /></div>
-</a>
+<p>Lakes mapped as polygons (ways in OSM)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">way</span><span class="p">[</span><span class="s2">&quot;natural&quot;</span><span class="o">=</span><span class="s2">&quot;water&quot;</span><span class="p">](</span><span class="mf">8.4048</span><span class="p">,</span><span class="mf">49.0074</span><span class="p">,</span><span class="mf">8.4166</span><span class="p">,</span><span class="mf">49.0139</span><span class="p">);</span>
+<span class="n">out</span><span class="p">;</span>
+</pre></div>
 </div>
-<hr class="docutils" />
-<div class="section" id="you-can-work-on-different-version-at-the-same-time">
-<h2>You can work on different version at the same time<a class="headerlink" href="#you-can-work-on-different-version-at-the-same-time" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="resources">
+<h2>Resources:<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_API_by_Example#Some_Standard_Features">Overpass API</a></p></li>
+<li><p><a class="reference external" href="https://giscience.github.io/bbox-tool/bbox">Boundingbox Finder</a></p></li>
+<li><p><a class="reference external" href="https://wiki.openstreetmap.org/wiki/Main_Page">OSM WIKI</a></p></li>
+<li><p><a class="reference external" href="https://python-overpy.readthedocs.io/en/latest/index.html">Python Overpass API</a></p></li>
+</ul>
 </div>
 </div>
 
@@ -256,6 +247,15 @@ $ git commit -m &quot;edited ham.py, created spam.txt&quot;
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../final_assignment/final_assignment.html" class="btn btn-neutral float-right" title="Final Assignment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="request_data.html" class="btn btn-neutral float-left" title="Automated download of OpenStreetMap data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

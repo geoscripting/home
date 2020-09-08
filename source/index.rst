@@ -40,13 +40,14 @@ Prior to the block course, please work though the section "Course Preparation" a
    course/02_vectorized_geodata_processing/README
    course/03_scientific_programming/README
    course/assignment-2-part2/README
-
+   course/04_geodata_visualization/3-Data-Visualization.ipynb
+   course/05_download_osm/index
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
    :caption: Final Assignment
 
-   final_assignment/index
+   final_assignment/final_assignment.ipynb
 
 .. toctree::
    :maxdepth: 1

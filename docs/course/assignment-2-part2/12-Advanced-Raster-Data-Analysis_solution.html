@@ -104,13 +104,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../02_vectorized_geodata_processing/README.html">2. Vectorized Data Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03_scientific_programming/README.html">3. Best Practices in Scientific Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html">4. Advanced Raster Data Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04_geodata_visualization/3-Data-Visualization.html">Geo Data visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_geodata_visualization/3-Data-Visualization.html">5. Geo Data Visualization</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Final Assignment</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../final_assignment/final_assignment.html">Final Assignment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/final_assignment.html#Questions?">Questions?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../final_assignment/final_assignment.html#Thank-you-for-your-participation-and-feedback!-:)">Thank you for your participation and feedback! :)</a></li>
 </ul>
 
             
@@ -441,7 +439,17 @@ which parameters have been used to run the analyses.</p>
 <p>There seem to some issues with the sat-search package and python 3.8. So you will have to set up a new anaconda environment for this assignment containing the packages in requirements.txt.</p>
 <p><strong>IMPORTANT:</strong> Make sure that you <strong>use version 0.2.3 of sat-search</strong> using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">sat-search==0.2.3</span></code> and with <strong>python=3.7.</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -457,6 +465,15 @@ which parameters have been used to run the analyses.</p>
 </div>
 </div>
 <p>Please refer to the following sources for information on the usage of the packages (or google it): * <a class="reference external" href="https://rasterio.readthedocs.io/en/latest/quickstart.html">Rasterio Python Quickstart</a> * <a class="reference external" href="https://github.com/sat-utils/sat-search">sat-search Quickstart</a> * <a class="reference external" href="https://github.com/sat-utils/sat-search/blob/master/tutorial-1.ipynb">sat-search Python Tutorial</a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="k">import</span> <span class="n">geogr_2_image</span><span class="p">,</span> <span class="n">image_2_geogr</span><span class="p">,</span> <span class="n">get_window_for_scene</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="This-analysis-will-include-the-following-steps:">
 <h2>This analysis will include the following steps:<a class="headerlink" href="#This-analysis-will-include-the-following-steps:" title="Permalink to this headline">¶</a></h2>
@@ -483,18 +500,19 @@ which parameters have been used to run the analyses.</p>
 <li><p><strong>Maximum cloud coverage of 3%</strong> so we get mostly cloud free scenes.</p></li>
 </ul>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1">#bbox = [28.859 ,44.722 ,29.868 ,45.301]</span>
 
 <span class="n">bbox</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">16.811</span><span class="p">,</span><span class="mf">13.627</span><span class="p">,</span><span class="o">-</span><span class="mf">16.356</span><span class="p">,</span><span class="mf">14.14</span><span class="p">]</span><span class="c1"># [minx, miny, maxx, maxy]</span>
+<span class="n">bbox_crs</span> <span class="o">=</span> <span class="s2">&quot;epsg:4326&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -503,7 +521,7 @@ which parameters have been used to run the analyses.</p>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -512,7 +530,7 @@ which parameters have been used to run the analyses.</p>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -531,7 +549,7 @@ which parameters have been used to run the analyses.</p>
 <div class="section" id="Execute-the-search">
 <h2>Execute the search<a class="headerlink" href="#Execute-the-search" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -542,7 +560,7 @@ which parameters have been used to run the analyses.</p>
 <p>The object <code class="docutils literal notranslate"><span class="pre">search_result</span></code> is of type <code class="docutils literal notranslate"><span class="pre">satsearch.search.Search</span></code> and has a method <code class="docutils literal notranslate"><span class="pre">.items()</span></code>. Execute it to get the metadata to all scenes found during the search.</p>
 <p><strong>Tipp:</strong> When you are working with unfamiliar classes, use frequently use the <code class="docutils literal notranslate"><span class="pre">type()</span></code> and <code class="docutils literal notranslate"><span class="pre">dir()</span></code> functions to learn about how the class works and what it can do.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -559,7 +577,7 @@ which parameters have been used to run the analyses.</p>
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -568,7 +586,7 @@ which parameters have been used to run the analyses.</p>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -590,7 +608,7 @@ which parameters have been used to run the analyses.</p>
 </div>
 <p><strong>E:</strong> Print a calender showing the dates on which the scenes were captured.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -619,7 +637,7 @@ date                      id
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -658,7 +676,7 @@ Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
 <h3>Steps 2 - 4 will be testen using a single test scene before applying it to the whole study area<a class="headerlink" href="#Steps-2---4-will-be-testen-using-a-single-test-scene-before-applying-it-to-the-whole-study-area" title="Permalink to this headline">¶</a></h3>
 <p>We will implement the whole processing chain using one of the scenes as an example. When the processing chain is up and running we will apply it to all Landsat scenes.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -671,7 +689,7 @@ Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
 <h3>Step 2: Load satellite data<a class="headerlink" href="#Step-2:-Load-satellite-data" title="Permalink to this headline">¶</a></h3>
 <p>First, let’s create a folder to store the data.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -681,7 +699,7 @@ Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">os</span></code> package can help us with interactiong wiht the file system. For example, it can check whether the folder exisits. If not it will create it.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -699,7 +717,7 @@ Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
 <p>Each spectral band has a unique URL through which we can download it. This information is stored in the <code class="docutils literal notranslate"><span class="pre">item.assets</span></code>. Since these are stored as a dictionary, so we can access this information using the right keys.</p>
 <p><strong>E:</strong> Extract the URLs for the green (band 3) and short-wave infrared (band 7) spectral bands.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -710,7 +728,7 @@ Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -722,7 +740,7 @@ Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
 <p><strong>E:</strong> Write a function which takes a bounding box with geographic coordinates as a list (same as <code class="docutils literal notranslate"><span class="pre">bbox</span></code>) and the path to the image which we would like to read. The function should return a list containing the the upper left image coordinates and the number of rows and columns.</p>
 <p><strong>Hint:</strong> The bounding box is given in geographic coordinates. The Landsat scene has a UTM projection. And the window needs image coordinates. So you need to go from geographic coordinates to UTM to image coordinates. <code class="docutils literal notranslate"><span class="pre">pyproj.transform</span></code> can convert point coordinates from one crs to another. In order to convert from crs to image use the functions from the last notebook.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -733,25 +751,7 @@ Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">crs</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-CRS.from_dict(init=&#39;epsg:32628&#39;)
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -760,7 +760,7 @@ CRS.from_dict(init=&#39;epsg:32628&#39;)
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -770,52 +770,16 @@ Affine(30.0, 0.0, 206685.0,
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">win</span> <span class="o">=</span> <span class="n">get_window_for_scene</span><span class="p">(</span><span class="n">band_affine</span><span class="o">=</span><span class="n">affine</span><span class="p">,</span> <span class="n">band_crs</span><span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">crs</span><span class="p">),</span> <span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span> <span class="n">bbox_crs</span><span class="o">=</span><span class="n">bbox_crs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">utils2</span> <span class="k">import</span> <span class="n">geogr_2_image</span><span class="p">,</span> <span class="n">image_2_geogr</span><span class="p">,</span> <span class="n">get_window_for_scene</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-The autoreload extension is already loaded. To reload it, use:
-  %reload_ext autoreload
-</pre></div></div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%</span><span class="k">autoreload</span> 2
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">win</span> <span class="o">=</span> <span class="n">get_window_for_scene</span><span class="p">(</span><span class="n">band3_url</span><span class="p">,</span> <span class="n">bbox</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -824,27 +788,28 @@ The autoreload extension is already loaded. To reload it, use:
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Window(col_off=3261, row_off=5048, width=1626, height=1903)
+Window(col_off=3261, row_off=5048, width=1627, height=1903)
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">with</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">band3_url</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
     <span class="n">band3</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">win</span><span class="p">,</span> <span class="n">boundless</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">65535</span><span class="p">)</span>
-    <span class="n">profile</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">profile</span>
+    <span class="c1">#profile = src.profile</span>
+    <span class="n">crs</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">crs</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -855,7 +820,7 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -883,7 +848,7 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 <h2>1. Downloading the metadata file<a class="headerlink" href="#1.-Downloading-the-metadata-file" title="Permalink to this headline">¶</a></h2>
 <p>We’ve actually already done this above using</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -896,7 +861,7 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 <h2>2. Reading the metadata files in Python<a class="headerlink" href="#2.-Reading-the-metadata-files-in-Python" title="Permalink to this headline">¶</a></h2>
 <p>Let’s try reading one of the metadata files using the standard <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> method.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -905,8 +870,8 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -914,12 +879,245 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;GROUP = L1_METADATA_FILE\n&#39;,
+ &#39;  GROUP = METADATA_FILE_INFO\n&#39;,
+ &#39;    ORIGIN = &#34;Image courtesy of the U.S. Geological Survey&#34;\n&#39;,
+ &#39;    REQUEST_ID = &#34;0702004228683_00002&#34;\n&#39;,
+ &#39;    LANDSAT_SCENE_ID = &#34;LC82050502020102LGN00&#34;\n&#39;,
+ &#39;    LANDSAT_PRODUCT_ID = &#34;LC08_L1TP_205050_20200411_20200422_01_T1&#34;\n&#39;,
+ &#39;    COLLECTION_NUMBER = 01\n&#39;,
+ &#39;    FILE_DATE = 2020-04-22T19:23:02Z\n&#39;,
+ &#39;    STATION_ID = &#34;LGN&#34;\n&#39;,
+ &#39;    PROCESSING_SOFTWARE_VERSION = &#34;LPGS_13.1.0&#34;\n&#39;,
+ &#39;  END_GROUP = METADATA_FILE_INFO\n&#39;,
+ &#39;  GROUP = PRODUCT_METADATA\n&#39;,
+ &#39;    DATA_TYPE = &#34;L1TP&#34;\n&#39;,
+ &#39;    COLLECTION_CATEGORY = &#34;T1&#34;\n&#39;,
+ &#39;    ELEVATION_SOURCE = &#34;GLS2000&#34;\n&#39;,
+ &#39;    OUTPUT_FORMAT = &#34;GEOTIFF&#34;\n&#39;,
+ &#39;    SPACECRAFT_ID = &#34;LANDSAT_8&#34;\n&#39;,
+ &#39;    SENSOR_ID = &#34;OLI_TIRS&#34;\n&#39;,
+ &#39;    WRS_PATH = 205\n&#39;,
+ &#39;    WRS_ROW = 50\n&#39;,
+ &#39;    NADIR_OFFNADIR = &#34;NADIR&#34;\n&#39;,
+ &#39;    TARGET_WRS_PATH = 205\n&#39;,
+ &#39;    TARGET_WRS_ROW = 50\n&#39;,
+ &#39;    DATE_ACQUIRED = 2020-04-11\n&#39;,
+ &#39;    SCENE_CENTER_TIME = &#34;11:27:05.7122639Z&#34;\n&#39;,
+ &#39;    CORNER_UL_LAT_PRODUCT = 15.49909\n&#39;,
+ &#39;    CORNER_UL_LON_PRODUCT = -17.73373\n&#39;,
+ &#39;    CORNER_UR_LAT_PRODUCT = 15.51519\n&#39;,
+ &#39;    CORNER_UR_LON_PRODUCT = -15.60048\n&#39;,
+ &#39;    CORNER_LL_LAT_PRODUCT = 13.38846\n&#39;,
+ &#39;    CORNER_LL_LON_PRODUCT = -17.70806\n&#39;,
+ &#39;    CORNER_LR_LAT_PRODUCT = 13.40228\n&#39;,
+ &#39;    CORNER_LR_LON_PRODUCT = -15.59483\n&#39;,
+ &#39;    CORNER_UL_PROJECTION_X_PRODUCT = 206700.000\n&#39;,
+ &#39;    CORNER_UL_PROJECTION_Y_PRODUCT = 1715400.000\n&#39;,
+ &#39;    CORNER_UR_PROJECTION_X_PRODUCT = 435600.000\n&#39;,
+ &#39;    CORNER_UR_PROJECTION_Y_PRODUCT = 1715400.000\n&#39;,
+ &#39;    CORNER_LL_PROJECTION_X_PRODUCT = 206700.000\n&#39;,
+ &#39;    CORNER_LL_PROJECTION_Y_PRODUCT = 1481700.000\n&#39;,
+ &#39;    CORNER_LR_PROJECTION_X_PRODUCT = 435600.000\n&#39;,
+ &#39;    CORNER_LR_PROJECTION_Y_PRODUCT = 1481700.000\n&#39;,
+ &#39;    PANCHROMATIC_LINES = 15581\n&#39;,
+ &#39;    PANCHROMATIC_SAMPLES = 15261\n&#39;,
+ &#39;    REFLECTIVE_LINES = 7791\n&#39;,
+ &#39;    REFLECTIVE_SAMPLES = 7631\n&#39;,
+ &#39;    THERMAL_LINES = 7791\n&#39;,
+ &#39;    THERMAL_SAMPLES = 7631\n&#39;,
+ &#39;    FILE_NAME_BAND_1 = &#34;LC08_L1TP_205050_20200411_20200422_01_T1_B1.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_2 = &#34;LC08_L1TP_205050_20200411_20200422_01_T1_B2.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_3 = &#34;LC08_L1TP_205050_20200411_20200422_01_T1_B3.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_4 = &#34;LC08_L1TP_205050_20200411_20200422_01_T1_B4.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_5 = &#34;LC08_L1TP_205050_20200411_20200422_01_T1_B5.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_6 = &#34;LC08_L1TP_205050_20200411_20200422_01_T1_B6.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_7 = &#34;LC08_L1TP_205050_20200411_20200422_01_T1_B7.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_8 = &#34;LC08_L1TP_205050_20200411_20200422_01_T1_B8.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_9 = &#34;LC08_L1TP_205050_20200411_20200422_01_T1_B9.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_10 = &#34;LC08_L1TP_205050_20200411_20200422_01_T1_B10.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_11 = &#34;LC08_L1TP_205050_20200411_20200422_01_T1_B11.TIF&#34;\n&#39;,
+ &#39;    FILE_NAME_BAND_QUALITY = &#34;LC08_L1TP_205050_20200411_20200422_01_T1_BQA.TIF&#34;\n&#39;,
+ &#39;    ANGLE_COEFFICIENT_FILE_NAME = &#34;LC08_L1TP_205050_20200411_20200422_01_T1_ANG.txt&#34;\n&#39;,
+ &#39;    METADATA_FILE_NAME = &#34;LC08_L1TP_205050_20200411_20200422_01_T1_MTL.txt&#34;\n&#39;,
+ &#39;    CPF_NAME = &#34;LC08CPF_20200401_20200630_01.01&#34;\n&#39;,
+ &#39;    BPF_NAME_OLI = &#34;LO8BPF20200411110434_20200411115110.01&#34;\n&#39;,
+ &#39;    BPF_NAME_TIRS = &#34;LT8BPF20200408120900_20200418213743.01&#34;\n&#39;,
+ &#39;    RLUT_FILE_NAME = &#34;LC08RLUT_20150303_20431231_01_12.h5&#34;\n&#39;,
+ &#39;  END_GROUP = PRODUCT_METADATA\n&#39;,
+ &#39;  GROUP = IMAGE_ATTRIBUTES\n&#39;,
+ &#39;    CLOUD_COVER = 0.65\n&#39;,
+ &#39;    CLOUD_COVER_LAND = 0.59\n&#39;,
+ &#39;    IMAGE_QUALITY_OLI = 9\n&#39;,
+ &#39;    IMAGE_QUALITY_TIRS = 9\n&#39;,
+ &#39;    TIRS_SSM_MODEL = &#34;FINAL&#34;\n&#39;,
+ &#39;    TIRS_SSM_POSITION_STATUS = &#34;ESTIMATED&#34;\n&#39;,
+ &#39;    TIRS_STRAY_LIGHT_CORRECTION_SOURCE = &#34;TIRS&#34;\n&#39;,
+ &#39;    ROLL_ANGLE = -0.001\n&#39;,
+ &#39;    SUN_AZIMUTH = 100.66127350\n&#39;,
+ &#39;    SUN_ELEVATION = 64.71357903\n&#39;,
+ &#39;    EARTH_SUN_DISTANCE = 1.0022608\n&#39;,
+ &#39;    SATURATION_BAND_1 = &#34;N&#34;\n&#39;,
+ &#39;    SATURATION_BAND_2 = &#34;N&#34;\n&#39;,
+ &#39;    SATURATION_BAND_3 = &#34;N&#34;\n&#39;,
+ &#39;    SATURATION_BAND_4 = &#34;N&#34;\n&#39;,
+ &#39;    SATURATION_BAND_5 = &#34;N&#34;\n&#39;,
+ &#39;    SATURATION_BAND_6 = &#34;Y&#34;\n&#39;,
+ &#39;    SATURATION_BAND_7 = &#34;Y&#34;\n&#39;,
+ &#39;    SATURATION_BAND_8 = &#34;N&#34;\n&#39;,
+ &#39;    SATURATION_BAND_9 = &#34;N&#34;\n&#39;,
+ &#39;    GROUND_CONTROL_POINTS_VERSION = 4\n&#39;,
+ &#39;    GROUND_CONTROL_POINTS_MODEL = 282\n&#39;,
+ &#39;    GEOMETRIC_RMSE_MODEL = 7.288\n&#39;,
+ &#39;    GEOMETRIC_RMSE_MODEL_Y = 4.977\n&#39;,
+ &#39;    GEOMETRIC_RMSE_MODEL_X = 5.324\n&#39;,
+ &#39;    GROUND_CONTROL_POINTS_VERIFY = 85\n&#39;,
+ &#39;    GEOMETRIC_RMSE_VERIFY = 4.624\n&#39;,
+ &#39;    TRUNCATION_OLI = &#34;UPPER&#34;\n&#39;,
+ &#39;  END_GROUP = IMAGE_ATTRIBUTES\n&#39;,
+ &#39;  GROUP = MIN_MAX_RADIANCE\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_1 = 756.63763\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_1 = -62.48338\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_2 = 774.80615\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_2 = -63.98375\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_3 = 713.97723\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_3 = -58.96047\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_4 = 602.06586\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_4 = -49.71879\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_5 = 368.43427\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_5 = -30.42542\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_6 = 91.62625\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_6 = -7.56653\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_7 = 30.88295\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_7 = -2.55032\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_8 = 681.37280\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_8 = -56.26799\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_9 = 143.99246\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_9 = -11.89094\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_10 = 22.00180\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_10 = 0.10033\n&#39;,
+ &#39;    RADIANCE_MAXIMUM_BAND_11 = 22.00180\n&#39;,
+ &#39;    RADIANCE_MINIMUM_BAND_11 = 0.10033\n&#39;,
+ &#39;  END_GROUP = MIN_MAX_RADIANCE\n&#39;,
+ &#39;  GROUP = MIN_MAX_REFLECTANCE\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_1 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_1 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_2 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_2 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_3 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_3 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_4 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_4 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_5 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_5 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_6 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_6 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_7 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_7 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_8 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_8 = -0.099980\n&#39;,
+ &#39;    REFLECTANCE_MAXIMUM_BAND_9 = 1.210700\n&#39;,
+ &#39;    REFLECTANCE_MINIMUM_BAND_9 = -0.099980\n&#39;,
+ &#39;  END_GROUP = MIN_MAX_REFLECTANCE\n&#39;,
+ &#39;  GROUP = MIN_MAX_PIXEL_VALUE\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_1 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_1 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_2 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_2 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_3 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_3 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_4 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_4 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_5 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_5 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_6 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_6 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_7 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_7 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_8 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_8 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_9 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_9 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_10 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_10 = 1\n&#39;,
+ &#39;    QUANTIZE_CAL_MAX_BAND_11 = 65535\n&#39;,
+ &#39;    QUANTIZE_CAL_MIN_BAND_11 = 1\n&#39;,
+ &#39;  END_GROUP = MIN_MAX_PIXEL_VALUE\n&#39;,
+ &#39;  GROUP = RADIOMETRIC_RESCALING\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_1 = 1.2499E-02\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_2 = 1.2799E-02\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_3 = 1.1794E-02\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_4 = 9.9457E-03\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_5 = 6.0863E-03\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_6 = 1.5136E-03\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_7 = 5.1017E-04\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_8 = 1.1256E-02\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_9 = 2.3787E-03\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_10 = 3.3420E-04\n&#39;,
+ &#39;    RADIANCE_MULT_BAND_11 = 3.3420E-04\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_1 = -62.49588\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_2 = -63.99654\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_3 = -58.97227\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_4 = -49.72874\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_5 = -30.43151\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_6 = -7.56804\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_7 = -2.55083\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_8 = -56.27925\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_9 = -11.89332\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_10 = 0.10000\n&#39;,
+ &#39;    RADIANCE_ADD_BAND_11 = 0.10000\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_1 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_2 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_3 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_4 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_5 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_6 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_7 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_8 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_MULT_BAND_9 = 2.0000E-05\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_1 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_2 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_3 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_4 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_5 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_6 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_7 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_8 = -0.100000\n&#39;,
+ &#39;    REFLECTANCE_ADD_BAND_9 = -0.100000\n&#39;,
+ &#39;  END_GROUP = RADIOMETRIC_RESCALING\n&#39;,
+ &#39;  GROUP = TIRS_THERMAL_CONSTANTS\n&#39;,
+ &#39;    K1_CONSTANT_BAND_10 = 774.8853\n&#39;,
+ &#39;    K2_CONSTANT_BAND_10 = 1321.0789\n&#39;,
+ &#39;    K1_CONSTANT_BAND_11 = 480.8883\n&#39;,
+ &#39;    K2_CONSTANT_BAND_11 = 1201.1442\n&#39;,
+ &#39;  END_GROUP = TIRS_THERMAL_CONSTANTS\n&#39;,
+ &#39;  GROUP = PROJECTION_PARAMETERS\n&#39;,
+ &#39;    MAP_PROJECTION = &#34;UTM&#34;\n&#39;,
+ &#39;    DATUM = &#34;WGS84&#34;\n&#39;,
+ &#39;    ELLIPSOID = &#34;WGS84&#34;\n&#39;,
+ &#39;    UTM_ZONE = 28\n&#39;,
+ &#39;    GRID_CELL_SIZE_PANCHROMATIC = 15.00\n&#39;,
+ &#39;    GRID_CELL_SIZE_REFLECTIVE = 30.00\n&#39;,
+ &#39;    GRID_CELL_SIZE_THERMAL = 30.00\n&#39;,
+ &#39;    ORIENTATION = &#34;NORTH_UP&#34;\n&#39;,
+ &#39;    RESAMPLING_OPTION = &#34;CUBIC_CONVOLUTION&#34;\n&#39;,
+ &#39;  END_GROUP = PROJECTION_PARAMETERS\n&#39;,
+ &#39;END_GROUP = L1_METADATA_FILE\n&#39;,
+ &#39;END\n&#39;]
+</pre></div></div>
+</div>
 </div>
 <div class="section" id="3.-Parsing-the-metadata-files">
 <h2>3. Parsing the metadata files<a class="headerlink" href="#3.-Parsing-the-metadata-files" title="Permalink to this headline">¶</a></h2>
 <p>uh, this looks really messy. Let’s try to parse the data into a dictionary, so we can extract the necessary parameters.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -930,7 +1128,7 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 </div>
 <p><strong>E:</strong> Write a function which takes the metadata (a list of tuples) and returns them as a dictionary where the keys are the parameter names and the values are the parameters values. Try to convert the values to float. If that is not possible, catch the exception with a <code class="docutils literal notranslate"><span class="pre">try:</span> <span class="pre">...</span> <span class="pre">catch:</span> <span class="pre">...</span></code> clause.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -952,7 +1150,7 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 </div>
 <p>Test whether your function is working correctly writing tests which check that the correct values are extracted from the file, e.g.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -963,7 +1161,7 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 </div>
 <p>Extract all required parameters for conversion to ToA reflectance.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -980,7 +1178,7 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 <p>Now we that we have the parameters, we can write a function which will perform the conversion.</p>
 <p><strong>E:</strong> Write a function which converts the raw band to reflectance:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -991,7 +1189,7 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 </div>
 <p><strong>E:</strong> Convert the the two spectral bands to reflectance.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1000,13 +1198,29 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">band3_r</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.image.AxesImage at 0x7fd9b3e469e8&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/course_assignment-2-part2_12-Advanced-Raster-Data-Analysis_solution_78_1.png" src="../../_images/course_assignment-2-part2_12-Advanced-Raster-Data-Analysis_solution_78_1.png" />
 </div>
 </div>
 <div class="section" id="Step-4:-Calculate-the-water-index">
@@ -1015,7 +1229,7 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 <p><span class="math notranslate nohighlight">\(NDWI = \frac{L_{GREEN} - L_{SWIR}}{L_{GREEN} + L_{SWIR}}\)</span></p>
 <p><strong>E:</strong> Write a function which calculate the NDWI based on the green and SWIR2 (short wave infrared 2) bands.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1025,7 +1239,7 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1033,8 +1247,8 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1042,23 +1256,44 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.image.AxesImage at 0x7fd9b266d3c8&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/course_assignment-2-part2_12-Advanced-Raster-Data-Analysis_solution_83_1.png" src="../../_images/course_assignment-2-part2_12-Advanced-Raster-Data-Analysis_solution_83_1.png" />
+</div>
+</div>
 </div>
 <div class="section" id="Step-5:-Calculate-water-frequency-based-on-the-whole-time-series">
 <h3>Step 5: Calculate water frequency based on the whole time series<a class="headerlink" href="#Step-5:-Calculate-water-frequency-based-on-the-whole-time-series" title="Permalink to this headline">¶</a></h3>
 <p>Great! So we have the code to load and convert the satellite imagery and to calculate the NDWI of a single satellite image. Now let’s put everything together in a for loop which iterates through all the Landsat scenes. We don’t need the spectral bands for the further analysis, so we can just delete them and only store the numpy array containing the NDWI.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">FILL_VALUE</span> <span class="o">=</span> <span class="mi">65535</span>
+<span class="n">bbox_crs</span> <span class="o">=</span> <span class="s2">&quot;epsg:4326&quot;</span>
 <span class="n">bands</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
     <span class="n">band3_url</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;B3&quot;</span><span class="p">][</span><span class="s2">&quot;href&quot;</span><span class="p">]</span>
     <span class="n">band7_url</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;B7&quot;</span><span class="p">][</span><span class="s2">&quot;href&quot;</span><span class="p">]</span>
 
-    <span class="n">window</span> <span class="o">=</span> <span class="n">get_window_for_scene</span><span class="p">(</span><span class="n">band3_url</span><span class="p">,</span> <span class="n">bbox</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">band3_url</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+        <span class="n">affine</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">transform</span>
+        <span class="n">crs</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">crs</span>
+
+    <span class="n">window</span> <span class="o">=</span> <span class="n">get_window_for_scene</span><span class="p">(</span><span class="n">band_affine</span><span class="o">=</span><span class="n">affine</span><span class="p">,</span> <span class="n">band_crs</span><span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">crs</span><span class="p">),</span> <span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span> <span class="n">bbox_crs</span><span class="o">=</span><span class="n">bbox_crs</span><span class="p">)</span>
 
     <span class="c1"># Read metadata</span>
     <span class="n">mtl_file</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;MTL&quot;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">scene_dir</span><span class="p">)</span>
@@ -1096,9 +1331,26 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+LC82050512020118
+LC82050502020118
+LC82050502020102
+LC82050512020086
+LC82050502020086
+LC82050502020070
+LC82050512020038
+LC82050502020038
+LC82050512020006
+LC82050502020006
+</pre></div></div>
+</div>
 <p><strong>E:</strong> Stack the NDWI images into a 3-dimensional array. Axis 0 should indicate the time axis.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1112,8 +1364,8 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 <h2>Calculate the water frequency<a class="headerlink" href="#Calculate-the-water-frequency" title="Permalink to this headline">¶</a></h2>
 <p>The NDWI is an indicator for the presence of water. NDWI values above 0 indicate water, below 0 land.</p>
 <p><strong>E:</strong> Convert the NDWI array to an array holding binary water masks using the <code class="docutils literal notranslate"><span class="pre">np.where()</span></code> method. NDWI &gt;= 0.3 should be classified as water (1), NDWI &lt; 0.3 as no-water (0).</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1121,9 +1373,18 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/chludwig/miniconda3/envs/cs4geos/lib/python3.7/site-packages/ipykernel_launcher.py:1: RuntimeWarning: invalid value encountered in greater_equal
+  &#34;&#34;&#34;Entry point for launching an IPython kernel.
+</pre></div></div>
+</div>
 <p><strong>E:</strong> Calculate the number valid pixels (not nodata) along the time axis (axis=0)</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1133,7 +1394,7 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 </div>
 <p><strong>E:</strong> Calculate the number of water pixels along the time axis (axis=0).</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1142,8 +1403,8 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 </div>
 </div>
 <p><strong>E:</strong> Plot the water frequency using <code class="docutils literal notranslate"><span class="pre">plt.imshow()</span></code>.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1153,10 +1414,26 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.colorbar.Colorbar at 0x7fd9b2611240&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/course_assignment-2-part2_12-Advanced-Raster-Data-Analysis_solution_96_1.png" src="../../_images/course_assignment-2-part2_12-Advanced-Raster-Data-Analysis_solution_96_1.png" />
+</div>
+</div>
 <p>We can still see some cloud artifacts over the ocean in the right lower corner. Lower the eo:cloudcov parameter to exclude clouded scenes.</p>
 <p><strong>E:</strong> Show the number of valid observations.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1164,6 +1441,22 @@ Window(col_off=3261, row_off=5048, width=1626, height=1903)
 <span class="n">valid_obs_plot</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">valid_pixels</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Reds&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">mappable</span><span class="o">=</span><span class="n">valid_obs_plot</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.colorbar.Colorbar at 0x7fd94e1b9198&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/course_assignment-2-part2_12-Advanced-Raster-Data-Analysis_solution_99_1.png" src="../../_images/course_assignment-2-part2_12-Advanced-Raster-Data-Analysis_solution_99_1.png" />
 </div>
 </div>
 <p>Check out the full tutorial on the <a class="reference external" href="https://github.com/sat-utils/sat-search">sat-search github repo</a> to learn about the full functionalities.</p>

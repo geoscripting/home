@@ -1,0 +1,33 @@
+## Download OpenStreetMap Data using the Overpass API
+
+Open your browser and go to [https://overpass-turbo.eu/](https://overpass-turbo.eu/).
+
+By changing the code on the left you can query different features in OSM:
+
+Restaurants mapped as points (nodes in OSM)
+
+```
+node["amenity"="restaurant"](8.4048,49.0074,8.4166,49.0139);
+out;
+```
+
+Restaurants mapped as polygons (ways in OSM)
+
+```
+way["amenity"="restaurant"](8.4048,49.0074,8.4166,49.0139);
+out;
+```
+
+Lakes mapped as polygons (ways in OSM)
+
+```
+way["natural"="water"](8.4048,49.0074,8.4166,49.0139);
+out;
+```
+
+### Resources:
+
+- [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_API_by_Example#Some_Standard_Features)
+- [Boundingbox Finder](https://giscience.github.io/bbox-tool/bbox)
+- [OSM WIKI](https://wiki.openstreetmap.org/wiki/Main_Page)
+- [Python Overpass API](https://python-overpy.readthedocs.io/en/latest/index.html)

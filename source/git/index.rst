@@ -9,7 +9,7 @@ In order to use git you need to have a **GitHub Account** and **git must be inst
 
 
 1. Accessing the preparatory assignment material through GitHub Classroom
-########################
+#################################################################################
 
 To access the material for the preparatory assignment and to submit your solutions GitHub Classroom will create a GitHub repository for you. This repository is only accessible and visible to you and the teacher.
 
@@ -19,7 +19,7 @@ To access the material for the preparatory assignment and to submit your solutio
 
 
 2. Cloning the repository to your computer
-########################
+###########################################
 
 In order to work on the files in the repository and to add new ones, you need to clone the repository to your computer using the following command.
 
